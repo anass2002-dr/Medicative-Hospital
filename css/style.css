@@ -63,6 +63,10 @@ Creation Date: 24 May 2018
 =====*****=====*****=====*****=====*****/
 :root{
     --pk-color:#ff3dac;
+    --pk-color-bold:#f9048f;
+    --pk-color-avg:#fa239d;
+    --pk-color-light:#fa7dc4;
+    
 }
 body {
     background: #ffffff;
@@ -439,10 +443,10 @@ button {
     width: 100%;
     height: 100%;
     z-index: 0;
-    background-color: rgba(0,176,146, 0.9);
+    background-color: rgb(197 56 136 / 58%);
 }
 .over-layer-default-light:before {
-    background-color: rgba(0,176,146, 0.7);
+    background-color: rgba(218, 55, 147, 0.433);
 }
 
 
@@ -1016,7 +1020,7 @@ a.flip-animate:hover span:before, a.flip-animate:focus span:before {
 }
 
 .conner-style .navbar-brand:before {
-    background: rgba(0,176,146, 0.9);
+    background: var(--pk-color);
     content: "";
     position: absolute;
     left: -80%;
@@ -1763,7 +1767,7 @@ body {
     margin-bottom: 20px;
 }
 .story-item .story-details {
-    background-color: rgba(0,176,146, 0.9);
+    background-color: rgb(197 56 136 / 58%);
     width: 100%;
     height: 100%;
     position: absolute;
@@ -4662,7 +4666,7 @@ footer {
 }
 
 .flicker-feed>a:before {
-    background-color: rgba(0,176,146, 0.9);
+    background-color: rgb(197 56 136 / 58%);
     content: "";
     height: 100%;
     position: absolute;
@@ -4843,7 +4847,7 @@ footer {
 
 .gallery-hover {
     position: absolute;
-    background-color: rgba(0,176,146, 0.90);
+    background-color: rgb(255 61 172 / 59%);
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
 }
@@ -5940,13 +5944,13 @@ ul.rating-text li, .pro-review ul li, .social-icon ul li {
     padding: 0;
 }
 .about-feature.style-2 .col-xs-12.col-sm-6.col-md-6.col-lg-4:first-child {
-    background: #00b09a;
+    background: var(--pk-color-bold);
 }
 .about-feature.style-2 .col-xs-12.col-sm-6.col-md-6.col-lg-4:nth-child(2) {
-    background: #19b79c;
+    background: var(--pk-color-avg);
 }
 .about-feature.style-2 .col-xs-12.col-sm-6.col-md-6.col-lg-4:last-child {
-    background: #32bfa7;
+    background: var(--pk-color-light);
 }
 .about-feature.style-2 .col-xs-12.col-sm-6.col-md-6.col-lg-4 .appointment-item {
     background: transparent;
@@ -6238,7 +6242,7 @@ ul.rating-text li, .pro-review ul li, .social-icon ul li {
     background: rgba(0,0,0,.5);
 }
 .bg-defult-2 {
-    background: rgba(0,176,146, 0.9);
+    background: rgb(197 56 136 / 58%);
 }
 .bg-defult-1.fixed-header {
     background: #F1F1F1;

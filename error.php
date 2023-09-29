@@ -14,16 +14,9 @@
     <title>Medicative Hospital || Health & Medical HTML Template</title>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-
-    <!-- Responsive stylesheet  -->
-    <link rel="stylesheet" type="text/css" href="css/responsive.css">
-
-    <!-- Favicon -->
-    <link href="img/favicon.png" rel="shortcut icon" type="image/png">
+    <?php
+    include 'styles.php'
+    ?>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,17 +49,17 @@
     </section>
 
     <section class="footer-copy-right bg-f9">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 text-center">
-            <p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>
-          </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
     <!-- Footer Style End -->
 
-  
+
     <a href="#" class="scrollup"><i class="pe-7s-up-arrow" aria-hidden="true"></i></a>
     <!-- jQuery -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
