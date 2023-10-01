@@ -62,10 +62,10 @@ Creation Date: 24 May 2018
     02. General CSS 
 =====*****=====*****=====*****=====*****/
 :root{
-    --pk-color:#ff3dac;
-    --pk-color-bold:#f9048f;
-    --pk-color-avg:#fa239d;
-    --pk-color-light:#fa7dc4;
+    --pk-color:#3da1ff;
+    --pk-color-bold:#1289f8;
+    --pk-color-avg:#50a6f6;
+    --pk-color-light:#85c4ff;
     
 }
 body {
@@ -443,10 +443,10 @@ button {
     width: 100%;
     height: 100%;
     z-index: 0;
-    background-color: rgb(197 56 136 / 58%);
+    background-color: rgba(56, 129, 197, 0.58);
 }
 .over-layer-default-light:before {
-    background-color: rgba(218, 55, 147, 0.433);
+    background-color: rgba(55, 153, 218, 0.433);
 }
 
 
@@ -4847,7 +4847,7 @@ footer {
 
 .gallery-hover {
     position: absolute;
-    background-color: rgb(255 61 172 / 59%);
+    background-color: rgba(61, 187, 255, 0.59);
     -webkit-transition: all 0.3s;
     transition: all 0.3s;
 }

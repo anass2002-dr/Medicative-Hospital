@@ -37,7 +37,13 @@
                 <div class="col-md-4">
                     <div class="mini-title inner-style-2">
                         <h3>Blog</h3>
-                        <p><a href="index-one.html">Home</a> <span class="fa fa-angle-right"></span> <a href="#">Blog</a></p>
+                        <p><a href="index-one.html">Home</a>
+
+                            <!-- title dynamique -->
+                            <span class="fa fa-angle-right"></span>
+
+                            <a href="#">Blog</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -58,8 +64,20 @@
                                 <li>Posted June 24, 2018</li>
                             </ul>
                             <h3><a href="#"> Curabitur consequat cursus suscipit</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec arcu ipsum. Curabitur tincidunt nisi ex, ut eleifend turpis egestas vitae. Proin convallis et eros eget rutrum. Duis luctus lorem id mattis placerat. Etiam pharetra libero ut suscipit mollis. Morbi augue mi, maximus at lectus id, mollis ornare dui. Curabitur consequat, est non cursus suscipit, quam nulla porta enim, sed pharetra diam elit non nisi. Praesent pulvinar ante eu euismod cursus. Fusce quis est justo. Nullam id egestas diam. Etiam ac augue orci. Aliquam scelerisque convallis est sed pretium. In vel elementum lorem.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Integer nec arcu ipsum. Curabitur tincidunt nisi ex, ut eleifend turpis egestas vitae.
+                                Proin convallis et eros eget rutrum. Duis luctus lorem id mattis placerat.
+                                Etiam pharetra libero ut suscipit mollis. Morbi augue mi, maximus at lectus id, mollis ornare dui. Curabitur consequat, est non cursus suscipit, quam nulla porta enim, sed pharetra diam elit non nisi. Praesent pulvinar ante eu euismod cursus. Fusce quis est justo. Nullam id egestas diam. Etiam ac augue orci. Aliquam scelerisque convallis est sed pretium. In vel elementum lorem.</p>
                             <p>Pellentesque eleifend metus vitae commodo finibus. Proin eget mi a sem placerat facilisis. Aenean interdum aliquet sapien, non scelerisque massa vestibulum ut. Quisque mollis, ante nec volutpat dignissim, lectus libero porta magna, at volutpat massa orci a turpis. Duis tincidunt nunc magna, non semper metus tempus ut. Duis vulputate enim condimentum posuere lacinia. Ut venenatis massa ex.</p>
+                            <img class="img-responsive" src="img/blog/w2.jpg" alt="">
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rerum libero veritatis. Alias, reiciendis dolorem mollitia commodi praesentium nesciunt dicta sequi sed quis tempora voluptatibus illo doloremque laudantium. Quae, et!
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde eos repellendus tempora fugiat cumque, sint rem nisi! Quam, cum sapiente? Itaque cupiditate quae voluptate magni amet sed est quas facilis!
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo a eveniet voluptate mollitia cumque asperiores odio dolores, optio perferendis itaque dolore inventore aperiam tempore illum. Laborum esse iste a officiis?
+                            </p>
+                            <img class="img-responsive" src="img/blog/w2.jpg" alt="">
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis possimus laborum culpa explicabo mollitia, tenetur corporis sint ut omnis? Illum nostrum necessitatibus repudiandae similique omnis cum aliquam non quis nesciunt.
+                                Pellentesque eleifend metus vitae commodo finibus. Proin eget mi a sem placerat facilisis. Aenean interdum aliquet sapien, non scelerisque massa vestibulum ut. Quisque mollis, ante nec volutpat dignissim, lectus libero porta magna, at volutpat massa orci a turpis. Duis tincidunt nunc magna, non semper metus tempus ut. Duis vulputate enim condimentum posuere lacinia. Ut venenatis massa ex.</p>
+
                             <blockquote>
                                 <p>"Lorem ipsum dolor sit amet, consectetur adipiscing duis mollis, est non commodo luctus elit posuere erat a ante. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis lorem ipsum dolor sit amet, consectetur adipiscing"</p>
                             </blockquote>
@@ -79,7 +97,8 @@
                                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                 </ul>
                             </div>
-                            <p>Vivamus quis nisi vel dui ultrices lacinia ac eu massa. Quis que vitae consequat sapien. Vivamus sit amet tincidunt ipsum, nec blandit ipsum. consectetur adipiscing elit...</p>
+                            <p>Vivamus quis nisi vel dui ultrices lacinia ac eu massa. Quis que vitae consequat sapien.
+                                Vivamus sit amet tincidunt ipsum, nec blandit ipsum. consectetur adipiscing elit...</p>
                         </div>
                     </div>
                     <!-- End Blog Post Author -->

@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Medicative Hospital || Health & Medical HTML Template</title>
+    <title>Medicative Hospital || Health & Medical php Template</title>
 
     <?php
     include 'styles.php'
@@ -35,7 +35,7 @@
                 <div class="col-md-4">
                     <div class="mini-title inner-style-2">
                         <h3>Blog</h3>
-                        <p><a href="index-one.html">Home</a> <span class="fa fa-angle-right"></span> <a href="#">Blog</a></p>
+                        <p><a href="index.php">Home</a> <span class="fa fa-angle-right"></span> <a href="blog-single.php">Blog</a></p>
                     </div>
                 </div>
             </div>
@@ -52,18 +52,18 @@
                                 <div class="blog-date text-center">
                                     <i class="pe-7s-link"></i>
                                 </div>
-                                <div class="blog-img"><a href="#"><img src="img/blog/1.jpg" alt=""></a>
+                                <div class="blog-img"><a href="log-single.php"><img src="img/blog/1.jpg" alt=""></a>
                                     <div class="blog-event-date">
                                         <h3>13 <small>Jun</small></h3>
                                     </div>
                                 </div>
                                 <div class="blog-content">
-                                    <a href="#">
+                                    <a href="blog-single.php">
                                         <h4>What's the Right Choice? </h4>
                                     </a>
-                                    <i class="fa fa-user-o"></i> <a href="#">Admin</a> | <i class="fa fa-heart-o"></i> <a href="#">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="#"> Comments: 10</a>
+                                    <i class="fa fa-user-o"></i> <a href="blog-single.php">Admin</a> | <i class="fa fa-heart-o"></i> <a href="blog-single.php">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="blog-single.php"> Comments: 10</a>
                                     <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="#" class="btn btn-simple">Read More</a>
+                                    <a href="blog-single.php" class="btn btn-simple">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -72,18 +72,18 @@
                                 <div class="blog-date text-center">
                                     <i class="pe-7s-link"></i>
                                 </div>
-                                <div class="blog-img"><a href="#"><img src="img/blog/2.jpg" alt=""></a>
+                                <div class="blog-img"><a href="blog-single.php"><img src="img/blog/2.jpg" alt=""></a>
                                     <div class="blog-event-date">
                                         <h3>17 <small>Jun</small></h3>
                                     </div>
                                 </div>
                                 <div class="blog-content">
-                                    <a href="#">
+                                    <a href="blog-single.php">
                                         <h4>Caregiver Series </h4>
                                     </a>
-                                    <i class="fa fa-user-o"></i> <a href="#">Admin</a> | <i class="fa fa-heart-o"></i> <a href="#">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="#"> Comments: 10</a>
+                                    <i class="fa fa-user-o"></i> <a href="blog-single.php">Admin</a> | <i class="fa fa-heart-o"></i> <a href="blog-single.php">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="blog-single.php"> Comments: 10</a>
                                     <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="#" class="btn btn-simple">Read More</a>
+                                    <a href="blog-single.php" class="btn btn-simple">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -92,18 +92,18 @@
                                 <div class="blog-date text-center">
                                     <i class="pe-7s-link"></i>
                                 </div>
-                                <div class="blog-img"><a href="#"><img src="img/blog/3.jpg" alt=""></a>
+                                <div class="blog-img"><a href="blog-single.php"><img src="img/blog/3.jpg" alt=""></a>
                                     <div class="blog-event-date">
                                         <h3>19 <small>Jun</small></h3>
                                     </div>
                                 </div>
                                 <div class="blog-content">
-                                    <a href="#">
+                                    <a href="blog-single.php">
                                         <h4>Little Hats, Big Hearts </h4>
                                     </a>
-                                    <i class="fa fa-user-o"></i> <a href="#">Admin</a> | <i class="fa fa-heart-o"></i> <a href="#">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="#"> Comments: 10</a>
+                                    <i class="fa fa-user-o"></i> <a href="blog-single.php">Admin</a> | <i class="fa fa-heart-o"></i> <a href="blog-single.php">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="blog-single.php"> Comments: 10</a>
                                     <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="#" class="btn btn-simple">Read More</a>
+                                    <a href="blog-single.php" class="btn btn-simple">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -112,18 +112,18 @@
                                 <div class="blog-date text-center">
                                     <i class="pe-7s-link"></i>
                                 </div>
-                                <div class="blog-img"><a href="#"><img src="img/blog/1.jpg" alt=""></a>
+                                <div class="blog-img"><a href="blog-single.php"><img src="img/blog/1.jpg" alt=""></a>
                                     <div class="blog-event-date">
                                         <h3>13 <small>Jun</small></h3>
                                     </div>
                                 </div>
                                 <div class="blog-content">
-                                    <a href="#">
+                                    <a href="blog-single.php">
                                         <h4>What's the Right Choice? </h4>
                                     </a>
-                                    <i class="fa fa-user-o"></i> <a href="#">Admin</a> | <i class="fa fa-heart-o"></i> <a href="#">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="#"> Comments: 10</a>
+                                    <i class="fa fa-user-o"></i> <a href="blog-single.php">Admin</a> | <i class="fa fa-heart-o"></i> <a href="blog-single.php">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="blog-single.php"> Comments: 10</a>
                                     <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="#" class="btn btn-simple">Read More</a>
+                                    <a href="blog-single.php" class="btn btn-simple">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -132,18 +132,18 @@
                                 <div class="blog-date text-center">
                                     <i class="pe-7s-link"></i>
                                 </div>
-                                <div class="blog-img"><a href="#"><img src="img/blog/2.jpg" alt=""></a>
+                                <div class="blog-img"><a href="blog-single.php"><img src="img/blog/2.jpg" alt=""></a>
                                     <div class="blog-event-date">
                                         <h3>17 <small>Jun</small></h3>
                                     </div>
                                 </div>
                                 <div class="blog-content">
-                                    <a href="#">
+                                    <a href="blog-single.php">
                                         <h4>Caregiver Series </h4>
                                     </a>
-                                    <i class="fa fa-user-o"></i> <a href="#">Admin</a> | <i class="fa fa-heart-o"></i> <a href="#">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="#"> Comments: 10</a>
+                                    <i class="fa fa-user-o"></i> <a href="blog-single.php">Admin</a> | <i class="fa fa-heart-o"></i> <a href="blog-single.php">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="blog-single.php"> Comments: 10</a>
                                     <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="#" class="btn btn-simple">Read More</a>
+                                    <a href="blog-single.php" class="btn btn-simple">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -152,18 +152,18 @@
                                 <div class="blog-date text-center">
                                     <i class="pe-7s-link"></i>
                                 </div>
-                                <div class="blog-img"><a href="#"><img src="img/blog/3.jpg" alt=""></a>
+                                <div class="blog-img"><a href="blog-single.php"><img src="img/blog/3.jpg" alt=""></a>
                                     <div class="blog-event-date">
                                         <h3>19 <small>Jun</small></h3>
                                     </div>
                                 </div>
                                 <div class="blog-content">
-                                    <a href="#">
+                                    <a href="blog-single.php">
                                         <h4>Little Hats, Big Hearts </h4>
                                     </a>
-                                    <i class="fa fa-user-o"></i> <a href="#">Admin</a> | <i class="fa fa-heart-o"></i> <a href="#">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="#"> Comments: 10</a>
+                                    <i class="fa fa-user-o"></i> <a href="blog-single.php">Admin</a> | <i class="fa fa-heart-o"></i> <a href="blog-single.php">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="blog-single.php"> Comments: 10</a>
                                     <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="#" class="btn btn-simple">Read More</a>
+                                    <a href="blog-single.php" class="btn btn-simple">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -184,7 +184,7 @@
                                 <i class="pe-7s-call"></i>
                             </div>
                             <div class="content">
-                                <h5><a href="#">Give us a Call</a></h5>
+                                <h5><a href="blog-single.php">Give us a Call</a></h5>
                                 <p>+970-438-3258</p>
                             </div>
                         </div>
@@ -195,7 +195,7 @@
                                 <i class="pe-7s-mail-open"></i>
                             </div>
                             <div class="content">
-                                <h5><a href="#">Send us a Message</a></h5>
+                                <h5><a href="blog-single.php">Send us a Message</a></h5>
                                 <p>Your_malil@gmail.com</p>
                             </div>
                         </div>
@@ -206,7 +206,7 @@
                                 <i class="pe-7s-map-marker"></i>
                             </div>
                             <div class="content">
-                                <h5><a href="#">Visit our Location</a></h5>
+                                <h5><a href="blog-single.php">Visit our Location</a></h5>
                                 <p>12 New york, USA </p>
                             </div>
                         </div>
@@ -224,7 +224,7 @@
     <!-- Footer Style End -->
 
 
-    <a href="#" class="scrollup"><i class="pe-7s-up-arrow" aria-hidden="true"></i></a>
+    <a href="blog-single.php" class="scrollup"><i class="pe-7s-up-arrow" aria-hidden="true"></i></a>
     <!-- jQuery -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
 

@@ -32,15 +32,15 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand dis-none" href="index-2.html"><img src="img/logo-black.png" alt="">
+                        <a class="navbar-brand dis-none" href="index.php"><img src="img/logo-black.png" alt="">
                         </a>
-                        <a class="navbar-brand dis-block" href="index-2.html"><img src="img/logo-black.png" alt="">
+                        <a class="navbar-brand dis-block" href="index.php"><img src="img/logo-black.png" alt="">
                         </a>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-hover="dropdown" data-animations-delay="1.8s" data-animations="fadeInUp">
                         <ul class="nav navbar-nav bg-none navbar-right style-3">
                             <li class="dropdown active">
-                                <a href="#" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"><span data-hover="Home">Home </span> </a>
+                                <a href="index.php" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"><span data-hover="Home">Home </span> </a>
                                 <!-- <ul class="dropdown-menu">
                                     <li><a href="index-2.html">Home one</a>
                                     </li>
@@ -61,11 +61,11 @@
                             </li>
 
                             <li class="dropdown">
-                                <a href="#" class="" aria-haspopup="true" aria-expanded="false"><span data-hover="Blog">Blogs </span></a>
+                                <a href="blog-grid.php" class="" aria-haspopup="true" aria-expanded="false"><span data-hover="Blog">Blogs </span></a>
 
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="" aria-haspopup="true" aria-expanded="false"><span data-hover="Contact">Contact </span></a>
+                                <a href="contact-style-2.php" class="" aria-haspopup="true" aria-expanded="false"><span data-hover="Contact">Contact </span></a>
 
                             </li>
 

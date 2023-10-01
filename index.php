@@ -274,53 +274,7 @@
     <!-- service end -->
 
     <!-- appointment start -->
-    <section class=" animatedParent animateOnce">
-        <div class="container padding-bottom-none">
-            <div class="section-content">
-                <div class="row">
-                    <div class="col-md-6">
-                        <img class="animated fadeInLeftShort slow delay-500 booking-cantact-img" src="img/bg/c1.png" alt="">
-                    </div>
-                    <div class="col-md-6 bg-f8 padding-tb margin-bottom-80 animated fadeInRightShort slow delay-500">
-                        <div class="booking-from">
-                            <h2>Make An <span class="color-defult">Appointment</span></h2>
-                            <div class="border-style-2 margin-bottom-30"></div>
-                            <p class="margin-bottom-30">Consectetur adipisicing elit. Id dignissimos atque debitis esse possimus, <br>fuga tenetur rem et. Vitae, repudiandae.</p>
-                            <form method="post" action="#">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <input type="text" name="name" id="fname" class="form-control" placeholder="First Name" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="text" name="name" id="lname" class="form-control" placeholder="Last Name" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="text" name="subject" class="form-control" placeholder="Input Subject" id="subject" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="text" name="Reservation" class="form-control" placeholder="Input Date" id="Reservation" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="email" name="email" class="form-control" placeholder="Your Email Here" id="email" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="text" name="phone" class="form-control" placeholder="Your Phone" id="phone" required>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="contact-textarea">
-                                            <textarea class="form-control" rows="6" placeholder="Wright Message" id="message" name="message" required></textarea>
-                                            <button class="btn btn-theme" type="submit" value="Submit Form">Send Message</button>
-                                        </div>
-                                    </div>
-                                    <div id="form-messages"></div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
     <!-- appointment end -->
 
     <!-- divider start -->
@@ -484,15 +438,7 @@
     <!-- portfolio end -->
 
     <!-- divider start -->
-    <section class="divider divider-video over-layer-white" style="background-image:url(img/bg/6.jpg);">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a href="https://youtu.be/vX-lG9nb1fU" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view"><i class="icon icon-Play"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
+
     <!-- divider end -->
 
     <!-- department start -->
@@ -502,7 +448,7 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="text-center">
-                            <h2><span class="color-defult"> category</span></h2>
+                            <h2>latest<span class="color-defult"> Blogs</span></h2>
                             <div class="line-border-center bg-defult"></div>
                             <p>Consequatur alias incidunt cumque officiis, quas eius quaerat ut itaque laudantium corporis nobis ipsum, voluptates at, adipisci fugiat hic voluptate consequuntur porro.</p>
                         </div>
@@ -613,48 +559,7 @@
     <!-- Team end -->
 
     <!-- Counter start -->
-    <section class="funfact-field over-layer-default" style="background-image: url('img/bg/6.jpg')">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="counter-col text-center">
-                        <i class="flaticon-heart"></i>
-                        <div class="count">
-                            <div class="start-count">25</div>
-                            <h4>Heart Transplants</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="counter-col text-center">
-                        <i class="flaticon-human-lungs"></i>
-                        <div class="count">
-                            <div class="start-count">979</div>
-                            <h4>BARIATRIC SURGERY</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="counter-col text-center">
-                        <i class="flaticon-kidney"></i>
-                        <div class="count">
-                            <div class="start-count">5264</div>
-                            <h4>CRITICAL CARE</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="counter-col text-center">
-                        <i class="flaticon-first-aid-kit"></i>
-                        <div class="count">
-                            <div class="start-count border-none">119</div>
-                            <h4>EXTPART Doctor</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
     <!-- Counter end -->
 
     <!-- Testimonial start -->

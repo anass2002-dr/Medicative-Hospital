@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="./css/bootstrap.min.css">
 
 <!-- Custom CSS -->
-<link rel="stylesheet" type="text/css" href="./css/style.css">
+<link rel="stylesheet" type="text/css" href="./css/style1.css">
 
 <!-- Responsive stylesheet  -->
 <link rel="stylesheet" type="text/css" href="./css/responsive.css">

@@ -52,27 +52,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="footer-item">
-                        <div class="footer-item clearfix">
-                            <div class="footer-title">
-                                <h4>Fliker Feed</h4>
-                                <div class="border-style-1"></div>
-                            </div>
-                            <div class="flicker-feed gutter">
-                                <a href="img/flicker/1.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/1.jpg" alt=""></a>
-                                <a href="img/flicker/2.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/2.jpg" alt=""></a>
-                                <a href="img/flicker/3.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/3.jpg" alt=""></a>
-                                <a href="img/flicker/4.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/4.jpg" alt=""></a>
-                                <a href="img/flicker/5.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/5.jpg" alt=""></a>
-                                <a href="img/flicker/6.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/6.jpg" alt=""></a>
-                                <a href="img/flicker/7.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/7.jpg" alt=""></a>
-                                <a href="img/flicker/8.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/8.jpg" alt=""></a>
-                                <a href="img/flicker/9.jpg" class="lightbox-image" title="Image Caption Here"><img src="img/flicker/9.jpg" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
