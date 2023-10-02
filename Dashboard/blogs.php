@@ -7,15 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>RoyalUI Admin</title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="vendors/base/vendor.bundle.base.css">
-  <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="css/style.css">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <?php
+  include 'style.php'
+  ?>
 </head>
 
 <body>
@@ -68,15 +62,15 @@
                       <input type="button" class="btn btn-dark text-white" value="Bold" id="bold" onclick="">
                       <input type="button" class="btn btn-light text-primary" value="Link" id="link">
                       <input type="button" class="btn btn-secondary text-white" value="Italic" id="italic">
+
                     </div>
                     <div class="form-group">
-                      <label for="textarea">Tape your blog</label>
-                      <textarea class="form-control" rows=" 20" id="textarea"></textarea>
+                      <label for="paragrah">Tape your blog</label>
+                      <p id="paragrah" contenteditable="true" class="form-control" name="paragrah">
+                      </p>
+                      <input type="text" hidden id="paragraph_hiden">
                     </div>
-                    <p id="paragrah">
-                      <!-- hello today <b>txt</b> -->
 
-                    </p>
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
@@ -101,39 +95,39 @@
   <!-- plugins:js -->
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <script>
-    $(document).ready(function() {
-      $('#textarea').keyup(function() {
-        var txt = $('#textarea').val()
-        $('#paragrah').html(txt)
-        // this.val(text_area)
-      })
-      $('#textarea').keypress(function(e) {
-        if (e.which == 13) {
-          var txt = $('#textarea').val()
-          txt = txt + '<br>'
-          console.log(txt)
-          $('#textarea').val(txt)
+    $(document).ready(
+      function() {
+        // $('#textarea').keyup(function() {
+        //   var txt = $('#textarea').val()
+        //   $('#paragrah').html(txt)
+        //   // this.val(text_area)
+        // })
+
+        $.fn.myFunction = function(para) {
+          var textarea = $('#paragrah').text()
+          var startPos = $('#paragrah').prop('selectionStart');
+          var endPos = $('#paragrah').prop('selectionEnd');
+          var selectionBefore = textarea.substring(0, startPos);
+          var selection = textarea.substring(startPos, endPos);
+          var selectionAfter = textarea.substring(endPos);
+          var surrounder = selection.replace(selection, "<" + para + ">" + selection + "</" + para + ">");
+          var newText = selectionBefore + surrounder + selectionAfter;
+          $('#paragrah').html(newText)
         }
-        // this.val(text_area)
+        var clickB = 0;
+        $('#bold').click(function() {
+          document.execCommand("bold");
+        })
+        $('#italic').click(function() {
+          document.execCommand("italic");
+        })
+        $('#link').click(function() {
+          var url = prompt('Enter a URL:', 'http://');;
+          var selection = document.getSelection();
+          document.execCommand('createLink', true, url);
+          console.log($('#paragrah').html())
+        })
       })
-      $.fn.myFunction = function(para) {
-        var textarea = $('#textarea').val()
-        var startPos = $('#textarea').prop('selectionStart');
-        var endPos = $('#textarea').prop('selectionEnd');
-        var selectionBefore = textarea.substring(0, startPos);
-        var selection = textarea.substring(startPos, endPos);
-        var selectionAfter = textarea.substring(endPos);
-        var surrounder = selection.replace(selection, "<" + para + ">" + selection + "</" + para + ">");
-        var newText = selectionBefore + surrounder + selectionAfter;
-        $('#textarea').val(newText)
-      }
-      $('#bold').click(function() {
-        $.fn.myFunction('strong')
-      })
-      $('#italic').click(function() {
-        $.fn.myFunction('i')
-      })
-    })
     // var bold = document.getElementById('bold')
     // var link = document.getElementById('link')
     // var italic = document.getElementById('italic')
