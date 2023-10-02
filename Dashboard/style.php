@@ -4,6 +4,6 @@
 <!-- plugin css for this page -->
 <!-- End plugin css for this page -->
 <!-- inject:css -->
-<link rel="stylesheet" href="css/style2.css">
+<link rel="stylesheet" href="css/style1.css">
 <!-- endinject -->
 <link rel="shortcut icon" href="images/favicon.png" />

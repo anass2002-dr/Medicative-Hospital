@@ -22632,4 +22632,9 @@ dl li {
   /* min-width: 30px; */
   min-height: 500px;
 }
+.para_i i{
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bolder;
+}
 /*# sourceMappingURL=maps/style.css.map */

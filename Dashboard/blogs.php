@@ -58,10 +58,19 @@
                       <label for="formFileMultiple" class="form-label">Add Video</label>
                       <input class="form-control" type="file" id="formFileMultiple" multiple>
                     </div>
-                    <div class="mb-3">
-                      <input type="button" class="btn btn-dark text-white" value="Bold" id="bold" onclick="">
+                    <div class="mb-3 para_i">
+                      <!-- <input type="button" class="btn btn-dark text-white" value="Bold" id="bold" onclick="">
                       <input type="button" class="btn btn-light text-primary" value="Link" id="link">
-                      <input type="button" class="btn btn-secondary text-white" value="Italic" id="italic">
+                      <input type="button" class="btn btn-secondary text-white" value="Italic" id="italic"> -->
+                      <button type="button" class="btn border border-secondary"  id="bold"><b>B</b></button>
+                      <button type="button" class="btn border border-secondary"  id="italic"><i class="ti-Italic"></i> </button>
+                      <button type="button" class="btn border border-secondary"  id="link"><i class="ti-link"></i> add link</button>
+                      <input type="button" id="_h1" class="btn border border-secondary" value="H1">
+                      <input type="button" id="_h2" class="btn border border-secondary" value="H2">
+                      <input type="button" id="_h3" class="btn border border-secondary" value="H3">
+                      <input type="button" id="_h4" class="btn border border-secondary" value="H4">
+                      <input type="button" id="_h5" class="btn border border-secondary" value="H5">
+                      <input type="button" id="_h6" class="btn border border-secondary" value="H6">
 
                     </div>
                     <div class="form-group">
@@ -102,18 +111,60 @@
         //   $('#paragrah').html(txt)
         //   // this.val(text_area)
         // })
+       
+        function myFunction(para) {
 
-        $.fn.myFunction = function(para) {
-          var textarea = $('#paragrah').text()
-          var startPos = $('#paragrah').prop('selectionStart');
-          var endPos = $('#paragrah').prop('selectionEnd');
-          var selectionBefore = textarea.substring(0, startPos);
-          var selection = textarea.substring(startPos, endPos);
-          var selectionAfter = textarea.substring(endPos);
+
+          var selection = window.getSelection();
+          var start = selection.anchorOffset;
+          var end = selection.focusOffset;
+          if (start >= 0 && end >= 0){
+            console.log("start: " + start);
+            console.log("end: " + end);
+          }
+          var paragrah = $('#paragrah').html()
+          var selectionBefore = paragrah.substring(0, start);
+          var selection = paragrah.substring(start, end);
+          var selectionAfter = paragrah.substring(end);
           var surrounder = selection.replace(selection, "<" + para + ">" + selection + "</" + para + ">");
           var newText = selectionBefore + surrounder + selectionAfter;
           $('#paragrah').html(newText)
         }
+        
+        function header_change(para){
+          var h1 = prompt('Enter your title:');
+          if(h1!=null){
+            var paragrah = $('#paragrah').html()
+            paragrah2=paragrah+'<'+para+'>'+h1+'</'+para+'>'
+            console.log(paragrah2)
+            $('#paragrah').html(paragrah2)
+          }
+         
+        }
+        $('#_h1').click(function(){
+          header_change('h1')
+
+        })
+        $('#_h2').click(function(){
+          header_change('h2')
+
+        })
+        $('#_h3').click(function(){
+          header_change('h3')
+
+        })
+        $('#_h4').click(function(){
+          header_change('h4')
+
+        })
+        $('#_h5').click(function(){
+          header_change('h5')
+
+        })
+        $('#_h6').click(function(){
+          header_change('h6')
+
+        })
         var clickB = 0;
         $('#bold').click(function() {
           document.execCommand("bold");
@@ -122,7 +173,7 @@
           document.execCommand("italic");
         })
         $('#link').click(function() {
-          var url = prompt('Enter a URL:', 'http://');;
+          var url = prompt('Enter a URL:', 'http://');
           var selection = document.getSelection();
           document.execCommand('createLink', true, url);
           console.log($('#paragrah').html())
