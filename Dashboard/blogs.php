@@ -35,53 +35,56 @@
                   <p class="card-description">
                     Create new blog
                   </p>
-                  <form class="forms-sample">
+                  <form class="forms-sample" method="post" action="insertBlog.php">
                     <div class="form-group">
-                      <label for="exampleInputUsername1">Blog Title</label>
-                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Title">
+                      <label for="titel">Blog Title</label>
+                      <input type="text" class="form-control" id="titel" placeholder="Title" name="title">
                     </div>
                     <div class="form-group">
-                      <label for="exampleFormControlSelect1">blog category</label>
-                      <select class="form-control form-control-lg" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                      <label for="category">blog category</label>
+                      <select class="form-control form-control-lg" id="category" name="category">
+                        <option>Body care</option>
+                        <option>Makeup</option>
+                        <option>Hair care</option>
+                        <option>Nail care</option>
+                        <option>Fragrance</option>
+                        <option>accessories</option>
+                        <option>tools</option>
+                        <option>devices</option>
                       </select>
                     </div>
                     <div class="mb-3">
-                      <label for="formFileMultiple" class="form-label">Add Cover Photo</label>
-                      <input class="form-control" type="file" id="formFileMultiple" multiple>
+                      <label for="photo" class="form-label">Add Cover Photo</label>
+                      <input class="form-control" type="file" id="photo" multiple name="photo">
                     </div>
                     <div class="mb-3">
-                      <label for="formFileMultiple" class="form-label">Add Video</label>
-                      <input class="form-control" type="file" id="formFileMultiple" multiple>
+                      <label for="video" class="form-label">Add Video</label>
+                      <input class="form-control" type="file" id="video" multiple name="video">
                     </div>
                     <div class="mb-3 para_i">
-                      <!-- <input type="button" class="btn btn-dark text-white" value="Bold" id="bold" onclick="">
-                      <input type="button" class="btn btn-light text-primary" value="Link" id="link">
-                      <input type="button" class="btn btn-secondary text-white" value="Italic" id="italic"> -->
-                      <button type="button" class="btn border border-secondary"  id="bold"><b>B</b></button>
-                      <button type="button" class="btn border border-secondary"  id="italic"><i class="ti-Italic"></i> </button>
-                      <button type="button" class="btn border border-secondary"  id="link"><i class="ti-link"></i> add link</button>
+
+                      <button type="button" class="btn border border-secondary" id="bold"><b>B</b></button>
+                      <button type="button" class="btn border border-secondary" id="italic"><i class="ti-Italic"></i> </button>
+                      <button type="button" class="btn border border-secondary" id="link"><i class="ti-link"></i> add link</button>
                       <input type="button" id="_h1" class="btn border border-secondary" value="H1">
                       <input type="button" id="_h2" class="btn border border-secondary" value="H2">
                       <input type="button" id="_h3" class="btn border border-secondary" value="H3">
                       <input type="button" id="_h4" class="btn border border-secondary" value="H4">
                       <input type="button" id="_h5" class="btn border border-secondary" value="H5">
                       <input type="button" id="_h6" class="btn border border-secondary" value="H6">
+                      <button type="button" class="btn border border-secondary" id="list"><i class="ti-list"></i> </button>
+                      <button type="button" class="btn border border-secondary" id="list-ol"><i class="ti-list-ol"></i> </button>
 
                     </div>
                     <div class="form-group">
                       <label for="paragrah">Tape your blog</label>
-                      <p id="paragrah" contenteditable="true" class="form-control" name="paragrah">
+                      <p id="paragrah" contenteditable="true" class="form-control">
                       </p>
-                      <input type="text" hidden id="paragraph_hiden">
+                      <input type="text" hidden id="paragraph_hiden" name="blog">
                     </div>
 
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+
                   </form>
                 </div>
               </div>
@@ -106,19 +109,15 @@
   <script>
     $(document).ready(
       function() {
-        // $('#textarea').keyup(function() {
-        //   var txt = $('#textarea').val()
-        //   $('#paragrah').html(txt)
-        //   // this.val(text_area)
-        // })
-       
+        $('form').submit(function(e) {
+          $("#paragraph_hiden").val($("#paragrah").html())
+        })
+
         function myFunction(para) {
-
-
           var selection = window.getSelection();
           var start = selection.anchorOffset;
           var end = selection.focusOffset;
-          if (start >= 0 && end >= 0){
+          if (start >= 0 && end >= 0) {
             console.log("start: " + start);
             console.log("end: " + end);
           }
@@ -130,40 +129,46 @@
           var newText = selectionBefore + surrounder + selectionAfter;
           $('#paragrah').html(newText)
         }
-        
-        function header_change(para){
+
+        function header_change(para) {
           var h1 = prompt('Enter your title:');
-          if(h1!=null){
+          if (h1 != null) {
             var paragrah = $('#paragrah').html()
-            paragrah2=paragrah+'<'+para+'>'+h1+'</'+para+'>'
+            paragrah2 = paragrah + '<' + para + '>' + h1 + '</' + para + '>'
             console.log(paragrah2)
             $('#paragrah').html(paragrah2)
           }
-         
+
         }
-        $('#_h1').click(function(){
+        $('#_h1').click(function() {
           header_change('h1')
 
         })
-        $('#_h2').click(function(){
+        $('#_h2').click(function() {
           header_change('h2')
 
         })
-        $('#_h3').click(function(){
+        $('#_h3').click(function() {
           header_change('h3')
 
         })
-        $('#_h4').click(function(){
+        $('#_h4').click(function() {
           header_change('h4')
 
         })
-        $('#_h5').click(function(){
+        $('#_h5').click(function() {
           header_change('h5')
 
         })
-        $('#_h6').click(function(){
+        $('#_h6').click(function() {
           header_change('h6')
 
+        })
+        $('#list').click(function() {
+          document.execCommand('InsertUnorderedList')
+        })
+        $('#list-ol').click(function() {
+          document.execCommand('insertorderedlist')
         })
         var clickB = 0;
         $('#bold').click(function() {
@@ -179,23 +184,6 @@
           console.log($('#paragrah').html())
         })
       })
-    // var bold = document.getElementById('bold')
-    // var link = document.getElementById('link')
-    // var italic = document.getElementById('italic')
-    // var text_area = document.getElementById('textarea')
-    // var paragrah = document.getElementById('paragrah')
-
-    // // text_area.addEventListener('')
-    // function tobold() {
-    //   startPos = text_area.selectionStart;
-    //   endPos = text_area.selectionEnd
-    //   var selectionBefore = textarea.value.substring(0, startPos);
-    //   var selection = text_area.value.substring(startPos, endPos);
-    //   var selectionAfter = text_area.value.substring(startPos);
-    //   var surrounder = selection.replace(selection, "<strong>" + selection + "</strong>");
-    //   var newText = selectionBefore + surrounder + selectionAfter;
-    //   text_area.innerHTML = newText;
-    // }
   </script>
   <script src="vendors/base/vendor.bundle.base.js"></script>
   <!-- endinject -->
