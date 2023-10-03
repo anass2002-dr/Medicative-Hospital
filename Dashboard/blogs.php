@@ -35,7 +35,7 @@
                   <p class="card-description">
                     Create new blog
                   </p>
-                  <form class="forms-sample">
+                  <form class="forms-sample" method="post" action="insertBlog.php" enctype="multipart/form-data">
                     <div class="form-group">
                       <label for="titel">Blog Title</label>
                       <input type="text" class="form-control" id="titel" placeholder="Title" name="title">
@@ -109,25 +109,25 @@
   <script>
     $(document).ready(
       function() {
-        
+
         $('form').submit(function(e) {
           $("#paragraph_hiden").val($("#paragrah").html())
-          e.preventDefault();
-          $.ajax({
-            type: "POST",
-            url:'insertBlog.php',
-            data:  new FormData(this),
-            contentType: false,
-            cache: false,
-            processData:false,
-            success:function(){
-              console.log('the data are sending with success');
-            }
-            
-          })
+          // e.preventDefault();
+          // $.ajax({
+          //   type: "POST",
+          //   url: 'insertBlog.php',
+          //   data: new FormData(this),
+          //   contentType: false,
+          //   cache: false,
+          //   processData: false,
+          //   success: function() {
+          //     console.log('the data are sending with success');
+          //   }
+
+          // })
         })
         // $('#submit').click(function(e){
-         
+
 
         // })
         function myFunction(para) {
