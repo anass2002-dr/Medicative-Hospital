@@ -1,0 +1,71 @@
+drop database if exists medicative;
+create database medicative;
+use medicative;
+
+drop table if exists ADMIN;
+
+drop table if exists BLOG;
+
+drop table if exists COMMENT;
+
+drop table if exists USER;
+
+/*==============================================================*/
+/* Table : ADMIN                                                */
+/*==============================================================*/
+create table ADMIN
+(
+   ADMIN_ID             int not null auto_increment,
+   FIRST_NAME           varchar(20),
+   PASSWORD             varchar(30),
+   USER_NAME            varchar(30),
+   LAST_NAME            varchar(20),
+   primary key (ADMIN_ID)
+);
+
+/*==============================================================*/
+/* Table : BLOG                                                 */
+/*==============================================================*/
+create table BLOG
+(
+   BLOG_ID              int not null auto_increment,
+   TITLE                varchar(300),
+   CATEGORY             varchar(50),
+   PHOTO                text,
+   VIDEO                text,
+   CONTENT              text,
+   create_date          date,
+   primary key (BLOG_ID)
+);
+
+/*==============================================================*/
+/* Table : COMMENT                                              */
+/*==============================================================*/
+create table COMMENT
+(
+   COMMENT_ID           int not null auto_increment,
+   USER_ID              int not null,
+   BLOG_ID              int not null,
+   CONTENT              text,
+   primary key (COMMENT_ID)
+);
+
+/*==============================================================*/
+/* Table : USER                                                 */
+/*==============================================================*/
+create table USER
+(
+   USER_ID              int not null auto_increment,
+   FIRST_NAME           varchar(20),
+   LAST_NAME            varchar(20),
+   EMAIL                varchar(60),
+   PASSWORD             varchar(30),
+   PHONE_NUMBER         varchar(30),
+   primary key (USER_ID)
+);
+
+alter table COMMENT add constraint FK_COMMENTING foreign key (USER_ID)
+      references USER (USER_ID) on delete restrict on update restrict;
+
+alter table COMMENT add constraint FK_CONTAINE foreign key (BLOG_ID)
+      references BLOG (BLOG_ID) on delete restrict on update restrict;

@@ -79,7 +79,7 @@
                       </select>
                     </div>
                     <div class="mb-3 para_i">
-                    
+
                       <button type="button" class="btn border border-secondary" id="bold"><b>B</b></button>
                       <button type="button" class="btn border border-secondary" id="italic"><i class="ti-Italic"></i> </button>
                       <button type="button" class="btn border border-secondary" id="link"><i class="ti-link"></i> add link</button>
@@ -89,13 +89,11 @@
                       <input type="button" id="_h4" class="btn border border-secondary" value="H4">
                       <input type="button" id="_h5" class="btn border border-secondary" value="H5">
                       <input type="button" id="_h6" class="btn border border-secondary" value="H6">
-                      
                       <button type="button" class="btn border border-secondary" id="list"><i class="ti-list"></i> </button>
                       <button type="button" class="btn border border-secondary" id="list-ol"><i class="ti-list-ol"></i> </button>
                       <input type="color" name="txt_color" id="txt_color" class="border border-dark" value="#ff0000">
 
                     </div>
-                    
                     <div class="form-group">
                       <label for="paragrah">Tape your blog</label>
                       <p id="paragrah" contenteditable="true" class="form-control">
@@ -112,6 +110,7 @@
 
           </div>
         </div>
+
         <!-- content-wrapper ends -->
         <!-- partial:_footer.html -->
         <?php
@@ -127,13 +126,13 @@
   <!-- plugins:js -->
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <script>
-    document.getElementById('txt_color').onchange=function(){
-	    // do whatever you want with value
-      document.execCommand('foreColor',false,this.value)
+    document.getElementById('txt_color').onchange = function() {
+      // do whatever you want with value
+      document.execCommand('foreColor', false, this.value)
     }
-    document.getElementById('font_text').onchange=function(){
-	    // do whatever you want with value
-      document.execCommand('fontName',false,this.value)
+    document.getElementById('font_text').onchange = function() {
+      // do whatever you want with value
+      document.execCommand('fontName', false, this.value)
     }
     $(document).ready(
       function() {
@@ -145,19 +144,19 @@
         // })
         $('form').submit(function(e) {
           $("#paragraph_hiden").val($("#paragrah").html())
-          // e.preventDefault();
-          // $.ajax({
-          //   type: "POST",
-          //   url: 'insertBlog.php',
-          //   data: new FormData(this),
-          //   contentType: false,
-          //   cache: false,
-          //   processData: false,
-          //   success: function() {
-          //     console.log('the data are sending with success');
-          //   }
+          e.preventDefault();
+          $.ajax({
+            type: "POST",
+            url: 'insertBlog.php',
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function() {
+              console.log('the data are sending with success');
+            }
 
-          // })
+          })
         })
         // $('#submit').click(function(e){
 
@@ -180,14 +179,13 @@
           $('#paragrah').html(newText)
         }
 
-        function header_change(para,cp) {
-          if(cp==0){
-              document.execCommand('formatBlock', false, para);
-              cp=1
-          }
-          else{
+        function header_change(para, cp) {
+          if (cp == 0) {
+            document.execCommand('formatBlock', false, para);
+            cp = 1
+          } else {
             document.execCommand('formatBlock', false, 'p');
-            cp=0
+            cp = 0
           }
           // var h1 = prompt('Enter your title:');
           // if (h1 != null) {
@@ -198,29 +196,29 @@
           // }
 
         }
-        var cp=0;
+        var cp = 0;
         $('#_h1').click(function() {
-          header_change('h1',cp)
+          header_change('h1', cp)
         })
-        var cp2=0;
+        var cp2 = 0;
         $('#_h2').click(function() {
-          header_change('h2',cp2)
+          header_change('h2', cp2)
         })
-        var cp3=0;
+        var cp3 = 0;
         $('#_h3').click(function() {
-          header_change('h3',cp3)
+          header_change('h3', cp3)
         })
-        var cp4=0;
+        var cp4 = 0;
         $('#_h4').click(function() {
-          header_change('h4',cp4)
+          header_change('h4', cp4)
         })
-        var cp5=0;
+        var cp5 = 0;
         $('#_h5').click(function() {
-          header_change('h5',cp5)
+          header_change('h5', cp5)
         })
-        var cp6=0;
+        var cp6 = 0;
         $('#_h6').click(function() {
-          header_change('h6',cp6)
+          header_change('h6', cp6)
         })
         $('#list').click(function() {
           document.execCommand('InsertUnorderedList')
