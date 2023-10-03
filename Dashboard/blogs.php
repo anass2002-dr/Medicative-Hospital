@@ -35,7 +35,7 @@
                   <p class="card-description">
                     Create new blog
                   </p>
-                  <form class="forms-sample" method="post" action="insertBlog.php">
+                  <form class="forms-sample">
                     <div class="form-group">
                       <label for="titel">Blog Title</label>
                       <input type="text" class="form-control" id="titel" placeholder="Title" name="title">
@@ -83,7 +83,7 @@
                       <input type="text" hidden id="paragraph_hiden" name="blog">
                     </div>
 
-                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <button type="submit" class="btn btn-primary me-2" id="submit">Submit</button>
 
                   </form>
                 </div>
@@ -109,10 +109,27 @@
   <script>
     $(document).ready(
       function() {
+        
         $('form').submit(function(e) {
           $("#paragraph_hiden").val($("#paragrah").html())
+          e.preventDefault();
+          $.ajax({
+            type: "POST",
+            url:'insertBlog.php',
+            data:  new FormData(this),
+            contentType: false,
+            cache: false,
+            processData:false,
+            success:function(){
+              console.log('the data are sending with success');
+            }
+            
+          })
         })
+        // $('#submit').click(function(e){
+         
 
+        // })
         function myFunction(para) {
           var selection = window.getSelection();
           var start = selection.anchorOffset;
