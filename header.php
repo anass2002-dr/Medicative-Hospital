@@ -25,7 +25,8 @@
         <div class="row">
             <div class="col-md-12">
                 <nav class="navbar navbar-default">
-                    <div class="navbar-header">
+
+                    <div class="navbar-brand">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
@@ -38,15 +39,11 @@
                         </a>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-hover="dropdown" data-animations-delay="1.8s" data-animations="fadeInUp">
+
                         <ul class="nav navbar-nav bg-none navbar-right style-3">
                             <li class="dropdown active">
                                 <a href="index.php" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"><span data-hover="Home">Home </span> </a>
-                                <!-- <ul class="dropdown-menu">
-                                    <li><a href="index-2.html">Home one</a>
-                                    </li>
-                                    <li><a href="index-3.html">Home two</a>
-                                    </li>
-                                </ul> -->
+
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="" aria-haspopup="true" aria-expanded="false"><span data-hover="Depertment">Medical Product </span></a>
