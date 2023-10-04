@@ -1034,12 +1034,19 @@ a.flip-animate:hover span:before, a.flip-animate:focus span:before {
     transform: skew(-20deg);
     z-index: -1;
 } */
+.logoLink{
+    width: 20%;
+}
 @media screen and (max-width: 991px) {
   
     .conner-style .navbar-brand:before {
         display: none;
     }
+    .logoLink{
+        width: 50%;
+    }
 }
+
 
 .conner-style.style-2 {
     background: rgba(255,255,255, 0.99);

@@ -33,9 +33,9 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand dis-none" href="index.php"><img src="img/logo-beauty.png" alt="">
+                        <a class="navbar-brand dis-none logoLink" href="index.php"><img src="img/logo-beauty.png" alt="">
                         </a>
-                        <a class="navbar-brand dis-block" href="index.php"><img src="img/logo-beauty.png" alt="">
+                        <a class="navbar-brand dis-block logoLink" href="index.php"><img src="img/logo-beauty.png" alt="">
                         </a>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-hover="dropdown" data-animations-delay="1.8s" data-animations="fadeInUp">
