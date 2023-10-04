@@ -1019,8 +1019,8 @@ a.flip-animate:hover span:before, a.flip-animate:focus span:before {
     color: #333;
 }
 
-.conner-style .navbar-brand:before {
-    background: var(--pk-color);
+/* .conner-style .navbar-brand:before {
+    background: #d7d7d7;
     content: "";
     position: absolute;
     left: -80%;
@@ -1033,7 +1033,7 @@ a.flip-animate:hover span:before, a.flip-animate:focus span:before {
     -o-transform: skew(-20deg);
     transform: skew(-20deg);
     z-index: -1;
-}
+} */
 @media screen and (max-width: 991px) {
   
     .conner-style .navbar-brand:before {
@@ -1044,7 +1044,7 @@ a.flip-animate:hover span:before, a.flip-animate:focus span:before {
 .conner-style.style-2 {
     background: rgba(255,255,255, 0.99);
     border-top: 1px solid #eee;
-    position: relative !important;
+    /* position: relative !important; */
 }
 .conner-style.style-2 .navbar-default .navbar-nav > li > a {
     color: #777;
@@ -1058,7 +1058,7 @@ a.flip-animate:hover span:before, a.flip-animate:focus span:before {
 }
 .conner-style.style-2 .dropdown-buttons .btn-group .btn {
     color: #777;
-}
+} 
 .header-topbar.style-2 {
     background-color: #f7f7f7;
     color: #777;
