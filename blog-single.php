@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
 
     <meta charset="utf-8">
@@ -11,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Medicative Hospital || Health & Medical HTML Template</title>
+
 
     <!-- Bootstrap Core CSS -->
     <?php
@@ -49,40 +47,59 @@
             </div>
         </div>
     </section>
-
+    <?php
+    include "./connection.php";
+    $query = "select * from blog where BLOG_ID=3";
+    $result = $conn->query($query);
+    $title = "";
+    $blog = "";
+    $product_link = "";
+    $photo = "";
+    $video = "";
+    $category_id = "";
+    $created_date = "";
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $title = $row["TITLE"];
+            $blog = $row["CONTENT"];
+            $product_link = $row["PRODUCT_LINK"];
+            $photo = $row["PHOTO"];
+            $video = $row["VIDEO"];
+            $category_id = $row["CATEGORY_ID"];
+            $created_date = $row["CREATED_DATE"];
+        }
+    }
+    $query2 = "select * from category where CATEGORY_ID=" . $category_id;
+    $result2 = $conn->query($query2);
+    $category_name = "";
+    if ($result2->num_rows > 0) {
+        while ($row = $result2->fetch_assoc()) {
+            $category_name = $row["CATEGORY_NAME"];
+        }
+    }
+    ?>
     <!-- Blog Posts -->
     <div class="bg-f8">
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
                     <div class="margin-bottom-30">
-                        <img class="img-responsive" src="img/blog/w2.jpg" alt="">
-                        <div class="blog-post">
-                            <ul class="list-inline blog-info">
-                                <li>By <a href="#">Mahamudul Hasan</a></li>
-                                <li>In <a href="#">Design</a></li>
-                                <li>Posted June 24, 2018</li>
+                        <?php
+                        echo "<img class='img-responsive' src='img/blog/$photo' alt=''>
+                        <div class='blog-post'>
+                            <ul class='list-inline blog-info'>
+                                <li>By <a href='#'>Mahamudul Hasan</a></li>
+                                <li>In <a href='$product_link'>Product link</a></li>
+                                <li>Category name : $category_name</li>
+                                <li>Posted June $created_date</li>
                             </ul>
-                            <h3><a href="#"> Curabitur consequat cursus suscipit</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Integer nec arcu ipsum. Curabitur tincidunt nisi ex, ut eleifend turpis egestas vitae.
-                                Proin convallis et eros eget rutrum. Duis luctus lorem id mattis placerat.
-                                Etiam pharetra libero ut suscipit mollis. Morbi augue mi, maximus at lectus id, mollis ornare dui. Curabitur consequat, est non cursus suscipit, quam nulla porta enim, sed pharetra diam elit non nisi. Praesent pulvinar ante eu euismod cursus. Fusce quis est justo. Nullam id egestas diam. Etiam ac augue orci. Aliquam scelerisque convallis est sed pretium. In vel elementum lorem.</p>
-                            <p>Pellentesque eleifend metus vitae commodo finibus. Proin eget mi a sem placerat facilisis. Aenean interdum aliquet sapien, non scelerisque massa vestibulum ut. Quisque mollis, ante nec volutpat dignissim, lectus libero porta magna, at volutpat massa orci a turpis. Duis tincidunt nunc magna, non semper metus tempus ut. Duis vulputate enim condimentum posuere lacinia. Ut venenatis massa ex.</p>
-                            <img class="img-responsive" src="img/blog/w2.jpg" alt="">
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas rerum libero veritatis. Alias, reiciendis dolorem mollitia commodi praesentium nesciunt dicta sequi sed quis tempora voluptatibus illo doloremque laudantium. Quae, et!
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde eos repellendus tempora fugiat cumque, sint rem nisi! Quam, cum sapiente? Itaque cupiditate quae voluptate magni amet sed est quas facilis!
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo a eveniet voluptate mollitia cumque asperiores odio dolores, optio perferendis itaque dolore inventore aperiam tempore illum. Laborum esse iste a officiis?
+                            <h3><a href='#'> $title</a></h3>
+                            <p>
+                                $blog
                             </p>
-                            <img class="img-responsive" src="img/blog/w2.jpg" alt="">
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis possimus laborum culpa explicabo mollitia, tenetur corporis sint ut omnis? Illum nostrum necessitatibus repudiandae similique omnis cum aliquam non quis nesciunt.
-                                Pellentesque eleifend metus vitae commodo finibus. Proin eget mi a sem placerat facilisis. Aenean interdum aliquet sapien, non scelerisque massa vestibulum ut. Quisque mollis, ante nec volutpat dignissim, lectus libero porta magna, at volutpat massa orci a turpis. Duis tincidunt nunc magna, non semper metus tempus ut. Duis vulputate enim condimentum posuere lacinia. Ut venenatis massa ex.</p>
-
-                            <blockquote>
-                                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing duis mollis, est non commodo luctus elit posuere erat a ante. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis lorem ipsum dolor sit amet, consectetur adipiscing"</p>
-                            </blockquote>
-                            <p>Sed placerat diam auctor eget. Mauris tellus eros, iaculis id leo quis, finibus aliquet ipsum. Duis volutpat lacus in purus bibendum, at sollicitudin eros malesuada. Sed nec diam a eros eleifend mattis. Phasellus in facilisis enim. Vestibulum sodales lacinia lectus, quis efficitur velit posuere sed.</p>
-                        </div>
+                            
+                            </div>'"
+                        ?>
                     </div>
 
                     <!-- Blog Post Author -->

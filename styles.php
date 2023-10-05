@@ -1,3 +1,4 @@
+<title>BeautyMedic</title>
 <!-- Bootstrap Core CSS -->
 <link rel="stylesheet" href="./css/bootstrap.min.css">
 

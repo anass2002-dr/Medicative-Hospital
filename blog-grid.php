@@ -11,7 +11,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Medicative Hospital || Health & Medical php Template</title>
 
     <?php
     include 'styles.php'

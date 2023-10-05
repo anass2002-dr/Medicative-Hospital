@@ -50,7 +50,7 @@
                         if ($result->num_rows > 0) {
                           // OUTPUT DATA OF EACH ROW 
                           while ($row = $result->fetch_assoc()) {
-                            echo "<option value=".$row["CATEGORY_ID"].">" . $row["CATEGORY_NAME"] . "</option>";
+                            echo "<option value=" . $row["CATEGORY_ID"] . ">" . $row["CATEGORY_NAME"] . "</option>";
                           }
                         } else {
                           echo "0 results";
@@ -127,16 +127,16 @@
         </div>
 
         <!-- Modal -->
-        
+
         <div class="modal fade" id="mymodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-body" id="modal_body">
-                
+
               </div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
-                
+
               </div>
             </div>
           </div>
@@ -205,7 +205,7 @@
     // }
     $(document).ready(
       function() {
-        
+
 
         // $('#insert_img').change(function () {
         //     console.log(this.files[0]);
@@ -234,9 +234,9 @@
               // location.reload();
             }
           })
-          $('#mymodal').on('hidden.bs.modal', function () {
+          $('#mymodal').on('hidden.bs.modal', function() {
             location.reload();
-            })
+          })
 
           // console.log($("#paragraph_hiden").val());
 

@@ -1,3 +1,4 @@
+<title>BeautyMedic</title>
 <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
 <link rel="stylesheet" href="vendors/base/vendor.bundle.base.css">
 <!-- endinject -->
