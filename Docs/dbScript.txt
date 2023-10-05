@@ -10,6 +10,19 @@ drop table if exists COMMENT;
 
 drop table if exists USER;
 
+drop table if exists CATEGORY;
+
+/*==============================================================*/
+/* Table : CATEGORY                                                */
+/*==============================================================*/
+create table CATEGORY
+(
+   CATEGORY_ID             int not null auto_increment,
+   CATEGORY_NAME           varchar(20),
+   
+   primary key (CATEGORY_ID)
+);
+
 /*==============================================================*/
 /* Table : ADMIN                                                */
 /*==============================================================*/
@@ -30,11 +43,12 @@ create table BLOG
 (
    BLOG_ID              int not null auto_increment,
    TITLE                varchar(300),
-   CATEGORY             varchar(50),
+   CATEGORY_ID          INT,
    PHOTO                text,
    VIDEO                text,
+   PRODUCT_LINK         text,
    CONTENT              text,
-   create_date          date,
+   CREATED_DATE          date,
    primary key (BLOG_ID)
 );
 
@@ -71,12 +85,8 @@ alter table COMMENT add constraint FK_CONTAINE foreign key (BLOG_ID)
       references BLOG (BLOG_ID) on delete restrict on update restrict;
 
 
+alter table BLOG add constraint FK_BLOG_CATEGORY foreign key (CATEGORY_ID)
+      references CATEGORY (CATEGORY_ID) on delete restrict on update restrict;
 
-INSERT INTO `categroy`( `CATEGROY_NAME`) VALUES("Body care")
-                        ,("Makeup")
-                        ,("Hair care")
-                        ,("Nail care")
-                        ,("Fragrance")
-                        ,("accessories")
-                        ,("tools")
-                        ,("devices"))
+
+INSERT INTO `category`( `CATEGORY_NAME`) VALUES("Body care") ,("Makeup") ,("Hair care") ,("Nail care") ,("Fragrance") ,("accessories") ,("tools") ,("devices");

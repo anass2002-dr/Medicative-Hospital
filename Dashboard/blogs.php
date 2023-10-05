@@ -38,19 +38,19 @@
                   <form class="forms-sample" method="post" action="insertBlog.php" enctype="multipart/form-data">
                     <div class="form-group">
                       <label for="titel">Blog Title</label>
-                      <input type="text" class="form-control" id="titel" placeholder="Title" name="title">
+                      <input type="text" class="form-control" id="titel" placeholder="Title" name="title" require>
                     </div>
                     <div class="form-group">
                       <label for="category">blog category</label>
                       <select class="form-control form-control-lg" id="category" name="category">
                         <?php
-                        include 'connection.php';
+                        include '../connection.php';
                         $query = "select * from category";
                         $result = $conn->query($query);
                         if ($result->num_rows > 0) {
                           // OUTPUT DATA OF EACH ROW 
                           while ($row = $result->fetch_assoc()) {
-                            echo "<option>" . $row["categroy_name"] . "</option>";
+                            echo "<option value=".$row["CATEGORY_ID"].">" . $row["CATEGORY_NAME"] . "</option>";
                           }
                         } else {
                           echo "0 results";
@@ -61,7 +61,7 @@
                     </div>
                     <div class="mb-3">
                       <label for="photo" class="form-label">Add Cover Photo</label>
-                      <input class="form-control" type="file" id="photo" accept="image/png, image/jpeg, image/jpg" name="photo">
+                      <input class="form-control" type="file" id="photo" accept="image/png, image/jpeg, image/jpg" name="photo" require>
                     </div>
                     <div class="mb-3">
                       <label for="video" class="form-label">Add Video</label>
@@ -69,7 +69,7 @@
                     </div>
                     <div class="mb-3">
                       <label for="product_link" class="form-label">product link</label>
-                      <input class="form-control" type="text" id="product_link" name="product_link" placeholder="add product link">
+                      <input class="form-control" type="text" id="product_link" name="product_link" placeholder="add product link" require>
                     </div>
                     <div class="form-group fixed-end">
                       <!-- <label for="font_text">font text</label> -->
@@ -123,6 +123,22 @@
               </div>
             </div>
 
+          </div>
+        </div>
+
+        <!-- Modal -->
+        
+        <div class="modal fade" id="mymodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body" id="modal_body">
+                
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
+                
+              </div>
+            </div>
           </div>
         </div>
 
@@ -189,6 +205,8 @@
     // }
     $(document).ready(
       function() {
+        
+
         // $('#insert_img').change(function () {
         //     console.log(this.files[0]);
         // });
@@ -208,11 +226,20 @@
             contentType: false,
             cache: false,
             processData: false,
-            success: function() {
-              console.log('the data are sending with success');
-            }
+            success: function(response) {
+              // alert(response);
+              $('#modal_body').text(response);
 
+              $('#mymodal').modal('show');
+              // location.reload();
+            }
           })
+          $('#mymodal').on('hidden.bs.modal', function () {
+            location.reload();
+            })
+
+          // console.log($("#paragraph_hiden").val());
+
         })
         // $('#submit').click(function(e){
 
