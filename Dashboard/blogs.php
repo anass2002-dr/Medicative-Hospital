@@ -43,23 +43,33 @@
                     <div class="form-group">
                       <label for="category">blog category</label>
                       <select class="form-control form-control-lg" id="category" name="category">
-                        <option>Body care</option>
-                        <option>Makeup</option>
-                        <option>Hair care</option>
-                        <option>Nail care</option>
-                        <option>Fragrance</option>
-                        <option>accessories</option>
-                        <option>tools</option>
-                        <option>devices</option>
+                        <?php
+                        include 'connection.php';
+                        $query = "select * from category";
+                        $result = $conn->query($query);
+                        if ($result->num_rows > 0) {
+                          // OUTPUT DATA OF EACH ROW 
+                          while ($row = $result->fetch_assoc()) {
+                            echo "<option>" . $row["categroy_name"] . "</option>";
+                          }
+                        } else {
+                          echo "0 results";
+                        }
+                        ?>
+
                       </select>
                     </div>
                     <div class="mb-3">
                       <label for="photo" class="form-label">Add Cover Photo</label>
-                      <input class="form-control" type="file" id="photo" multiple name="photo">
+                      <input class="form-control" type="file" id="photo" accept="image/png, image/jpeg, image/jpg" name="photo">
                     </div>
                     <div class="mb-3">
                       <label for="video" class="form-label">Add Video</label>
-                      <input class="form-control" type="file" id="video" multiple name="video">
+                      <input class="form-control" type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*">
+                    </div>
+                    <div class="mb-3">
+                      <label for="product_link" class="form-label">product link</label>
+                      <input class="form-control" type="text" id="product_link" name="product_link" placeholder="add product link">
                     </div>
                     <div class="form-group fixed-end">
                       <!-- <label for="font_text">font text</label> -->
@@ -112,7 +122,7 @@
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
 
@@ -139,9 +149,27 @@
       // do whatever you want with value
       document.execCommand('fontName', false, this.value)
     }
+
+    function link(url) {
+      if (window.getSelection().toString()) {
+        var a = document.createElement('a');
+        a.href = url;
+
+        window.getSelection().getRangeAt(0).surroundContents(a);
+      } else {
+
+        document.execCommand('createlink', false, url)
+      }
+    }
+    var insert_link = document.getElementById('link').addEventListener('click', () => {
+      var url = prompt('enter your link :')
+      link(url)
+
+    })
+
     // document.getElementById('insert_img').onchange = function(event) {
     //   // do whatever you want with value
-      
+
     //   const reader = new FileReader();
     //   var img=document.getElementById("img_inserted");
     //   reader.addEventListener('load', (event) => {
@@ -149,7 +177,7 @@
     //     console.log(img.src)
     //   });
     //   reader.readAsDataURL(this.files[0]);
-     
+
     //     //  if (!files || files.length==0)
     //     //       return;
     //     //  const file = files[0];
@@ -206,7 +234,7 @@
           var newText = selectionBefore + surrounder + selectionAfter;
           $('#paragrah').html(newText)
         }
-        
+
         function header_change(para, cp) {
           if (cp == 0) {
             document.execCommand('formatBlock', false, para);
@@ -261,12 +289,7 @@
         $('#italic').click(function() {
           document.execCommand("italic");
         })
-        $('#link').click(function() {
-          var url = prompt('Enter a URL:', 'http://');
-          var selection = document.getSelection();
-          document.execCommand('createLink', true, url);
-          console.log($('#paragrah').html())
-        })
+
         // $("#insert_img").on('change',function(){
         //   var selection = window.getSelection();
         //   var start = selection.anchorOffset;

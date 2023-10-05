@@ -69,3 +69,14 @@ alter table COMMENT add constraint FK_COMMENTING foreign key (USER_ID)
 
 alter table COMMENT add constraint FK_CONTAINE foreign key (BLOG_ID)
       references BLOG (BLOG_ID) on delete restrict on update restrict;
+
+
+
+INSERT INTO `categroy`( `CATEGROY_NAME`) VALUES("Body care")
+                        ,("Makeup")
+                        ,("Hair care")
+                        ,("Nail care")
+                        ,("Fragrance")
+                        ,("accessories")
+                        ,("tools")
+                        ,("devices"))

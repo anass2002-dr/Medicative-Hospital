@@ -20,10 +20,7 @@ if (move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir)) {
 }
 
 
-$servername = "localhost";
-$username = "root";
-$password = "Ana@21s$";
-$dbname = "medicative";
+
 
 $title = $_POST['title'];
 $category = $_POST['category'];
@@ -36,8 +33,7 @@ $date = date('Y-m-d');
 // Check connection
 
 if (!empty($title) and !empty($category) and !empty($photo) and !empty($video) and !empty($blog)) {
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
+    include '../connection.php';
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
