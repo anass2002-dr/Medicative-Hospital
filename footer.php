@@ -4,7 +4,7 @@
             <div class="row margin-top-30">
                 <div class="col-md-3">
                     <div class="footer-item footer-widget-one">
-                        <img alt="" src="img/logo.png" class="footer-logo">
+                        <img alt="" src="img/logo-beauty.png" class="footer-logo">
                         <p>Voluptate porro esse repellat quo exercitationem debitis incidunt.</p>
 
                         <ul class="address">
