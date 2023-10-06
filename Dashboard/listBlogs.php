@@ -1,3 +1,11 @@
+<?php include "../connection.php";
+if(isset($_GET['id'])){
+  $id=$_GET['id'];
+  $query = "delete from blog where BLOG_ID=$id";
+  $result = $conn->query($query);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,40 +38,68 @@
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title"> New blog</h4>
-                  <p class="card-description">
-                    Basic form layout
-                  </p>
-                  <form class="forms-sample">
-                    <div class="form-group">
-                      <label for="exampleInputUsername1">Username</label>
-                      <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputConfirmPassword1">Confirm Password</label>
-                      <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-check form-check-flat form-check-primary">
-                      <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input">
-                        Remember me
-                      </label>
-                    </div>
-                    <button type="submit" class="btn btn-primary me-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
-                  </form>
+                <table class='table table-hover'>
+                    <thead>
+                      <tr>
+                        <th scope='col'>BLOG_ID</th>
+                        <th scope='col'>TITLE</th>
+                        <th scope='col'>CATEGORY_NAME</th>
+                        <th scope='col'>PRODUCT_LINK</th>
+                        <th scope='col'>CREATED_DATE</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                <?php
+                    $query = "SELECT b.BLOG_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM blog as b INNER JOIN category as c
+                    ON b.CATEGORY_ID = c.CATEGORY_ID";
+                    $result = $conn->query($query);
+                    $BLOG_ID = "";
+                    $TITLE = "";
+                    $CATEGORY_NAME="";
+                    $PRODUCT_LINK = "";
+                    $CREATED_DATE = "";
+                    $BLOG_ID_SELECTED="";
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $BLOG_ID = $row["BLOG_ID"];
+                            $TITLE = $row["TITLE"];
+                            $CATEGORY_NAME = $row["CATEGORY_NAME"];
+                            $PRODUCT_LINK = $row["PRODUCT_LINK"];
+                            $CREATED_DATE = $row["CREATED_DATE"];
+                            echo "<tr>
+                                <th scope='row'>$BLOG_ID</th>
+                                <td>$TITLE</td>
+                                <td>$CATEGORY_NAME</td>
+                                <td>$PRODUCT_LINK</td>
+                                <td>$CREATED_DATE</td>
+                                <td><a href='listBlogs.php?id=$BLOG_ID' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#mymodal'>
+                                    Delete
+                                  </button></td>
+                              </tr>
+                          ";
+                        }
+                    }
+                   
+                ?>
+                  </tbody>
+                  </table>
                 </div>
               </div>
             </div>
-
+            <div class="modal fade" id="mymodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body" id="modal_body">
+                    Are you sure wannt to delete this blog!
+                    
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
 

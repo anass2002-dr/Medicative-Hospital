@@ -49,7 +49,7 @@
     </section>
     <?php
     include "./connection.php";
-    $query = "select * from blog where BLOG_ID=3";
+    $query = "select * from blog where BLOG_ID=23";
     $result = $conn->query($query);
     $title = "";
     $blog = "";

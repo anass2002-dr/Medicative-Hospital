@@ -16,6 +16,7 @@
       <div class="collapse" id="blogs">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="blogs.php"> New Blog </a></li>
+          <li class="nav-item"> <a class="nav-link" href="blogs_html.php"> New Blog using html</b> </a></li>
           <li class="nav-item"> <a class="nav-link" href="listBlogs.php"> Blogs List </a></li>
 
         </ul>
