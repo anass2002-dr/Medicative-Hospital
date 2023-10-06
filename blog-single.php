@@ -49,7 +49,7 @@
     </section>
     <?php
     include "./Config.php";
-    $query = "select * from blog where BLOG_ID=23";
+    $query = "select * from blog where BLOG_ID=3";
     $result = $conn->query($query);
     $title = "";
     $blog = "";
@@ -98,7 +98,7 @@
                                 $blog
                             </p>
                             
-                            </div>'"
+                            </div>"
                         ?>
                     </div>
 

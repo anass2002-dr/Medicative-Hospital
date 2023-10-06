@@ -44,7 +44,7 @@
                       <label for="category">blog category</label>
                       <select class="form-control form-control-lg" id="category" name="category">
                         <?php
-                        include '../connection.php';
+                        include '../Config.php';
                         $query = "select * from category";
                         $result = $conn->query($query);
                         if ($result->num_rows > 0) {
