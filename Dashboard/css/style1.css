@@ -19371,10 +19371,10 @@ button:focus {
   outline-style: none;
 }
 
-textarea {
+/* textarea {
   resize: none;
   overflow-x: hidden;
-}
+} */
 
 .btn,
 .btn-group.open .dropdown-toggle,

@@ -5,7 +5,6 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>RoyalUI Admin</title>
   <!-- plugins:css -->
   <?php
   include 'style.php'
@@ -13,6 +12,7 @@
 </head>
 
 <body>
+<!-- https://wordtohtml.net/ -->
   <div class="container-scroller">
     <!-- partial:_navbar.html -->
     <?php
@@ -75,10 +75,8 @@
 
 
                     <div class="form-group">
-                      <label for="paragrah">Enter your html code</label>
-                      <p id="paragrah" contenteditable="true" class="form-control" aria-placeholder="Tape your html blog">
-                      </p>
-                      <input type="text" hidden id="paragraph_hiden" name="blog">
+                      <label for='blog'>Enter your html code</label>
+                      <textarea name='blog' id='blog' class='form-control'rows='10'></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary me-2 text-light" id="submit">Submit</button>
@@ -128,7 +126,7 @@
 
 
         $('form').submit(function(e) {
-          $("#paragraph_hiden").val($("#paragrah").text())
+          // $("#paragraph_hiden").val($("#paragrah").text())
           e.preventDefault();
           $.ajax({
             type: "POST",

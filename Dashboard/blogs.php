@@ -5,7 +5,6 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>RoyalUI Admin</title>
   <!-- plugins:css -->
   <?php
   include 'style.php'
@@ -207,15 +206,6 @@
       function() {
 
 
-        // $('#insert_img').change(function () {
-        //     console.log(this.files[0]);
-        // });
-        // $('#txt_color').on('change',function(e){
-        //   var value=this.val();
-        //   // document.execCommand('styleWithCSS', false, true);
-        //   // document.execCommand('foreColor',false,value)
-        //   console.log(value)
-        // })
         $('form').submit(function(e) {
           $("#paragraph_hiden").val($("#paragrah").html())
           e.preventDefault();

@@ -68,7 +68,7 @@
                                 <td>$CATEGORY_NAME</td>
                                 <td>$PRODUCT_LINK</td>
                                 <td>$CREATED_DATE</td>
-                                <td><button class='update btn btn-success' id='update_<?= $BLOG_ID ?>' data-id='$BLOG_ID' >update</button>
+                                <td><a href='update_blog.php?id=$BLOG_ID' class='update btn btn-success' id='update_<?= $BLOG_ID ?>' data-id='$BLOG_ID' >update</A>
                                 </td>
                                 <td><button class='delete btn btn-danger' id='del_<?= $BLOG_ID ?>' data-id='$BLOG_ID' >Delete</button>
                                 </td>
