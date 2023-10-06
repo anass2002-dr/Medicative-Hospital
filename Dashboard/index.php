@@ -1,3 +1,33 @@
+<?php
+session_start();
+unset($_SESSION['passport']);
+unset($_SESSION['username']);
+unset($_SESSION['password']);
+
+include '../Config.php';
+$username = $_POST['username'];
+$password = $_POST['password'];
+$name = "";
+$pass = "";
+$query = "select * from admin where USER_NAME='$username'";
+$result = $conn->query($query);
+if ($result->num_rows > 0) {
+  while ($row = $result->fetch_assoc()) {
+    $name = $row['USER_NAME'];
+    $pass = $row['PASSWORD'];
+  }
+  if ($pass == $password) {
+    $_SESSION['passport'] = 'ok';
+    $_SESSION['username'] = $name;
+    $_SESSION['password'] = $pass;
+    echo "ok";
+  } else {
+    echo 'invalid password';
+  }
+} else {
+  echo 'invalid email';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

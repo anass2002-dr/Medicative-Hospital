@@ -42,6 +42,7 @@
                         <th scope='col'>CATEGORY_NAME</th>
                         <th scope='col'>PRODUCT_LINK</th>
                         <th scope='col'>CREATED_DATE</th>
+                        <th colspan="2"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -68,9 +69,9 @@
                                 <td>$CATEGORY_NAME</td>
                                 <td>$PRODUCT_LINK</td>
                                 <td>$CREATED_DATE</td>
-                                <td><a href='update_blog.php?id=$BLOG_ID' class='update btn btn-success' id='update_<?= $BLOG_ID ?>' data-id='$BLOG_ID' >update</A>
+                                <td><a href='update_blog.php?id=$BLOG_ID' class='update btn text-light' style='background-color:#00e7a1;' id='update_<?= $BLOG_ID ?>' data-id='$BLOG_ID' >update</A>
                                 </td>
-                                <td><button class='delete btn btn-danger' id='del_<?= $BLOG_ID ?>' data-id='$BLOG_ID' >Delete</button>
+                                <td><button class='delete btn text-light' style='background-color:red;' id='del_<?= $BLOG_ID ?>' data-id='$BLOG_ID' >Delete</button>
                                 </td>
                                
                               </tr>

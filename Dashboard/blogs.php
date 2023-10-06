@@ -182,26 +182,7 @@
 
     })
 
-    // document.getElementById('insert_img').onchange = function(event) {
-    //   // do whatever you want with value
 
-    //   const reader = new FileReader();
-    //   var img=document.getElementById("img_inserted");
-    //   reader.addEventListener('load', (event) => {
-    //     img.src = event.target.result;
-    //     console.log(img.src)
-    //   });
-    //   reader.readAsDataURL(this.files[0]);
-
-    //     //  if (!files || files.length==0)
-    //     //       return;
-    //     //  const file = files[0];
-    //     //  const reader = new FileReader();
-    //     //  reader.readAsDataURL(fileList);
-    //     //  console.log(reader.result)
-
-    //   // document.execCommand('insertImage', false, reader.result)
-    // }
     $(document).ready(
       function() {
 

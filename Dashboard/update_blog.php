@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,30 +35,29 @@
                     Update your blog Using html code
                   </p>
                   <?php
-                   include '../Config.php';
-                   if(isset($_GET["id"])){
-                       $id=$_GET["id"];
-                       $query = "select * from blog where BLOG_ID=$id";
+                  include '../Config.php';
+                  if (isset($_GET["id"])) {
+                    $id = $_GET["id"];
+                    $query = "select * from blog where BLOG_ID=$id";
                     //    echo $query;
-                       $result = $conn->query($query);
-                       $title = "";
-                       $blog = "";
-                       $product_link = "";
-                       $photo = "";
-                       $video = "";
-                       $category_id = "";
-                       $created_date = "";
-                       if ($result->num_rows > 0) {
-                           while ($row = $result->fetch_assoc()) {
-                               $title = $row["TITLE"];
-                               $blog = $row["CONTENT"];
-                               $product_link = $row["PRODUCT_LINK"];
-                               $category_id = $row["CATEGORY_ID"];
-                           }
-                       }
-                      
-                   }
-                     echo   "<form class='forms-sample' method='post' action='insertBlog.php' enctype='multipart/form-data'>
+                    $result = $conn->query($query);
+                    $title = "";
+                    $blog = "";
+                    $product_link = "";
+                    $photo = "";
+                    $video = "";
+                    $category_id = "";
+                    $created_date = "";
+                    if ($result->num_rows > 0) {
+                      while ($row = $result->fetch_assoc()) {
+                        $title = $row["TITLE"];
+                        $blog = $row["CONTENT"];
+                        $product_link = $row["PRODUCT_LINK"];
+                        $category_id = $row["CATEGORY_ID"];
+                      }
+                    }
+                  }
+                  echo   "<form class='forms-sample' method='post' action='insertBlog.php' enctype='multipart/form-data'>
                             <div class='form-group'>
                             <input hidden name='id' value='$id'>
                             <label for='titel'>Blog Title</label>
@@ -68,25 +66,24 @@
                             <div class='form-group'>
                             <label for='category'>blog category</label>
                             <select class='form-control form-control-lg' id='category' name='category'>
-                            ";    
-                                
-                                $query = "select * from category";
-                                $result = $conn->query($query);
-                                if ($result->num_rows > 0) {
-                                // OUTPUT DATA OF EACH ROW 
-                                while ($row = $result->fetch_assoc()) {
-                                    if($row["CATEGORY_ID"]==$category_id){
-                                        echo "<option value=" . $row["CATEGORY_ID"] . " selected >" . $row["CATEGORY_NAME"] . "</option>";
-                                    }
-                                    else{
-                                        echo "<option value=" . $row["CATEGORY_ID"] . ">" . $row["CATEGORY_NAME"] . "</option>";
-                                    }
-                                }
-                                } else {
-                                echo "0 results";
-                                }
-                                
-                            echo "
+                            ";
+
+                  $query = "select * from category";
+                  $result = $conn->query($query);
+                  if ($result->num_rows > 0) {
+                    // OUTPUT DATA OF EACH ROW 
+                    while ($row = $result->fetch_assoc()) {
+                      if ($row["CATEGORY_ID"] == $category_id) {
+                        echo "<option value=" . $row["CATEGORY_ID"] . " selected >" . $row["CATEGORY_NAME"] . "</option>";
+                      } else {
+                        echo "<option value=" . $row["CATEGORY_ID"] . ">" . $row["CATEGORY_NAME"] . "</option>";
+                      }
+                    }
+                  } else {
+                    echo "0 results";
+                  }
+
+                  echo "
                                 </select>
                                 </div>
                                 <div class='mb-3'>
@@ -112,7 +109,7 @@
                             </form>
                         ";
                   ?>
-                   
+
                 </div>
               </div>
             </div>
@@ -128,7 +125,7 @@
 
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
+                <button type="submit" class="btn btn-success text-light" data-bs-dismiss="modal">Ok</button>
 
               </div>
             </div>
@@ -153,31 +150,32 @@
     $(document).ready(
       function() {
         $('form').submit(function(e) {
-        //   $("#paragraph_hiden").val($("#paragrah").text())
-            e.preventDefault();
-            $.ajax({
-                type: "POST",
-                url: 'update.php',
-                data: new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-                success: function(response) {
-                // alert(response);
-                $('#modal_body').text(response);
+          //   $("#paragraph_hiden").val($("#paragrah").text())
+          e.preventDefault();
+          $.ajax({
+            type: "POST",
+            url: 'update.php',
+            data: new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(response) {
+              // alert(response);
+              $('#modal_body').text(response);
 
-                $('#mymodal').modal('show');
-                // location.reload();
-                }
+              $('#mymodal').modal('show');
+
+              // location.reload();
+            }
           })
           $('#mymodal').on('hidden.bs.modal', function() {
-            location.reload();
+            window.location.href = 'listBlogs.php';
           })
 
-          
+
 
         })
-        
+
 
       })
   </script>
