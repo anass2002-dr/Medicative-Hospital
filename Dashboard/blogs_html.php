@@ -71,9 +71,9 @@
                       <label for="product_link" class="form-label">product link</label>
                       <input class="form-control" type="text" id="product_link" name="product_link" placeholder="add product link" require>
                     </div>
-                    
-                    
-                    
+
+
+
                     <div class="form-group">
                       <label for="paragrah">Enter your html code</label>
                       <p id="paragrah" contenteditable="true" class="form-control" aria-placeholder="Tape your html blog">
@@ -122,14 +122,11 @@
   <!-- plugins:js -->
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <script>
-    
-
- 
     $(document).ready(
       function() {
 
 
-        
+
         $('form').submit(function(e) {
           $("#paragraph_hiden").val($("#paragrah").text())
           e.preventDefault();
@@ -159,7 +156,7 @@
 
 
         // })
-       
+
       })
   </script>
   <script src="vendors/base/vendor.bundle.base.js"></script>

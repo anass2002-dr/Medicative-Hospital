@@ -48,7 +48,7 @@
         </div>
     </section>
     <?php
-    include "./connection.php";
+    include "./Config.php";
     $query = "select * from blog where BLOG_ID=23";
     $result = $conn->query($query);
     $title = "";

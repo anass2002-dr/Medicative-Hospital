@@ -50,7 +50,7 @@ $date = date('Y-m-d');
 
 
 if (!empty($title) and !empty($category) and !empty($photo) and !empty($blog)) {
-    include '../connection.php';
+    include '../Config.php';
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
