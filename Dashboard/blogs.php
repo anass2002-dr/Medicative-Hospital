@@ -1,3 +1,6 @@
+<?php
+  include 'Config_dashboard.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +46,6 @@
                       <label for="category">blog category</label>
                       <select class="form-control form-control-lg" id="category" name="category">
                         <?php
-                        include '../Config.php';
                         $query = "select * from category";
                         $result = $conn->query($query);
                         if ($result->num_rows > 0) {

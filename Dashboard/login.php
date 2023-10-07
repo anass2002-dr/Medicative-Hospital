@@ -1,3 +1,7 @@
+<?php 
+  session_start();
+  
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,13 +27,29 @@
                 <img src="../img/logo-beauty.png" alt="logo">
               </div>
               <h6 class="font-weight-light">Sign in to continue.</h6>
-              <form class="pt-3">
-                <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="username" placeholder="Username" name="username">
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="password" placeholder="Password" name="password">
-                </div>
+              <form class="pt-3" method="POST" action="login_check.php">
+                
+                <?php
+                    if(isset($_SESSION["username"])){
+                      $username=$_SESSION["username"];
+                      echo "<div class='form-group'> <input type='email' class='form-control form-control-lg' id='username' placeholder='Username' name='username' value='$username'></div>";
+                    }
+                    else{
+                      echo "<div class='form-group'> <input type='email' class='form-control form-control-lg' id='username' placeholder='Username' name='username'></div>";
+                    }
+                    if(isset($_SESSION["password"])){
+                      $password=$_SESSION["password"];
+                      echo "<div class='form-group'>
+                      <input type='password' class='form-control form-control-lg' id='password' placeholder='Password' name='password' value='$password'>
+                      </div>";
+                    }
+                    else{
+                      echo "<div class='form-group'>
+                      <input type='password' class='form-control form-control-lg' id='password' placeholder='Password' name='password'>
+                      </div>";
+                    }
+                  
+                ?>
                 <div class="mt-3">
                   <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                 </div>
@@ -63,23 +83,23 @@
     $(document).ready(function() {
 
       // Delete 
-      $('form').submit(function(e) {
-        // Delete id
-        $.ajax({
-          url: 'index.php',
-          type: 'POST',
-          data: new FormData(this),
-          contentType: false,
-          cache: false,
-          processData: false,
-          success: function(response) {
-            alert(response);
-          }
-        });
+      // $('form').submit(function(e) {
+      //   // Delete id
+      //   $.ajax({
+      //     url: 'login_check.php',
+      //     type: 'POST',
+      //     data: new FormData(this),
+      //     contentType: false,
+      //     cache: false,
+      //     processData: false,
+      //     success: function(response) {
+      //       alert(response);
+      //     }
+      //   });
 
 
 
-      });
+      // });
     });
   </script>
   <!-- endinject -->

@@ -1,5 +1,5 @@
 <?php
-include "../Config.php";
+include "Config_dashboard.php";
 // if (isset($_GET['id'])) {
 //     $id = $_GET['id'];
 //     $query = "delete from blog where BLOG_ID=$id";

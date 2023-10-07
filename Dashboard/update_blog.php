@@ -1,3 +1,6 @@
+<?php
+  include 'Config_dashboard.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +38,7 @@
                     Update your blog Using html code
                   </p>
                   <?php
-                  include '../Config.php';
+                  // include '../Config.php';
                   if (isset($_GET["id"])) {
                     $id = $_GET["id"];
                     $query = "select * from blog where BLOG_ID=$id";
