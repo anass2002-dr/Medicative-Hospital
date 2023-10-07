@@ -77,6 +77,16 @@ create table USER
    PHONE_NUMBER         varchar(30),
    primary key (USER_ID)
 );
+/*==============================================================*/
+/* Table : COLLECTION_PHOTOS                                    */
+/*==============================================================*/
+CREATE TABLE COLLECTION_PHOTOS
+(
+   PHOTO_ID INT AUTO_INCREMENT PRIMARY KEY,
+   BLOG_ID INT ,
+   PHOTO_PATH TEXT NOT NULL
+);
+
 
 alter table COMMENT add constraint FK_COMMENTING foreign key (USER_ID)
       references USER (USER_ID) on delete restrict on update restrict;
@@ -90,3 +100,4 @@ alter table BLOG add constraint FK_BLOG_CATEGORY foreign key (CATEGORY_ID)
 
 
 INSERT INTO `category`( `CATEGORY_NAME`) VALUES("Body care") ,("Makeup") ,("Hair care") ,("Nail care") ,("Fragrance") ,("accessories") ,("tools") ,("devices");
+ALTER TABLE COLLECTION_PHOTOS ADD CONSTRAINT FK_COLLECTION_PHOTO_BLOG FOREIGN KEY(BLOG_ID) REFERENCES BLOG(BLOG_ID);

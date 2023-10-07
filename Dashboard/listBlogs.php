@@ -1,6 +1,6 @@
-<?php
-  include 'Config_dashboard.php';
-?>
+<!-- <?php
+      // include 'Config_dashboard.php';
+      ?> -->
 <!DOCTYPE html>
 <html lang="en">
 

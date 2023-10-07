@@ -14,6 +14,19 @@ $newfilenamev = round(microtime(true)) . '.' . end($tempv);
 move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir . $newfilenamev);
 move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir);
 
+if (isset($_FILES['photo_collection'])) {
+    // foreach ($_FILES['photo_collection'] as $value) {
+    //     echo $value["name"];
+    // }
+    $file_count = count($_FILES['photo_collection']);
+    $files = $_FILES['photo_collection'];
+    for ($i = 0; $i < $file_count; $i++) {
+        // get the uploaded file info
+
+        $filename = $files['name'][$i];
+        echo $filename;
+    }
+}
 
 $title = $_POST['title'];
 $category = $_POST['category'];
@@ -21,17 +34,18 @@ $photo = $newfilename;
 $video = $newfilenamev;
 $product_link = $_POST['product_link'];
 $blog = $_POST['blog'];
+$blog_short = $_POST['blog-short'];
 $date = date('Y-m-d');
 
-if (!empty($title) and !empty($category) and !empty($photo) and !empty($blog)) {
+if (!empty($title) and !empty($category) and !empty($photo) and !empty($blog) and !empty($blog_short)) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
     $blog = mysqli_real_escape_string($conn, $blog);
     $title = mysqli_real_escape_string($conn, $title);
-    $sql = "INSERT INTO blog (TITLE, CATEGORY_ID, PHOTO, VIDEO, PRODUCT_LINK, CONTENT, CREATED_DATE) VALUES ('$title', $category, '$photo','$video','$product_link','$blog','$date')";
+    $sql = "INSERT INTO blog (TITLE, CATEGORY_ID, PHOTO, VIDEO, PRODUCT_LINK, CONTENT,BLOG_SHORT, CREATED_DATE) VALUES ('$title', $category, '$photo','$video','$product_link','$blog','$blog_short','$date')";
     if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
+        echo "New Blog created successfully";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

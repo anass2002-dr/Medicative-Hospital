@@ -1,15 +1,14 @@
 <?php
 session_start();
-if(isset($_SESSION["passport"])){
-    if($_SESSION["passport"]!='ok'){
+if (isset($_SESSION["passport"])) {
+    if ($_SESSION["passport"] != 'ok') {
         header('Location:login.php');
     }
-}
-else{
+} else {
     header('Location:login.php');
 }
 $servername = "localhost";
 $username = "root";
-$password = "anass@2023";
+$password = "Ana@21s$";
 $dbname = "medicative";
 $conn = new mysqli($servername, $username, $password, $dbname);

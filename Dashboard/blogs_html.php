@@ -1,6 +1,3 @@
-<?php
-  include 'Config_dashboard.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +12,7 @@
 </head>
 
 <body>
-<!-- https://wordtohtml.net/ -->
+  <!-- https://wordtohtml.net/ -->
   <div class="container-scroller">
     <!-- partial:_navbar.html -->
     <?php
@@ -63,8 +60,12 @@
                       </select>
                     </div>
                     <div class="mb-3">
-                      <label for="photo" class="form-label">Add Cover Photo</label>
+                      <label for="photo" class="form-label">Add your collection Photos</label>
                       <input class="form-control" type="file" id="photo" accept="image/png, image/jpeg, image/jpg" name="photo" require>
+                    </div>
+                    <div class="mb-3">
+                      <label for="photo_collection" class="form-label">Add collecttion Photos</label>
+                      <input class="form-control" type="file" id="photo_collection" accept="image/png, image/jpeg, image/jpg" name="photo_collection" multiple>
                     </div>
                     <div class="mb-3">
                       <label for="video" class="form-label">Add Video</label>
@@ -76,10 +77,13 @@
                     </div>
 
 
-
+                    <div class="form-group">
+                      <label for='blog-short'>Enter your short Description</label>
+                      <textarea name='blog-short' id='blog-short' class='form-control' rows='10'></textarea>
+                    </div>
                     <div class="form-group">
                       <label for='blog'>Enter your html code</label>
-                      <textarea name='blog' id='blog' class='form-control'rows='10'></textarea>
+                      <textarea name='blog' id='blog' class='form-control' rows='10'></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary me-2 text-light" id="submit">Submit</button>

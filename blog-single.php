@@ -103,101 +103,11 @@
                     </div>
 
                     <!-- Blog Post Author -->
-                    <div class="blog-admin margin-bottom-30">
-                        <img src="img/blog/a1.jpg" alt="">
-                        <div class="blog-admin-desc">
-                            <div class="clearfix">
-                                <h5>Barbara Blackmond</h5>
-                                <ul class="list-inline">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                </ul>
-                            </div>
-                            <p>Vivamus quis nisi vel dui ultrices lacinia ac eu massa. Quis que vitae consequat sapien.
-                                Vivamus sit amet tincidunt ipsum, nec blandit ipsum. consectetur adipiscing elit...</p>
-                        </div>
-                    </div>
-                    <!-- End Blog Post Author -->
-                    <div class="mini-title">
-                        <h3>Comments</h3>
-                    </div>
-                    <!-- Blog Comments -->
-                    <div class="row blog-comments margin-bottom-30">
-                        <div class="col-sm-2">
-                            <img src="img/blog/a2.jpg" alt="">
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="comment">
-                                <h5>
-                                    Dan Mulholland
-                                    <span>5 hours ago / <a href="#">Reply</a></span>
-                                </h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod..</p>
-                            </div>
-                        </div>
-                    </div>
+
+
                     <!-- End Blog Comments -->
 
-                    <!-- Blog Comments -->
-                    <div class="row blog-comments blog-comments-reply margin-bottom-30">
-                        <div class="col-sm-2">
-                            <img src="img/blog/a1.jpg" alt="">
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="comment">
-                                <h5>
-                                    Lauren M. Massucci
-                                    <span>6 hours ago / <a href="#">Reply</a></span>
-                                </h5>
-                                <p>Gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod..</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Blog Comments -->
 
-                    <!-- Blog Comments -->
-                    <div class="row blog-comments margin-bottom-50">
-                        <div class="col-sm-2">
-                            <img src="img/blog/a3.jpg" alt="">
-                        </div>
-                        <div class="col-sm-10">
-                            <div class="comment">
-                                <h5>
-                                    Nicholas J. Calabrese
-                                    <span>7 hours ago / <a href="#">Reply</a></span>
-                                </h5>
-                                <p>Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod..</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Blog Comments -->
-
-                    <hr>
-                    <div class="mini-title">
-                        <h3>Post a Comment</h3>
-                    </div>
-                    <!-- Form -->
-                    <form action="#" method="post">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div>
-                                    <input type="text" name="name" id="name" placeholder="Name" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div>
-                                    <input type="text" name="email" id="email" placeholder="Email" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <textarea rows="8" name="message" id="message" placeholder="Write comment here ..." class="form-control"></textarea>
-                            </div>
-                        </div>
-
-
-                        <p><button type="submit" class="btn btn-theme hvr-bounce-to-top">Submit</button></p>
-                    </form>
                     <!-- End Form -->
                 </div>
                 <div class="col-md-3">

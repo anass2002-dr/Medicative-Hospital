@@ -457,12 +457,36 @@ button {
     width: 100%; 
     height: 100%; 
     z-index: 999999; 
-    background-color: #ffffff; 
+    background-color: #ffffff7c; 
     background-position: center center; 
     background-repeat: no-repeat; 
     background-image: url('../Docs/beautymedic-small.png');
+    
+    -webkit-animation: rotate-center 0.6s ease-in-out both;
+    animation: rotate-center 0.6s ease-in-out both;
 }
 
+ @-webkit-keyframes rotate-center {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  @keyframes rotate-center {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  
 /*****=====*****=====*****=====*****=====
     04. Section Title Css
 =====*****=====*****=====*****=====*****/
@@ -780,8 +804,8 @@ button {
     font-weight: 500;
 }
 .navbar-brand {
-    padding: 0 15px;
-    padding-top: 15px;
+    padding: 0;
+    height: 10px;
 }
 
 .dropdown-menu > li > a {
@@ -928,12 +952,12 @@ button {
 }
 
 .navbar-default .navbar-nav.style-3>.active>a {
-    color: #888;
+    color: var(--pk-color);
 }
 
 .nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
     background-color: #333;
-    border-color: #333;
+    border-color: var(--pk-color);
 }
 .navbar-brand.dis-none {
     display: none;
@@ -1049,12 +1073,12 @@ a.flip-animate:hover span:before, a.flip-animate:focus span:before {
 
 
 .conner-style.style-2 {
-    background: rgba(255,255,255, 0.99);
+    background: rgb(255 255 255 / 58%);
     border-top: 1px solid #eee;
     /* position: relative !important; */
 }
 .conner-style.style-2 .navbar-default .navbar-nav > li > a {
-    color: #777;
+    color: #000000;
     font-size: 14px;
     font-weight: 600;
     padding: 30px 12px;
