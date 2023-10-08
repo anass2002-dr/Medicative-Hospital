@@ -65,7 +65,7 @@
                     </div>
                     <div class="mb-3">
                       <label for="photo_collection" class="form-label">Add collecttion Photos</label>
-                      <input class="form-control" type="file" id="photo_collection" accept="image/png, image/jpeg, image/jpg" name="photo_collection" multiple>
+                      <input class="form-control" type="file" id="photo_collection" accept="image/png, image/jpeg, image/jpg" name="photo_collection[]" multiple>
                     </div>
                     <div class="mb-3">
                       <label for="video" class="form-label">Add Video</label>
@@ -133,29 +133,24 @@
 
 
         $('form').submit(function(e) {
-          // $("#paragraph_hiden").val($("#paragrah").text())
           e.preventDefault();
           $.ajax({
             type: "POST",
             url: 'insertBlog.php',
             data: new FormData(this),
             contentType: false,
+
             cache: false,
             processData: false,
             success: function(response) {
-              // alert(response);
               $('#modal_body').text(response);
 
               $('#mymodal').modal('show');
-              // location.reload();
             }
           })
           $('#mymodal').on('hidden.bs.modal', function() {
             location.reload();
           })
-
-          // console.log($("#paragraph_hiden").val());
-
         })
         // $('#submit').click(function(e){
 

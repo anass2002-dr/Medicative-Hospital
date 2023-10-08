@@ -14,19 +14,7 @@ $newfilenamev = round(microtime(true)) . '.' . end($tempv);
 move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir . $newfilenamev);
 move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir);
 
-if (isset($_FILES['photo_collection'])) {
-    // foreach ($_FILES['photo_collection'] as $value) {
-    //     echo $value["name"];
-    // }
-    $file_count = count($_FILES['photo_collection']);
-    $files = $_FILES['photo_collection'];
-    for ($i = 0; $i < $file_count; $i++) {
-        // get the uploaded file info
 
-        $filename = $files['name'][$i];
-        echo $filename;
-    }
-}
 
 $title = $_POST['title'];
 $category = $_POST['category'];
@@ -43,8 +31,27 @@ if (!empty($title) and !empty($category) and !empty($photo) and !empty($blog) an
     }
     $blog = mysqli_real_escape_string($conn, $blog);
     $title = mysqli_real_escape_string($conn, $title);
+    $blog_short = mysqli_real_escape_string($conn, $blog_short);
     $sql = "INSERT INTO blog (TITLE, CATEGORY_ID, PHOTO, VIDEO, PRODUCT_LINK, CONTENT,BLOG_SHORT, CREATED_DATE) VALUES ('$title', $category, '$photo','$video','$product_link','$blog','$blog_short','$date')";
     if ($conn->query($sql) === TRUE) {
+        $sql2 = "SELECT BLOG_ID FROM blog ORDER BY BLOG_ID DESC LIMIT 1;";
+        $result = $conn->query($sql2);
+        $row = mysqli_fetch_assoc($result);
+        $id_blog = $row['BLOG_ID'];
+        if (isset($_FILES['photo_collection'])) {
+            $files = $_FILES['photo_collection'];
+            $file_count = count($files['name']);
+            for ($i = 0; $i < $file_count; $i++) {
+                $filenameC = $files['name'][$i];
+                $tmp_nameC = $files["tmp_name"][$i];
+                $target_dirC = "../img/blog/";
+                $tempC = explode(".", $filenameC);
+                $newfilenameC = rand() . '.' . end($tempC);
+                move_uploaded_file($tmp_nameC, $target_dirC . $newfilenameC);
+                $query3 = "INSERT INTO collection_photos(BLOG_ID, PHOTO_PATH) VALUES ($id_blog,'$newfilenameC')";
+                $conn->query($query3);
+            }
+        }
         echo "New Blog created successfully";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;

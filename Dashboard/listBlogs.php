@@ -39,7 +39,6 @@
                         <th scope='col'>BLOG_ID</th>
                         <th scope='col'>TITLE</th>
                         <th scope='col'>CATEGORY_NAME</th>
-                        <th scope='col'>PRODUCT_LINK</th>
                         <th scope='col'>CREATED_DATE</th>
                         <th colspan="2"></th>
                       </tr>
@@ -66,7 +65,6 @@
                                 <th scope='row'>$BLOG_ID</th>
                                 <td>$TITLE</td>
                                 <td>$CATEGORY_NAME</td>
-                                <td>$PRODUCT_LINK</td>
                                 <td>$CREATED_DATE</td>
                                 <td><a href='update_blog.php?id=$BLOG_ID' class='update btn text-light' style='background-color:#00e7a1;' id='update_<?= $BLOG_ID ?>' data-id='$BLOG_ID' >update</A>
                                 </td>

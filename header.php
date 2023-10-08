@@ -1,3 +1,6 @@
+<?php
+include "./Config.php";
+?>
 <div class="header-topbar style-2">
     <div class="container padding-none">
         <div class="row">
