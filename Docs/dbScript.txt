@@ -29,9 +29,9 @@ create table CATEGORY
 create table ADMIN
 (
    ADMIN_ID             int not null auto_increment,
-   FIRST_NAME           varchar(20),
+   USER_NAME           varchar(20),
    PASSWORD             varchar(30),
-   USER_NAME            varchar(30),
+   FIRST_NAME            varchar(30),
    LAST_NAME            varchar(20),
    primary key (ADMIN_ID)
 );
@@ -48,6 +48,7 @@ create table BLOG
    VIDEO                text,
    PRODUCT_LINK         text,
    CONTENT              text,
+   BLOG_SHORT           text,
    CREATED_DATE          date,
    primary key (BLOG_ID)
 );
@@ -101,3 +102,68 @@ alter table BLOG add constraint FK_BLOG_CATEGORY foreign key (CATEGORY_ID)
 
 INSERT INTO `category`( `CATEGORY_NAME`) VALUES("Body care") ,("Makeup") ,("Hair care") ,("Nail care") ,("Fragrance") ,("accessories") ,("tools") ,("devices");
 ALTER TABLE COLLECTION_PHOTOS ADD CONSTRAINT FK_COLLECTION_PHOTO_BLOG FOREIGN KEY(BLOG_ID) REFERENCES BLOG(BLOG_ID);
+
+
+
+
+<table style="width: 100%;border: 1px solid black;
+  border-collapse: collapse;">
+    <tbody>
+        <tr>
+            <td style="padding:0;width: 32.5758%;border: 1px solid black;
+  border-collapse: collapse;">
+                <div style="text-align: center;"><strong><span style="color: rgb(40, 50, 78);">R&eacute;f&eacute;rences<br></span></strong></div>
+            </td>
+            <td style="padding:0;width: 34.0909%;border: 1px solid black;
+  border-collapse: collapse;">
+                <div style="text-align: center;"><span style="color: rgb(40, 50, 78);"><strong>Taille<br></strong></span></div>
+            </td>
+            <td style="padding:0;width: 33.3333%;border: 1px solid black;
+  border-collapse: collapse;">
+                <div style="text-align: center;"><strong><span style="color: rgb(40, 50, 78);">Condition</span></strong></div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:0;width: 32.5758%;border: 1px solid black;
+  border-collapse: collapse;">
+                <div style="text-align: center;">PAD05</div>
+            </td>
+            <td style="padding:0;width: 34.0909%;border: 1px solid black;
+  border-collapse: collapse; text-align: center;">
+                <div style="text-align: center;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;5cm x 2.7m &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+            </td>
+            <td style="padding:0;width: 33.3333%;border: 1px solid black;
+  border-collapse: collapse; text-align: center;">
+                <div style="text-align: center;">24</div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:0;width: 32.5758%;border: 1px solid black;
+  border-collapse: collapse;">
+                <div style="text-align: center;">PAD10</div>
+            </td>
+            <td style="padding:0;width: 34.0909%;border: 1px solid black;
+  border-collapse: collapse;">
+                <div style="text-align: center;">10cm x 2.7m</div>
+            </td>
+            <td style="padding:0;width: 33.3333%;border: 1px solid black;
+  border-collapse: collapse;">
+                <div style="text-align: center;">12</div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:0;width: 32.5758%;border: 1px solid black;
+  border-collapse: collapse;">
+                <div style="text-align: center;">PAD15</div>
+            </td>
+            <td style="padding:0;width: 34.0909%;border: 1px solid black;
+  border-collapse: collapse;">
+                <div style="text-align: center;">15cm x 2.7m</div>
+            </td>
+            <td style="padding:0;width: 33.3333%;border: 1px solid black;
+  border-collapse: collapse;">
+                <div style="text-align: center;">12</div>
+            </td>
+        </tr>
+    </tbody>
+</table>
