@@ -204,7 +204,7 @@
             <div class="section-title">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center">
-                        <h2>Our <span class="color-defult">Services</span></h2>
+                        <h2>Our <span class="color-defult">Category</span></h2>
                         <div class="line-border-center bg-defult"></div>
                         <p>Repellendus error placeat numquam doloribus perferendis consequatur maxime molestiae soluta Corporis quidem quaerat accusantium omnis repudiandae nulla recusandae</p>
                     </div>
@@ -215,9 +215,10 @@
                     <div class="col-xs-12 col-sm-6 col-md-4">
                         <div class="service-item text-center style-3">
                             <span class="flaticon-heart-1"></span>
-                            <h4><a href="#">Heart Transplants</a></h4>
+                            <h4><a href="#">Body care</a></h4>
                             <div class="border-center"></div>
-                            <p> Provide direct support to an individual, family or community by paying medical expenses for service.</p>
+                            <p> Body care involves a holistic approach to maintaining the health and appearance of one's skin and body,
+                                 encompassing skincare, hygiene, and grooming practices to promote well-being and confidence. </p>
                             <button type="submit" class="btn btn-theme margin-top-20" data-text="Send Message">Read More</button>
                         </div>
                     </div>
@@ -233,7 +234,7 @@
                     <div class="col-xs-12 col-sm-6 col-md-4">
                         <div class="service-item text-center style-3">
                             <span class="flaticon-stomach"></span>
-                            <h4><a href="#">Gastroenterology</a></h4>
+                            <h4><a href="#">Face care</a></h4>
                             <div class="border-center"></div>
                             <p> Provide direct support to an individual, family or community by paying medical expenses for service.</p>
                             <button type="submit" class="btn btn-theme margin-top-20" data-text="Send Message">Read More</button>
@@ -242,7 +243,7 @@
                     <div class="col-xs-12 col-sm-6 col-md-4">
                         <div class="service-item text-center style-3">
                             <span class="flaticon-brain-2"></span>
-                            <h4><a href="#">Neurosciences</a></h4>
+                            <h4><a href="#">Electric massagers</a></h4>
                             <div class="border-center"></div>
                             <p> Provide direct support to an individual, family or community by paying medical expenses for service.</p>
                             <button type="submit" class="btn btn-theme margin-top-20" data-text="Send Message">Read More</button>
@@ -251,7 +252,7 @@
                     <div class="col-xs-12 col-sm-6 col-md-4">
                         <div class="service-item text-center style-3">
                             <span class="flaticon-spine-bone"></span>
-                            <h4><a href="#">Spine Care</a></h4>
+                            <h4><a href="#">Haircare Products</a></h4>
                             <div class="border-center"></div>
                             <p> Provide direct support to an individual, family or community by paying medical expenses for service.</p>
                             <button type="submit" class="btn btn-theme margin-top-20" data-text="Send Message">Read More</button>
@@ -260,7 +261,7 @@
                     <div class="col-xs-12 col-sm-6 col-md-4">
                         <div class="service-item text-center style-3">
                             <span class="flaticon-virus"></span>
-                            <h4><a href="#">Cancer Care</a></h4>
+                            <h4><a href="#">Cosmetics and Makeup</a></h4>
                             <div class="border-center"></div>
                             <p> Provide direct support to an individual, family or community by paying medical expenses for service.</p>
                             <button type="submit" class="btn btn-theme margin-top-20" data-text="Send Message">Read More</button>
