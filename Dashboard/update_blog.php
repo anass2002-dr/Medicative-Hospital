@@ -1,5 +1,5 @@
 <?php
-  include 'Config_dashboard.php';
+include 'Config_dashboard.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +56,7 @@
                       while ($row = $result->fetch_assoc()) {
                         $title = $row["TITLE"];
                         $blog = $row["CONTENT"];
-                        $blog_short=$row["BLOG_SHORT"];
+                        $blog_short = $row["BLOG_SHORT"];
                         $product_link = $row["PRODUCT_LINK"];
                         $category_id = $row["CATEGORY_ID"];
                       }
@@ -105,7 +105,7 @@
                                 </div>
                                 <div class='form-group'>
                                 <label for='blog-short'>Enter your short Description</label>
-                                <textarea name='blog-short' id='blog-short' class='form-control' rows='10'>$blog_short</textarea>
+                                <textarea name='blog_short' id='blog-short' class='form-control' rows='10'>$blog_short</textarea>
                                 </div>
                                 <div class='form-group'>
                                 <label for='blog'>Enter your html code</label>

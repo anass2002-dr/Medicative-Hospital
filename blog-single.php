@@ -1,3 +1,11 @@
+<?php
+$id = "";
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+} else {
+    header('Location:error.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +56,9 @@
         </div>
     </section>
     <?php
-    $query = "select * from blog where BLOG_ID=22";
+
+    $query = "SELECT * FROM blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID
+    WHERE b.BLOG_ID=$id";
     $result = $conn->query($query);
     $row = mysqli_fetch_assoc($result);
     $blog_id = $row["BLOG_ID"];
@@ -57,18 +67,8 @@
     $product_link = $row["PRODUCT_LINK"];
     $photo = $row["PHOTO"];
     $video = $row["VIDEO"];
-    $category_id = $row["CATEGORY_ID"];
     $created_date = $row["CREATED_DATE"];
-    // if ($result->num_rows > 0) {
-    //     while ($row = $result->fetch_assoc()) {
-
-    //     }
-    // }
-    $query2 = "select * from category where CATEGORY_ID=" . $category_id;
-    $result2 = $conn->query($query2);
-    $row = mysqli_fetch_assoc($result2);
     $category_name = $row["CATEGORY_NAME"];
-
     ?>
     <!-- Blog Posts -->
     <div class="bg-f8">
@@ -139,6 +139,7 @@
                                 <li>Category name : $category_name</li>
                                 <li>Posted June $created_date</li>
                             </ul>
+                            <br>
                             <h3><a href='#'> $title</a></h3>
                             <p>
                                 $blog

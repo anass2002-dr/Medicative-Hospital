@@ -79,7 +79,7 @@
 
                     <div class="form-group">
                       <label for='blog-short'>Enter your short Description</label>
-                      <textarea name='blog-short' id='blog-short' class='form-control' rows='10'></textarea>
+                      <textarea name='blog_short' id='blog-short' class='form-control' rows='10'></textarea>
                     </div>
                     <div class="form-group">
                       <label for='blog'>Enter your html code</label>
@@ -87,10 +87,10 @@
                     </div>
                     <div class="form-group">
                       <button type="submit" class="btn btn-primary me-2 text-light" id="submit">Submit</button>
-                      <a href="./preveiw_blog.php" target="_blank" class="btn btn-success text-light" >Preview</a>
+                      <a href="./preveiw_blog.php" target="_blank" class="btn btn-success text-light">Preview</a>
 
                     </div>
-                    
+
                   </form>
                 </div>
               </div>

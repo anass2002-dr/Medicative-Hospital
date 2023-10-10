@@ -52,42 +52,46 @@ include "Config.php";
                 <div class="row">
                     <div class="blog-feature">
                         <?php
-                            $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID;";
-                            $result = $conn->query($query);
-                            // $row = mysqli_fetch_assoc($result);
-                            
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    $BLOG_ID = $row["BLOG_ID"];
-                                    $TITLE = $row["TITLE"];
-                                    $BLOG_SHORT = $row["BLOG_SHORT"];
-                                    $CATEGORY_NAME = $row["CATEGORY_NAME"];
-                                    $PHOTO = $row["PHOTO"];
-                                    $CREATED_DATE = $row["CREATED_DATE"];
-                                    echo "<div class='col-md-4 col-sm-6 col-xs-12'>
+                        $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID;";
+                        $result = $conn->query($query);
+                        // $row = mysqli_fetch_assoc($result);
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $BLOG_ID = $row["BLOG_ID"];
+                                $TITLE = $row["TITLE"];
+                                $BLOG_SHORT = $row["BLOG_SHORT"];
+                                $CATEGORY_NAME = $row["CATEGORY_NAME"];
+                                $PHOTO = $row["PHOTO"];
+                                $CREATED_DATE = $row["CREATED_DATE"];
+                                if (strlen($BLOG_SHORT) > 160) {
+                                    $BLOG_SHORT = substr($BLOG_SHORT, 0, 160);
+                                }
+                                // for ($i = 0; $i < 160; $i++) {
+                                //     $short_b = $short_b + $BLOG_SHORT[$i];
+                                // }
+
+                                echo "<div class='col-md-4 col-sm-6 col-xs-12'>
                                         <div class='blog-item style-1'>
-                                            <div class='blog-date text-center'>
-                                                <i class='pe-7s-link'></i>
+                                            
+                                            <a href='Blog-single.php?id=$BLOG_ID'><div class='blog-img'><img src='img/blog/$PHOTO' alt=''>
+                                                
                                             </div>
-                                            <div class='blog-img'><a href='log-single.php'><img src='img/blog/$PHOTO' alt=''></a>
-                                                <div class='blog-event-date'>
-                                                    <h3>$CREATED_DATE</h3>
-                                                </div>
-                                            </div>
+                                            </a>
                                             <div class='blog-content'>
                                                 <a href='blog-single.php?id=$BLOG_ID'>
                                                     <h4>$TITLE </h4>
                                                 </a>
-                                                <i class='fa fa-user-o'></i> <a href='blog-single.php?id=$BLOG_ID'>Admin</a> | <i class='fa fa-heart-o'></i> <a href='blog-single.php?id=$BLOG_ID'>Category :$CATEGORY_NAME </a>
-                                                <p>$BLOG_SHORT</p>
+                                                <i class='fa fa-user-o'></i> <a href='blog-single.php?id=$BLOG_ID'>Admin</a> | <i class='fa fa-heart-o'></i> <a href='blog-single.php?id=$BLOG_ID'>Category :$CATEGORY_NAME </a>|<br> <a href='blog-single.php?id=$BLOG_ID'>$CREATED_DATE</a> 
+                                                <p>$BLOG_SHORT ...</p>
                                                 <a href='blog-single.php?id=$BLOG_ID' class='btn btn-simple'>Read More</a>
                                             </div>
                                         </div>
                                     </div>";
-                                }
-                             }
+                            }
+                        }
                         ?>
-                        
+
                         <!-- <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="blog-item style-1">
                                 <div class="blog-date text-center">

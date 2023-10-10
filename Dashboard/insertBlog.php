@@ -22,7 +22,7 @@ $photo = $newfilename;
 $video = $newfilenamev;
 $product_link = $_POST['product_link'];
 $blog = $_POST['blog'];
-$blog_short = $_POST['blog-short'];
+$blog_short = $_POST['blog_short'];
 $date = date('Y-m-d');
 
 if (!empty($title) and !empty($category) and !empty($photo) and !empty($blog) and !empty($blog_short)) {
