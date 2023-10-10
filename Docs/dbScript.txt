@@ -33,6 +33,7 @@ create table ADMIN
    PASSWORD             varchar(30),
    FIRST_NAME            varchar(30),
    LAST_NAME            varchar(20),
+   PICTURE              text,
    primary key (ADMIN_ID)
 );
 
@@ -106,64 +107,3 @@ ALTER TABLE COLLECTION_PHOTOS ADD CONSTRAINT FK_COLLECTION_PHOTO_BLOG FOREIGN KE
 
 
 
-<table style="width: 100%;border: 1px solid black;
-  border-collapse: collapse;">
-    <tbody>
-        <tr>
-            <td style="padding:0;width: 32.5758%;border: 1px solid black;
-  border-collapse: collapse;">
-                <div style="text-align: center;"><strong><span style="color: rgb(40, 50, 78);">R&eacute;f&eacute;rences<br></span></strong></div>
-            </td>
-            <td style="padding:0;width: 34.0909%;border: 1px solid black;
-  border-collapse: collapse;">
-                <div style="text-align: center;"><span style="color: rgb(40, 50, 78);"><strong>Taille<br></strong></span></div>
-            </td>
-            <td style="padding:0;width: 33.3333%;border: 1px solid black;
-  border-collapse: collapse;">
-                <div style="text-align: center;"><strong><span style="color: rgb(40, 50, 78);">Condition</span></strong></div>
-            </td>
-        </tr>
-        <tr>
-            <td style="padding:0;width: 32.5758%;border: 1px solid black;
-  border-collapse: collapse;">
-                <div style="text-align: center;">PAD05</div>
-            </td>
-            <td style="padding:0;width: 34.0909%;border: 1px solid black;
-  border-collapse: collapse; text-align: center;">
-                <div style="text-align: center;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;5cm x 2.7m &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-            </td>
-            <td style="padding:0;width: 33.3333%;border: 1px solid black;
-  border-collapse: collapse; text-align: center;">
-                <div style="text-align: center;">24</div>
-            </td>
-        </tr>
-        <tr>
-            <td style="padding:0;width: 32.5758%;border: 1px solid black;
-  border-collapse: collapse;">
-                <div style="text-align: center;">PAD10</div>
-            </td>
-            <td style="padding:0;width: 34.0909%;border: 1px solid black;
-  border-collapse: collapse;">
-                <div style="text-align: center;">10cm x 2.7m</div>
-            </td>
-            <td style="padding:0;width: 33.3333%;border: 1px solid black;
-  border-collapse: collapse;">
-                <div style="text-align: center;">12</div>
-            </td>
-        </tr>
-        <tr>
-            <td style="padding:0;width: 32.5758%;border: 1px solid black;
-  border-collapse: collapse;">
-                <div style="text-align: center;">PAD15</div>
-            </td>
-            <td style="padding:0;width: 34.0909%;border: 1px solid black;
-  border-collapse: collapse;">
-                <div style="text-align: center;">15cm x 2.7m</div>
-            </td>
-            <td style="padding:0;width: 33.3333%;border: 1px solid black;
-  border-collapse: collapse;">
-                <div style="text-align: center;">12</div>
-            </td>
-        </tr>
-    </tbody>
-</table>

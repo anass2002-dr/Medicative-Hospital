@@ -46,6 +46,7 @@
                     $result = $conn->query($query);
                     $title = "";
                     $blog = "";
+                    $blog_short = "";
                     $product_link = "";
                     $photo = "";
                     $video = "";
@@ -55,6 +56,7 @@
                       while ($row = $result->fetch_assoc()) {
                         $title = $row["TITLE"];
                         $blog = $row["CONTENT"];
+                        $blog_short=$row["BLOG_SHORT"];
                         $product_link = $row["PRODUCT_LINK"];
                         $category_id = $row["CATEGORY_ID"];
                       }
@@ -101,13 +103,20 @@
                                 <label for='product_link' class='form-label'>product link</label>
                                 <input class='form-control' type='text' id='product_link' name='product_link' placeholder='add product link'value='$product_link' require>
                                 </div>
-
+                                <div class='form-group'>
+                                <label for='blog-short'>Enter your short Description</label>
+                                <textarea name='blog-short' id='blog-short' class='form-control' rows='10'>$blog_short</textarea>
+                                </div>
                                 <div class='form-group'>
                                 <label for='blog'>Enter your html code</label>
-                                <textarea name='blog' id='blog' class='form-control'rows='10'>$blog</textarea>                   
+                                <textarea name='blog' id='blog' class='form-control'rows='50'>$blog</textarea>                   
                                 </div>
 
-                                <button type='submit' class='btn btn-primary me-2 text-light' id='submit'>Submit</button>
+                                <div class='form-group'>
+                                  <button type='submit' class='btn btn-primary me-2 text-light' id='submit'>Submit</button>
+                                  <a href='./preveiw_blog.php' target='_blank' class='btn btn-success text-light' >Preview</a>
+
+                                </div>
 
                             </form>
                         ";

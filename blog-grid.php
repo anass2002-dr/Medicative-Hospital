@@ -1,5 +1,7 @@
 <?php
 include "Config.php";
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,27 +51,44 @@ include "Config.php";
             <div class="section-content">
                 <div class="row">
                     <div class="blog-feature">
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="blog-item style-1">
-                                <div class="blog-date text-center">
-                                    <i class="pe-7s-link"></i>
-                                </div>
-                                <div class="blog-img"><a href="log-single.php"><img src="img/blog/1.jpg" alt=""></a>
-                                    <div class="blog-event-date">
-                                        <h3>13 <small>Jun</small></h3>
-                                    </div>
-                                </div>
-                                <div class="blog-content">
-                                    <a href="blog-single.php">
-                                        <h4>What's the Right Choice? </h4>
-                                    </a>
-                                    <i class="fa fa-user-o"></i> <a href="blog-single.php">Admin</a> | <i class="fa fa-heart-o"></i> <a href="blog-single.php">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="blog-single.php"> Comments: 10</a>
-                                    <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="blog-single.php" class="btn btn-simple">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-12">
+                        <?php
+                            $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID;";
+                            $result = $conn->query($query);
+                            // $row = mysqli_fetch_assoc($result);
+                            
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    $BLOG_ID = $row["BLOG_ID"];
+                                    $TITLE = $row["TITLE"];
+                                    $BLOG_SHORT = $row["BLOG_SHORT"];
+                                    $CATEGORY_NAME = $row["CATEGORY_NAME"];
+                                    $PHOTO = $row["PHOTO"];
+                                    $CREATED_DATE = $row["CREATED_DATE"];
+                                    echo "<div class='col-md-4 col-sm-6 col-xs-12'>
+                                        <div class='blog-item style-1'>
+                                            <div class='blog-date text-center'>
+                                                <i class='pe-7s-link'></i>
+                                            </div>
+                                            <div class='blog-img'><a href='log-single.php'><img src='img/blog/$PHOTO' alt=''></a>
+                                                <div class='blog-event-date'>
+                                                    <h3>$CREATED_DATE</h3>
+                                                </div>
+                                            </div>
+                                            <div class='blog-content'>
+                                                <a href='blog-single.php?id=$BLOG_ID'>
+                                                    <h4>$TITLE </h4>
+                                                </a>
+                                                <i class='fa fa-user-o'></i> <a href='blog-single.php?id=$BLOG_ID'>Admin</a> | <i class='fa fa-heart-o'></i> <a href='blog-single.php?id=$BLOG_ID'>Category :$CATEGORY_NAME </a>
+                                                <p>$BLOG_SHORT</p>
+                                                <a href='blog-single.php?id=$BLOG_ID' class='btn btn-simple'>Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>";
+                                }
+                             }
+                        ?>
+                        
+                        <!-- <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="blog-item style-1">
                                 <div class="blog-date text-center">
                                     <i class="pe-7s-link"></i>
@@ -168,7 +187,7 @@ include "Config.php";
                                     <a href="blog-single.php" class="btn btn-simple">Read More</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

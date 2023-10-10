@@ -83,11 +83,14 @@
                     </div>
                     <div class="form-group">
                       <label for='blog'>Enter your html code</label>
-                      <textarea name='blog' id='blog' class='form-control' rows='10'></textarea>
+                      <textarea name='blog' id='blog' class='form-control' rows='50'></textarea>
                     </div>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-primary me-2 text-light" id="submit">Submit</button>
+                      <a href="./preveiw_blog.php" target="_blank" class="btn btn-success text-light" >Preview</a>
 
-                    <button type="submit" class="btn btn-primary me-2 text-light" id="submit">Submit</button>
-
+                    </div>
+                    
                   </form>
                 </div>
               </div>
