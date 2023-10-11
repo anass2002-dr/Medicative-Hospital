@@ -248,20 +248,20 @@
                                     <h4><a href='category.php?id=$CATEGORY_ID'>$CATEGORY_NAME</a></h4>
                                     <div class='border-center'></div>
                                     <p>$DESCRIPTION ...</p>
-                                    <button type='submit' class='btn btn-theme margin-top-20' data-text='Send Message'>Read More</button>
+                                    <a href='category.php?id=$CATEGORY_ID' class='btn btn-theme margin-top-20' data-text='Send Message'>Read More</a>
                                 </div>
                             </div>";
                         }
                     }
                     ?>
-                    
+
                 </div>
                 <div class="row">
-                <div class="text-center">
-                    <a href="" class="btn btn-theme">See All</a>
+                    <div class="text-center">
+                        <a href="" class="btn btn-theme">See All</a>
+                    </div>
                 </div>
             </div>
-        </div>
     </section>
     <!-- service end -->
 

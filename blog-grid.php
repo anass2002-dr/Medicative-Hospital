@@ -52,7 +52,13 @@ include "Config.php";
                 <div class="row">
                     <div class="blog-feature">
                         <?php
-                        $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID;";
+                        $query = '';
+                        if (isset($_GET['id'])) {
+                            $id = $_GET['id'];
+                            $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID where b.CATEGORY_ID=$id;";
+                        } else {
+                            $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID;";
+                        }
                         $result = $conn->query($query);
                         // $row = mysqli_fetch_assoc($result);
 
