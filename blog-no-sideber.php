@@ -46,59 +46,39 @@
     <div class="blog-inner-section bg-f8">
         <div class="container">
             <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <div class="blog-item style-1 margin-bottom-30">
-                        <div class="blog-img"><a href="#"><img src="img/blog/w1.jpg" alt=""></a>
-                            <div class="blog-event-date">
-                                <h3>11 <small>Jun</small></h3>
+                <?php
+                    include 'Config.php';
+                    $query = "SELECT * FROM category LIMIT 6";
+                    $result = $conn->query($query);
+
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $CATEGORY_ID = $row["CATEGORY_ID"];
+                            $CATEGORY_NAME = $row["CATEGORY_NAME"];
+                            $DESCRIPTION = $row["DESCRIPTION"];
+                            $PHOTO_PATH = $row["PHOTO_PATH"];
+                            echo "<div class='col-md-10 col-md-offset-1'>
+                            <div class='blog-item style-1 margin-bottom-30'>
+                                <div class='blog-img'><a href='#'><img src='img/category/$PHOTO_PATH' alt=''></a>
+                                    
+                                </div>
+                                <div class='blog-content w100'>
+                                                               
+                                    <a href='#'>
+                                        <h4>$CATEGORY_NAME</h4>
+                                    </a>
+
+                                    <p>$DESCRIPTION</p>
+                                    <a href='#' class='btn btn-simple hvr-bounce-to-top'>Read More</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="blog-content w100">
-                            <div class="blog-date margin-bottom-20">
-                                <i class="fa fa-user-o"></i> <a href="#">Admin</a> | <i class="fa fa-heart-o"></i> <a href="#">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="#"> Comments: 10</a>
-                            </div>
-                            <a href="#">
-                                <h4>Your Blog Title Here</h4>
-                            </a>
-                            <p>Eius doloribus consequatur ratione, assumenda ipsum, quos itaque inventore ducimus voluptate, quas aliquid commodi sint. Nihil aut dolorem sed temporibus! At, ea dignissimos. Magni id fuga quidem tempora doloremque eaque dicta quia assumenda, odit ullam voluptate modi soluta, corrupti eum possimus. Possimus.</p>
-                            <a href="#" class="btn btn-simple hvr-bounce-to-top">Read More</a>
-                        </div>
-                    </div>
-                    <div class="blog-item style-1 margin-bottom-30">
-                        <div class="blog-img"><a href="#"><img src="img/blog/w2.jpg" alt=""></a>
-                            <div class="blog-event-date">
-                                <h3>11 <small>Jun</small></h3>
-                            </div>
-                        </div>
-                        <div class="blog-content w100">
-                            <div class="blog-date margin-bottom-20">
-                                <i class="fa fa-user-o"></i> <a href="#">Admin</a> | <i class="fa fa-heart-o"></i> <a href="#">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="#"> Comments: 10</a>
-                            </div>
-                            <a href="#">
-                                <h4>Your Blog Title Here</h4>
-                            </a>
-                            <p>Eius doloribus consequatur ratione, assumenda ipsum, quos itaque inventore ducimus voluptate, quas aliquid commodi sint. Nihil aut dolorem sed temporibus! At, ea dignissimos. Magni id fuga quidem tempora doloremque eaque dicta quia assumenda, odit ullam voluptate modi soluta, corrupti eum possimus. Possimus.</p>
-                            <a href="#" class="btn btn-simple hvr-bounce-to-top">Read More</a>
-                        </div>
-                    </div>
-                    <div class="blog-item style-1 margin-bottom-30">
-                        <div class="blog-img"><a href="#"><img src="img/blog/w3.jpg" alt=""></a>
-                            <div class="blog-event-date">
-                                <h3>11 <small>Jun</small></h3>
-                            </div>
-                        </div>
-                        <div class="blog-content w100">
-                            <div class="blog-date margin-bottom-20">
-                                <i class="fa fa-user-o"></i> <a href="#">Admin</a> | <i class="fa fa-heart-o"></i> <a href="#">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="#"> Comments: 10</a>
-                            </div>
-                            <a href="#">
-                                <h4>Your Blog Title Here</h4>
-                            </a>
-                            <p>Eius doloribus consequatur ratione, assumenda ipsum, quos itaque inventore ducimus voluptate, quas aliquid commodi sint. Nihil aut dolorem sed temporibus! At, ea dignissimos. Magni id fuga quidem tempora doloremque eaque dicta quia assumenda, odit ullam voluptate modi soluta, corrupti eum possimus. Possimus.</p>
-                            <a href="#" class="btn btn-simple hvr-bounce-to-top">Read More</a>
-                        </div>
-                    </div>
-                </div>
+                            
+                        </div>";
+                        }
+                    }
+                ?>
+                
             </div>
         </div>
     </div>

@@ -142,13 +142,12 @@
         <div class="container">
             <div class="section-content">
                 <div class="row">
-                    <!-- <div class="col-12">
-                        <img src="./img/beauty-1.jpg" alt="" srcset="">
-                    </div> -->
-                    <div class="col-md-7">
+                    <div class="col-12">
+                        <img src="./img/beauty-2.jpg" alt="" srcset="">
+                    </div>
+                    <!-- <div class="col-md-7">
                         <h2>Why chose us</h2>
-                        <!-- <h3 class="color-defult">Get a world class Health service now</h3> -->
-                        <!-- <p class="lead">Medicative Hospital is here for you. Call <span class="ff-p">+00 999 3030</span></p> -->
+                        
                         <p>
                             <span class="color-defult">At BeautyMedic</span>
                             , we are committed to being your trusted
@@ -203,9 +202,9 @@
                     </div>
                     <div class="col-md-5">
                         <div>
-                            <img alt="" src="img/services/w1.jpg">
+                            <img alt="" src="img/services/s2.jpg">
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -248,15 +247,18 @@
                                     <span class='flaticon-heart-1'></span>
                                     <h4><a href='category.php?id=$CATEGORY_ID'>$CATEGORY_NAME</a></h4>
                                     <div class='border-center'></div>
-                                    <p>$DESCRIPTION </p>
+                                    <p>$DESCRIPTION ...</p>
                                     <button type='submit' class='btn btn-theme margin-top-20' data-text='Send Message'>Read More</button>
                                 </div>
                             </div>";
                         }
                     }
                     ?>
-
-
+                    
+                </div>
+                <div class="row">
+                <div class="text-center">
+                    <a href="" class="btn btn-theme">See All</a>
                 </div>
             </div>
         </div>
