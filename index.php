@@ -211,62 +211,38 @@
                 </div>
             </div>
             <div class="section-content">
+                
                 <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="service-item text-center style-3">
-                            <span class="flaticon-heart-1"></span>
-                            <h4><a href="#">Body care</a></h4>
-                            <div class="border-center"></div>
-                            <p> Body care involves a holistic approach to maintaining the health and appearance of one's skin and body,
-                                 encompassing skincare, hygiene, and grooming practices to promote well-being and confidence. </p>
-                            <button type="submit" class="btn btn-theme margin-top-20" data-text="Send Message">Read More</button>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="service-item text-center style-3">
-                            <span class="flaticon-broken-bone"></span>
-                            <h4><a href="#">Orthopaedics</a></h4>
-                            <div class="border-center"></div>
-                            <p> Provide direct support to an individual, family or community by paying medical expenses for service.</p>
-                            <button type="submit" class="btn btn-theme margin-top-20" data-text="Send Message">Read More</button>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="service-item text-center style-3">
-                            <span class="flaticon-stomach"></span>
-                            <h4><a href="#">Face care</a></h4>
-                            <div class="border-center"></div>
-                            <p> Provide direct support to an individual, family or community by paying medical expenses for service.</p>
-                            <button type="submit" class="btn btn-theme margin-top-20" data-text="Send Message">Read More</button>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="service-item text-center style-3">
-                            <span class="flaticon-brain-2"></span>
-                            <h4><a href="#">Electric massagers</a></h4>
-                            <div class="border-center"></div>
-                            <p> Provide direct support to an individual, family or community by paying medical expenses for service.</p>
-                            <button type="submit" class="btn btn-theme margin-top-20" data-text="Send Message">Read More</button>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="service-item text-center style-3">
-                            <span class="flaticon-spine-bone"></span>
-                            <h4><a href="#">Haircare Products</a></h4>
-                            <div class="border-center"></div>
-                            <p> Provide direct support to an individual, family or community by paying medical expenses for service.</p>
-                            <button type="submit" class="btn btn-theme margin-top-20" data-text="Send Message">Read More</button>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="service-item text-center style-3">
-                            <span class="flaticon-virus"></span>
-                            <h4><a href="#">Cosmetics and Makeup</a></h4>
-                            <div class="border-center"></div>
-                            <p> Provide direct support to an individual, family or community by paying medical expenses for service.</p>
-                            <button type="submit" class="btn btn-theme margin-top-20" data-text="Send Message">Read More</button>
-                        </div>
-                    </div>
+                    <?php
+                        include 'Config.php';
+                        $query = "SELECT * FROM category LIMIT 6";
+                        $result = $conn->query($query);
+
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $CATEGORY_ID = $row["CATEGORY_ID"];
+                                $CATEGORY_NAME = $row["CATEGORY_NAME"];
+                                $DESCRIPTION = $row["DESCRIPTION"];
+                                
+                                if (strlen($DESCRIPTION) > 95) {
+                                    $DESCRIPTION = substr($DESCRIPTION, 0, 95);
+                                }
+                                
+                                echo "<div class='col-xs-12 col-sm-6 col-md-4'>
+                                <div class='service-item text-center style-3'>
+                                    <span class='flaticon-heart-1'></span>
+                                    <h4><a href='category.php?id=$CATEGORY_ID'>$CATEGORY_NAME</a></h4>
+                                    <div class='border-center'></div>
+                                    <p>$DESCRIPTION </p>
+                                    <button type='submit' class='btn btn-theme margin-top-20' data-text='Send Message'>Read More</button>
+                                </div>
+                            </div>";
+                            }
+                        }
+                    ?>
+                    
+                    
                 </div>
             </div>
         </div>
