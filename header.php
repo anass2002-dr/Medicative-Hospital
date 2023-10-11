@@ -48,22 +48,35 @@ include "./Config.php";
                                 <a href="index.php" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"><span data-hover="Home">Home </span> </a>
 
                             </li>
+
+
                             <li class="dropdown">
-                                <a href="#" class="" aria-haspopup="true" aria-expanded="false"><span data-hover="Depertment">Medical Product </span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span data-hover="Depertment">Category <i class="fa fa-angle-down" aria-hidden="true"></i></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">BODY CARE</a>
+                                    </li>
+                                    <li><a href="#">Cosmetics and Makeup</a>
+                                    </li>
+                                    <li><a href="#">HAIR CARE</a>
+                                    </li>
+                                    <li><a href="#">MASSAGE DEVICES</a>
+                                    </li>
+                                    <li><a href="#">TOOLS AND DEVICES</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="" aria-haspopup="true" aria-expanded="false"> <span data-hover="Doctors">health and wellbeing </span></a>
+                            <li class="dropdown active">
+                                <a href="index.php" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"><span data-hover="Home">Our suggestion </span> </a>
 
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="" aria-haspopup="true" aria-expanded="false"><span data-hover="Portfolio">Medical Sports </span></a>
-
-                            </li>
-
                             <li class="dropdown">
                                 <a href="blog-grid.php" class="" aria-haspopup="true" aria-expanded="false"><span data-hover="Blog">Blogs </span></a>
 
                             </li>
+                            <li class="dropdown">
+                                <a href="#" class="" aria-haspopup="true" aria-expanded="false"><span data-hover="Depertment">About-us </span></a>
+                            </li>
+
                             <li class="dropdown">
                                 <a href="contact-style-2.php" class="" aria-haspopup="true" aria-expanded="false"><span data-hover="Contact">Contact </span></a>
 

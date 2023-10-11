@@ -142,11 +142,25 @@
         <div class="container">
             <div class="section-content">
                 <div class="row">
+                    <!-- <div class="col-12">
+                        <img src="./img/beauty-1.jpg" alt="" srcset="">
+                    </div> -->
                     <div class="col-md-7">
                         <h2>Why chose us</h2>
-                        <h3 class="color-defult">Get a world class Health service now</h3>
-                        <p class="lead">Medicative Hospital is here for you. Call <span class="ff-p">+00 999 3030</span></p>
-                        <p><span class="fw-b">Consectetur</span> adipisicing elit. Ratione ut culpa, illo, odit tempore dignissimos nisi consequatur voluptatem, eveniet quaerat officiis sed ad et fugiat praesentium nesciunt sunt ipsa quam magnam.</p>
+                        <!-- <h3 class="color-defult">Get a world class Health service now</h3> -->
+                        <!-- <p class="lead">Medicative Hospital is here for you. Call <span class="ff-p">+00 999 3030</span></p> -->
+                        <p>
+                            <span class="color-defult">At BeautyMedic</span>
+                            , we are committed to being your trusted
+                            source for beauty and medical products. What sets us apart
+                            is our unwavering dedication to curate only the best, high-quality
+                            products at the most competitive prices. Our team of experts rigorously researches
+                            and selects every item in our collection, ensuring that each product meets our stringent
+                            standards for safety and effectiveness. We understand that your beauty and health are paramount,
+                            and that's why we take every measure to provide you with an exceptional shopping experience.
+                            With a focus on transparency, a wide range of products, and top-notch customer service, we invite you to choose us
+                            for all your beauty and medical needs, knowing that your satisfaction and well-being are our top priorities.
+                        </p>
                         <div class="row margin-top-20">
                             <div class="col-md-6">
                                 <img class="margin-top-10" src="img/services/s1.jpg" alt="">
@@ -211,25 +225,25 @@
                 </div>
             </div>
             <div class="section-content">
-                
+
                 <div class="row">
                     <?php
-                        include 'Config.php';
-                        $query = "SELECT * FROM category LIMIT 6";
-                        $result = $conn->query($query);
+                    include 'Config.php';
+                    $query = "SELECT * FROM category LIMIT 6";
+                    $result = $conn->query($query);
 
 
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                $CATEGORY_ID = $row["CATEGORY_ID"];
-                                $CATEGORY_NAME = $row["CATEGORY_NAME"];
-                                $DESCRIPTION = $row["DESCRIPTION"];
-                                
-                                if (strlen($DESCRIPTION) > 95) {
-                                    $DESCRIPTION = substr($DESCRIPTION, 0, 95);
-                                }
-                                
-                                echo "<div class='col-xs-12 col-sm-6 col-md-4'>
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $CATEGORY_ID = $row["CATEGORY_ID"];
+                            $CATEGORY_NAME = $row["CATEGORY_NAME"];
+                            $DESCRIPTION = $row["DESCRIPTION"];
+
+                            if (strlen($DESCRIPTION) > 95) {
+                                $DESCRIPTION = substr($DESCRIPTION, 0, 95);
+                            }
+
+                            echo "<div class='col-xs-12 col-sm-6 col-md-4'>
                                 <div class='service-item text-center style-3'>
                                     <span class='flaticon-heart-1'></span>
                                     <h4><a href='category.php?id=$CATEGORY_ID'>$CATEGORY_NAME</a></h4>
@@ -238,11 +252,11 @@
                                     <button type='submit' class='btn btn-theme margin-top-20' data-text='Send Message'>Read More</button>
                                 </div>
                             </div>";
-                            }
                         }
+                    }
                     ?>
-                    
-                    
+
+
                 </div>
             </div>
         </div>
@@ -298,119 +312,7 @@
     <!-- divider end -->
 
     <!-- portfolio start -->
-    <section class="gallery-area">
-        <div class="container">
-            <div class="section-title">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2 text-center">
-                        <h2>Our<span class="color-defult"> Portfolio</span></h2>
-                        <div class="line-border-center bg-defult"></div>
-                        <p>Repellendus error placeat numquam doloribus perferendis consequatur maxime molestiae <br>quidem quaerat accusantium omnis repudiandae nulla recusandae</p>
-                    </div>
-                </div>
-            </div>
-            <div class="section-content">
-                <div class="row clearfix">
-                    <div class="gallery-filter-item text-center">
-                        <ul class="gallery-filter">
-                            <li class="active"><a href="#" data-filter="*" class="current">All Projects</a></li>
-                            <li class=""><a href="#" data-filter=".gp-two" class="current"> Buliding</a></li>
-                            <li class=""><a href="#" data-filter=".gp-three" class="current">Industry</a></li>
-                            <li class=""><a href="#" data-filter=".gp-four" class="current">Transportation</a></li>
-                            <li class=""><a href="#" data-filter=".gp-five" class="current">Residential</a></li>
-                        </ul>
-                    </div>
 
-                    <div class="gallery col-3 gutter">
-                        <div class="gallery-item gp-two">
-                            <div class="thumb">
-                                <img src="img/portfolio/1.jpg" alt="">
-                                <div class="gallery-hover">
-                                    <div class="gallery-info">
-                                        <div class="gallery-btn">
-                                            <a href="img/portfolio/1.jpg" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view"> <i class="pe-7s-graph2"></i> </a>
-                                        </div>
-                                        <h4><a href="img/portfolio/1.jpg" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view">Your title here</a></h4>
-                                        <p><a href="#">Sub Title here</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="gallery-item gp-three">
-                            <div class="thumb">
-                                <img src="img/portfolio/2.jpg" alt="">
-                                <div class="gallery-hover">
-                                    <div class="gallery-info">
-                                        <div class="gallery-btn">
-                                            <a href="img/portfolio/2.jpg" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view"> <i class="pe-7s-graph2"></i> </a>
-                                        </div>
-                                        <h4><a href="img/portfolio/2.jpg" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view">Your title here</a></h4>
-                                        <p><a href="#">Sub Title here</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="gallery-item gp-four">
-                            <div class="thumb">
-                                <img src="img/portfolio/3.jpg" alt="">
-                                <div class="gallery-hover">
-                                    <div class="gallery-info">
-                                        <div class="gallery-btn">
-                                            <a href="img/portfolio/3.jpg" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view"> <i class="pe-7s-graph2"></i> </a>
-                                        </div>
-                                        <h4><a href="img/portfolio/3.jpg" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view">Your title here</a></h4>
-                                        <p><a href="#">Sub Title here</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="gallery-item gp-five">
-                            <div class="thumb">
-                                <img src="img/portfolio/4.jpg" alt="">
-                                <div class="gallery-hover">
-                                    <div class="gallery-info">
-                                        <div class="gallery-btn">
-                                            <a href="img/portfolio/4.jpg" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view"> <i class="pe-7s-graph2"></i> </a>
-                                        </div>
-                                        <h4><a href="img/portfolio/4.jpg" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view">Your title here</a></h4>
-                                        <p><a href="#">Sub Title here</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="gallery-item gp-two">
-                            <div class="thumb">
-                                <img src="img/portfolio/5.jpg" alt="">
-                                <div class="gallery-hover">
-                                    <div class="gallery-info">
-                                        <div class="gallery-btn">
-                                            <a href="img/portfolio/5.jpg" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view"> <i class="pe-7s-graph2"></i> </a>
-                                        </div>
-                                        <h4><a href="img/portfolio/5.jpg" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view">Your title here</a></h4>
-                                        <p><a href="#">Sub Title here</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="gallery-item gp-three">
-                            <div class="thumb">
-                                <img src="img/portfolio/6.jpg" alt="">
-                                <div class="gallery-hover">
-                                    <div class="gallery-info">
-                                        <div class="gallery-btn">
-                                            <a href="img/portfolio/6.jpg" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view"> <i class="pe-7s-graph2"></i> </a>
-                                        </div>
-                                        <h4><a href="img/portfolio/6.jpg" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view">Your title here</a></h4>
-                                        <p><a href="#">Sub Title here</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- portfolio end -->
 
     <!-- divider start -->
@@ -426,7 +328,7 @@
                         <div class="text-center">
                             <h2>latest<span class="color-defult"> Blogs</span></h2>
                             <div class="line-border-center bg-defult"></div>
-                            <p>Consequatur alias incidunt cumque officiis, quas eius quaerat ut itaque laudantium corporis nobis ipsum, voluptates at, adipisci fugiat hic voluptate consequuntur porro.</p>
+                            <!-- <p>Consequatur alias incidunt cumque officiis, quas eius quaerat ut itaque laudantium corporis nobis ipsum, voluptates at, adipisci fugiat hic voluptate consequuntur porro.</p> -->
                         </div>
                     </div>
                 </div>
@@ -543,85 +445,7 @@
     <!-- Testimonial end -->
 
     <!-- blog start -->
-    <section class="blog-area bg-f8">
-        <div class="container">
-            <div class="section-title">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2 text-center">
-                        <h2>Latest <span class="color-defult">news</span></h2>
-                        <div class="line-border-center bg-defult"></div>
-                        <p>Repellendus error placeat numquam doloribus perferendis consequatur maxime molestiae soluta Corporis quidem quaerat accusantium omnis repudiandae nulla recusandae</p>
-                    </div>
-                </div>
-            </div>
-            <div class="section-content">
-                <div class="row">
-                    <div class="blog-feature">
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="blog-item style-1">
-                                <div class="blog-date text-center">
-                                    <i class="pe-7s-link"></i>
-                                </div>
-                                <div class="blog-img"><a href="#"><img src="img/blog/1.jpg" alt=""></a>
-                                    <div class="blog-event-date">
-                                        <h3>13 <small>Jun</small></h3>
-                                    </div>
-                                </div>
-                                <div class="blog-content">
-                                    <a href="#">
-                                        <h4>What's the Right Choice? </h4>
-                                    </a>
-                                    <i class="fa fa-user-o"></i> <a href="#">Admin</a> | <i class="fa fa-heart-o"></i> <a href="#">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="#"> Comments: 10</a>
-                                    <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="#" class="btn btn-simple">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="blog-item style-1">
-                                <div class="blog-date text-center">
-                                    <i class="pe-7s-link"></i>
-                                </div>
-                                <div class="blog-img"><a href="#"><img src="img/blog/2.jpg" alt=""></a>
-                                    <div class="blog-event-date">
-                                        <h3>17 <small>Jun</small></h3>
-                                    </div>
-                                </div>
-                                <div class="blog-content">
-                                    <a href="#">
-                                        <h4>Caregiver Series </h4>
-                                    </a>
-                                    <i class="fa fa-user-o"></i> <a href="#">Admin</a> | <i class="fa fa-heart-o"></i> <a href="#">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="#"> Comments: 10</a>
-                                    <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="#" class="btn btn-simple">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-12 center-block">
-                            <div class="blog-item style-1">
-                                <div class="blog-date text-center">
-                                    <i class="pe-7s-link"></i>
-                                </div>
-                                <div class="blog-img"><a href="#"><img src="img/blog/3.jpg" alt=""></a>
-                                    <div class="blog-event-date">
-                                        <h3>19 <small>Jun</small></h3>
-                                    </div>
-                                </div>
-                                <div class="blog-content">
-                                    <a href="#">
-                                        <h4>Little Hats, Big Hearts </h4>
-                                    </a>
-                                    <i class="fa fa-user-o"></i> <a href="#">Admin</a> | <i class="fa fa-heart-o"></i> <a href="#">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="#"> Comments: 10</a>
-                                    <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="#" class="btn btn-simple">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
     <!-- blog end -->
 
     <!-- Footer Style start -->
