@@ -39,9 +39,9 @@
                   <h4 class="font-weight-bold mb-0">RoyalUI Dashboard</h4>
                 </div>
                 <div>
-                  <button type="button" class="btn btn-primary btn-icon-text btn-rounded">
-                    <i class="ti-clipboard btn-icon-prepend"></i>Report
-                  </button>
+                  <a href="../index.php" target="_blank" class="btn btn-primary btn-icon-text btn-rounded">
+                    <i class="ti-clipboard btn-icon-prepend"></i>View website
+</a>
                   
                 </div>
               </div>

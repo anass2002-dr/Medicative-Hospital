@@ -40,45 +40,45 @@
             <!-- Third Slide -->
             <div class="item active">
                 <!-- Slide Background -->
-                <img src="img/bg/3.jpg" alt="Slider Images" class="slide-image" />
-                <div class="bs-slider-overlay"></div>
+                <img src="img/slide1.jpg" alt="Slider Images" class="slide-image" />
+                <!-- <div class="bs-slider-overlay"></div> -->
 
-                <div class="slide-text slide_style_left">
+                <!-- <div class="slide-text slide_style_left">
                     <h1 data-animation="animated fadeInRight">The <span class="color-defult"> Medicative </span>Hospital</h1>
                     <p data-animation="animated fadeInLeft">Our team of over 7000 doctors join me in giving you the best <br> of modern healthcare to ensure you stay healthy, always.</p>
                     <a href="#" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">Read more</a>
                     <a href="#" target="_blank" class="btn btn-primary" data-animation="animated fadeInRight">Book Now</a>
-                </div>
+                </div> -->
             </div>
             <!-- End of Slide -->
 
             <!-- Second Slide -->
             <div class="item">
                 <!-- Slide Background -->
-                <img src="img/bg/2.jpg" alt="Slider Images" class="slide-image" />
-                <div class="bs-slider-overlay"></div>
+                <img src="img/slide2.jpg" alt="Slider Images" class="slide-image" />
+                <!-- <div class="bs-slider-overlay"></div> -->
                 <!-- Slide Text Layer -->
-                <div class="slide-text slide_style_center">
+                <!-- <div class="slide-text slide_style_center">
                     <h1 data-animation="animated bounceInDown"> Treat<span class="color-defult"> heart</span> disease.</h1>
                     <p data-animation="animated lightSpeedIn">consectetur adipisicing elit. Eligendi vel ipsam deleniti dignissimos <br> corporis consequatur possimus eaque voluptates.</p>
                     <a href="#" target="_blank" class="btn btn-default" data-animation="animated fadeInUp">Read More</a>
                     <a href="#" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">Donate Now</a>
-                </div>
+                </div> -->
             </div>
             <!-- End of Slide -->
 
             <!-- Third Slide -->
             <div class="item">
                 <!-- Slide Background -->
-                <img src="img/bg/1.jpg" alt="Slider Images" class="slide-image" />
-                <div class="bs-slider-overlay"></div>
+                <img src="img/slide3.jpg" alt="Slider Images" class="slide-image" />
+                <!-- <div class="bs-slider-overlay"></div> -->
                 <!-- Slide Text Layer -->
-                <div class="slide-text slide_style_right">
+                <!-- <div class="slide-text slide_style_right">
                     <h1 data-animation="animated fadeInLeft">Life Wellness<span class="color-defult"> Programs</span></h1>
                     <p data-animation="animated fadeInRight">Stay in touch and in shape with periodic tips from our <br>in-house experts on wellness, fitness and nutrition.</p>
                     <a href="#" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">Read More</a>
                     <a href="#" target="_blank" class="btn btn-primary" data-animation="animated fadeInRight">Donate Now</a>
-                </div>
+                </div> -->
             </div>
             <!-- End of Slide -->
         </div><!-- End of Wrapper For Slides -->
@@ -98,46 +98,17 @@
     </div> <!-- End  bootstrap-touch-slider Slider -->
 
     <!-- divider start -->
-    <section class="about-3col animatedParent animateOnce">
-        <div class="container">
-            <div class="section-content">
-                <div class="row">
-                    <div class="about-feature style-2">
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                            <div class="appointment-item">
-                                <i class="flaticon-ribbon"></i>
-                                <h5><a href="#">Our Doctors</a></h5>
-                                <div class="line-border-center bg-gray margin-bottom-20"></div>
-                                <p>Choose by name, specialty, city and more.</p>
-                                <button class="btn btn-theme btn-sm">Find a Doctor <i class="pe-7s-angle-right"></i></button>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                            <div class="appointment-item">
-                                <i class="flaticon-cardiogram"></i>
-                                <h5><a href="#">Department & Service</a></h5>
-                                <div class="line-border-center bg-gray margin-bottom-20"></div>
-                                <p>Find maps and more for all locations.</p>
-                                <button class="btn btn-theme btn-sm">Get Directions <i class="pe-7s-angle-right"></i></button>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 center-block">
-                            <div class="appointment-item">
-                                <i class="flaticon-first-aid-kit"></i>
-                                <h5><a href="#">Appointments</a></h5>
-                                <div class="line-border-center bg-gray margin-bottom-20"></div>
-                                <p>Click in, walk in or call us today.</p>
-                                <button class="btn btn-theme btn-sm">Get Appointment <i class="pe-7s-angle-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
+    
+    <!-- divider end -->
+    <div class="container">
+        <div class="section-content">
+            <div class="row">
+                <div class="col-12">
+                    <img src="./img/beauty-2.jpg" alt="" srcset="">
                 </div>
             </div>
         </div>
-    </section>
-    <!-- divider end -->
-
-
+    </div>
 
     <!-- service start -->
     <section class="service-area bg-f8 animatedParent animateOnce">
@@ -240,8 +211,6 @@
         </div>
     </section>
     <!-- divider end -->
-
-
     <!-- department start -->
     <section class="bg-f8">
         <div class="container">
