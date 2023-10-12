@@ -137,79 +137,7 @@
     </section>
     <!-- divider end -->
 
-    <!-- welcome start -->
-    <section>
-        <div class="container">
-            <div class="section-content">
-                <div class="row">
-                    <div class="col-12">
-                        <img src="./img/beauty-2.jpg" alt="" srcset="">
-                    </div>
-                    <!-- <div class="col-md-7">
-                        <h2>Why chose us</h2>
-                        
-                        <p>
-                            <span class="color-defult">At BeautyMedic</span>
-                            , we are committed to being your trusted
-                            source for beauty and medical products. What sets us apart
-                            is our unwavering dedication to curate only the best, high-quality
-                            products at the most competitive prices. Our team of experts rigorously researches
-                            and selects every item in our collection, ensuring that each product meets our stringent
-                            standards for safety and effectiveness. We understand that your beauty and health are paramount,
-                            and that's why we take every measure to provide you with an exceptional shopping experience.
-                            With a focus on transparency, a wide range of products, and top-notch customer service, we invite you to choose us
-                            for all your beauty and medical needs, knowing that your satisfaction and well-being are our top priorities.
-                        </p>
-                        <div class="row margin-top-20">
-                            <div class="col-md-6">
-                                <img class="margin-top-10" src="img/services/s1.jpg" alt="">
-                            </div>
-                            <div class="col-md-6">
-                                <p>Medicative <span class="color-defult fw-b">adipisicing elit</span>. Animi eveniet ipsam, error dolorum impedit debitis, officiis sint saepe similique quasi dolor, ut. Ipsum quaerat saepe, sapiente doloribus ab laudantium ipsam!</p>
-                            </div>
-                        </div>
-                        <div class="clearfix margin-top-20 margin-right-10">
-                            <div class="skills" data-percent="85%">
-                                <div class="title-bar">
-                                    <h5>Cardiology</h5>
-                                </div>
-                                <span>85%</span>
-                                <div class="skillbar-1"></div>
-                            </div>
-                            <div class="skills" data-percent="60%">
-                                <div class="title-bar">
-                                    <h5>General Practice</h5>
-                                </div>
-                                <span>60%</span>
-                                <div class="skillbar-2"></div>
-                            </div>
-                            <div class="skills" data-percent="89%">
-                                <div class="title-bar">
-                                    <h5>General surgery</h5>
-                                </div>
-                                <span>89%</span>
-                                <div class="skillbar-3"></div>
-                            </div>
-                            <div class="skills" data-percent="60%">
-                                <div class="title-bar">
-                                    <h5>Pharmacology</h5>
-                                </div>
-                                <span>60%</span>
-                                <div class="skillbar-4"></div>
-                            </div>
-                        </div>
 
-                    </div>
-                    <div class="col-md-5">
-                        <div>
-                            <img alt="" src="img/services/s2.jpg">
-                        </div>
-                    </div> -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- welcome end -->
 
     <!-- service start -->
     <section class="service-area bg-f8 animatedParent animateOnce">
@@ -219,7 +147,7 @@
                     <div class="col-md-8 col-md-offset-2 text-center">
                         <h2>Our <span class="color-defult">Category</span></h2>
                         <div class="line-border-center bg-defult"></div>
-                        <p>Repellendus error placeat numquam doloribus perferendis consequatur maxime molestiae soluta Corporis quidem quaerat accusantium omnis repudiandae nulla recusandae</p>
+                        <!-- <p>Repellendus error placeat numquam doloribus perferendis consequatur maxime molestiae soluta Corporis quidem quaerat accusantium omnis repudiandae nulla recusandae</p> -->
                     </div>
                 </div>
             </div>
@@ -313,13 +241,6 @@
     </section>
     <!-- divider end -->
 
-    <!-- portfolio start -->
-
-    <!-- portfolio end -->
-
-    <!-- divider start -->
-
-    <!-- divider end -->
 
     <!-- department start -->
     <section class="bg-f8">
@@ -338,117 +259,55 @@
 
             <div class="section-content">
                 <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <div class="practice-item-1">
-                            <div class="practice-img">
-                                <a href="#">
-                                    <img src="img/services/4.jpg" alt="">
-                                    <span class="flaticon-heart-1"></span>
-                                </a>
-                            </div>
-                            <div class="practice-content">
-                                <h4><a href="#">Medical evacuation</a></h4>
-                                <p>Personal Health Record makes it easy to join and stay on a wellness program - lose weight or manage a chronic condition easily.</p>
-                                <a href="#" class="btn-theme hvr-bounce-to-top"> Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="practice-item-1">
-                            <div class="practice-img">
-                                <a href="#">
-                                    <img src="img/services/5.jpg" alt="">
-                                    <span class="flaticon-heart-1"></span>
-                                </a>
-                            </div>
-                            <div class="practice-content">
-                                <h4><a href="#"> Physical examination</a></h4>
-                                <p>Personal Health Record makes it easy to join and stay on a wellness program - lose weight or manage a chronic condition easily.</p>
-                                <a href="#" class="btn-theme hvr-bounce-to-top"> Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="practice-item-1">
-                            <div class="practice-img">
-                                <a href="#">
-                                    <img src="img/services/6.jpg" alt="">
-                                    <span class="flaticon-heart-1"></span>
-                                </a>
-                            </div>
-                            <div class="practice-content">
-                                <h4><a href="#"> Ultrasound Endoscopy</a></h4>
-                                <p>Personal Health Record makes it easy to join and stay on a wellness program - lose weight or manage a chronic condition easily.</p>
-                                <a href="#" class="btn-theme hvr-bounce-to-top"> Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="practice-item-1">
-                            <div class="practice-img">
-                                <a href="#">
-                                    <img src="img/services/1.jpg" alt="">
-                                    <span class="flaticon-heart-1"></span>
-                                </a>
-                            </div>
-                            <div class="practice-content">
-                                <h4><a href="#"> Radiology / X-Ray</a></h4>
-                                <p>Personal Health Record makes it easy to join and stay on a wellness program - lose weight or manage a chronic condition easily.</p>
-                                <a href="#" class="btn-theme hvr-bounce-to-top"> Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="practice-item-1">
-                            <div class="practice-img">
-                                <a href="#">
-                                    <img src="img/services/8.jpg" alt="">
-                                    <span class="flaticon-heart-1"></span>
-                                </a>
-                            </div>
-                            <div class="practice-content">
-                                <h4><a href="#"> CRITICAL CARE</a></h4>
-                                <p>Personal Health Record makes it easy to join and stay on a wellness program - lose weight or manage a chronic condition easily.</p>
-                                <a href="#" class="btn-theme hvr-bounce-to-top"> Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="practice-item-1">
-                            <div class="practice-img">
-                                <a href="#">
-                                    <img src="img/services/3.jpg" alt="">
-                                    <span class="flaticon-heart-1"></span>
-                                </a>
-                            </div>
-                            <div class="practice-content">
-                                <h4><a href="#"> Safe & Secure</a></h4>
-                                <p>Personal Health Record makes it easy to join and stay on a wellness program - lose weight or manage a chronic condition easily.</p>
-                                <a href="#" class="btn-theme hvr-bounce-to-top"> Read more</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                    $query = '';
+                    if (isset($_GET['id'])) {
+                        $id = $_GET['id'];
+                        $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID where b.CATEGORY_ID=$id limit 6";
+                    } else {
+                        $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID limit 6";
+                    }
+                    $result = $conn->query($query);
+                    // $row = mysqli_fetch_assoc($result);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            $BLOG_ID = $row["BLOG_ID"];
+                            $TITLE = $row["TITLE"];
+                            $BLOG_SHORT = $row["BLOG_SHORT"];
+                            $CATEGORY_NAME = $row["CATEGORY_NAME"];
+                            $PHOTO = $row["PHOTO"];
+                            $CREATED_DATE = $row["CREATED_DATE"];
+                            if (strlen($BLOG_SHORT) > 160) {
+                                $BLOG_SHORT = substr($BLOG_SHORT, 0, 160);
+                            }
+
+
+                            echo "<div class='col-md-4 col-sm-6'>
+                                <div class='practice-item-1'>
+                                    <div class='practice-img'>
+                                        <a href='#'>
+                                            <img src='img/blog/$PHOTO' alt=''>
+                                            <span class='flaticon-heart-1'></span>
+                                        </a>
+                                    </div>
+                                    <div class='practice-content'>
+                                        <h4><a href='#'>$TITLE</a></h4>
+                                        <p>$BLOG_SHORT</p>
+                                        <a href='blog-singele.php?id=$BLOG_ID' class='btn-theme hvr-bounce-to-top'> Read more</a>
+                                    </div>
+                                </div>
+                            </div>";
+                        }
+                    }
+                    ?>
+
+
                 </div>
             </div>
         </div>
     </section>
-    <!-- department end -->
 
-    <!-- Team start -->
-
-    <!-- Team end -->
-
-    <!-- Counter start -->
-
-    <!-- Counter end -->
-
-    <!-- Testimonial start -->
-
-    <!-- Testimonial end -->
-
-    <!-- blog start -->
-
-    <!-- blog end -->
 
     <!-- Footer Style start -->
     <?php

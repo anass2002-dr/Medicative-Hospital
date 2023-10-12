@@ -73,9 +73,7 @@ include "Config.php";
                                 if (strlen($BLOG_SHORT) > 160) {
                                     $BLOG_SHORT = substr($BLOG_SHORT, 0, 160);
                                 }
-                                // for ($i = 0; $i < 160; $i++) {
-                                //     $short_b = $short_b + $BLOG_SHORT[$i];
-                                // }
+
 
                                 echo "<div class='col-md-4 col-sm-6 col-xs-12'>
                                         <div class='blog-item style-1'>

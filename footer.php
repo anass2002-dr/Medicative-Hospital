@@ -31,8 +31,7 @@
                         <ul class="footer-list border-deshed color-icon">
                             <li><i class="pe-7s-angle-right"></i><a href="#">About Us</a></li>
                             <li><i class="pe-7s-angle-right"></i><a href="#">Services</a></li>
-                            <li><i class="pe-7s-angle-right"></i><a href="#">Gallery</a></li>
-                            <li><i class="pe-7s-angle-right"></i><a href="#">Blog</a></li>
+                            <li><i class="pe-7s-angle-right"></i><a href="#">Blogs</a></li>
                             <li><i class="pe-7s-angle-right"></i><a href="#">Contact</a></li>
                         </ul>
                     </div>
@@ -44,11 +43,20 @@
                             <div class="border-style-2"></div>
                         </div>
                         <ul class="footer-list border-deshed color-icon">
-                            <li><i class="pe-7s-angle-right"></i><a href="#">Transplants</a></li>
-                            <li><i class="pe-7s-angle-right"></i><a href="#">Gastroenterology</a></li>
-                            <li><i class="pe-7s-angle-right"></i><a href="#">Orthopaedics</a></li>
-                            <li><i class="pe-7s-angle-right"></i><a href="#">Spine Care</a></li>
-                            <li><i class="pe-7s-angle-right"></i><a href="#">Cancer Care</a></li>
+                            <?php
+                            include './Config.php';
+                            $query = "select * from category limit 6";
+                            $result = $conn->query($query);
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    $category_name = $row['CATEGORY_NAME'];
+                                    $category_id = $row['CATEGORY_ID'];
+                                    echo "<li><i class='pe-7s-angle-right'></i><a href='category.php?id=$category_id'>$category_name</a></li>";
+                                }
+                            }
+                            ?>
+
+
                         </ul>
                     </div>
                 </div>

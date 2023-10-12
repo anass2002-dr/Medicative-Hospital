@@ -52,17 +52,21 @@ include "./Config.php";
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span data-hover="Depertment">Category <i class="fa fa-angle-down" aria-hidden="true"></i></span></a>
+
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">BODY CARE</a>
-                                    </li>
-                                    <li><a href="#">Cosmetics and Makeup</a>
-                                    </li>
-                                    <li><a href="#">HAIR CARE</a>
-                                    </li>
-                                    <li><a href="#">MASSAGE DEVICES</a>
-                                    </li>
-                                    <li><a href="#">TOOLS AND DEVICES</a>
-                                    </li>
+                                    <?php
+                                    include './Config.php';
+                                    $query = "select * from category limit 6";
+                                    $result = $conn->query($query);
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $category_name = $row['CATEGORY_NAME'];
+                                            $category_id = $row['CATEGORY_ID'];
+                                            echo "<li><a href='category.php?id=$category_id'>$category_name</a></li>";
+                                        }
+                                    }
+                                    ?>
+
                                 </ul>
                             </li>
                             <li class="dropdown active">
