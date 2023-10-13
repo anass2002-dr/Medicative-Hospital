@@ -24,6 +24,20 @@
     </li>
 
 
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#Product" aria-expanded="false" aria-controls="auth">
+        <i class="ti-layout-list-post menu-icon"></i>
+        <span class="menu-title">Product</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="Product">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="product.php"> New Product</a></li>
+          <li class="nav-item"> <a class="nav-link" href="list_product.php"> Blogs List </a></li>
+
+        </ul>
+      </div>
+    </li>
 
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">

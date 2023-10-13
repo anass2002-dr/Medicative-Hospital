@@ -201,7 +201,7 @@
                                         <div class="product-item">
                                             <div class="product-image">
                                                 <a class="product-img" href="#">
-                                                    <img class="primary-img" src="img/shop/s4.jpg" alt="" />
+                                                    <img class="primary-img" src="img/blog/1696700720.jpg" alt="" />
                                                 </a>
                                             </div>
                                             <span class="on-sale">
@@ -243,7 +243,7 @@
                                         <div class="product-item">
                                             <div class="product-image">
                                                 <a class="product-img" href="#">
-                                                    <img class="primary-img" src="img/shop/s5.jpg" alt="" />
+                                                    <img class="primary-img" src="img/blog/1696540679.jpg" alt="" />
                                                 </a>
                                             </div>
                                             <span class="on-sale">

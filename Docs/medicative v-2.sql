@@ -2,13 +2,12 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+DROP DATABASE IF EXISTS medicative
 
-CREATE DATABASE IF NOT EXISTS `medicative` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+CREATE DATABASE medicative;
 USE `medicative`;
+
+
 
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
@@ -18,10 +17,13 @@ CREATE TABLE `admin` (
   `FIRST_NAME` varchar(30) DEFAULT NULL,
   `LAST_NAME` varchar(20) DEFAULT NULL,
   `PICTURE` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 INSERT INTO `admin` (`ADMIN_ID`, `USER_NAME`, `PASSWORD`, `FIRST_NAME`, `LAST_NAME`, `PICTURE`) VALUES
 (1, 'anass@dermaj', 'anass123', 'anass', 'dermaj', '1688916765281.jpg');
+
+
 
 DROP TABLE IF EXISTS `blog`;
 CREATE TABLE `blog` (
@@ -34,12 +36,16 @@ CREATE TABLE `blog` (
   `CONTENT` text DEFAULT NULL,
   `BLOG_SHORT` text DEFAULT NULL,
   `CREATED_DATE` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
 
 INSERT INTO `blog` (`BLOG_ID`, `TITLE`, `CATEGORY_ID`, `PHOTO`, `VIDEO`, `PRODUCT_LINK`, `CONTENT`, `BLOG_SHORT`, `CREATED_DATE`) VALUES
 (1, 'Nébuliseur électrique', 6, '1696932119.jpg', '1696932119.', 'https://www.mlslabo.ma/nebuliseur-electrique.html', '- Pour le traitement des voies respiratoires supérieures et inférieures<br />\r\n- Nébulisation de médicaments liquides par technologie à compresseur, air comprimé<br />\r\n- à utiliser en cas de rhumes, asthme, maladie respiratoire<br />\r\n- Forte proportion de particules respirables<br />\r\n- Haute capacité de nébulisation (env. 0,3 mL/min) <br />\r\n- court temps d\'inhalation<br />\r\n<b> Accessoires :</b><br />\r\nembout buccal, embout nasal, masque pour adulte, masque pour enfant, tuyau à air comprimé extra long, filtre<br />\r\nAvec compartiment de rangement pratique pour les accessoires<br />\r\n- Peut être désinfecté<br />\r\n- Pression de travail 0,8 - 1,45 bar<br />\r\n- Fonctionnement sur secteur<br />\r\n- Produit médical', 'Pour le traitement des voies respiratoires supérieures et inférieures\r\nNébulisation de médicaments liquides par technologie à compresseur, air comprimé\r\nà utiliser en cas de rhumes, asthme, maladie respiratoire\r\nForte proportion de particules respirables\r\nHaute capacité de nébulisation (env. 0,3 mL/min) \r\ncourt temps d\'inhalation', '2023-10-10'),
 (2, 'Cardiotocographe', 6, '1696932446.jpg', '1696932446.', 'https://www.mlslabo.ma/cardiotocographe.html', '<p>Le moniteur fœtal peut enregistrer le rythme cardiaque fœtal et les contractions utérines maternelles dans les grossesses de plus de 28 semaines.<br>Le moniteur peut afficher simultanément les valeurs FCF, TOCO et FMOV (mouvement fœtal) en analysant leurs relations afin d’évaluer, entre autres, l’état physiologique et pathologique du fœtal et le développement de grossesses.<br>Conçu pour l’utilisation en milieu hospitalier, les clinques, les cabinets médicaux et les services de santé à domicile.</p>\r\n<p><strong><span style=\"color: rgb(71, 85, 119);\">Caractéristiques :</span></strong></p>\r\n<ul>\r\n    <li>Design léger et facile à utiliser.</li>\r\n    <li>Ecran LCD 8 couleurs rabattable sur 60°.</li>\r\n    <li>Fonction de base ; FHR, TOCO, mouvement fœtal, monitoring gémellaire et canal de la mère.</li>\r\n    <li>Affichage claire des donnes au patient et de la courbe.</li>\r\n    <li>Logiciel pour stockage et l’analyse des données.</li>\r\n    <li>Plage normale FCF 120-160 bpm.</li>\r\n    <li>Enregistrement manuel des mouvements fœtaux.</li>\r\n    <li>Alarmes sonores et visuelles pour indiquer que la fréquence cardiaque est haute ou basse.</li>\r\n    <li>Fonction de surveillance continue 24 heures en temps réel.</li>\r\n    <li>Stockage continu de la courbe patient et de données pendant 12 heures, reproduction et impression.</li>\r\n    <li>Fonction d’image Frozen.</li>\r\n    <li>Sonde onde puisée large bande 9 cristaux.</li>\r\n    <li>Imprimante thermique intégrée de haute résolution et longue durée.</li>\r\n    <li>Connexion à PC et connexion réseau (interface RJ45).</li>\r\n    <li>Deux batteries rechargeables intégrées.</li>\r\n    <li>L’appareil peut fonctionner pendant deux heures sans alimentation externe.</li>\r\n</ul>\r\n<p><strong><span style=\"color: rgb(40, 50, 78);\">Accessoires inclus :</span></strong></p>\r\n<ul>\r\n    <li>Sonde à ultrasons.</li>\r\n    <li>Sonde TOCO et interrupteur à distance.</li>\r\n    <li>Ceinture abdominale.</li>\r\n    <li>Papier d’impression (type Z, 112mm).</li>\r\n</ul>\r\n<p><br></p>', 'Le moniteur fœtal peut enregistrer le rythme cardiaque fœtal et les contractions utérines maternelles dans les grossesses de plus de 28 semaines.', '2023-10-10'),
 (3, 'NETTOYEUR DE PORES', 4, '1696933244.jpg', '1696933244.', 'https://www.mlslabo.ma/nettoyeur-de-pores.html', 'Affichage de la batterie et de l\'intensité<BR>\r\n3 embouts de différentes tailles pour différents domaines d\'application sur le visage<BR>\r\nNettoyage des pores en profondeur grâce à la technologie de vide<BR>\r\nCombat efficacement les impuretés de la peau et favorise une apparence saine de la peau du visage<BR>\r\nMultifonction grâce aux 3 embouts différents<BR>\r\nÉcran LCD pour afficher l’état de la batterie et le niveau d’intensité<BR>\r\n5 niveaux d’intensité<BR>\r\nFiltre de rechange inclus<BR>\r\nDesign moderne<BR>\r\nAdapté à tous les types de peau<BR>\r\nFonctionnement sur batterie – Environ 1.5 h d’autonomie (à l’intensité 5)<BR>', 'Affichage de la batterie et de l\'intensité\r\n3 embouts de différentes tailles pour différents domaines d\'application sur le visage\r\nNettoyage des pores en profondeur grâce à la technologie de vide', '2023-10-10');
+
+
 
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
@@ -47,7 +53,9 @@ CREATE TABLE `category` (
   `CATEGORY_NAME` varchar(20) DEFAULT NULL,
   `DESCRIPTION` text NOT NULL,
   `PHOTO_PATH` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
 
 INSERT INTO `category` (`CATEGORY_ID`, `CATEGORY_NAME`, `DESCRIPTION`, `PHOTO_PATH`) VALUES
 (1, 'Body care', '<p>Body care refers to a set of practices and products that are used to maintain and improve the health, hygiene, and appearance of the body. It involves taking care of your skin, hair, nails, and overall physical well-being. Body care can encompass a wide range of activities and products, including:</p>\r\n\r\n<ol>\r\n	<li><strong>Skincare:</strong> This involves cleansing, exfoliating, moisturizing, and protecting your skin from the sun and environmental factors. Skincare products can include cleansers, toners, serums, moisturizers, sunscreen, and more.</li>\r\n	<li><strong>Haircare: </strong>Haircare includes washing, conditioning, and styling your hair to keep it clean, healthy, and manageable. Haircare products include shampoos, conditioners, hair treatments, and styling products like gels, mousses, and hairsprays.</li>\r\n	<li><strong>Nail Care:</strong> Nail care involves keeping your nails clean, trimmed, and well-maintained. This can include regular nail trimming, filing, and using nail polish or treatments.</li>\r\n	<li><strong>Bathing and Showering:</strong> Regular bathing or showering is essential for maintaining personal hygiene and keeping the body clean. It often involves using soap, body wash, and other cleansing products.</li>\r\n	<li><strong>Body Hydration:</strong> Keeping your body properly hydrated by drinking enough water is a crucial aspect of body care. Proper hydration helps maintain healthy skin, hair, and overall well-being.</li>\r\n	<li><strong>Dental Care: </strong>Taking care of your teeth and gums is an important part of overall body care. This includes brushing, flossing, and regular dental check-ups.</li>\r\n	<li><strong>Deodorant and Perfume:</strong> Using deodorant and perfume helps control body odor and enhance personal grooming.</li>\r\n	<li><strong>Nutrition and Diet:</strong> Eating a balanced and nutritious diet is essential for maintaining good health and well-being. Proper nutrition can have a significant impact on the condition of your skin, hair, and nails.</li>\r\n	<li><strong>Exercise and Physical Activity: </strong>Regular physical activity contributes to overall body health and can improve your skin&#39;s appearance, promote circulation, and boost your mood.</li>\r\n	<li><strong>Relaxation and Stress Management:</strong> Reducing stress and getting adequate rest and sleep are important aspects of body care, as they can impact your overall health and appearance.</li>\r\n	<li><strong>Specialized Treatments:</strong> Some people may opt for specialized body care treatments such as massages, facials, body scrubs, or spa therapies to address specific concerns or relax and rejuvenate.</li>\r\n</ol>\r\n\r\n<p>Body care practices can vary widely from person to person and may be influenced by individual preferences, cultural norms, and personal needs. The goal of body care is to promote physical health, hygiene, and overall well-being, as well as to enhance one&#39;s self-esteem and confidence.</p>\r\n', 'body-care'),
@@ -59,12 +67,16 @@ INSERT INTO `category` (`CATEGORY_ID`, `CATEGORY_NAME`, `DESCRIPTION`, `PHOTO_PA
 (7, 'tools', '', ''),
 (8, 'devices', '', '');
 
+
+
 DROP TABLE IF EXISTS `collection_photos`;
 CREATE TABLE `collection_photos` (
   `PHOTO_ID` int(11) NOT NULL,
   `BLOG_ID` int(11) DEFAULT NULL,
   `PHOTO_PATH` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
 
 INSERT INTO `collection_photos` (`PHOTO_ID`, `BLOG_ID`, `PHOTO_PATH`) VALUES
 (1, 1, '963677423.jpg'),
@@ -73,13 +85,53 @@ INSERT INTO `collection_photos` (`PHOTO_ID`, `BLOG_ID`, `PHOTO_PATH`) VALUES
 (4, 3, '1109703348.jpg'),
 (5, 3, '1722979113.jpg');
 
+
+
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
   `COMMENT_ID` int(11) NOT NULL,
   `USER_ID` int(11) NOT NULL,
   `BLOG_ID` int(11) NOT NULL,
   `CONTENT` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE `product` (
+  `PRODUCT_ID` int(11) NOT NULL,
+  `TITLE` varchar(300) DEFAULT NULL,
+  `CATEGORY_ID` int(11) DEFAULT NULL,
+  `PHOTO` text DEFAULT NULL,
+  `VIDEO` text DEFAULT NULL,
+  `PRODUCT_LINK` text DEFAULT NULL,
+  `CONTENT` text DEFAULT NULL,
+  `PRODUCT_SHORT` text DEFAULT NULL,
+  `PRODUCT_PRICE` double DEFAULT NULL,
+  `CREATED_DATE` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+INSERT INTO `product` (`PRODUCT_ID`, `TITLE`, `CATEGORY_ID`, `PHOTO`, `VIDEO`, `PRODUCT_LINK`, `CONTENT`, `PRODUCT_SHORT`, `PRODUCT_PRICE`, `CREATED_DATE`) VALUES
+(1, 'ELASTIC KNEE SUPPORT WITH LATERAL STABILISERS', 2, '1697214353.jpg', '1697214353.', 'www.orliman.com', 'dddddddddddddd', 'azzzzzzzzzzzzzzzzd', 152, '2023-10-13');
+
+
+
+DROP TABLE IF EXISTS `product_collection_photos`;
+CREATE TABLE `product_collection_photos` (
+  `PD_COLLECTION_ID` int(11) NOT NULL,
+  `PRODUCT_ID` int(11) DEFAULT NULL,
+  `PHOTO_PATH` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+INSERT INTO `product_collection_photos` (`PD_COLLECTION_ID`, `PRODUCT_ID`, `PHOTO_PATH`) VALUES
+(1, 1, '782809990.jpg'),
+(2, 1, '301985954.jpg');
+
+
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -89,18 +141,21 @@ CREATE TABLE `user` (
   `EMAIL` varchar(60) DEFAULT NULL,
   `PASSWORD` varchar(30) DEFAULT NULL,
   `PHONE_NUMBER` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`ADMIN_ID`);
 
+
 ALTER TABLE `blog`
   ADD PRIMARY KEY (`BLOG_ID`),
   ADD KEY `FK_BLOG_CATEGORY` (`CATEGORY_ID`);
 
+
 ALTER TABLE `category`
   ADD PRIMARY KEY (`CATEGORY_ID`);
+
 
 ALTER TABLE `collection_photos`
   ADD PRIMARY KEY (`PHOTO_ID`),
@@ -111,9 +166,15 @@ ALTER TABLE `comment`
   ADD KEY `FK_COMMENTING` (`USER_ID`),
   ADD KEY `FK_CONTAINE` (`BLOG_ID`);
 
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`PRODUCT_ID`);
+
+ALTER TABLE `product_collection_photos`
+  ADD PRIMARY KEY (`PD_COLLECTION_ID`),
+  ADD KEY `FK_COLLECTION_PRODUCT` (`PRODUCT_ID`);
+
 ALTER TABLE `user`
   ADD PRIMARY KEY (`USER_ID`);
-
 
 ALTER TABLE `admin`
   MODIFY `ADMIN_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
@@ -130,21 +191,30 @@ ALTER TABLE `collection_photos`
 ALTER TABLE `comment`
   MODIFY `COMMENT_ID` int(11) NOT NULL AUTO_INCREMENT;
 
+ALTER TABLE `product`
+  MODIFY `PRODUCT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+
+ALTER TABLE `product_collection_photos`
+  MODIFY `PD_COLLECTION_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+
 ALTER TABLE `user`
   MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT;
 
 
 ALTER TABLE `blog`
-  ADD CONSTRAINT `FK_BLOG_CATEGORY` FOREIGN KEY (`CATEGORY_ID`) REFERENCES `category` (`CATEGORY_ID`);
+  ADD CONSTRAINT `FK_BLOG_CATEGORY` FOREIGN KEY (`CATEGORY_ID`) REFERENCES `category` (`CATEGORY_ID`) on delete restrict on update restrict;
+
 
 ALTER TABLE `collection_photos`
-  ADD CONSTRAINT `FK_COLLECTION_PHOTO_BLOG` FOREIGN KEY (`BLOG_ID`) REFERENCES `blog` (`BLOG_ID`);
+  ADD CONSTRAINT `FK_COLLECTION_PHOTO_BLOG` FOREIGN KEY (`BLOG_ID`) REFERENCES `blog` (`BLOG_ID`) on delete restrict on update restrict;
 
 ALTER TABLE `comment`
   ADD CONSTRAINT `FK_COMMENTING` FOREIGN KEY (`USER_ID`) REFERENCES `user` (`USER_ID`),
-  ADD CONSTRAINT `FK_CONTAINE` FOREIGN KEY (`BLOG_ID`) REFERENCES `blog` (`BLOG_ID`);
+  ADD CONSTRAINT `FK_CONTAINE` FOREIGN KEY (`BLOG_ID`) REFERENCES `blog` (`BLOG_ID`) on delete restrict on update restrict;
+
+ALTER TABLE `product_collection_photos`
+  ADD CONSTRAINT `FK_COLLECTION_PRODUCT` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`PRODUCT_ID`) on delete restrict on update restrict;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
