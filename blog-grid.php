@@ -33,7 +33,7 @@ include "Config.php";
     <!-- Header navbar end -->
 
 
-    <section class="inner-bg over-layer-black" style="background-image: url('img/bg/4.jpg')">
+    <section class="inner-bg over-layer-black" style="background-image: url('img/beauty/Beauty02.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">

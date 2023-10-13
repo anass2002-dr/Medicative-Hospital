@@ -1,10 +1,7 @@
 <?php
-$id = "";
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-} else {
-    header('Location:error.php');
-}
+include "Config.php";
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,11 +17,9 @@ if (isset($_GET['id'])) {
     <meta name="author" content="">
 
 
-    <!-- Bootstrap Core CSS -->
     <?php
     include 'styles.php'
     ?>
-
 </head>
 
 <body>
@@ -37,56 +32,68 @@ if (isset($_GET['id'])) {
     ?>
     <!-- Header navbar end -->
 
-    <section class="inner-bg over-layer-black" style="background-image: url('img/beauty/Beauty02.jpg')">
+
+    <section class="inner-bg over-layer-black" style="background-image: url('img/bg/4.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
                     <div class="mini-title inner-style-2">
-                        <h3>Blog</h3>
-                        <p><a href="index-one.html" style="color:white;">Home</a> <span class="fa fa-angle-right"></span> <a href="#">Blog</a></p>
+                        <h3>Our suggestion</h3>
+                        <p><a href="index.php">Home</a> <span class="fa fa-angle-right"></span> <a href="blog-single.php">Our suggestion</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Blog Posts -->
-    <div class="blog-inner-section bg-f8">
+    <section class="blog-area bg-f8 animatedParent animateOnce">
         <div class="container">
-            <div class="row">
-                <?php
-                include 'Config.php';
+            <div class="section-content">
+                <div class="row">
+                    <div class="blog-feature">
+                        <?php
+                        $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID;";
+                        $result = $conn->query($query);
 
-                $query = "SELECT * FROM category where CATEGORY_ID=$id";
-                $result = $conn->query($query);
-                $row = mysqli_fetch_assoc($result);
-                $CATEGORY_ID = $row["CATEGORY_ID"];
-                $CATEGORY_NAME = $row["CATEGORY_NAME"];
-                $DESCRIPTION = $row["DESCRIPTION"];
-                $PHOTO_PATH = $row["PHOTO_PATH"];
-                echo "<div class='col-md-10 col-md-offset-1'>
-                    <div class='blog-item style-1 margin-bottom-30'>
-                        <div class='blog-img'><a href='#'><img src='img/category/$PHOTO_PATH.jpg' alt=''></a>
-                            
-                        </div>
-                        <div class='blog-content w100'>
-                                                       
-                            <a href='#'>
-                                <h4>$CATEGORY_NAME</h4>
-                            </a>
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $BLOG_ID = $row["BLOG_ID"];
+                                $TITLE = $row["TITLE"];
+                                $BLOG_SHORT = $row["BLOG_SHORT"];
+                                $CATEGORY_NAME = $row["CATEGORY_NAME"];
+                                $PHOTO = $row["PHOTO"];
+                                $CREATED_DATE = $row["CREATED_DATE"];
+                                if (strlen($BLOG_SHORT) > 160) {
+                                    $BLOG_SHORT = substr($BLOG_SHORT, 0, 160);
+                                }
 
-                            <p>$DESCRIPTION</p>
-                            <a href='blog-grid.php?id=$CATEGORY_ID' class='btn btn-simple hvr-bounce-to-top'>Our recommended products </a>
-                        </div>
+
+                                echo "<div class='col-md-4 col-sm-6 col-xs-12'>
+                                        <div class='blog-item style-1'>
+                                            
+                                            <a href='Blog-single.php?id=$BLOG_ID'><div class='blog-img'><img src='img/blog/$PHOTO' alt=''>
+                                                
+                                            </div>
+                                            </a>
+                                            <div class='blog-content'>
+                                                <a href='blog-single.php?id=$BLOG_ID'>
+                                                    <h4>$TITLE </h4>
+                                                </a>
+                                                <p>$BLOG_SHORT ...</p>
+                                                <a href='blog-single.php?id=$BLOG_ID' class='btn btn-simple'>Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>";
+                            }
+                        }
+                        ?>
+
+
                     </div>
-                    
-                </div>";
-                ?>
-
+                </div>
             </div>
         </div>
-    </div>
-    <!-- End Blog Posts -->
+    </section>
 
     <!-- divider start -->
     <section class="service-area over-layer-default" style="background-image:url(img/bg/5.jpg);">
@@ -99,7 +106,7 @@ if (isset($_GET['id'])) {
                                 <i class="pe-7s-call"></i>
                             </div>
                             <div class="content">
-                                <h5><a href="#">Give us a Call</a></h5>
+                                <h5><a href="blog-single.php">Give us a Call</a></h5>
                                 <p>+970-438-3258</p>
                             </div>
                         </div>
@@ -110,7 +117,7 @@ if (isset($_GET['id'])) {
                                 <i class="pe-7s-mail-open"></i>
                             </div>
                             <div class="content">
-                                <h5><a href="#">Send us a Message</a></h5>
+                                <h5><a href="blog-single.php">Send us a Message</a></h5>
                                 <p>Your_malil@gmail.com</p>
                             </div>
                         </div>
@@ -121,7 +128,7 @@ if (isset($_GET['id'])) {
                                 <i class="pe-7s-map-marker"></i>
                             </div>
                             <div class="content">
-                                <h5><a href="#">Visit our Location</a></h5>
+                                <h5><a href="blog-single.php">Visit our Location</a></h5>
                                 <p>12 New york, USA </p>
                             </div>
                         </div>
@@ -139,7 +146,7 @@ if (isset($_GET['id'])) {
     <!-- Footer Style End -->
 
 
-    <a href="#" class="scrollup"><i class="pe-7s-up-arrow" aria-hidden="true"></i></a>
+    <a href="blog-single.php" class="scrollup"><i class="pe-7s-up-arrow" aria-hidden="true"></i></a>
     <!-- jQuery -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
 

@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
     <!-- Header navbar end -->
 
 
-    <section class="inner-bg over-layer-black" style="background-image: url('img/bg/4.jpg')">
+    <section class="inner-bg over-layer-black" style="background-image: url('img/beauty/Beauty02.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -176,17 +176,17 @@ if (isset($_GET['id'])) {
                                 </div>
                                 <div class="footer-item-3 style-1 news-item">
                                     <?php
-                                        $query = "select * from blog limit 3";
-                                        $result = $conn->query($query);
-                                        while ($row = $result->fetch_assoc()) {
-                                            $PHOTO = $row["PHOTO"];
-                                            $id_blog=$row["BLOG_ID"];
-                                            $titre=$row["TITLE"];
-                                            $date=$row["CREATED_DATE"];
-                                            if (strlen($titre) > 22) {
-                                                $titre = substr($titre, 0, 22);
-                                            }
-                                            echo "<div class='news-area clearfix'>
+                                    $query = "select * from blog limit 3";
+                                    $result = $conn->query($query);
+                                    while ($row = $result->fetch_assoc()) {
+                                        $PHOTO = $row["PHOTO"];
+                                        $id_blog = $row["BLOG_ID"];
+                                        $titre = $row["TITLE"];
+                                        $date = $row["CREATED_DATE"];
+                                        if (strlen($titre) > 22) {
+                                            $titre = substr($titre, 0, 22);
+                                        }
+                                        echo "<div class='news-area clearfix'>
                                                     <div class='news-img' style='width: 20%;'>
                                                         <a href='blog-single.php?id=$id_blog'>
                                                             <img src='img/blog/$PHOTO' alt=''>
@@ -198,10 +198,10 @@ if (isset($_GET['id'])) {
                                                         <span>$date</span>
                                                     </div>
                                                 </div>";
-                                        }
+                                    }
                                     ?>
-                                    
-                                    
+
+
                                 </div>
                             </div>
 
@@ -211,7 +211,7 @@ if (isset($_GET['id'])) {
                                 </div>
                                 <div class="sideber-content">
                                     <ul>
-                                    <?php
+                                        <?php
                                         include './Config.php';
                                         $query = "select * from category limit 6";
                                         $result = $conn->query($query);
@@ -222,9 +222,9 @@ if (isset($_GET['id'])) {
                                                 echo "<li> <a href='category.php?id=$category_id'><i class='fa fa-angle-right'></i> $category_name</a> </li>";
                                             }
                                         }
-                                    ?>
-                                        
-                                        
+                                        ?>
+
+
                                     </ul>
                                 </div>
                             </div>

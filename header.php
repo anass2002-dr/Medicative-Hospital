@@ -70,7 +70,7 @@ include "./Config.php";
                                 </ul>
                             </li>
                             <li class="dropdown active">
-                                <a href="index.php" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"><span data-hover="Home">Our suggestion </span> </a>
+                                <a href="product-shop.php" class="" data-toggle="" aria-haspopup="true" aria-expanded="false"><span data-hover="Home">Our suggestion </span> </a>
 
                             </li>
                             <li class="dropdown">
