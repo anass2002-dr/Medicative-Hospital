@@ -1299,7 +1299,7 @@ a.flip-animate:hover span:before, a.flip-animate:focus span:before {
     overflow: hidden;
     max-height: 750px;
     position: relative;
-    background: #000000;
+    background: #fff;
 }
 .bs-slider:hover {
     cursor: -moz-grab;
@@ -1322,7 +1322,7 @@ a.flip-animate:hover span:before, a.flip-animate:focus span:before {
 .bs-slider > .carousel-inner > .item > img,
 .bs-slider > .carousel-inner > .item > a > img {
     margin: auto;
-    width: 100%;
+    width: 75%;
 }
 
 /********************

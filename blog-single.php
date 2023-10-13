@@ -107,15 +107,6 @@ if (isset($_GET['id'])) {
 
                                 ?>
 
-                                <!-- End of Slide -->
-
-                                <!-- Second Slide -->
-
-                                <!-- End of Slide -->
-
-                                <!-- Third Slide -->
-
-                                <!-- End of Slide -->
                             </div><!-- End of Wrapper For Slides -->
 
                             <!-- Left Control -->
@@ -148,14 +139,6 @@ if (isset($_GET['id'])) {
                             </div>";
                         ?>
 
-
-                        <!-- Blog Post Author -->
-
-
-                        <!-- End Blog Comments -->
-
-
-                        <!-- End Form -->
                     </div>
                     <div class="col-md-3">
                         <div class="blog-sideber">
@@ -176,13 +159,13 @@ if (isset($_GET['id'])) {
                                 <div class="sideber-content about">
                                     <div class="testimonial-carousel-one">
                                         <div class="item">
-                                            <p><i class="fa fa-quote-left"></i> While military organisations have existed as long as government itself, the idea of a standing police force is a relatively modern concept. <i class="fa fa-quote-right"></i></p>
+                                            <p><i class="fa fa-quote-left"></i> We carefully curate a selection of beauty care products, including skincare, makeup, haircare, and more, from well-established and trusted brands... <i class="fa fa-quote-right"></i></p>
                                         </div>
                                         <div class="item">
-                                            <p><i class="fa fa-quote-left"></i> While military organisations have existed as long as government itself, the idea of a standing police force is a relatively modern concept. <i class="fa fa-quote-right"></i></p>
+                                            <p><i class="fa fa-quote-left"></i> We understand that everyone's beauty needs are unique. BeautyMedic offers personalized recommendations based on your individual skin type, hair ... <i class="fa fa-quote-right"></i></p>
                                         </div>
                                         <div class="item">
-                                            <p><i class="fa fa-quote-left"></i> While military organisations have existed as long as government itself, the idea of a standing police force is a relatively modern concept. <i class="fa fa-quote-right"></i></p>
+                                            <p><i class="fa fa-quote-left"></i> Explore our informative blog, which offers tips, tutorials, and expert advice on various beauty care topics, ensuring you're well-informed and empowered to make the right choices.. <i class="fa fa-quote-right"></i></p>
                                         </div>
                                     </div>
                                 </div>
@@ -192,42 +175,33 @@ if (isset($_GET['id'])) {
                                     <h4>Recent Posts</h4>
                                 </div>
                                 <div class="footer-item-3 style-1 news-item">
-                                    <div class="news-area clearfix">
-                                        <div class="news-img">
-                                            <a href="#">
-                                                <img src="img/blog/s1.jpg" alt="">
-                                                <span class="fa fa-link"></span>
-                                            </a>
-                                        </div>
-                                        <div class="news-content">
-                                            <a href="#">Eius harum sunt cumque..</a><br>
-                                            <span>07 Aug 2018</span>
-                                        </div>
-                                    </div>
-                                    <div class="news-area clearfix">
-                                        <div class="news-img">
-                                            <a href="#">
-                                                <img src="img/blog/s2.jpg" alt="">
-                                                <span class="fa fa-link"></span>
-                                            </a>
-                                        </div>
-                                        <div class="news-content">
-                                            <a href="#">Eius harum sunt cumque..</a><br>
-                                            <span>12 Sep 2018</span>
-                                        </div>
-                                    </div>
-                                    <div class="news-area clearfix">
-                                        <div class="news-img">
-                                            <a href="#">
-                                                <img src="img/blog/s3.jpg" alt="">
-                                                <span class="fa fa-link"></span>
-                                            </a>
-                                        </div>
-                                        <div class="news-content">
-                                            <a href="#">Eius harum sunt cumque..</a><br>
-                                            <span>24 Oct 2018</span>
-                                        </div>
-                                    </div>
+                                    <?php
+                                        $query = "select * from blog limit 3";
+                                        $result = $conn->query($query);
+                                        while ($row = $result->fetch_assoc()) {
+                                            $PHOTO = $row["PHOTO"];
+                                            $id_blog=$row["BLOG_ID"];
+                                            $titre=$row["TITLE"];
+                                            $date=$row["CREATED_DATE"];
+                                            if (strlen($titre) > 22) {
+                                                $titre = substr($titre, 0, 22);
+                                            }
+                                            echo "<div class='news-area clearfix'>
+                                                    <div class='news-img' style='width: 20%;'>
+                                                        <a href='blog-single.php?id=$id_blog'>
+                                                            <img src='img/blog/$PHOTO' alt=''>
+                                                            <span class='fa fa-link'></span>
+                                                        </a>
+                                                    </div>
+                                                    <div class='news-content'>
+                                                        <a href='blog-single.php?id=$id_blog'>$titre..</a><br>
+                                                        <span>$date</span>
+                                                    </div>
+                                                </div>";
+                                        }
+                                    ?>
+                                    
+                                    
                                 </div>
                             </div>
 
@@ -237,12 +211,20 @@ if (isset($_GET['id'])) {
                                 </div>
                                 <div class="sideber-content">
                                     <ul>
-                                        <li> <a href="#"><i class="fa fa-angle-right"></i> Latest News (17)</a> </li>
-                                        <li> <a href="#"><i class="fa fa-angle-right"></i> Recent Project (21)</a> </li>
-                                        <li> <a href="#"><i class="fa fa-angle-right"></i> Resources (27)</a> </li>
-                                        <li> <a href="#"><i class="fa fa-angle-right"></i> News (119)</a> </li>
-                                        <li> <a href="#"><i class="fa fa-angle-right"></i> Events (05)</a> </li>
-                                        <li> <a href="#"><i class="fa fa-angle-right"></i> Alerts (18)</a> </li>
+                                    <?php
+                                        include './Config.php';
+                                        $query = "select * from category limit 6";
+                                        $result = $conn->query($query);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                $category_name = $row['CATEGORY_NAME'];
+                                                $category_id = $row['CATEGORY_ID'];
+                                                echo "<li> <a href='category.php?id=$category_id'><i class='fa fa-angle-right'></i> $category_name</a> </li>";
+                                            }
+                                        }
+                                    ?>
+                                        
+                                        
                                     </ul>
                                 </div>
                             </div>
