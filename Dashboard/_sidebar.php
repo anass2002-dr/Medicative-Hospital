@@ -33,7 +33,7 @@
       <div class="collapse" id="Product">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="product.php"> New Product</a></li>
-          <li class="nav-item"> <a class="nav-link" href="list_product.php"> Blogs List </a></li>
+          <li class="nav-item"> <a class="nav-link" href="list_product.php"> Products List </a></li>
 
         </ul>
       </div>

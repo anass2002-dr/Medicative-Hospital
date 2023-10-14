@@ -14,8 +14,6 @@ $newfilenamev = round(microtime(true)) . '.' . end($tempv);
 move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir . $newfilenamev);
 move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir);
 
-
-
 $title = $_POST['title'];
 $category = $_POST['category'];
 $photo = $newfilename;
@@ -34,7 +32,7 @@ if (!empty($title) and !empty($category) and !empty($photo) and !empty($Product)
     $Product = mysqli_real_escape_string($conn, $Product);
     $title = mysqli_real_escape_string($conn, $title);
     $product_short = mysqli_real_escape_string($conn, $product_short);
-    
+
     $sql = "INSERT INTO product (TITLE, CATEGORY_ID, PHOTO, VIDEO, PRODUCT_LINK, CONTENT,PRODUCT_SHORT,PRODUCT_PRICE, CREATED_DATE) VALUES ('$title', $category, '$photo','$video','$product_link','$Product','$product_short',$product_price,'$date')";
     if ($conn->query($sql) === TRUE) {
         $sql2 = "SELECT PRODUCT_ID FROM PRODUCT ORDER BY PRODUCT_ID DESC LIMIT 1;";

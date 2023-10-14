@@ -151,10 +151,10 @@
             cache: false,
             processData: false,
             success: function(response) {
-            //   $('#modal_body').text(response);
+              $('#modal_body').text(response);
 
-            //   $('#mymodal').modal('show');
-            console.log(response)
+              $('#mymodal').modal('show');
+              console.log(response)
             }
           })
           $('#mymodal').on('hidden.bs.modal', function() {

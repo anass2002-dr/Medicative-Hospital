@@ -151,7 +151,7 @@
                 </div>
                 <div class="col-md-9">
                     <div class="shop-right-area">
-                        
+
                         <div class="shop-tab-area">
                             <!--NAV PILL-->
                             <div class="shop-tab-pill">
@@ -177,6 +177,7 @@
                                                 <option value="08">08</option>
                                                 <option value="07">07</option>
                                                 <option value="06">06</option>
+
                                             </select>
                                         </div>
                                     </li>
@@ -201,26 +202,32 @@
                                             </select>
                                         </div>
                                     </li>
-                                    
+
                                 </ul>
                             </div>
                             <!--NAV PILL-->
                             <div class="tab-content">
                                 <div class="row tab-pane active" id="grid">
                                     <?php
-                                        include 'Config.php';
-                                        $query="select * from product";
-                                        $result=$conn->query($query);
-                                        if($result->num_rows>0){
-                                            while($row=$result->fetch_assoc()){
-                                                $product_id=$row["PRODUCT_ID"];
-                                                $title=$row["TITLE"];
-                                                $category_id=$row["CATEGORY_ID"];
-                                                $photo=$row["PHOTO"];
-                                                $product_link=$row["PRODUCT_LINK"];
-                                                $product_short=$row["PRODUCT_SHORT"];
-                                                $product_price=$row["PRODUCT_PRICE"];
-                                                echo "<div class='col-md-4 col-sm-4'>
+                                    include 'Config.php';
+                                    $query = "select * from product";
+                                    $result = $conn->query($query);
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $product_id = $row["PRODUCT_ID"];
+                                            $title = $row["TITLE"];
+                                            $category_id = $row["CATEGORY_ID"];
+                                            $photo = $row["PHOTO"];
+                                            $product_link = $row["PRODUCT_LINK"];
+                                            $product_short = $row["PRODUCT_SHORT"];
+                                            $product_price = $row["PRODUCT_PRICE"];
+                                            if (strlen($product_short) > 50) {
+                                                $product_short = substr($product_short, 0, 50);
+                                            }
+                                            if (strlen($title) > 20) {
+                                                $title = substr($title, 0, 20);
+                                            }
+                                            echo "<div class='col-md-4 col-sm-4'>
                                                 <div class='product-item'>
                                                     <div class='product-image'>
                                                         <a class='product-img' href='#'>
@@ -229,8 +236,8 @@
                                                     </div>
                                                     
                                                     <div class='product-action'>
-                                                        <h4><a href='shop-single.php?id=$product_id'>$title</a></h4>
-                                                        <p>$product_short</p>
+                                                        <h4><a href='shop-single.php?id=$product_id'>$title ...</a></h4>
+                                                        <p>$product_short ...</p>
                                                         <span class='price'>$ $product_price</span>
                                                     </div>
                                                     <div class='pro-action'>
@@ -254,10 +261,10 @@
                                                     </div>
                                                 </div>
                                             </div>";
-                                            }
                                         }
+                                    }
                                     ?>
-                                    
+
                                     <!-- <div class="col-md-4 col-sm-4">
                                         <div class="product-item">
                                             <div class="product-image">
