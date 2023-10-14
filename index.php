@@ -229,13 +229,10 @@
             <div class="section-content">
                 <div class="row">
                     <?php
-                    $query = '';
-                    if (isset($_GET['id'])) {
-                        $id = $_GET['id'];
-                        $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID where b.CATEGORY_ID=$id limit 6";
-                    } else {
-                        $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID limit 6";
-                    }
+                    
+                    
+                    $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID limit 6";
+                   
                     $result = $conn->query($query);
                     // $row = mysqli_fetch_assoc($result);
 
@@ -255,15 +252,15 @@
                             echo "<div class='col-md-4 col-sm-6'>
                                 <div class='practice-item-1'>
                                     <div class='practice-img'>
-                                        <a href='#'>
+                                        <a href='blog-single.php?id=$BLOG_ID'>
                                             <img src='img/blog/$PHOTO' alt=''>
                                             <span class='flaticon-heart-1'></span>
                                         </a>
                                     </div>
                                     <div class='practice-content'>
-                                        <h4><a href='#'>$TITLE</a></h4>
+                                        <h4><a href='blog-single.php?id=$BLOG_ID'>$TITLE</a></h4>
                                         <p>$BLOG_SHORT</p>
-                                        <a href='blog-singele.php?id=$BLOG_ID' class='btn-theme hvr-bounce-to-top'> Read more</a>
+                                        <a href='blog-single.php?id=$BLOG_ID' class='btn-theme hvr-bounce-to-top'> Read more</a>
                                     </div>
                                 </div>
                             </div>";

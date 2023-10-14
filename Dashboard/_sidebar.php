@@ -9,7 +9,7 @@
 
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#blogs" aria-expanded="false" aria-controls="auth">
-        <i class="ti-layout-list-post menu-icon"></i>
+        <i class="ti-smallcap menu-icon"></i>
         <span class="menu-title">Blogs</span>
         <i class="menu-arrow"></i>
       </a>
@@ -26,7 +26,7 @@
 
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#Product" aria-expanded="false" aria-controls="auth">
-        <i class="ti-layout-list-post menu-icon"></i>
+        <i class="ti-shopping-cart menu-icon"></i>
         <span class="menu-title">Product</span>
         <i class="menu-arrow"></i>
       </a>

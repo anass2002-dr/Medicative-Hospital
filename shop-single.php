@@ -1,8 +1,13 @@
+<?php
+    $id = "";
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+    } else {
+        header('Location:error.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
-
-
-
 <head>
 
     <meta charset="utf-8">
@@ -47,39 +52,39 @@
     <section class="shoping-cart-area bg-f8">
         <div class="container">
             <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <div class="blog-item">
-                        <div class="blog-images">
-                            <div class="blog-img"><a href="#"><img src="img/shop/b2.jpg" alt=""></a></div>
-                        </div>
-                        <div class="blog-content">
-                            <a href="#">
-                                <h4>Your Title Here</h4>
-                            </a>
-                            <a href="#">
-                                <h6 class="color-defult text-lowercase">T-Shirt E-Commerce Website</h6>
-                            </a>
-                            <div class="blog-date margin-bottom-20 margin-top-30">
-                                <h3>$ 18<sub>/Only</sub></h3>
-                            </div>
-                            <select class="dropdown clearfix">
-                                <option>Choose your size</option>
-                                <option>Small</option>
-                                <option>Medium</option>
-                                <option>Large</option>
-                            </select>
-                            <select class="dropdown clearfix">
-                                <option>Choose your Color</option>
-                                <option>Red</option>
-                                <option>Blue</option>
-                                <option>White</option>
-                                <option>Other</option>
-                            </select>
-                            <p>Eligendi totam, sit voluptas id ut facere saepe est itaque nobis quos repellendus praesentium enim, aliquid quibusdam quam minus voluptate laborum fugit, non nisi labore! Praesentium illo adipisci eius reiciendis laboriosam ipsa totam sapiente ipsam ipsum.</p>
-                            <a href="#" class="btn btn-simple">Add to Cart</a>
-                            <a href="#" class="btn btn-simple">Buy Now</a>
-                        </div>
-                    </div>
+                <div class=4col-md-10 col-md-offset-14>
+                    <?php
+                        include "Config.php";
+                        $query="select * from product where PRODUCT_ID=$id";
+                        $result=$conn->query($query);
+                        $row = mysqli_fetch_assoc($result);
+                        $title=$row["TITLE"];
+                        $category_id=$row["CATEGORY_ID"];
+                        $photo=$row["PHOTO"];
+                        $product_link=$row["PRODUCT_LINK"];
+                        $content=$row["CONTENT"];
+                        $product_short=$row["PRODUCT_SHORT"];
+                        $product_price=$row["PRODUCT_PRICE"];
+                            echo "<div class='blog-item'>
+                                <div class='blog-images'>
+                                    <div class='blog-img'><a href='#'><img src='img/Product/$photo' alt=''></a></div>
+                                </div>
+                                <div class='blog-content'>
+                                    <a href='#'>
+                                        <h4>$title</h4>
+                                    </a>
+                                    <a href='http://$product_link'>
+                                        <h6 class='color-defult text-lowercase'>$product_link</h6>
+                                    </a>
+                                    <div class='blog-date margin-bottom-20 margin-top-30'>
+                                        <h3>$ $product_price<sub>/Only</sub></h3>
+                                    </div>
+                                    
+                                    <p>$content</p>
+                                    <a href='#' class='btn btn-simple'>Buy Now</a>
+                                </div>
+                            </div>";
+                    ?>
                 </div>
             </div>
         </div>

@@ -151,9 +151,7 @@
                 </div>
                 <div class="col-md-9">
                     <div class="shop-right-area">
-                        <div class="shop-banner">
-                            <img src="img/shop/bg1.jpg" alt="" />
-                        </div>
+                        
                         <div class="shop-tab-area">
                             <!--NAV PILL-->
                             <div class="shop-tab-pill">
@@ -182,6 +180,17 @@
                                             </select>
                                         </div>
                                     </li>
+                                    <!-- <li class="product-size-deatils">
+                                        <div class="show-label">
+                                            <label>Company : </label>
+                                            <select>
+                                                <option value="09" selected="selected">Alixpresse</option>
+                                                <option value="08">Amazone</option>
+                                                <option value="07">Sephora</option>
+                                               
+                                            </select>
+                                        </div>
+                                    </li> -->
                                     <li>
                                         <div class="sort-position">
                                             <label><i class="fa fa-sort-amount-asc"></i>Sort by : </label>
@@ -192,54 +201,64 @@
                                             </select>
                                         </div>
                                     </li>
+                                    
                                 </ul>
                             </div>
                             <!--NAV PILL-->
                             <div class="tab-content">
                                 <div class="row tab-pane active" id="grid">
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="product-item">
-                                            <div class="product-image">
-                                                <a class="product-img" href="#">
-                                                    <img class="primary-img" src="img/blog/1696700720.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <span class="on-sale">
-                                                <span class="sale-text">Sale</span>
-                                            </span>
-                                            <div class="product-action">
-                                                <h4><a href="#">Your Title Here</a></h4>
-                                                <ul class="rating-text">
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                </ul>
-                                                <span class="price">$ 120</span>
-                                            </div>
-                                            <div class="pro-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-retweet" aria-hidden="true"></i>
+                                    <?php
+                                        include 'Config.php';
+                                        $query="select * from product";
+                                        $result=$conn->query($query);
+                                        if($result->num_rows>0){
+                                            while($row=$result->fetch_assoc()){
+                                                $product_id=$row["PRODUCT_ID"];
+                                                $title=$row["TITLE"];
+                                                $category_id=$row["CATEGORY_ID"];
+                                                $photo=$row["PHOTO"];
+                                                $product_link=$row["PRODUCT_LINK"];
+                                                $product_short=$row["PRODUCT_SHORT"];
+                                                $product_price=$row["PRODUCT_PRICE"];
+                                                echo "<div class='col-md-4 col-sm-4'>
+                                                <div class='product-item'>
+                                                    <div class='product-image'>
+                                                        <a class='product-img' href='#'>
+                                                            <img class='primary-img' src='img/Product/$photo' alt='' />
                                                         </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="" href="#">
-                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4">
+                                                    </div>
+                                                    
+                                                    <div class='product-action'>
+                                                        <h4><a href='shop-single.php?id=$product_id'>$title</a></h4>
+                                                        <p>$product_short</p>
+                                                        <span class='price'>$ $product_price</span>
+                                                    </div>
+                                                    <div class='pro-action'>
+                                                        <ul>
+                                                            <li>
+                                                                <a href='#'>
+                                                                    <i class='fa fa-retweet' aria-hidden='true'></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href='#'>
+                                                                    <i class='fa fa-heart' aria-hidden='true'></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class='' href='$product_link'  target='_blank'>
+                                                                    <i class='fa fa-shopping-cart' aria-hidden='true'></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>";
+                                            }
+                                        }
+                                    ?>
+                                    
+                                    <!-- <div class="col-md-4 col-sm-4">
                                         <div class="product-item">
                                             <div class="product-image">
                                                 <a class="product-img" href="#">
@@ -700,7 +719,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                 </div>
                                 <div id="list" class="tab-pane">
