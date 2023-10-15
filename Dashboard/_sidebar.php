@@ -40,6 +40,21 @@
     </li>
 
     <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="collapse" href="#Product" aria-expanded="false" aria-controls="auth">
+        <i class="ti-stats-up menu-icon"></i>
+        <span class="menu-title">Sponsor</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="Product">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="sponsor.php"> New Sponsor</a></li>
+          <li class="nav-item"> <a class="nav-link" href="list_sponsor.php"> Sponsors List </a></li>
+
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
         <i class="ti-user menu-icon"></i>
         <span class="menu-title">Users setting</span>

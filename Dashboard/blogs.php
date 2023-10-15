@@ -59,6 +59,7 @@
                     </div>
                     <div class="mb-3">
                       <label for="photo" class="form-label">Add Cover Photo</label>
+                      <label for="photo" class="form-label">Size :10x10cm</label>
                       <input class="form-control" type="file" id="photo" accept="image/png, image/jpeg, image/jpg" name="photo" require>
                     </div>
                     <div class="mb-3">

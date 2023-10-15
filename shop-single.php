@@ -1,13 +1,14 @@
 <?php
-    $id = "";
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
-    } else {
-        header('Location:error.php');
-    }
+$id = "";
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+} else {
+    header('Location:error.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="utf-8">
@@ -35,7 +36,7 @@
     <!-- Header navbar end -->
 
 
-    <section class="inner-bg over-layer-black" style="background-image: url('img/bg/4.jpg')">
+    <section class="inner-bg over-layer-black" style="background-image: url('img/beauty/Beauty02.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -54,18 +55,18 @@
             <div class="row">
                 <div class=4col-md-10 col-md-offset-14>
                     <?php
-                        include "Config.php";
-                        $query="select * from product where PRODUCT_ID=$id";
-                        $result=$conn->query($query);
-                        $row = mysqli_fetch_assoc($result);
-                        $title=$row["TITLE"];
-                        $category_id=$row["CATEGORY_ID"];
-                        $photo=$row["PHOTO"];
-                        $product_link=$row["PRODUCT_LINK"];
-                        $content=$row["CONTENT"];
-                        $product_short=$row["PRODUCT_SHORT"];
-                        $product_price=$row["PRODUCT_PRICE"];
-                            echo "<div class='blog-item'>
+                    include "Config.php";
+                    $query = "select * from product where PRODUCT_ID=$id";
+                    $result = $conn->query($query);
+                    $row = mysqli_fetch_assoc($result);
+                    $title = $row["TITLE"];
+                    $category_id = $row["CATEGORY_ID"];
+                    $photo = $row["PHOTO"];
+                    $product_link = $row["PRODUCT_LINK"];
+                    $content = $row["CONTENT"];
+                    $product_short = $row["PRODUCT_SHORT"];
+                    $product_price = $row["PRODUCT_PRICE"];
+                    echo "<div class='blog-item'>
                                 <div class='blog-images'>
                                     <div class='blog-img'><a href='#'><img src='img/Product/$photo' alt=''></a></div>
                                 </div>

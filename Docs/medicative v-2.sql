@@ -30,6 +30,14 @@ CREATE TABLE IF NOT EXISTS `blog` (
   KEY `FK_BLOG_CATEGORY` (`CATEGORY_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+DROP TABLE IF EXISTS `sponsor`;
+CREATE TABLE IF NOT EXISTS `sponsor` (
+  `SPONSOR_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `SPONSOR_NAME` text DEFAULT NULL,
+  `SPONSOR_URL` text DEFAULT NULL,
+  `SPONSOR_LOGO` text DEFAULT NULL,
+  PRIMARY KEY (`SPONSOR_ID`)
+)ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
@@ -118,7 +126,7 @@ ALTER TABLE `comment`
 ALTER TABLE `product_collection_photos`
   ADD CONSTRAINT `FK_COLLECTION_PRODUCT` FOREIGN KEY (`PRODUCT_ID`) REFERENCES `product` (`PRODUCT_ID`)ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE 'product' ADD CONSTRAINT 'fk_product_sponsor' FOREIGN KEY('SPONSOR_ID') REFERENCES 'sponsor'('SPONSOR_ID') on UPDATE CASCADE on DELETE CASCADE ;
+ALTER TABLE `product` ADD CONSTRAINT `fk_product_sponsor` FOREIGN KEY(`SPONSOR_ID`) REFERENCES `sponsor`(`SPONSOR_ID`) on UPDATE CASCADE on DELETE CASCADE ;
 
 INSERT INTO `admin` (`ADMIN_ID`, `USER_NAME`, `PASSWORD`, `FIRST_NAME`, `LAST_NAME`, `PICTURE`) VALUES
 (1, 'anass@dermaj', 'anass123', 'anass', 'dermaj', '1688916765281.jpg');
@@ -137,10 +145,6 @@ INSERT INTO `blog` (`BLOG_ID`, `TITLE`, `CATEGORY_ID`, `PHOTO`, `VIDEO`, `PRODUC
 (4, 'YTRU', 4, '1697279634.jpg', '1697279634.', 'www.orliman.com', 'JJJJJJJJJJJJJJJJJ', 'GGGGGGGGGGGGGGGGGG', '2023-10-14');
 
 
-INSERT INTO 'SPONSOR'('SPONSOR_ID','SPONSOR_NAME','SPONSOR_URL') VALUES 
-(1,'orliman','http://www.orliman.com'),
-(2,'sephora','http://www.sephora.com'),
-(3,'beurer','http://www.beurer.com');
 INSERT INTO `collection_photos` (`PHOTO_ID`, `BLOG_ID`, `PHOTO_PATH`) VALUES
 (1, 1, '963677423.jpg'),
 (2, 2, '428103936.jpg'),
@@ -149,10 +153,10 @@ INSERT INTO `collection_photos` (`PHOTO_ID`, `BLOG_ID`, `PHOTO_PATH`) VALUES
 (5, 3, '1722979113.jpg'),
 (6, 4, '1483231726.');
 
-INSERT INTO `product` (`PRODUCT_ID`, `TITLE`, `CATEGORY_ID`, `PHOTO`, `VIDEO`, `PRODUCT_LINK`, `CONTENT`, `PRODUCT_SHORT`, `PRODUCT_PRICE`, `SPONSOR_ID`, `CREATED_DATE`) VALUES
-(1, 'ELASTIC KNEE SUPPORT WITH LATERAL STABILISERS', 2, '1697212676.png', '1697214353.', 'www.orliman.com', '<p>La genouill&egrave;re &eacute;lastique sport a &eacute;t&eacute; d&eacute;velopp&eacute;e pour traiter vos probl&egrave;mes d&rsquo;arthrites,</p>\r\n\r\n<p>d&rsquo;arthroses, d&rsquo;instabilit&eacute;s et traumatismes l&eacute;gers du genou et inflammations.<br />\r\nGr&acirc;ce &agrave; cette genouill&egrave;re, vous allez pouvoir limiter le frottement osseux avec le f&eacute;mur,</p>\r\n\r\n<p>notamment lors du mouvement de flexion du genou,</p>\r\n\r\n<p>gr&acirc;ce &agrave; l&rsquo;anneau rotulien et le tricot double densit&eacute;.<br />\r\nLa genouill&egrave;re &eacute;lastique sport apporte soutien et maintien et convient parfaitement &agrave; une activit&eacute; physique ou sportive,</p>\r\n\r\n<p>notamment gr&acirc;ce &agrave; son tissu respirant et lavable.</p>\r\n', '<p>La genouill&egrave;re &eacute;lastique sport a &eacute;t&eacute; d&eacute;velopp&eacute;e pour traiter vos probl&egrave;mes d&rsquo;arthrites,</p>', 152,1, '2023-10-13'),
-(2, 'Shark Beauty', 3, '1697307870.jpg', '1697307870.', 'https://www.sephora.com/product/shark-r-speedstyle-tm-rapidgloss-tm-finisher-high-velocity-hair-dryer-for-straight-wavy-hair-P507814?icid2=products%20grid:p507814:product', '<p><strong>What it is:</strong>A hair dryer designed for speed and power in a compact, dynamic styling system to take hair from wet to dry ultra-fast, with no heat damage.<br />\r\n<br />\r\n<strong>Hair Texture:</strong>&nbsp;Straight and Wavy<br />\r\n<br />\r\n<strong>Hair Type:</strong>&nbsp;Fine, Medium, and Thick</p>\r\n', 'Shark® SpeedStyle™ RapidGloss™ Finisher and High-Velocity Hair Dryer for Straight and Wavy Hair', 170, 1, '2023-10-14'),
-(4, 'amika', 3, '1697308408.jpg', '1697308408.', 'https://www.sephora.com/product/amika-double-agent-2-in-1-straightening-blow-dryer-brush-P482657?skuId=2436863', '<p><strong>What it is:&nbsp;</strong>A two-in-one blow-dryer straightening brush that simultaneously takes hair from just washed and damp to dry and sleek, all in one tool.<br />\r\n<br />\r\n<strong>Hair Type:</strong>&nbsp;Straight, Wavy, and Curly<br />\r\n<br />\r\n<strong>Hair Texture:</strong>&nbsp;Fine, Medium, and Thick</p>\r\n', 'Double Agent 2-in-1 Straightening Blow Dryer Brush', 120, 2, '2023-10-14');
+INSERT INTO `product` (`PRODUCT_ID`, `TITLE`, `CATEGORY_ID`, `PHOTO`, `VIDEO`, `PRODUCT_LINK`, `CONTENT`, `PRODUCT_SHORT`, `PRODUCT_PRICE`, `CREATED_DATE`) VALUES
+(1, 'ELASTIC KNEE SUPPORT WITH LATERAL STABILISERS', 2, '1697212676.png', '1697214353.', 'www.orliman.com', '<p>La genouill&egrave;re &eacute;lastique sport a &eacute;t&eacute; d&eacute;velopp&eacute;e pour traiter vos probl&egrave;mes d&rsquo;arthrites,</p>\r\n\r\n<p>d&rsquo;arthroses, d&rsquo;instabilit&eacute;s et traumatismes l&eacute;gers du genou et inflammations.<br />\r\nGr&acirc;ce &agrave; cette genouill&egrave;re, vous allez pouvoir limiter le frottement osseux avec le f&eacute;mur,</p>\r\n\r\n<p>notamment lors du mouvement de flexion du genou,</p>\r\n\r\n<p>gr&acirc;ce &agrave; l&rsquo;anneau rotulien et le tricot double densit&eacute;.<br />\r\nLa genouill&egrave;re &eacute;lastique sport apporte soutien et maintien et convient parfaitement &agrave; une activit&eacute; physique ou sportive,</p>\r\n\r\n<p>notamment gr&acirc;ce &agrave; son tissu respirant et lavable.</p>\r\n', '<p>La genouill&egrave;re &eacute;lastique sport a &eacute;t&eacute; d&eacute;velopp&eacute;e pour traiter vos probl&egrave;mes d&rsquo;arthrites,</p>', 152, '2023-10-13'),
+(2, 'Shark Beauty', 3, '1697307870.jpg', '1697307870.', 'https://www.sephora.com/product/shark-r-speedstyle-tm-rapidgloss-tm-finisher-high-velocity-hair-dryer-for-straight-wavy-hair-P507814?icid2=products%20grid:p507814:product', '<p><strong>What it is:</strong>A hair dryer designed for speed and power in a compact, dynamic styling system to take hair from wet to dry ultra-fast, with no heat damage.<br />\r\n<br />\r\n<strong>Hair Texture:</strong>&nbsp;Straight and Wavy<br />\r\n<br />\r\n<strong>Hair Type:</strong>&nbsp;Fine, Medium, and Thick</p>\r\n', 'Shark® SpeedStyle™ RapidGloss™ Finisher and High-Velocity Hair Dryer for Straight and Wavy Hair', 170, '2023-10-14'),
+(4, 'amika', 3, '1697308408.jpg', '1697308408.', 'https://www.sephora.com/product/amika-double-agent-2-in-1-straightening-blow-dryer-brush-P482657?skuId=2436863', '<p><strong>What it is:&nbsp;</strong>A two-in-one blow-dryer straightening brush that simultaneously takes hair from just washed and damp to dry and sleek, all in one tool.<br />\r\n<br />\r\n<strong>Hair Type:</strong>&nbsp;Straight, Wavy, and Curly<br />\r\n<br />\r\n<strong>Hair Texture:</strong>&nbsp;Fine, Medium, and Thick</p>\r\n', 'Double Agent 2-in-1 Straightening Blow Dryer Brush', 120, '2023-10-14');
 
 INSERT INTO `product_collection_photos` (`PD_COLLECTION_ID`, `PRODUCT_ID`, `PHOTO_PATH`) VALUES
 (1, 1, '782809990.jpg'),

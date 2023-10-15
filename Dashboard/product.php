@@ -61,7 +61,8 @@
                       </select>
                     </div>
                     <div class="mb-3">
-                      <label for="photo" class="form-label">Add Product Cover</label>
+                      <label for="photo" class="form-label">Add Product Cover </label>
+                      <label for="photo" class="form-label">Size :10x10cm </label>
                       <input class="form-control" type="file" id="photo" accept="image/png, image/jpeg, image/jpg" name="photo" require>
                     </div>
                     <div class="mb-3">
@@ -72,10 +73,31 @@
                       <label for="video" class="form-label">Add Video</label>
                       <input class="form-control" type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*">
                     </div>
+                    <div class="form-group">
+                      <label for="category">Product Sponsor</label>
+                      <select class="form-control form-control-lg" id="category" name="category">
+                        <?php
+                        // include '../Config.php';
+                        $query = "select * from sponsor";
+                        $result = $conn->query($query);
+                        if ($result->num_rows > 0) {
+                          // OUTPUT DATA OF EACH ROW 
+                          while ($row = $result->fetch_assoc()) {
+                            echo "<option value=" . $row["SPONSOR_ID"] . ">" . $row["SPONSOR_NAME"] . "</option>";
+                          }
+                        } else {
+                          echo "0 results";
+                        }
+                        ?>
+
+                      </select>
+                    </div>
                     <div class="mb-3">
                       <label for="product_link" class="form-label">Product link</label>
                       <input class="form-control" type="text" id="product_link" name="product_link" placeholder="add product link" require>
                     </div>
+
+
 
                     <div class="mb-3">
                       <label for="price" class="form-label">Product Price</label>
