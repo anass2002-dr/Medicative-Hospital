@@ -56,6 +56,7 @@ if (isset($_GET['id'])) {
     $title = $row["TITLE"];
     $category_id = $row["CATEGORY_ID"];
     $photo = $row["PHOTO"];
+    $video = $row["VIDEO"];
     $product_link = $row["PRODUCT_LINK"];
     $sponsor_id = $row["SPONSOR_ID"];
     $content = $row["CONTENT"];
@@ -69,7 +70,9 @@ if (isset($_GET['id'])) {
 
     $result = $conn->query("SELECT * FROM `product_collection_photos` where PRODUCT_ID=$id");
     $cp = $result->num_rows;
-
+    if($video!=''){
+        $cp+=1;
+    }
 
     ?>
     <!-- SHOPING CART AREA START -->
@@ -88,7 +91,6 @@ if (isset($_GET['id'])) {
                                     for ($i = 1; $i < $cp; $i++) {
                                         echo "<li data-target='#bootstrap-touch-slider' data-slide-to='$i'></li>";
                                     }
-
 
                                     ?>
 
@@ -113,9 +115,16 @@ if (isset($_GET['id'])) {
                                             
                                         </div>";
                                     }
+                                    if($video!=''){
+                                        echo "<div class='item'>
+                                        
+                                        <video autoplay src='./videos/Product/$video' class='slide-image'></video>
+                                        
+                                        </div>";
 
+                                    }
                                     ?>
-
+                                    
                                 </div><!-- End of Wrapper For Slides -->
 
                                 <!-- Left Control -->
