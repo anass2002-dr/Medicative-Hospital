@@ -58,7 +58,7 @@ if (isset($_GET['id'])) {
     <?php
 
     $query = "SELECT * FROM blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID
-    WHERE b.BLOG_ID=$id";
+        WHERE b.BLOG_ID=$id";
     $result = $conn->query($query);
     $row = mysqli_fetch_assoc($result);
     $blog_id = $row["BLOG_ID"];
@@ -69,6 +69,9 @@ if (isset($_GET['id'])) {
     $video = $row["VIDEO"];
     $created_date = $row["CREATED_DATE"];
     $category_name = $row["CATEGORY_NAME"];
+    $query = "select PHOTO_PATH from collection_photos where BLOG_ID=$blog_id";
+    $result = $conn->query($query);
+    $cp = $result->num_rows;
     ?>
     <!-- Blog Posts -->
     <div class="bg-f8">
@@ -81,8 +84,15 @@ if (isset($_GET['id'])) {
                             <!-- Indicators -->
                             <ol class="carousel-indicators">
                                 <li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
-                                <li data-target="#bootstrap-touch-slider" data-slide-to="1"></li>
-                                <li data-target="#bootstrap-touch-slider" data-slide-to="2"></li>
+                                <?php
+                                for ($i = 1; $i < $cp; $i++) {
+                                    echo "<li data-target='#bootstrap-touch-slider' data-slide-to='$i'></li>";
+                                }
+
+
+                                ?>
+
+
                             </ol>
 
                             <!-- Wrapper For Slides -->
@@ -94,8 +104,7 @@ if (isset($_GET['id'])) {
                                     <img src='img/blog/$photo' alt='Slider Images' class='slide-image' />
                                     
                                     </div>";
-                                $query = "select PHOTO_PATH from collection_photos where BLOG_ID=$blog_id";
-                                $result = $conn->query($query);
+
                                 while ($row = $result->fetch_assoc()) {
                                     $path = $row["PHOTO_PATH"];
                                     echo "<div class='item'>

@@ -1368,11 +1368,11 @@ a.flip-animate:hover span:before, a.flip-animate:focus span:before {
 /*---------- LEFT/RIGHT ROUND CONTROL ----------*/
 .control-round .carousel-control {
     top: 47%;
-    opacity: 0;
+    opacity: 0.75;
     width: 45px;
     height: 45px;
     z-index: 100;
-    color: #ffffff;
+    color: #757575;
     display: block;
     font-size: 24px;
     cursor: pointer;

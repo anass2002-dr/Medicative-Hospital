@@ -74,8 +74,8 @@
                       <input class="form-control" type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*">
                     </div>
                     <div class="form-group">
-                      <label for="category">Product Sponsor</label>
-                      <select class="form-control form-control-lg" id="category" name="category">
+                      <label for="sponsor">Product Sponsor</label>
+                      <select class="form-control form-control-lg" id="sponsor" name="sponsor">
                         <?php
                         // include '../Config.php';
                         $query = "select * from sponsor";

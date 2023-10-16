@@ -48,709 +48,118 @@ if (isset($_GET['id'])) {
             </div>
         </div>
     </section>
+    <?php
+    include "Config.php";
+    $query = "select * from product where PRODUCT_ID=$id";
+    $result = $conn->query($query);
+    $row = mysqli_fetch_assoc($result);
+    $title = $row["TITLE"];
+    $category_id = $row["CATEGORY_ID"];
+    $photo = $row["PHOTO"];
+    $product_link = $row["PRODUCT_LINK"];
+    $sponsor_id = $row["SPONSOR_ID"];
+    $content = $row["CONTENT"];
+    $product_short = $row["PRODUCT_SHORT"];
+    $product_price = $row["PRODUCT_PRICE"];
+    $query = "select * from sponsor where SPONSOR_ID=$sponsor_id";
+    $result = $conn->query($query);
+    $row = mysqli_fetch_assoc($result);
+    $sponsor_name = $row["SPONSOR_NAME"];
+    $sponsor_url = $row["SPONSOR_URL"];
 
+    $result = $conn->query("SELECT * FROM `product_collection_photos` where PRODUCT_ID=$id");
+    $cp = $result->num_rows;
+
+
+    ?>
     <!-- SHOPING CART AREA START -->
     <section class="shoping-cart-area bg-f8">
         <div class="container">
             <div class="row">
-                <div class=4col-md-10 col-md-offset-14>
-                    <?php
-                    include "Config.php";
-                    $query = "select * from product where PRODUCT_ID=$id";
-                    $result = $conn->query($query);
-                    $row = mysqli_fetch_assoc($result);
-                    $title = $row["TITLE"];
-                    $category_id = $row["CATEGORY_ID"];
-                    $photo = $row["PHOTO"];
-                    $product_link = $row["PRODUCT_LINK"];
-                    $content = $row["CONTENT"];
-                    $product_short = $row["PRODUCT_SHORT"];
-                    $product_price = $row["PRODUCT_PRICE"];
-                    echo "<div class='blog-item'>
-                                <div class='blog-images'>
-                                    <div class='blog-img'><a href='#'><img src='img/Product/$photo' alt=''></a></div>
-                                </div>
-                                <div class='blog-content'>
+
+                <div class='4col-md-10 col-md-offset-14'>
+
+                    <div class='blog-item'>
+                        <div class='blog-images'>
+                            <div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
+                                    <?php
+                                    for ($i = 1; $i < $cp; $i++) {
+                                        echo "<li data-target='#bootstrap-touch-slider' data-slide-to='$i'></li>";
+                                    }
+
+
+                                    ?>
+
+
+                                </ol>
+
+                                <!-- Wrapper For Slides -->
+                                <div class="carousel-inner" role="listbox">
+                                    <!-- Third Slide -->
+                                    <?php
+                                    echo "<div class='item active'>
+                                            
+                                            <img src='img/Product/$photo' alt='Slider Images' class='slide-image' />
+                                            
+                                            </div>";
+
+                                    while ($row = $result->fetch_assoc()) {
+                                        $path = $row["PHOTO_PATH"];
+                                        echo "<div class='item'>
+                                            
+                                                <img src='img/Product/$path' alt='Slider Images' class='slide-image' />
+                                            
+                                        </div>";
+                                    }
+
+                                    ?>
+
+                                </div><!-- End of Wrapper For Slides -->
+
+                                <!-- Left Control -->
+                                <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
+                                    <span class="fa fa-angle-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+
+                                <!-- Right Control -->
+                                <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
+                                    <span class="fa fa-angle-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+
+                            </div> <!-- <div class='blog-img'><a href='#'><img src='img/Product/$photo' alt=''></a></div> -->
+                        </div>
+                        <?php
+
+                        echo "<div class='blog-content'>
                                     <a href='#'>
                                         <h4>$title</h4>
                                     </a>
-                                    <a href='http://$product_link'>
-                                        <h6 class='color-defult text-lowercase'>$product_link</h6>
+                                    <a href='$sponsor_url' target='blank'>
+                                        <h6 class='color-defult text-lowercase'>$sponsor_name</h6>
                                     </a>
                                     <div class='blog-date margin-bottom-20 margin-top-30'>
                                         <h3>$ $product_price<sub>/Only</sub></h3>
                                     </div>
-                                    
-                                    <p>$content</p>
-                                    <a href='#' class='btn btn-simple'>Buy Now</a>
+                                    <p>$product_short</p>
+                                   
+                                    <a href='$product_link'target='_blank' class='btn btn-simple'>Buy Now</a>
                                 </div>
-                            </div>";
-                    ?>
+                            </div>
+                    
                 </div>
-            </div>
-        </div>
+                <div class='col-12'>
+                <p>$content</p>
+                </div>";
+                        ?>
+                    </div>
+                </div>
     </section>
     <!-- SHOPING CART AREA END -->
 
-
-    <section class="shop-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="blog-sideber">
-                        <div class="widget clearfix">
-                            <div class="blog-search">
-                                <form action="#" class="clearfix">
-                                    <input type="search" placeholder="Search Here..">
-                                    <button type="submit">
-                                        <span class="pe-7s-search"></span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="widget clearfix">
-                            <div class="sideber-title">
-                                <h4>Best PRODUCTS</h4>
-                            </div>
-                            <div class="product-item">
-                                <a href="#"><img src="img/shop/b1.jpg" alt="" />
-                                    <span>$ 60 /<sub>Only</sub></span>
-                                    <p>SAVE UP TO 25% OFF</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="widget clearfix">
-                            <div class="sideber-title">
-                                <h4>TOP SELLERS</h4>
-                            </div>
-                            <div class="shop-single-item">
-                                <div class="shop-sell-item">
-                                    <img alt="#" src="img/shop/1.jpg">
-                                </div>
-                                <div class="shop-sell-details">
-                                    <h5><a href="#">Your Title Here</a></h5>
-                                    <h5>$ 50.00</h5>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="widget">
-                                <div class="shop-sell-item">
-                                    <img alt="#" src="img/shop/2.jpg">
-                                </div>
-                                <div class="shop-sell-details">
-                                    <h5><a href="#">Boys T-shirt</a></h5>
-                                    <h5>$ 50.00</h5>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="widget clearfix">
-                            <div class="sideber-title">
-                                <h4>Categories</h4>
-                            </div>
-                            <div class="sideber-content">
-                                <ul>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> Latest News (17)</a> </li>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> Recent Project (21)</a> </li>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> Resources (27)</a> </li>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> News (119)</a> </li>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> Events (05)</a> </li>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> Alerts (18)</a> </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="widget clearfix">
-                            <div class="sideber-title">
-                                <h4>Archive</h4>
-                            </div>
-                            <div class="sideber-content">
-                                <ul>
-                                    <li> <a href="#"><i class="fa fa-caret-right"></i> January 2018</a> </li>
-                                    <li> <a href="#"><i class="fa fa-caret-right"></i> May 2018</a> </li>
-                                    <li> <a href="#"><i class="fa fa-caret-right"></i> June 2018</a> </li>
-                                    <li> <a href="#"><i class="fa fa-caret-right"></i> Febuary 2018</a> </li>
-                                    <li> <a href="#"><i class="fa fa-caret-right"></i> April 2018</a> </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="widget clearfix">
-                            <div class="sideber-title">
-                                <h4>Popular Tags</h4>
-                            </div>
-                            <div class="sideber-content">
-                                <ul class="list-inline tags margin-top-20">
-                                    <li> <a href="#"> Resources </a> </li>
-                                    <li> <a href="#"> News </a> </li>
-                                    <li> <a href="#"> Recent Project</a> </li>
-                                    <li> <a href="#"> Events </a> </li>
-                                    <li> <a href="#"> Alerts</a> </li>
-                                    <li> <a href="#"> Complete Project</a> </li>
-                                    <li> <a href="#"> News </a> </li>
-                                    <li> <a href="#"> Events </a> </li>
-                                    <li> <a href="#"> Alerts</a> </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="shop-right-area">
-                        <div class="shop-banner">
-                            <img src="img/shop/bg1.jpg" alt="" />
-                        </div>
-                        <div class="shop-tab-area">
-                            <!--NAV PILL-->
-                            <div class="shop-tab-pill">
-                                <ul>
-                                    <li id="p-mar">
-                                        <a data-toggle="pill" href="#grid">
-                                            <i class="fa fa-th" aria-hidden="true"></i>
-                                            <span>Grid</span>
-                                        </a>
-                                    </li>
-                                    <li class="active">
-                                        <a class="active" data-toggle="pill" href="#list">
-                                            <i class="fa fa-th-list" aria-hidden="true"></i>
-                                            <span>List</span>
-                                        </a>
-                                    </li>
-                                    <li class="product-size-deatils">
-                                        <div class="show-label">
-                                            <label>Show : </label>
-                                            <select>
-                                                <option value="10" selected="selected">10</option>
-                                                <option value="09">09</option>
-                                                <option value="08">08</option>
-                                                <option value="07">07</option>
-                                                <option value="06">06</option>
-                                            </select>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="sort-position">
-                                            <label><i class="fa fa-sort-amount-asc"></i>Sort by : </label>
-                                            <select>
-                                                <option value="position" selected="selected">Position</option>
-                                                <option value="Name">Name</option>
-                                                <option value="Price">Price</option>
-                                            </select>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--NAV PILL-->
-                            <div class="tab-content">
-                                <div class="row tab-pane" id="grid">
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="product-item">
-                                            <div class="product-image">
-                                                <a class="product-img" href="#">
-                                                    <img class="primary-img" src="img/shop/s4.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <span class="on-sale">
-                                                <span class="sale-text">Sale</span>
-                                            </span>
-                                            <div class="product-action">
-                                                <h4><a href="#">Your Title Here</a></h4>
-                                                <ul class="rating-text">
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                </ul>
-                                                <span class="price">$ 120</span>
-                                            </div>
-                                            <div class="pro-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-retweet" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="" href="#">
-                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="product-item">
-                                            <div class="product-image">
-                                                <a class="product-img" href="#">
-                                                    <img class="primary-img" src="img/shop/s5.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <span class="on-sale">
-                                                <span class="sale-text">Sale</span>
-                                            </span>
-                                            <div class="product-action">
-                                                <h4><a href="#">Boy’S T-SHIRT</a></h4>
-                                                <ul class="rating-text">
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                </ul>
-                                                <span class="price">$ 120</span>
-                                            </div>
-                                            <div class="pro-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-retweet" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="" href="#">
-                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="product-item">
-                                            <div class="product-image">
-                                                <a class="product-img" href="#">
-                                                    <img class="primary-img" src="img/shop/s6.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <span class="on-sale">
-                                                <span class="sale-text">Sale</span>
-                                            </span>
-                                            <div class="product-action">
-                                                <h4><a href="#">Your Title Here</a></h4>
-                                                <ul class="rating-text">
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                </ul>
-                                                <span class="price">$ 120</span>
-                                            </div>
-                                            <div class="pro-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-retweet" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="" href="#">
-                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="product-item">
-                                            <div class="product-image">
-                                                <a class="product-img" href="#">
-                                                    <img class="primary-img" src="img/shop/s1.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <span class="on-sale">
-                                                <span class="sale-text">Sale</span>
-                                            </span>
-                                            <div class="product-action">
-                                                <h4><a href="#">Your Title Here</a></h4>
-                                                <ul class="rating-text">
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                </ul>
-                                                <span class="price">$ 120</span>
-                                            </div>
-                                            <div class="pro-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-retweet" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="" href="#">
-                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="product-item">
-                                            <div class="product-image">
-                                                <a class="product-img" href="#">
-                                                    <img class="primary-img" src="img/shop/s2.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <span class="on-sale">
-                                                <span class="sale-text">Sale</span>
-                                            </span>
-                                            <div class="product-action">
-                                                <h4><a href="#">Your Title Here</a></h4>
-                                                <ul class="rating-text">
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                </ul>
-                                                <span class="price">$ 120</span>
-                                            </div>
-                                            <div class="pro-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-retweet" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="" href="#">
-                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="product-item">
-                                            <div class="product-image">
-                                                <a class="product-img" href="#">
-                                                    <img class="primary-img" src="img/shop/s3.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <span class="on-sale">
-                                                <span class="sale-text">Sale</span>
-                                            </span>
-                                            <div class="product-action">
-                                                <h4><a href="#">Your Title Here</a></h4>
-                                                <ul class="rating-text">
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                </ul>
-                                                <span class="price">$ 120</span>
-                                            </div>
-                                            <div class="pro-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-retweet" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="" href="#">
-                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="product-item">
-                                            <div class="product-image">
-                                                <a class="product-img" href="#">
-                                                    <img class="primary-img" src="img/shop/s4.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <span class="on-sale">
-                                                <span class="sale-text">Sale</span>
-                                            </span>
-                                            <div class="product-action">
-                                                <h4><a href="#">Your Title Here</a></h4>
-                                                <ul class="rating-text">
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                </ul>
-                                                <span class="price">$ 120</span>
-                                            </div>
-                                            <div class="pro-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-retweet" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="" href="#">
-                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="product-item">
-                                            <div class="product-image">
-                                                <a class="product-img" href="#">
-                                                    <img class="primary-img" src="img/shop/s5.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <span class="on-sale">
-                                                <span class="sale-text">Sale</span>
-                                            </span>
-                                            <div class="product-action">
-                                                <h4><a href="#">Boy’S T-SHIRT</a></h4>
-                                                <ul class="rating-text">
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                </ul>
-                                                <span class="price">$ 120</span>
-                                            </div>
-                                            <div class="pro-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-retweet" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="" href="#">
-                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="product-item">
-                                            <div class="product-image">
-                                                <a class="product-img" href="#">
-                                                    <img class="primary-img" src="img/shop/s6.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <span class="on-sale">
-                                                <span class="sale-text">Sale</span>
-                                            </span>
-                                            <div class="product-action">
-                                                <h4><a href="#">Your Title Here</a></h4>
-                                                <ul class="rating-text">
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                </ul>
-                                                <span class="price">$ 120</span>
-                                            </div>
-                                            <div class="pro-action">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-retweet" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">
-                                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="" href="#">
-                                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="list" class="tab-pane active">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="shop-list-single shop-product-item-area">
-                                                <div class="shop-list-left-content">
-                                                    <a href="#"><img src="img/shop/s5.jpg" alt="" /></a>
-                                                    <span class="shop-cart-icon">
-                                                        <a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                                    </span>
-                                                </div>
-                                                <div class="shop-list-right-content">
-                                                    <div class="product-content">
-                                                        <h2><a href="#">Your Title Here</a></h2>
-                                                        <p><b>$ 65.00</b></p>
-                                                        <div class="rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-details">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.Morbi ornare lectus quis justo gravida semper.</p>
-                                                        <p>Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="shop-list-single shop-product-item-area">
-                                                <div class="shop-list-left-content">
-                                                    <a href="#"><img src="img/shop/s4.jpg" alt="" /></a>
-                                                    <span class="shop-cart-icon">
-                                                        <a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                                    </span>
-                                                </div>
-                                                <div class="shop-list-right-content">
-                                                    <div class="product-content">
-                                                        <h2><a href="#">Your Title Here</a></h2>
-                                                        <p><b>$ 65.00</b></p>
-                                                        <div class="rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-details">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.Morbi ornare lectus quis justo gravida semper.</p>
-                                                        <p>Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="shop-list-single shop-product-item-area">
-                                                <div class="shop-list-left-content">
-                                                    <a href="#"><img src="img/shop/s6.jpg" alt="" /></a>
-                                                    <span class="shop-cart-icon">
-                                                        <a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                                    </span>
-                                                </div>
-                                                <div class="shop-list-right-content">
-                                                    <div class="product-content">
-                                                        <h2><a href="#">Your Title Here</a></h2>
-                                                        <p><b>$ 65.00</b></p>
-                                                        <div class="rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-details">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.Morbi ornare lectus quis justo gravida semper.</p>
-                                                        <p>Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="shop-list-single shop-product-item-area">
-                                                <div class="shop-list-left-content">
-                                                    <a href="#"><img src="img/shop/s5.jpg" alt="" /></a>
-                                                    <span class="shop-cart-icon">
-                                                        <a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                                    </span>
-                                                </div>
-                                                <div class="shop-list-right-content">
-                                                    <div class="product-content">
-                                                        <h2><a href="#">Your Title Here</a></h2>
-                                                        <p><b>$ 65.00</b></p>
-                                                        <div class="rating">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-details">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.Morbi ornare lectus quis justo gravida semper.</p>
-                                                        <p>Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- divider start -->
     <section class="service-area over-layer-default" style="background-image:url(img/bg/5.jpg);">
