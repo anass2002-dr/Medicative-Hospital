@@ -70,10 +70,11 @@ if (isset($_GET['id'])) {
 
     $result = $conn->query("SELECT * FROM `product_collection_photos` where PRODUCT_ID=$id");
     $cp = $result->num_rows;
+    
     if($video!=''){
         $cp+=1;
     }
-
+    
     ?>
     <!-- SHOPING CART AREA START -->
     <section class="shoping-cart-area bg-f8">
@@ -88,21 +89,16 @@ if (isset($_GET['id'])) {
                                 <ol class="carousel-indicators">
                                     <li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
                                     <?php
-                                    for ($i = 1; $i < $cp; $i++) {
+                                    for ($i = 1; $i < $cp+1; $i++) {
                                         echo "<li data-target='#bootstrap-touch-slider' data-slide-to='$i'></li>";
                                     }
-
                                     ?>
-
-
                                 </ol>
-
                                 <!-- Wrapper For Slides -->
                                 <div class="carousel-inner" role="listbox">
                                     <!-- Third Slide -->
                                     <?php
                                     echo "<div class='item active'>
-                                            
                                             <img src='img/Product/$photo' alt='Slider Images' class='slide-image' />
                                             
                                             </div>";
@@ -110,19 +106,20 @@ if (isset($_GET['id'])) {
                                     while ($row = $result->fetch_assoc()) {
                                         $path = $row["PHOTO_PATH"];
                                         echo "<div class='item'>
-                                            
                                                 <img src='img/Product/$path' alt='Slider Images' class='slide-image' />
-                                            
                                         </div>";
                                     }
-                                    if($video!=''){
-                                        echo "<div class='item'>
-                                        
-                                        <video autoplay src='./videos/Product/$video' class='slide-image'></video>
-                                        
-                                        </div>";
+                                        if($video!=''){
+                                            echo "
+                                            <div class='item vd'>
+                                                <video controls>
+                                                <source src='./videos/Product/$video' type='video/mp4'>
+                                                Your browser does not support the video tag.
+                                                </video>
+                                            </div>
+                                            ";
 
-                                    }
+                                        }
                                     ?>
                                     
                                 </div><!-- End of Wrapper For Slides -->
@@ -154,15 +151,16 @@ if (isset($_GET['id'])) {
                                         <h3>$ $product_price<sub>/Only</sub></h3>
                                     </div>
                                     <p>$product_short</p>
-                                   
                                     <a href='$product_link'target='_blank' class='btn btn-simple'>Buy Now</a>
                                 </div>
                             </div>
-                    
-                </div>
-                <div class='col-12'>
-                <p>$content</p>
+                            </div>
+                            <div class='col-12'>
+                            <p style='bacground-color:#fff;'>$content
+                        </p> 
                 </div>";
+                
+                
                         ?>
                     </div>
                 </div>

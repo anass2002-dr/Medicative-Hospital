@@ -65,17 +65,17 @@
                       <label for="photo" class="form-label">Size :10x10cm </label>
                       <input class="form-control" type="file" id="photo" accept="image/png, image/jpeg, image/jpg" name="photo" require>
                     </div>
-                    <div class="mb-3">
-                      <label for="photo_collection" class="form-label">Add collecttion Photos</label>
-                      <input class="form-control" type="file" id="photo_collection" accept="image/png, image/jpeg, image/jpg" name="photo_collection[]" multiple>
+                    <div class='mb-3'>
+                      <label for='photo_collection' class='form-label'>Add collecttion Photos</label>
+                      <input class='form-control' type='file' id='photo_collection' accept='image/png, image/jpeg, image/jpg' name='photo_collection[]' multiple>
                     </div>
                     <div class="mb-3">
                       <label for="video" class="form-label">Add Video</label>
                       <input class="form-control" type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*">
                     </div>
-                    <div class="form-group">
-                      <label for="sponsor">Product Sponsor</label>
-                      <select class="form-control form-control-lg" id="sponsor" name="sponsor">
+                    <div class='form-group'>
+                      <label for='sponsor'>Product Sponsor</label>
+                      <select class='form-control form-control-lg' id='sponsor' name='sponsor'>
                         <?php
                         // include '../Config.php';
                         $query = "select * from sponsor";
@@ -99,9 +99,9 @@
 
 
 
-                    <div class="mb-3">
-                      <label for="price" class="form-label">Product Price</label>
-                      <input class="form-control" type="text" id="price" name="price" placeholder="00.00" require>
+                    <div class='mb-3'>
+                      <label for='price' class='form-label'>Product Price</label>
+                      <input class='form-control' type='text' id='price' name='price' placeholder='00.00' require>
                     </div>
 
                     <div class="form-group">

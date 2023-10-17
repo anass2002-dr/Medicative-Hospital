@@ -100,6 +100,10 @@ include 'Config_dashboard.php';
                                 <input class='form-control' type='file' id='video' name='video' accept='video/mp4,video/x-m4v,video/*'>
                                 </div>
                                 <div class='mb-3'>
+                                  <label for='photo_collection' class='form-label'>Add collecttion Photos</label>
+                                  <input class='form-control' type='file' id='photo_collection' accept='image/png, image/jpeg, image/jpg' name='photo_collection[]' multiple>
+                                </div>
+                                <div class='mb-3'>
                                 <label for='product_link' class='form-label'>product link</label>
                                 <input class='form-control' type='text' id='product_link' name='product_link' placeholder='add product link'value='$product_link' require>
                                 </div>
