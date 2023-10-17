@@ -1,10 +1,6 @@
 <?php
 include "Config_dashboard.php";
-// if (isset($_GET['id'])) {
-//     $id = $_GET['id'];
-//     $query = "delete from blog where BLOG_ID=$id";
-//     $result = $conn->query($query);
-// }
+
 $newfilename = "";
 $newfilenamev = "";
 if ($_FILES['photo']['error'] != 4 || ($_FILES['photo']['size'] != 0 && $_FILES['photo']['error'] != 0)) {
@@ -33,14 +29,9 @@ $product_link = $_POST['product_link'];
 $blog = $_POST['blog'];
 $blog_short = $_POST['blog_short'];
 $date = date('Y-m-d');
-+$id = $_POST["id"];
+$id = $_POST["id"];
 
-// echo $title."<br>";
-// echo $category."<br>";
-// echo $photo."<br>";
-// echo $video."<br>";
-// echo $product_link."<br>";
-// echo $blog."<br>";
+
 
 if (!empty($title) and !empty($category) and !empty($blog)) {
     if ($conn->connect_error) {
