@@ -64,6 +64,7 @@ include 'Config_dashboard.php';
                   }
                   echo   "<form class='forms-sample' method='post' action='insertBlog.php' enctype='multipart/form-data'>
                             <div class='form-group'>
+                            <input hidden name='operation' value='blog'>
                             <input hidden name='id' value='$id'>
                             <label for='titel'>Blog Title</label>
                             <input type='text' class='form-control' id='titel' placeholder='Title' name='title' require value='$title'>

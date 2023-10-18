@@ -66,6 +66,7 @@
                       }
                       echo   "<form class='forms-sample' method='post' action='update_p.php' enctype='multipart/form-data'>
                                 <div class='form-group'>
+                                <input hidden name='operation' value='product'>
                                 <input hidden name='id' value='$id'>
                                 <label for='titel'>product Title</label>
                                 <input type='text' class='form-control' id='titel' placeholder='Title' name='title' require value='$title'>
@@ -197,7 +198,7 @@
           e.preventDefault();
           $.ajax({
             type: "POST",
-            url: 'insertProduct.php',
+            url: 'update.php',
             data: new FormData(this),
             contentType: false,
 
