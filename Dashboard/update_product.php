@@ -142,8 +142,8 @@
                                         <input class='form-control' type='text' id='price' name='price' value='$price' require>
                                     </div>
                                     <div class='form-group'>
-                                    <label for='product-short'>Enter your short Description</label>
-                                    <textarea name='product_short' id='product-short' class='form-control' rows='10'>$product_short</textarea>
+                                    <label for='product_short'>Enter your short Description</label>
+                                    <textarea name='product_short' id='product_short' class='form-control' rows='10'>$product_short</textarea>
                                     </div>
                                     <div class='form-group'>
                                     <label for='product'>Enter your html code</label>
@@ -208,11 +208,11 @@
               $('#modal_body').text(response);
 
               $('#mymodal').modal('show');
-              console.log(response)
+              // console.log(response)
             }
           })
           $('#mymodal').on('hidden.bs.modal', function() {
-            location.reload();
+            window.location.href = 'list_product.php';
           })
         })
         // $('#submit').click(function(e){

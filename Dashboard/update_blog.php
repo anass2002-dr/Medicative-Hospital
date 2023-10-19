@@ -177,10 +177,10 @@ include 'Config_dashboard.php';
             cache: false,
             processData: false,
             success: function(response) {
-              // alert(response);
-              $('#modal_body').text(response);
+              console.log(response);
+              // $('#modal_body').text(response);
 
-              $('#mymodal').modal('show');
+              // $('#mymodal').modal('show');
 
               // location.reload();
             }

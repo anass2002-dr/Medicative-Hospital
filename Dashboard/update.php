@@ -73,7 +73,7 @@ if(isset($_POST['operation'])){
         // $conn->query($query);
         if ($conn->query($query) === TRUE) {
             
-            if (isset($_FILES['photo_collection'])) {
+            if (!empty($_FILES['photo_collection']['name'][0])) {
                 $files = $_FILES['photo_collection'];
                 $file_count = count($files['name']);
                 for ($i = 0; $i < $file_count; $i++) {
@@ -83,7 +83,7 @@ if(isset($_POST['operation'])){
                     $tempC = explode(".", $filenameC);
                     $newfilenameC = rand() . '.' . end($tempC);
                     move_uploaded_file($tmp_nameC, $target_dirC . $newfilenameC);
-                    $query3 = "INSERT INTO collection_photos(BLOG_ID, PHOTO_PATH) VALUES ($id,'$newfilenameC')";
+                    $query3 = "INSERT INTO collection_photos(BLOG_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id,'$newfilenameC','$date')";
                     $conn->query($query3);
                 }
             }
@@ -129,12 +129,15 @@ if(isset($_POST['operation'])){
         if(isset($_POST['price'])){
             $product_price = $_POST['price'];
         }
-        if(isset($_POST['content'])){
-            $blog = $_POST['content'];
+        if(isset($_POST['product'])){
+            $Product = $_POST['product'];
+            
         }
         if(isset($_POST['product_short'])){
             $product_short = $_POST['product_short'];
         }
+       
+
         if(isset($_POST['sponsor'])){
             $sponsor = $_POST['sponsor'];
         }
@@ -150,14 +153,14 @@ if(isset($_POST['operation'])){
         }
     
         $Product = mysqli_real_escape_string($conn, $Product);
-        $product_short_short = mysqli_real_escape_string($conn, $product_short_short);
+        $product_short = mysqli_real_escape_string($conn, $product_short);
         $title = mysqli_real_escape_string($conn, $title);
-        $query = "UPDATE product SET TITLE='$title',CATEGORY_ID='$category',PHOTO='$photo',VIDEO='$video',PRODUCT_LINK='$product_link',CONTENT='$Product',PRODUCT_SHOR='$product_short',PRODUCT_PRICE=$product_price,SPONSOR_ID=$sponsor,UPDATE_DATE='$date' where BLOG_ID=$id";
+        $query = "UPDATE product SET TITLE='$title',CATEGORY_ID='$category',PHOTO='$photo',VIDEO='$video',PRODUCT_LINK='$product_link',CONTENT='$Product',PRODUCT_SHORT='$product_short',PRODUCT_PRICE=$product_price,SPONSOR_ID=$sponsor,UPDATE_DATE='$date' where PRODUCT_ID=$id";
         
         // $conn->query($query);
         if ($conn->query($query) === TRUE) {
             
-            if (isset($_FILES['photo_collection'])) {
+            if (!empty($_FILES['photo_collection']['name'][0])) {
                 $files = $_FILES['photo_collection'];
                 $file_count = count($files['name']);
                 for ($i = 0; $i < $file_count; $i++) {
@@ -167,14 +170,18 @@ if(isset($_POST['operation'])){
                     $tempC = explode(".", $filenameC);
                     $newfilenameC = rand() . '.' . end($tempC);
                     move_uploaded_file($tmp_nameC, $target_dirC . $newfilenameC);
-                    $query3 = "INSERT INTO product_collection_photos(PRODUCT_ID, PHOTO_PATH) VALUES ($id,'$newfilenameC')";
+                    $date=date('Y-m-d');
+                    $query3 = "INSERT INTO product_collection_photos(PRODUCT_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id,'$newfilenameC','$date')";
                     $conn->query($query3);
                 }
             }
+            // else{
+            //     echo 'the collection photo have an error';
+            // }
     
             echo "Product is updated successfully";
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: " . $query . "<br>" . $conn->error;
         }
         $conn->close();
        
