@@ -26,7 +26,7 @@ if (isset($_GET['id'])) {
 </head>
 
 <body>
-
+<!-- https://www.duplichecker.com/ -->
     <div class="preloader"></div>
 
     <!-- Header navbar start -->
@@ -151,7 +151,7 @@ if (isset($_GET['id'])) {
                                         <h3>$ $product_price<sub>/Only</sub></h3>
                                     </div>
                                     <p>$product_short</p>
-                                    <a href='$product_link'target='_blank' class='btn btn-simple'>Buy Now</a>
+                                    <a href='$product_link'target='_blank' class='btn btn-simple'>View product</a>
                                 </div>
                             </div>
                             </div>
@@ -168,49 +168,7 @@ if (isset($_GET['id'])) {
     <!-- SHOPING CART AREA END -->
 
 
-    <!-- divider start -->
-    <section class="service-area over-layer-default" style="background-image:url(img/bg/5.jpg);">
-        <div class="container padding-bottom-none padding-top-40">
-            <div class="section-content">
-                <div class="row">
-                    <div class="col-sm-12 col-md-4">
-                        <div class="service-item style-1 text-white border-right">
-                            <div class="service-icon">
-                                <i class="pe-7s-call"></i>
-                            </div>
-                            <div class="content">
-                                <h5><a href="#">Give us a Call</a></h5>
-                                <p>+970-438-3258</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-4">
-                        <div class="service-item style-1 text-white border-right">
-                            <div class="">
-                                <i class="pe-7s-mail-open"></i>
-                            </div>
-                            <div class="content">
-                                <h5><a href="#">Send us a Message</a></h5>
-                                <p>Your_malil@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-4">
-                        <div class="service-item style-1 text-white">
-                            <div class="">
-                                <i class="pe-7s-map-marker"></i>
-                            </div>
-                            <div class="content">
-                                <h5><a href="#">Visit our Location</a></h5>
-                                <p>12 New york, USA </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- divider end -->
+
 
     <!-- Footer Style start -->
     <?php

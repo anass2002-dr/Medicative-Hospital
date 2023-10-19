@@ -39,30 +39,18 @@
                   <?php
                     if (isset($_GET["id"])) {
                         $id = $_GET["id"];
-                        $query = "select * from product where PRODUCT_ID=$id";
-                        //    echo $query;
-                        $result = $conn->query($query);
-                        $title = "";
-                        $product = "";
-                        $product_short = "";
-                        $product_link = "";
-                        $photo = "";
-                        $video = "";
-                        $category_id = "";
-                        $sponsor_id = "";
-                        $created_date = "";
-                        $price='';
-                        if ($result->num_rows > 0) {
-                          while ($row = $result->fetch_assoc()) {
-                            $title = $row["TITLE"];
-                            $product = $row["CONTENT"];
-                            $product_short = $row["PRODUCT_SHORT"];
-                            $product_link = $row["PRODUCT_LINK"];
-                            $category_id = $row["CATEGORY_ID"];
-                            $sponsor_id = $row["SPONSOR_ID"];
-                            $price=$row["PRODUCT_PRICE"];
-                          }
-                        }
+                        $query="select * from product where PRODUCT_ID=$id";
+                        $result=$conn->query($query);
+                        $row=mysqli_fetch_assoc($result);
+                        $title = $row["TITLE"];
+                        $product = $row["CONTENT"];
+                        $product_short = $row["PRODUCT_SHORT"];
+                        $product_link = $row["PRODUCT_LINK"];
+                        $category_id = $row["CATEGORY_ID"];
+                        $sponsor_id = $row["SPONSOR_ID"];
+                        $price=$row["PRODUCT_PRICE"];
+
+                       
                       }
                       echo   "<form class='forms-sample' method='post' action='update_p.php' enctype='multipart/form-data'>
                                 <div class='form-group'>
@@ -118,7 +106,7 @@
                                         // OUTPUT DATA OF EACH ROW 
                                         while ($row = $result->fetch_assoc()) {
                                             if ($row["SPONSOR_ID"] == $sponsor_id) {
-                                                echo "<option value=" . $row["SPONSOR_ID"] . ">" . $row["SPONSOR_NAME"] . "</option>";
+                                                echo "<option value=" . $row["SPONSOR_ID"] . " selected >" . $row["SPONSOR_NAME"] . "</option>";
                                             }
                                             else{
                                                 echo "<option value=" . $row["SPONSOR_ID"] . ">" . $row["SPONSOR_NAME"] . "</option>";
@@ -208,7 +196,7 @@
               $('#modal_body').text(response);
 
               $('#mymodal').modal('show');
-              // console.log(response)
+              console.log(response)
             }
           })
           $('#mymodal').on('hidden.bs.modal', function() {

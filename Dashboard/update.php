@@ -56,11 +56,9 @@ if(isset($_POST['operation'])){
         if(isset($_POST['blog_short'])){
             $blog_short = $_POST['blog_short'];
         }
-        $date = date('Y-m-d');
-        
-        
-        
+        $date = date('Y-m-d-h:i:sa');
 
+        
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -74,6 +72,8 @@ if(isset($_POST['operation'])){
         if ($conn->query($query) === TRUE) {
             
             if (!empty($_FILES['photo_collection']['name'][0])) {
+                $query4="delete from collection_photos where BLOG_ID=$id";
+                $conn->query($query4);
                 $files = $_FILES['photo_collection'];
                 $file_count = count($files['name']);
                 for ($i = 0; $i < $file_count; $i++) {
@@ -83,6 +83,7 @@ if(isset($_POST['operation'])){
                     $tempC = explode(".", $filenameC);
                     $newfilenameC = rand() . '.' . end($tempC);
                     move_uploaded_file($tmp_nameC, $target_dirC . $newfilenameC);
+                    $date = date('Y-m-d-h:i:sa');
                     $query3 = "INSERT INTO collection_photos(BLOG_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id,'$newfilenameC','$date')";
                     $conn->query($query3);
                 }
@@ -141,8 +142,7 @@ if(isset($_POST['operation'])){
         if(isset($_POST['sponsor'])){
             $sponsor = $_POST['sponsor'];
         }
-
-        $date = date('Y-m-d');
+        $date = date('Y-m-d-h:i:sa');
         
         
         
@@ -161,16 +161,20 @@ if(isset($_POST['operation'])){
         if ($conn->query($query) === TRUE) {
             
             if (!empty($_FILES['photo_collection']['name'][0])) {
+                $query4="delete from product_collection_photos where PRODUCT_ID=$id";
+                $conn->query($query4);
                 $files = $_FILES['photo_collection'];
                 $file_count = count($files['name']);
+                
                 for ($i = 0; $i < $file_count; $i++) {
                     $filenameC = $files['name'][$i];
                     $tmp_nameC = $files["tmp_name"][$i];
-                    $target_dirC = "../img/blog/";
+                    $target_dirC = "../img/Product/";
                     $tempC = explode(".", $filenameC);
                     $newfilenameC = rand() . '.' . end($tempC);
                     move_uploaded_file($tmp_nameC, $target_dirC . $newfilenameC);
-                    $date=date('Y-m-d');
+                    $date = date('Y-m-d-h:i:sa');
+                    
                     $query3 = "INSERT INTO product_collection_photos(PRODUCT_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id,'$newfilenameC','$date')";
                     $conn->query($query3);
                 }

@@ -23,7 +23,7 @@ $video = $newfilenamev;
 $product_link = $_POST['product_link'];
 $blog = $_POST['blog'];
 $blog_short = $_POST['blog_short'];
-$date = date('Y-m-d');
+$date = date('Y-m-d-h:i:sa');
 
 if (!empty($title) and !empty($category) and !empty($photo) and !empty($blog) and !empty($blog_short)) {
     if ($conn->connect_error) {
@@ -48,7 +48,8 @@ if (!empty($title) and !empty($category) and !empty($photo) and !empty($blog) an
                 $tempC = explode(".", $filenameC);
                 $newfilenameC = rand() . '.' . end($tempC);
                 move_uploaded_file($tmp_nameC, $target_dirC . $newfilenameC);
-                $query3 = "INSERT INTO collection_photos(BLOG_ID, PHOTO_PATH) VALUES ($id_blog,'$newfilenameC')";
+                
+                $query3 = "INSERT INTO collection_photos(BLOG_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id_blog,'$newfilenameC','$date')";
                 $conn->query($query3);
             }
         }
