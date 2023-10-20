@@ -139,10 +139,11 @@
         $('#mymodal').modal('show');
         $('#delete').click(function() {
           $.ajax({
-            url: 'delete_product.php',
+            url: 'delete.php',
             type: 'POST',
             data: {
-              id: deleteid
+              id: deleteid,
+              type:'p'
             },
             success: function(response) {
               location.reload();

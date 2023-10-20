@@ -33,7 +33,9 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title"> Update Sponsor</h4>
+                                    <form class='forms-sample' method='post' action='update.php' enctype='multipart/form-data'>
                                     <?php
+
                                     if (isset($_GET["id"])) {
                                         $id = $_GET["id"];
                                         $query="select * from sponsor where SPONSOR_ID=$id";
@@ -46,9 +48,10 @@
                                        
                                       }
                                     echo "
-                                        <form class='forms-sample' method='post' action='insertProduct.php' enctype='multipart/form-data'>
                                             <div class='form-group'>
                                                 <label for='sponsor_name'>Sponsor name</label>
+                                                <input hidden name='operation' value='sponsor'>
+                                                <input hidden name='id' value='$id'>
                                                 <input type='text' class='form-control' id='sponsor_name' placeholder='SPONSOR NAME' name='sponsor_name' value='$sponsor_name' require>
                                             </div>
                                             <div class='form-group'>
@@ -62,9 +65,9 @@
                                             <div class='form-group'>
                                                 <button type='submit' class='btn btn-primary me-2 text-light' id='submit'>Submit</button>
                                             </div>
-
-                                        </form>";
+                                        ";
                                 ?>
+                                </form>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +129,7 @@
                         }
                     })
                     $('#mymodal').on('hidden.bs.modal', function() {
-                        location.reload();
+                        window.location.href = 'list_sponsor.php';
                     })
                 })
                 // $('#submit').click(function(e){

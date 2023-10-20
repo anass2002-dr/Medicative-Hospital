@@ -186,7 +186,7 @@ include 'Config_dashboard.php';
             }
           })
           $('#mymodal').on('hidden.bs.modal', function() {
-            window.location.href = 'listBlogs.php';
+            window.location.href = 'list_blog.php';
           })
 
 

@@ -4,21 +4,29 @@ if(isset($_POST['operation'])){
     $operation=$_POST['operation'];
     $newfilename = "";
     $newfilenamev = "";
-    if ($_FILES['photo']['error'] != 4 || ($_FILES['photo']['size'] != 0 && $_FILES['photo']['error'] != 0)) {
-        $target_dir = "../img/blog/";
-        $temp = explode(".", $_FILES["photo"]["name"]);
-        $newfilename = round(microtime(true)) . '.' . end($temp);
-        move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $newfilename);
-        // cover_image is empty (and not an error), or no file was uploaded
+    function insert_media($file,$directory){
+        if(isset($_FILES[$file])){
+            if ($_FILES[$file]['error'] != 4 || ($_FILES[$file]['size'] != 0 && $_FILES[$file]['error'] != 0)) {
+                $target_dir = $directory;
+                $temp = explode(".", $_FILES[$file]["name"]);
+                $newfilename = round(microtime(true)) . '.' . end($temp);
+                move_uploaded_file($_FILES[$file]["tmp_name"], $target_dir . $newfilename);
+                return $newfilename;
+                // cover_image is empty (and not an error), or no file was uploaded
+            }
+        }
     }
-
-    if ($_FILES['video']['error'] != 4 || ($_FILES['video']['size'] != 0 && $_FILES['video']['error'] != 0)) {
-        $target_dir = "../videos/blog/";
-        $tempv = explode(".", $_FILES["video"]["name"]);
-        $newfilenamev = round(microtime(true)) . '.' . end($tempv);
-        move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir . $newfilenamev);
-        move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir);
-    }
+    
+    // if(isset($_FILES['video'])){
+    //     if ($_FILES['video']['error'] != 4 || ($_FILES['video']['size'] != 0 && $_FILES['video']['error'] != 0)) {
+    //         $target_dir = "../videos/blog/";
+    //         $tempv = explode(".", $_FILES["video"]["name"]);
+    //         $newfilenamev = round(microtime(true)) . '.' . end($tempv);
+    //         move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir . $newfilenamev);
+        
+    //     }
+    // }
+    
 
     if($operation=='blog'){
         $id = $_POST["id"];
@@ -32,12 +40,13 @@ if(isset($_POST['operation'])){
         $product_link = $row['PRODUCT_LINK'];
         $blog = $row['CONTENT'];
         $blog_short = $row['BLOG_SHORT'];
-        
+        $newfilename=insert_media('photo','../img/blog/');
+        $newfilenamev=insert_media('video','../videos/blog/');
         if(!empty($newfilename)){
             $photo = $newfilename;
 
         }
-        if(!empty($newfilename)){
+        if(!empty($newfilenamev)){
             $video = $newfilenamev;
         }
         if(isset($_POST['title'])){
@@ -110,11 +119,13 @@ if(isset($_POST['operation'])){
         $Product = $row['CONTENT'];
         $product_short = $row['PRODUCT_SHORT'];
         $sponsor = $row['SPONSOR_ID'];
+        $newfilename=insert_media('photo','../img/Product/');
+        $newfilenamev=insert_media('video','../videos/Product/');
         if(!empty($newfilename)){
             $photo = $newfilename;
 
         }
-        if(!empty($newfilename)){
+        if(!empty($newfilenamev)){
             $video = $newfilenamev;
         }
 
@@ -184,6 +195,45 @@ if(isset($_POST['operation'])){
             // }
     
             echo "Product is updated successfully";
+        } else {
+            echo "Error: " . $query . "<br>" . $conn->error;
+        }
+        $conn->close();
+       
+    }
+    else if($operation=='sponsor'){
+        $id = $_POST["id"];
+        $query="select * from sponsor where SPONSOR_ID=$id";
+        $result=$conn->query($query);
+        $row=mysqli_fetch_assoc($result);
+        $sponsor_name=$row['SPONSOR_NAME'];
+        $sponsor_url=$row['SPONSOR_URL'];
+        $sponsor_logo = $row['SPONSOR_LOGO'];
+        $newfilename=insert_media("photo","../img/sponsor/");
+        if(!empty($newfilename)){
+            $sponsor_logo = $newfilename;
+        }
+        if(isset($_POST['sponsor_name'])){
+            $sponsor_name = $_POST['sponsor_name'];
+        }
+        if(isset($_POST['sponsor_url'])){
+            $sponsor_url = $_POST['sponsor_url'];
+        }
+       
+        $date = date('Y-m-d-h:i:sa');
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+    
+        $sponsor_name = mysqli_real_escape_string($conn, $sponsor_name);
+        $sponsor_url = mysqli_real_escape_string($conn, $sponsor_url);
+        $query = "UPDATE sponsor SET SPONSOR_NAME='$sponsor_name',SPONSOR_URL='$sponsor_url',SPONSOR_LOGO='$sponsor_logo' ,UPDATE_DATE='$date' where SPONSOR_ID=$id" ;
+        
+        // $conn->query($query);
+        if ($conn->query($query) === TRUE) {
+
+            echo "Sponsor is updated successfully";
         } else {
             echo "Error: " . $query . "<br>" . $conn->error;
         }

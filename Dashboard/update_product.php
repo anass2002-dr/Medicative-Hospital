@@ -196,7 +196,7 @@
               $('#modal_body').text(response);
 
               $('#mymodal').modal('show');
-              console.log(response)
+              // console.log(response)
             }
           })
           $('#mymodal').on('hidden.bs.modal', function() {

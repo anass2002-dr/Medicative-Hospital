@@ -17,7 +17,7 @@
         <ul class="nav flex-column sub-menu">
           <!-- <li class="nav-item"> <a class="nav-link" href="blogs.php"> New Blog </a></li> -->
           <li class="nav-item"> <a class="nav-link" href="blogs_html.php"> New Blog</b> </a></li>
-          <li class="nav-item"> <a class="nav-link" href="listBlogs.php"> Blogs List </a></li>
+          <li class="nav-item"> <a class="nav-link" href="list_blog.php"> Blogs List </a></li>
 
         </ul>
       </div>
