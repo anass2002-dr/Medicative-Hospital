@@ -66,7 +66,7 @@
                                 <td>$TITLE</td>
                                 <td>$CATEGORY_NAME</td>
                                 <td>$CREATED_DATE</td>
-                                <td><a href='update.php?id=$BLOG_ID' class='update btn text-light' style='background-color:#00e7a1;' id='update_<?= $BLOG_ID ?>' data-id='$BLOG_ID' >update</A>
+                                <td><a href='update_blog.php?id=$BLOG_ID' class='update btn text-light' style='background-color:#00e7a1;' id='update_<?= $BLOG_ID ?>' data-id='$BLOG_ID' >update</A>
                                 </td>
                                 <td><button class='delete btn text-light' style='background-color:red;' id='del_<?= $BLOG_ID ?>' data-id='$BLOG_ID' >Delete</button>
                                 </td>

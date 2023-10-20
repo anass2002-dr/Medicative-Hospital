@@ -173,39 +173,19 @@
         <div class="container padding-bottom-none padding-top-40">
             <div class="section-content">
                 <div class="row">
-                    <div class="col-sm-12 col-md-4">
-                        <div class="service-item style-1 text-white border-right">
-                            <div class="service-icon">
-                                <i class="pe-7s-call"></i>
-                            </div>
-                            <div class="content">
-                                <h5><a href="#">Give us a Call</a></h5>
-                                <p>+970-438-3258</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-4">
+
+                    <div class="col-sm-12 col-md-12">
                         <div class="service-item style-1 text-white border-right">
                             <div class="">
                                 <i class="pe-7s-mail-open"></i>
                             </div>
                             <div class="content">
                                 <h5><a href="#">Send us a Message</a></h5>
-                                <p>Your_malil@gmail.com</p>
+                                <p>info@beautymedic.com</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-md-4">
-                        <div class="service-item style-1 text-white">
-                            <div class="">
-                                <i class="pe-7s-map-marker"></i>
-                            </div>
-                            <div class="content">
-                                <h5><a href="#">Visit our Location</a></h5>
-                                <p>12 New york, USA </p>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -252,14 +232,14 @@
                             echo "<div class='col-md-4 col-sm-6'>
                                 <div class='practice-item-1'>
                                     <div class='practice-img'>
-                                        <a href='blog-single.php?id=$BLOG_ID'>
+                                        <a href='blog-single.php?id=$BLOG_ID' class='blg_img'>
                                             <img src='img/blog/$PHOTO' alt=''>
                                             <span class='flaticon-heart-1'></span>
                                         </a>
                                     </div>
                                     <div class='practice-content'>
                                         <h4><a href='blog-single.php?id=$BLOG_ID'>$TITLE</a></h4>
-                                        <p>$BLOG_SHORT</p>
+                                        <p class='blg_p'>$BLOG_SHORT</p>
                                         <a href='blog-single.php?id=$BLOG_ID' class='btn-theme hvr-bounce-to-top'> Read more</a>
                                     </div>
                                 </div>

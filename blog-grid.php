@@ -78,7 +78,7 @@ include "Config.php";
                                 echo "<div class='col-md-4 col-sm-6 col-xs-12'>
                                         <div class='blog-item style-1'>
                                             
-                                            <a href='Blog-single.php?id=$BLOG_ID'><div class='blog-img'><img src='img/blog/$PHOTO' alt=''>
+                                            <a href='Blog-single.php?id=$BLOG_ID'><div class='blog-img blg_img'><img src='img/blog/$PHOTO' alt=''>
                                                 
                                             </div>
                                             </a>
@@ -86,122 +86,27 @@ include "Config.php";
                                                 <a href='blog-single.php?id=$BLOG_ID'>
                                                     <h4>$TITLE </h4>
                                                 </a>
-                                                <i class='fa fa-user-o'></i> <a href='blog-single.php?id=$BLOG_ID'>Admin</a> | <i class='fa fa-heart-o'></i> <a href='blog-single.php?id=$BLOG_ID'>Category :$CATEGORY_NAME </a>|<br> <a href='blog-single.php?id=$BLOG_ID'>$CREATED_DATE</a> 
-                                                <p>$BLOG_SHORT ...</p>
+                                                <i class='fa fa-heart-o'></i> <a href='blog-single.php?id=$BLOG_ID'>Category :$CATEGORY_NAME </a>
+                                                <p class='blg_p'>$BLOG_SHORT ...</p>
                                                 <a href='blog-single.php?id=$BLOG_ID' class='btn btn-simple'>Read More</a>
                                             </div>
                                         </div>
                                     </div>";
+                                
                             }
                         }
                         ?>
 
-                        <!-- <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="blog-item style-1">
-                                <div class="blog-date text-center">
-                                    <i class="pe-7s-link"></i>
-                                </div>
-                                <div class="blog-img"><a href="blog-single.php"><img src="img/blog/2.jpg" alt=""></a>
-                                    <div class="blog-event-date">
-                                        <h3>17 <small>Jun</small></h3>
-                                    </div>
-                                </div>
-                                <div class="blog-content">
-                                    <a href="blog-single.php">
-                                        <h4>Caregiver Series </h4>
-                                    </a>
-                                    <i class="fa fa-user-o"></i> <a href="blog-single.php">Admin</a> | <i class="fa fa-heart-o"></i> <a href="blog-single.php">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="blog-single.php"> Comments: 10</a>
-                                    <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="blog-single.php" class="btn btn-simple">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-12 center-block">
-                            <div class="blog-item style-1">
-                                <div class="blog-date text-center">
-                                    <i class="pe-7s-link"></i>
-                                </div>
-                                <div class="blog-img"><a href="blog-single.php"><img src="img/blog/3.jpg" alt=""></a>
-                                    <div class="blog-event-date">
-                                        <h3>19 <small>Jun</small></h3>
-                                    </div>
-                                </div>
-                                <div class="blog-content">
-                                    <a href="blog-single.php">
-                                        <h4>Little Hats, Big Hearts </h4>
-                                    </a>
-                                    <i class="fa fa-user-o"></i> <a href="blog-single.php">Admin</a> | <i class="fa fa-heart-o"></i> <a href="blog-single.php">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="blog-single.php"> Comments: 10</a>
-                                    <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="blog-single.php" class="btn btn-simple">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="blog-item style-1">
-                                <div class="blog-date text-center">
-                                    <i class="pe-7s-link"></i>
-                                </div>
-                                <div class="blog-img"><a href="blog-single.php"><img src="img/blog/1.jpg" alt=""></a>
-                                    <div class="blog-event-date">
-                                        <h3>13 <small>Jun</small></h3>
-                                    </div>
-                                </div>
-                                <div class="blog-content">
-                                    <a href="blog-single.php">
-                                        <h4>What's the Right Choice? </h4>
-                                    </a>
-                                    <i class="fa fa-user-o"></i> <a href="blog-single.php">Admin</a> | <i class="fa fa-heart-o"></i> <a href="blog-single.php">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="blog-single.php"> Comments: 10</a>
-                                    <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="blog-single.php" class="btn btn-simple">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="blog-item style-1">
-                                <div class="blog-date text-center">
-                                    <i class="pe-7s-link"></i>
-                                </div>
-                                <div class="blog-img"><a href="blog-single.php"><img src="img/blog/2.jpg" alt=""></a>
-                                    <div class="blog-event-date">
-                                        <h3>17 <small>Jun</small></h3>
-                                    </div>
-                                </div>
-                                <div class="blog-content">
-                                    <a href="blog-single.php">
-                                        <h4>Caregiver Series </h4>
-                                    </a>
-                                    <i class="fa fa-user-o"></i> <a href="blog-single.php">Admin</a> | <i class="fa fa-heart-o"></i> <a href="blog-single.php">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="blog-single.php"> Comments: 10</a>
-                                    <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="blog-single.php" class="btn btn-simple">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-12 center-block">
-                            <div class="blog-item style-1">
-                                <div class="blog-date text-center">
-                                    <i class="pe-7s-link"></i>
-                                </div>
-                                <div class="blog-img"><a href="blog-single.php"><img src="img/blog/3.jpg" alt=""></a>
-                                    <div class="blog-event-date">
-                                        <h3>19 <small>Jun</small></h3>
-                                    </div>
-                                </div>
-                                <div class="blog-content">
-                                    <a href="blog-single.php">
-                                        <h4>Little Hats, Big Hearts </h4>
-                                    </a>
-                                    <i class="fa fa-user-o"></i> <a href="blog-single.php">Admin</a> | <i class="fa fa-heart-o"></i> <a href="blog-single.php">Like :20 </a> | <i class="fa fa-comment-o"></i><a href="blog-single.php"> Comments: 10</a>
-                                    <p>come from a family of doctors and I was suffering from morbid obesity with co-morbidities like diabetes, hypertension, and sleep apnoea.</p>
-                                    <a href="blog-single.php" class="btn btn-simple">Read More</a>
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
+
+                        
+                    
+                    </div>      
                 </div>
-            </div>
+            
+            </div>      
         </div>
     </section>
-
+                 
     <!-- divider start -->
     <section class="service-area over-layer-default" style="background-image:url(img/bg/5.jpg);">
         <div class="container padding-bottom-none padding-top-40">
