@@ -29,10 +29,10 @@
                             <div class="border-style-2"></div>
                         </div>
                         <ul class="footer-list border-deshed color-icon">
-                            <li><i class="pe-7s-angle-right"></i><a href="#">About Us</a></li>
+                            <li><i class="pe-7s-angle-right"></i><a href="about-us.php">About Us</a></li>
                             <li><i class="pe-7s-angle-right"></i><a href="product-shop.php">Services</a></li>
-                            <li><i class="pe-7s-angle-right"></i><a href="#">Blogs</a></li>
-                            <li><i class="pe-7s-angle-right"></i><a href="#">Contact</a></li>
+                            <li><i class="pe-7s-angle-right"></i><a href="blog-grid.php">Blogs</a></li>
+                            <li><i class="pe-7s-angle-right"></i><a href="contact-us.php">Contact</a></li>
                         </ul>
                     </div>
                 </div>

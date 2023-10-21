@@ -157,7 +157,7 @@
                 </div>
                 <div class="row">
                     <div class="text-center">
-                        <a href="" class="btn btn-theme">See All</a>
+                        <a href="product-shop.php" class="btn btn-theme">See All</a>
                     </div>
                 </div>
             </div>

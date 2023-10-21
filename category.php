@@ -93,36 +93,14 @@ if (isset($_GET['id'])) {
         <div class="container padding-bottom-none padding-top-40">
             <div class="section-content">
                 <div class="row">
-                    <div class="col-sm-12 col-md-4">
-                        <div class="service-item style-1 text-white border-right">
-                            <div class="service-icon">
-                                <i class="pe-7s-call"></i>
-                            </div>
-                            <div class="content">
-                                <h5><a href="#">Give us a Call</a></h5>
-                                <p>+970-438-3258</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-4">
+                <div class="col-sm-12 col-md-12">
                         <div class="service-item style-1 text-white border-right">
                             <div class="">
                                 <i class="pe-7s-mail-open"></i>
                             </div>
                             <div class="content">
                                 <h5><a href="#">Send us a Message</a></h5>
-                                <p>Your_malil@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-4">
-                        <div class="service-item style-1 text-white">
-                            <div class="">
-                                <i class="pe-7s-map-marker"></i>
-                            </div>
-                            <div class="content">
-                                <h5><a href="#">Visit our Location</a></h5>
-                                <p>12 New york, USA </p>
+                                <p>info@beautymedic.com</p>
                             </div>
                         </div>
                     </div>
