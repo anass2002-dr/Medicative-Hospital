@@ -56,7 +56,7 @@
                                 <th scope='row'>$SPONSOR_ID</th>
                                 <td>$SPONSOR_NAME</td>
                                 <td>$SPONSOR_URL</td>
-                                <td><a href='update_SPONSOR.php?id=$SPONSOR_ID' class='update btn text-light' style='background-color:#00e7a1;' id='update_<?= $SPONSOR_ID ?>' data-id='$SPONSOR_ID' >update</A>
+                                <td><a href='update_sponsor.php?id=$SPONSOR_ID' class='update btn text-light' style='background-color:#00e7a1;' id='update_<?= $SPONSOR_ID ?>' data-id='$SPONSOR_ID' >update</A>
                                 </td>
                                 <td><button class='delete btn text-light' style='background-color:red;' id='del_<?= $SPONSOR_ID ?>' data-id='$SPONSOR_ID' >Delete</button>
                                 </td>
@@ -80,7 +80,9 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-body" id="modal_body">
-                            Do you really want to delete this product?
+                            Do you really want to delete this sponsor?<br>
+                            <h2 class="text-warning">Warning</h2>
+                            <span class="text-danger">By removing this sponsor, all products linked to this sponsor are also removed!!!</span>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" id="delete" data-bs-dismiss="modal">Delet</button>
@@ -129,10 +131,11 @@
                 $('#mymodal').modal('show');
                 $('#delete').click(function() {
                     $.ajax({
-                        url: 'delete_sponsor.php',
+                        url: 'delete.php',
                         type: 'POST',
                         data: {
-                            id: deleteid
+                            id: deleteid,
+                            type:'s'
                         },
                         success: function(response) {
                             location.reload();

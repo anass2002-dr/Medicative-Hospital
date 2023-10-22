@@ -24,7 +24,7 @@ $product_price = floatval($product_price);
 $Product = $_POST['content'];
 $product_short = $_POST['product_short'];
 $sponsor = $_POST['sponsor'];
-$date = date('Y-m-d');
+$date = date('Y-m-d-h:i:sa');
 
 if (!empty($title) and !empty($category) and !empty($photo) and !empty($Product) and !empty($product_short)) {
     if ($conn->connect_error) {
@@ -50,7 +50,7 @@ if (!empty($title) and !empty($category) and !empty($photo) and !empty($Product)
                 $tempC = explode(".", $filenameC);
                 $newfilenameC = rand() . '.' . end($tempC);
                 move_uploaded_file($tmp_nameC, $target_dirC . $newfilenameC);
-                $query3 = "INSERT INTO product_collection_photos(PRODUCT_ID, PHOTO_PATH) VALUES ($id_Product,'$newfilenameC')";
+                $query3 = "INSERT INTO product_collection_photos(PRODUCT_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id_Product,'$newfilenameC','$date')";
                 $conn->query($query3);
             }
         }

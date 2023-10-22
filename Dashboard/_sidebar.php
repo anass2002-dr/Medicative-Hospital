@@ -15,9 +15,9 @@
       </a>
       <div class="collapse" id="blogs">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="blogs.php"> New Blog </a></li>
-          <li class="nav-item"> <a class="nav-link" href="blogs_html.php"> New Blog using html</b> </a></li>
-          <li class="nav-item"> <a class="nav-link" href="listBlogs.php"> Blogs List </a></li>
+          <!-- <li class="nav-item"> <a class="nav-link" href="blogs.php"> New Blog </a></li> -->
+          <li class="nav-item"> <a class="nav-link" href="blogs_html.php"> New Blog</b> </a></li>
+          <li class="nav-item"> <a class="nav-link" href="list_blog.php"> Blogs List </a></li>
 
         </ul>
       </div>
@@ -40,12 +40,12 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="collapse" href="#Product" aria-expanded="false" aria-controls="auth">
+      <a class="nav-link" data-bs-toggle="collapse" href="#sponsor" aria-expanded="false" aria-controls="auth">
         <i class="ti-stats-up menu-icon"></i>
         <span class="menu-title">Sponsor</span>
         <i class="menu-arrow"></i>
       </a>
-      <div class="collapse" id="Product">
+      <div class="collapse" id="sponsor">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="sponsor.php"> New Sponsor</a></li>
           <li class="nav-item"> <a class="nav-link" href="list_sponsor.php"> Sponsors List </a></li>

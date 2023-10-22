@@ -78,11 +78,11 @@ include "./Config.php";
 
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="" aria-haspopup="true" aria-expanded="false"><span data-hover="Depertment">About-us </span></a>
+                                <a href="about-us.php" class="" aria-haspopup="true" aria-expanded="false"><span data-hover="Depertment">About-us </span></a>
                             </li>
 
                             <li class="dropdown">
-                                <a href="contact-style-2.php" class="" aria-haspopup="true" aria-expanded="false"><span data-hover="Contact">Contact </span></a>
+                                <a href="contact.php" class="" aria-haspopup="true" aria-expanded="false"><span data-hover="Contact">Contact </span></a>
 
                             </li>
 

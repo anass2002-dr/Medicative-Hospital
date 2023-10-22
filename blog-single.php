@@ -76,6 +76,7 @@ if (isset($_GET['id'])) {
     <!-- Blog Posts -->
     <div class="bg-f8">
         <div class="container">
+            <?php echo $cp;?>
             <div class="row">
                 <div class="col-md-9">
                     <div class="margin-bottom-30">
@@ -134,10 +135,10 @@ if (isset($_GET['id'])) {
                         <?php
                         echo "
                             <ul class='list-inline blog-info'>
-                                <li>By <a href='#'>Mahamudul Hasan</a></li>
-                                <li>In <a href='$product_link' target='_blank'>Product link</a></li>
+                                
+                                <li><a href='$product_link' target='_blank' style='color:#3da1ff;'>Product link</a></li>
                                 <li>Category name : $category_name</li>
-                                <li>Posted June $created_date</li>
+                                
                             </ul>
                             <br>
                             <h3><a href='#'> $title</a></h3>
@@ -237,35 +238,8 @@ if (isset($_GET['id'])) {
                                     </ul>
                                 </div>
                             </div>
-                            <div class="widget clearfix">
-                                <div class="sideber-title">
-                                    <h4>Popular Tags</h4>
-                                </div>
-                                <div class="sideber-content">
-                                    <ul class="list-inline tags margin-top-20">
-                                        <li class="hvr-rectangle-out"> <a href="#"> Resources </a> </li>
-                                        <li class="hvr-rectangle-out"> <a href="#"> News </a> </li>
-                                        <li class="hvr-rectangle-out"> <a href="#"> Recent Project</a> </li>
-                                        <li class="hvr-rectangle-out"> <a href="#"> Events </a> </li>
-                                        <li class="hvr-rectangle-out"> <a href="#"> Alerts</a> </li>
-                                        <li class="hvr-rectangle-out"> <a href="#"> Complete Project</a> </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="widget clearfix">
-                                <div class="sideber-title">
-                                    <h4>Archive</h4>
-                                </div>
-                                <div class="sideber-content">
-                                    <ul>
-                                        <li> <a href="#"><i class="fa fa-caret-right"></i> January 2018</a> </li>
-                                        <li> <a href="#"><i class="fa fa-caret-right"></i> May 2018</a> </li>
-                                        <li> <a href="#"><i class="fa fa-caret-right"></i> June 2018</a> </li>
-                                        <li> <a href="#"><i class="fa fa-caret-right"></i> Febuary 2018</a> </li>
-                                        <li> <a href="#"><i class="fa fa-caret-right"></i> April 2018</a> </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            
+                            
                         </div>
                     </div>
                 </div>
@@ -273,48 +247,7 @@ if (isset($_GET['id'])) {
         </div>
         <!-- End Blog Posts -->
 
-        <!-- divider start -->
-        <section class="service-area over-layer-default" style="background-image:url(img/bg/5.jpg);">
-            <div class="container padding-bottom-none padding-top-40">
-                <div class="section-content">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-4">
-                            <div class="service-item style-1 text-white border-right">
-                                <div class="service-icon">
-                                    <i class="pe-7s-call"></i>
-                                </div>
-                                <div class="content">
-                                    <h5><a href="#">Give us a Call</a></h5>
-                                    <p>+970-438-3258</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-                            <div class="service-item style-1 text-white border-right">
-                                <div class="">
-                                    <i class="pe-7s-mail-open"></i>
-                                </div>
-                                <div class="content">
-                                    <h5><a href="#">Send us a Message</a></h5>
-                                    <p>Your_malil@gmail.com</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-                            <div class="service-item style-1 text-white">
-                                <div class="">
-                                    <i class="pe-7s-map-marker"></i>
-                                </div>
-                                <div class="content">
-                                    <h5><a href="#">Visit our Location</a></h5>
-                                    <p>12 New york, USA </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
         <!-- divider end -->
 
         <!-- Footer Style start -->
