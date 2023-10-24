@@ -52,7 +52,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="widget clearfix">
+                        <!-- <div class="widget clearfix">
                             <div class="sideber-title">
                                 <h4>Best PRODUCTS</h4>
                             </div>
@@ -62,8 +62,8 @@
                                     <p>SAVE UP TO 25% OFF</p>
                                 </a>
                             </div>
-                        </div>
-                        <div class="widget clearfix">
+                        </div> -->
+                        <!-- <div class="widget clearfix">
                             <div class="sideber-title">
                                 <h4>TOP SELLERS</h4>
                             </div>
@@ -99,7 +99,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="widget clearfix">
                             <div class="sideber-title">
                                 <h4>Categories</h4>
@@ -115,7 +115,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="widget clearfix">
+                        <!-- <div class="widget clearfix">
                             <div class="sideber-title">
                                 <h4>Archive</h4>
                             </div>
@@ -146,7 +146,7 @@
                                     <li> <a href="#"> Alerts</a> </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -181,17 +181,7 @@
                                             </select>
                                         </div>
                                     </li>
-                                    <!-- <li class="product-size-deatils">
-                                        <div class="show-label">
-                                            <label>Company : </label>
-                                            <select>
-                                                <option value="09" selected="selected">Alixpresse</option>
-                                                <option value="08">Amazone</option>
-                                                <option value="07">Sephora</option>
-                                               
-                                            </select>
-                                        </div>
-                                    </li> -->
+
                                     <li>
                                         <div class="sort-position">
                                             <label><i class="fa fa-sort-amount-asc"></i>Sort by : </label>
