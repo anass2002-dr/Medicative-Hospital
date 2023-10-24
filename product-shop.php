@@ -106,12 +106,18 @@
                             </div>
                             <div class="sideber-content">
                                 <ul>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> Latest News (17)</a> </li>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> Recent Project (21)</a> </li>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> Resources (27)</a> </li>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> News (119)</a> </li>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> Events (05)</a> </li>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> Alerts (18)</a> </li>
+                                <?php
+                                        include './Config.php';
+                                        $query = "select * from category limit 6";
+                                        $result = $conn->query($query);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                $category_name = $row['CATEGORY_NAME'];
+                                                $category_id = $row['CATEGORY_ID'];
+                                                echo "<li> <a href='category.php?id=$category_id'><i class='fa fa-angle-right'></i> $category_name</a> </li>";
+                                            }
+                                        }
+                                        ?>
                                 </ul>
                             </div>
                         </div>
