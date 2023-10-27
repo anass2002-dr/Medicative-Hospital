@@ -52,98 +52,46 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="widget clearfix">
-                            <div class="sideber-title">
-                                <h4>Best PRODUCTS</h4>
-                            </div>
-                            <div class="product-item">
-                                <a href="#"><img src="img/shop/b1.jpg" alt="" />
-                                    <span>$ 60 /<sub>Only</sub></span>
-                                    <p>SAVE UP TO 25% OFF</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="widget clearfix">
-                            <div class="sideber-title">
-                                <h4>TOP SELLERS</h4>
-                            </div>
-                            <div class="shop-single-item">
-                                <div class="shop-sell-item">
-                                    <img alt="#" src="img/shop/1.jpg">
-                                </div>
-                                <div class="shop-sell-details">
-                                    <h5><a href="#">Your Title Here</a></h5>
-                                    <h5>$ 50.00</h5>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="widget">
-                                <div class="shop-sell-item">
-                                    <img alt="#" src="img/shop/2.jpg">
-                                </div>
-                                <div class="shop-sell-details">
-                                    <h5><a href="#">Boys T-shirt</a></h5>
-                                    <h5>$ 50.00</h5>
-                                    <ul>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="widget clearfix">
                             <div class="sideber-title">
                                 <h4>Categories</h4>
                             </div>
                             <div class="sideber-content">
                                 <ul>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> Latest News (17)</a> </li>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> Recent Project (21)</a> </li>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> Resources (27)</a> </li>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> News (119)</a> </li>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> Events (05)</a> </li>
-                                    <li> <a href="#"><i class="fa fa-angle-right"></i> Alerts (18)</a> </li>
+                                <?php
+                                        include './Config.php';
+                                        $query = "select * from category limit 6";
+                                        $result = $conn->query($query);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                $category_name = $row['CATEGORY_NAME'];
+                                                $category_id = $row['CATEGORY_ID'];
+                                                echo "<li> <a href='category.php?id=$category_id'><i class='fa fa-angle-right'></i> $category_name</a> </li>";
+                                            }
+                                        }
+                                        ?>
                                 </ul>
                             </div>
                         </div>
                         <div class="widget clearfix">
                             <div class="sideber-title">
-                                <h4>Archive</h4>
+                                <h4>Vendor</h4>
                             </div>
                             <div class="sideber-content">
                                 <ul>
-                                    <li> <a href="#"><i class="fa fa-caret-right"></i> January 2018</a> </li>
-                                    <li> <a href="#"><i class="fa fa-caret-right"></i> May 2018</a> </li>
-                                    <li> <a href="#"><i class="fa fa-caret-right"></i> June 2018</a> </li>
-                                    <li> <a href="#"><i class="fa fa-caret-right"></i> Febuary 2018</a> </li>
-                                    <li> <a href="#"><i class="fa fa-caret-right"></i> April 2018</a> </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="widget clearfix">
-                            <div class="sideber-title">
-                                <h4>Popular Tags</h4>
-                            </div>
-                            <div class="sideber-content">
-                                <ul class="list-inline tags margin-top-20">
-                                    <li> <a href="#"> Resources </a> </li>
-                                    <li> <a href="#"> News </a> </li>
-                                    <li> <a href="#"> Recent Project</a> </li>
-                                    <li> <a href="#"> Events </a> </li>
-                                    <li> <a href="#"> Alerts</a> </li>
-                                    <li> <a href="#"> Complete Project</a> </li>
-                                    <li> <a href="#"> News </a> </li>
-                                    <li> <a href="#"> Events </a> </li>
-                                    <li> <a href="#"> Alerts</a> </li>
+                                <?php
+                                        include './Config.php';
+                                        $query = "select * from sponsor";
+                                        $result = $conn->query($query);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                $sponsor_name = $row['SPONSOR_NAME'];
+                                                $sponsor_id = $row['SPONSOR_ID'];
+                                                echo "<li> <a href='category.php?id=$sponsor_id'><i class='fa fa-angle-right'></i> $sponsor_name</a> </li>";
+                                            }
+                                        }
+                                        ?>
                                 </ul>
                             </div>
                         </div>
@@ -181,17 +129,7 @@
                                             </select>
                                         </div>
                                     </li>
-                                    <!-- <li class="product-size-deatils">
-                                        <div class="show-label">
-                                            <label>Company : </label>
-                                            <select>
-                                                <option value="09" selected="selected">Alixpresse</option>
-                                                <option value="08">Amazone</option>
-                                                <option value="07">Sephora</option>
-                                               
-                                            </select>
-                                        </div>
-                                    </li> -->
+
                                     <li>
                                         <div class="sort-position">
                                             <label><i class="fa fa-sort-amount-asc"></i>Sort by : </label>
@@ -202,7 +140,6 @@
                                             </select>
                                         </div>
                                     </li>
-
                                 </ul>
                             </div>
                             <!--NAV PILL-->
@@ -210,7 +147,7 @@
                                 <div class="row tab-pane active" id="grid">
                                     <?php
                                     include 'Config.php';
-                                    $query = "select * from product";
+                                    $query = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID";
                                     $result = $conn->query($query);
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
@@ -221,6 +158,7 @@
                                             $product_link = $row["PRODUCT_LINK"];
                                             $product_short = $row["PRODUCT_SHORT"];
                                             $product_price = $row["PRODUCT_PRICE"];
+                                            $sponsor=$row["SPONSOR_NAME"];
                                             if (strlen($product_short) > 50) {
                                                 $product_short = substr($product_short, 0, 50);
                                             }
@@ -231,6 +169,7 @@
                                                 <div class='product-item'>
                                                     <div class='product-image'>
                                                         <a class='product-img' href='#'>
+                                                            <span>$sponsor</span>
                                                             <img class='primary-img' src='img/Product/$photo' alt='' />
                                                         </a>
                                                     </div>
