@@ -5443,6 +5443,13 @@ footer {
   border: 1px solid #eee;
 
 }
+.product-item .product-img span{
+    position: absolute;
+    width: 110px;
+    height: 40px;
+    top: 0;
+    left: 0;
+}
 .product-item > a {
   display: block;
   position: relative;
