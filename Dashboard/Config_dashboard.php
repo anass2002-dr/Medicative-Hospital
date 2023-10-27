@@ -9,6 +9,6 @@ if (isset($_SESSION["passport"])) {
 }
 $servername = "localhost";
 $username = "root";
-$password = "anass@2023";
+$password = "Ana@21s$";
 $dbname = "beautymedic";
 $conn = new mysqli($servername, $username, $password, $dbname);
