@@ -1,5 +1,42 @@
 <?php
 include "Config.php";
+// On détermine sur quelle page on se trouve
+if(isset($_GET['page']) && !empty($_GET['page'])){
+    $currentPage = (int) strip_tags($_GET['page']);
+}else{
+    $currentPage = 1;
+}
+// On détermine le nombre total d'blog
+$sql = 'SELECT COUNT(*) AS nb_blog FROM `blog`;';
+
+$result=$conn->query($sql);
+$row=mysqli_fetch_assoc($result);
+
+$nbblog = (int) $row['nb_blog'];
+
+$parPage = 12;
+
+// On calcule le nombre de pages total
+$pages = ceil($nbblog / $parPage);
+
+// Calcul du 1er article de la page
+$premier = ($currentPage * $parPage) - $parPage;
+
+// $sql = '';
+// if (isset($_GET['id'])) {
+//     $id = $_GET['id'];
+//     $sql = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID where b.CATEGORY_ID=$id ORDER BY CREATED_DATE DESC LIMIT $premier, $parPage;";
+// } else {
+//     $sql = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID ORDER BY CREATED_DATE DESC LIMIT $premier, $parPage;";
+// }
+$sql = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID ORDER BY CREATED_DATE DESC LIMIT $premier, $parPage;";
+
+// $sql = 'SELECT * FROM `blog` ORDER BY `CREATED_DATE` DESC LIMIT :premier, :parpage;';
+
+// On prépare la requête
+
+
+
 
 
 ?>
@@ -52,14 +89,17 @@ include "Config.php";
                 <div class="row">
                     <div class="blog-feature">
                         <?php
-                        $query = '';
-                        if (isset($_GET['id'])) {
-                            $id = $_GET['id'];
-                            $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID where b.CATEGORY_ID=$id;";
-                        } else {
-                            $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID;";
-                        }
-                        $result = $conn->query($query);
+                        
+                        $result = $conn->query($sql);
+                        
+                        // $query = '';
+                        // if (isset($_GET['id'])) {
+                        //     $id = $_GET['id'];
+                        //     $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID where b.CATEGORY_ID=$id ORDER BY `b.CREATED_DATE` DESC LIMIT :premier, :parpage;";
+                        // } else {
+                        //     $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID ORDER BY `b.CREATED_DATE` DESC LIMIT :premier, :parpage;";
+                        // }
+                        // $result = $conn->query($query);
                         // $row = mysqli_fetch_assoc($result);
 
                         if ($result->num_rows > 0) {
@@ -73,7 +113,6 @@ include "Config.php";
                                 if (strlen($BLOG_SHORT) > 160) {
                                     $BLOG_SHORT = substr($BLOG_SHORT, 0, 160);
                                 }
-
 
                                 echo "<div class='col-md-4 col-sm-6 col-xs-12'>
                                         <div class='blog-item style-1'>
@@ -102,7 +141,21 @@ include "Config.php";
                     
                     </div>      
                 </div>
-            
+                <nav aria-label="Page navigation example" style="display: flex;justify-content: center;">
+                    <ul class="pagination">
+                        <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="blog-grid.php?page=<?= $currentPage - 1 ?>">Previous</a></li>
+                        <?php for($page = 1; $page <= $pages; $page++): ?>
+                          <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+                          <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
+                                <a href="blog-grid.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+                            </li>
+                        <?php endfor ?>
+                        
+                        <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
+                        <a class="page-link" href="blog-grid.php?page=<?= $currentPage + 1 ?>">Next</a>
+                    </li>
+                    </ul>
+                </nav>
             </div>      
         </div>
     </section>

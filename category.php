@@ -76,7 +76,7 @@ if (isset($_GET['id'])) {
                             </a>
 
                             <p>$DESCRIPTION</p>
-                            <a href='blog-grid.php?id=$CATEGORY_ID' class='btn btn-simple hvr-bounce-to-top'>Our recommended products </a>
+                            <a href='product-shop.php?id=$CATEGORY_ID' class='btn btn-simple hvr-bounce-to-top'>Our recommended products </a>
                         </div>
                     </div>
                     

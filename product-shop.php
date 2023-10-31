@@ -1,3 +1,45 @@
+
+<?php
+include "Config.php";
+// On détermine sur quelle page on se trouve
+if(isset($_GET['page']) && !empty($_GET['page'])){
+    $currentPage = (int) strip_tags($_GET['page']);
+}else{
+    $currentPage = 1;
+}
+// On détermine le nombre total d'blog
+$sql = 'SELECT COUNT(*) AS nb_blog FROM `product`;';
+
+$result=$conn->query($sql);
+$row=mysqli_fetch_assoc($result);
+
+$nbblog = (int) $row['nb_blog'];
+
+$parPage = 12;
+
+// On calcule le nombre de pages total
+$pages = ceil($nbblog / $parPage);
+
+// Calcul du 1er article de la page
+$premier = ($currentPage * $parPage) - $parPage;
+
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
+
+} else {
+    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
+}
+// $sql = 'SELECT * FROM `blog` ORDER BY `CREATED_DATE` DESC LIMIT :premier, :parpage;';
+
+// On prépare la requête
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -147,8 +189,7 @@
                                 <div class="row tab-pane active" id="grid">
                                     <?php
                                     include 'Config.php';
-                                    $query = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID";
-                                    $result = $conn->query($query);
+                                    $result = $conn->query($queryP);
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
                                             $product_id = $row["PRODUCT_ID"];
@@ -205,9 +246,50 @@
                                     ?>
 
                                 </div>
-                                    
+                                
                             </div>
-                        </div>
+                            <!-- list -->
+                            <!-- <div id="list" class="tab-pane active">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="shop-list-single shop-product-item-area">
+                                                <div class="shop-list-left-content">
+                                                    <a href="#"><img src="img/shop/s5.jpg" alt="" /></a>
+                                                    <span class="shop-cart-icon">
+                                                        <a href="#"><i class="fa fa-shopping-bag"></i></a>
+                                                    </span>
+                                                </div>
+                                                <div class="shop-list-right-content">
+                                                    <div class="product-content">
+                                                        <h2><a href="#">Your Title Here</a></h2>
+                                                        
+                                                    </div>
+                                                    <div class="product-details">
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.Morbi ornare lectus quis justo gravida semper.</p>
+                                                        <p>Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div> -->
+                            <nav aria-label="Page navigation example" style="display: flex;justify-content: center;">
+                                    <ul class="pagination">
+                                        <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="product-shop.php?page=<?= $currentPage - 1 ?>">Previous</a></li>
+                                        <?php for($page = 1; $page <= $pages; $page++): ?>
+                                        <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+                                        <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
+                                                <a href="product-shop.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+                                            </li>
+                                        <?php endfor ?>
+                                        
+                                        <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
+                                        <a class="page-link" href="product-shop.php?page=<?= $currentPage + 1 ?>">Next</a>
+                                    </li>
+                                    </ul>
+                                </nav>   
                     </div>
                 </div>
             </div>
