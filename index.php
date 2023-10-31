@@ -100,7 +100,40 @@
     <!-- divider start -->
     
     <!-- divider end -->
+
     <div class="container">
+    <?php
+       
+       $user_agent = $_SERVER['HTTP_USER_AGENT']; //user browser
+       $ip_address = $_SERVER["REMOTE_ADDR"];     // user ip adderss
+       $page_name = $_SERVER["SCRIPT_NAME"];      // page the user looking
+       $query_string = $_SERVER["QUERY_STRING"];   // what query he used
+       $current_page = $page_name."?".$query_string; 
+
+    //    https://api.ip2location.io/?key=9F79F0BA5873FF33CE513D97CD4FA9FA&ip=102.50.243.101&format=json
+   // get location 
+       $url = json_decode(file_get_contents("https://api.ip2location.io/?key=9F79F0BA5873FF33CE513D97CD4FA9FA&ip=102.50.243.101&format=json"));
+       $ip=$url->ip;
+       $country=$url->country_name;  // user country
+       $city=$url->city_name;       // city
+       $region=$url->region_name;   // regoin
+       $latitude=$url->latitude;    //lat and lon
+       $longitude=$url->longitude;
+
+   // get time
+       date_default_timezone_set('UTC');
+       $date = date("Y-m-d");
+       $time = date("H:i:s");
+       
+       echo "ip_address : ".$ip;
+      
+       echo "country : ".$country;
+       echo "region : ".$region;
+       echo "latitude : ".$latitude;
+       echo "longitude : ".$longitude;
+       echo "date : ".$date;
+       echo "time : ".$time;
+   ?>
         <div class="section-content">
             <div class="row">
                 <div class="col-12">

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "./Config.php";
 ?>
 <div class="header-topbar style-2">
@@ -6,7 +7,7 @@ include "./Config.php";
         <div class="row">
             <div class="col-md-8 col-sm-6 welcome-top">
                 <ul class="list-inline top-icon">
-                    <li><i class="fa fa-envelope"></i> contact@youdomain.com</li>
+                    <li><i class="fa fa-envelope"></i> contact@beautymedic.com</li>
                     <li><i class="fa fa-clock-o"></i> Mon - Sat 8.00 - 18.00</li>
                 </ul>
             </div>

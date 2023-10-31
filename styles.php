@@ -24,3 +24,6 @@
 <script src="https://kit.fontawesome.com/701ec9ce74.js" crossorigin="anonymous"></script>
 <link href="https://db.onlinewebfonts.com/c/7218a2da5a03f622ca18085806382043?family=Pe-icon-7-stroke" rel="stylesheet">
 <!-- <link rel="stylesheet" href="./css/bootstrap.min.css"> -->
+<!-- Bootstrap CSS -->
+<!-- Font Awesome CSS -->
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>

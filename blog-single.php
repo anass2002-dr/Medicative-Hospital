@@ -76,7 +76,7 @@ if (isset($_GET['id'])) {
     <!-- Blog Posts -->
     <div class="bg-f8">
         <div class="container">
-            <?php echo $cp;?>
+            
             <div class="row">
                 <div class="col-md-9">
                     <div class="margin-bottom-30">

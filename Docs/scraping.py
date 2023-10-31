@@ -36,8 +36,9 @@ with open('Docs/links_aliexpress.csv','r',encoding='utf8') as filecsv:
     # for i in range(1,len(links_list)):
     #     print(links_list[i][0])
     
-url=links_list[0][0]
-print(url)
+# url=links_list[0][0]
+url="https://www.aliexpress.com/item/1005005990085273.html"
+# print(url)
 driver=webdriver.Chrome()
 driver.get(str(url))
 #title
@@ -50,11 +51,22 @@ driver.get(str(url))
 # for i in range(2,len(sp)):
 #     price+=sp[i].text
 # price=float(price)
-content=driver.find_element(By.CSS_SELECTOR,'#product-description')
+content=driver.find_element(By.CLASS_NAME,'description--product-description--nxRv0lW')
 # content=driver.page_source
 # print(content.text)
 
 # with open('Docs/readme.txt', 'w',encoding='utf8') as f:
 #     f.write(content)
-print(content)
+print(content.get_attribute('innerhtml'))
 
+# wait = WebDriverWait(driver, 10)
+
+# //Find frame or iframe and switch
+# wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("your frame id or name"));
+
+# //Now find the element 
+# WebElement Category_Body = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("tinymce")));
+#  Category_Body.sendKeys("Android Smart Phone - 16GB");
+
+# //Once all your stuff done with this frame need to switch back to default
+# driver.switchTo().defaultContent();

@@ -71,7 +71,61 @@
         <div class="row">
             <div class="col-12 text-center">
                 <p><a target="_blank" href="index.php">BeautyMedic</a></p>
+                <div class="container">
+                    <button type="button" class="btn btn-info btn-round" data-toggle="modal" data-target="#loginModal">
+                        Login
+                    </button>  
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="d-flex flex-column text-center">
+          <form>
+            <div class="form-group">
+                <p class="text-secondary">Add your email to receive the latest news about beauty products</p>
+
+                <input type="email" class="form-control rounded-4" id="email"placeholder="Your email address...">
+            </div>
+            
+            <button type="button" class="btn btn-info btn-block btn-round">Validate</button>
+          </form>
+          
+          <!-- <div class="text-center text-muted delimiter">or use a social network</div>
+          <div class="d-flex justify-content-center social-buttons">
+            <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter">
+              <i class="fab fa-twitter"></i>
+            </button>
+            <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
+              <i class="fab fa-facebook"></i>
+            </button>
+            <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
+              <i class="fab fa-linkedin"></i>
+            </button>
+        </div> -->
+      </div>
+    </div>
+      
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    $(window).on('load', function() {
+        setTimeout(function() {
+            $('#loginModal').modal();
+        }, 2000);
+        
+    });
+</script>
