@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -133,6 +135,7 @@
     //    echo "longitude : ".$longitude;
     //    echo "date : ".$date;
     //    echo "time : ".$time;
+    // echo $n_email;
    ?>
         <div class="section-content">
             <div class="row">

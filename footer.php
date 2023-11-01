@@ -72,9 +72,11 @@
             <div class="col-12 text-center">
                 <p><a target="_blank" href="index.php">BeautyMedic</a></p>
                 <div class="container">
-                    <button type="button" class="btn btn-info btn-round" data-toggle="modal" data-target="#loginModal">
+                    <!-- <button type="button" class="btn btn-info btn-round" data-toggle="modal" data-target="#loginModal">
                         Login
-                    </button>  
+                    </button>   -->
+
+                    
                 </div>
             </div>
         </div>
@@ -92,14 +94,14 @@
       <div class="modal-body">
         
         <div class="d-flex flex-column text-center">
-          <form>
+          <form action="./index.php" method="POST">
             <div class="form-group">
                 <p class="text-secondary">Add your email to receive the latest news about beauty products</p>
 
-                <input type="email" class="form-control rounded-4" id="email"placeholder="Your email address...">
+                <input type="email" class="form-control rounded-4" id="email"placeholder="Your email address..." name="">
             </div>
             
-            <button type="button" class="btn btn-info btn-block btn-round">Validate</button>
+            <button type="submit" class="btn btn-info btn-block btn-round">Validate</button>
           </form>
           
           <!-- <div class="text-center text-muted delimiter">or use a social network</div>
@@ -128,4 +130,15 @@
     //     }, 2000);
         
     // });
+    $(document).ready(
+      function() {
+
+        $('#loginModal').on('hidden.bs.modal', function() {
+            location.reload();
+        })
+
+        
+
+      })
+    
 </script>
