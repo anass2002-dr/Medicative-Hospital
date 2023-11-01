@@ -81,7 +81,7 @@ INSERT INTO `collection_photos` (`PHOTO_ID`, `BLOG_ID`, `PHOTO_PATH`) VALUES
 
 CREATE TABLE `comment` (
   `COMMENT_ID` int(11) NOT NULL,
-  `USER_ID` int(11) NOT NULL,
+  `USER_ID` int(12) NOT NULL,
   `BLOG_ID` int(11) NOT NULL,
   `CONTENT` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
