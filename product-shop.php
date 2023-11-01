@@ -2,18 +2,33 @@
 <?php
 include "Config.php";
 // On détermine sur quelle page on se trouve
+
+
 if(isset($_GET['page']) && !empty($_GET['page'])){
     $currentPage = (int) strip_tags($_GET['page']);
 }else{
     $currentPage = 1;
 }
 // On détermine le nombre total d'blog
-$sql = 'SELECT COUNT(*) AS nb_blog FROM `product`;';
+$id='';
+$sp_id='';
+$sql='';
 
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "SELECT COUNT(*) AS nb_product FROM product  WHERE CATEGORY_ID=$id";
+}
+else if (isset($_GET['sp_id']) && !empty($_GET['sp_id'])) {
+    $sp_id = $_GET['sp_id'];
+    $sql = "SELECT COUNT(*) AS nb_product FROM product  WHERE SPONSOR_ID=$sp_id";
+}
+else{
+    $sql = "SELECT COUNT(*) AS nb_product FROM product";
+}
 $result=$conn->query($sql);
 $row=mysqli_fetch_assoc($result);
 
-$nbblog = (int) $row['nb_blog'];
+$nbblog = (int) $row['nb_product'];
 
 $parPage = 12;
 
@@ -23,19 +38,29 @@ $pages = ceil($nbblog / $parPage);
 // Calcul du 1er article de la page
 $premier = ($currentPage * $parPage) - $parPage;
 
-
-if (isset($_GET['id'])) {
+$queryP='';
+if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
 
-} else {
+}
+else if (isset($_GET['sp_id']) && !empty($_GET['sp_id'])) {
+    $sp_id = $_GET['sp_id'];
+    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.SPONSOR_ID=$sp_id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
+}
+ else {
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
 }
 // $sql = 'SELECT * FROM `blog` ORDER BY `CREATED_DATE` DESC LIMIT :premier, :parpage;';
 
 // On prépare la requête
+if(!empty($id)){
+    $id='&id='.$id;
 
-
+}
+if(!empty($sp_id)){
+    $sp_id='&sp_id='.$sp_id;
+}
 
 
 
@@ -101,7 +126,9 @@ if (isset($_GET['id'])) {
                             </div>
                             <div class="sideber-content">
                                 <ul>
-                                <?php
+                                    <li> <a href='product-shop.php'><i class='fa fa-angle-right'></i> All</a> </li>
+
+                                    <?php
                                         include './Config.php';
                                         $query = "select * from category limit 6";
                                         $result = $conn->query($query);
@@ -109,7 +136,7 @@ if (isset($_GET['id'])) {
                                             while ($row = $result->fetch_assoc()) {
                                                 $category_name = $row['CATEGORY_NAME'];
                                                 $category_id = $row['CATEGORY_ID'];
-                                                echo "<li> <a href='category.php?id=$category_id'><i class='fa fa-angle-right'></i> $category_name</a> </li>";
+                                                echo "<li> <a href='product-shop.php?id=$category_id'><i class='fa fa-angle-right'></i> $category_name</a> </li>";
                                             }
                                         }
                                         ?>
@@ -122,7 +149,9 @@ if (isset($_GET['id'])) {
                             </div>
                             <div class="sideber-content">
                                 <ul>
-                                <?php
+                                    <li> <a href='product-shop.php'><i class='fa fa-angle-right'></i> All</a> </li>
+
+                                    <?php
                                         include './Config.php';
                                         $query = "select * from sponsor";
                                         $result = $conn->query($query);
@@ -130,10 +159,10 @@ if (isset($_GET['id'])) {
                                             while ($row = $result->fetch_assoc()) {
                                                 $sponsor_name = $row['SPONSOR_NAME'];
                                                 $sponsor_id = $row['SPONSOR_ID'];
-                                                echo "<li> <a href='category.php?id=$sponsor_id'><i class='fa fa-angle-right'></i> $sponsor_name</a> </li>";
+                                                echo "<li> <a href='product-shop.php?sp_id=$sponsor_id'><i class='fa fa-angle-right'></i> $sponsor_name</a> </li>";
                                             }
                                         }
-                                        ?>
+                                    ?>
                                 </ul>
                             </div>
                         </div>
@@ -144,7 +173,7 @@ if (isset($_GET['id'])) {
 
                         <div class="shop-tab-area">
                             <!--NAV PILL-->
-                            <div class="shop-tab-pill">
+                            <!-- <div class="shop-tab-pill">
                                 <ul>
                                     <li class="active" id="p-mar">
                                         <a data-toggle="pill" href="#grid">
@@ -183,7 +212,7 @@ if (isset($_GET['id'])) {
                                         </div>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> -->
                             <!--NAV PILL-->
                             <div class="tab-content">
                                 <div class="row tab-pane active" id="grid">
@@ -205,20 +234,20 @@ if (isset($_GET['id'])) {
                                             }
                                             if (strlen($title) > 20) {
                                                 $title = substr($title, 0, 20);
-                                            }
-                                            echo "<div class='col-md-4 col-sm-4'>
+                                            }?>
+                                            <div class='col-md-4 col-sm-4'>
                                                 <div class='product-item'>
                                                     <div class='product-image'>
                                                         <a class='product-img' href='#'>
-                                                            <span>$sponsor</span>
-                                                            <img class='primary-img' src='img/Product/$photo' alt='' />
+                                                            <span><?=$sponsor?></span>
+                                                            <img class='primary-img' src='img/Product/<?=$photo?>' alt='' />
                                                         </a>
                                                     </div>
                                                     
                                                     <div class='product-action'>
-                                                        <h4><a href='shop-single.php?id=$product_id'>$title ...</a></h4>
-                                                        <p>$product_short ...</p>
-                                                        <span class='price'>$ $product_price</span>
+                                                        <h4><a href='shop-single.php?id=<?=$product_id?>'><?=$title?> ...</a></h4>
+                                                        <p><?=$product_short?> ...</p>
+                                                        <span class='price'>$ <?=$product_price?></span>
                                                     </div>
                                                     <div class='pro-action'>
                                                         <ul>
@@ -233,14 +262,15 @@ if (isset($_GET['id'])) {
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a class='' href='$product_link'  target='_blank'>
+                                                                <a class='' href='<?=$product_link?>'  target='_blank'>
                                                                     <i class='fa fa-shopping-cart' aria-hidden='true'></i>
                                                                 </a>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                 </div>
-                                            </div>";
+                                            </div>
+                                        <?php    
                                         }
                                     }
                                     ?>
@@ -248,45 +278,19 @@ if (isset($_GET['id'])) {
                                 </div>
                                 
                             </div>
-                            <!-- list -->
-                            <!-- <div id="list" class="tab-pane active">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="shop-list-single shop-product-item-area">
-                                                <div class="shop-list-left-content">
-                                                    <a href="#"><img src="img/shop/s5.jpg" alt="" /></a>
-                                                    <span class="shop-cart-icon">
-                                                        <a href="#"><i class="fa fa-shopping-bag"></i></a>
-                                                    </span>
-                                                </div>
-                                                <div class="shop-list-right-content">
-                                                    <div class="product-content">
-                                                        <h2><a href="#">Your Title Here</a></h2>
-                                                        
-                                                    </div>
-                                                    <div class="product-details">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.Morbi ornare lectus quis justo gravida semper.</p>
-                                                        <p>Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                </div>
-                            </div> -->
                             <nav aria-label="Page navigation example" style="display: flex;justify-content: center;">
                                     <ul class="pagination">
-                                        <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="product-shop.php?page=<?= $currentPage - 1 ?>">Previous</a></li>
+                                        <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="product-shop.php?page=<?= $currentPage - 1 .$id.$sp_id?>">Previous</a></li>
                                         <?php for($page = 1; $page <= $pages; $page++): ?>
                                         <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
                                         <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
-                                                <a href="product-shop.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+                                                <a href="product-shop.php?page=<?= $page .$id.$sp_id?>" class="page-link"><?= $page ?></a>
                                             </li>
                                         <?php endfor ?>
                                         
                                         <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
-                                        <a class="page-link" href="product-shop.php?page=<?= $currentPage + 1 ?>">Next</a>
+                                        <a class="page-link" href="product-shop.php?page=<?= $currentPage + 1 .$id.$sp_id?>">Next</a>
                                     </li>
                                     </ul>
                                 </nav>   

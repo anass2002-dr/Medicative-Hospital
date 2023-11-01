@@ -22,7 +22,6 @@ $pages = ceil($nbblog / $parPage);
 // Calcul du 1er article de la page
 $premier = ($currentPage * $parPage) - $parPage;
 
-// $sql = '';
 // if (isset($_GET['id'])) {
 //     $id = $_GET['id'];
 //     $sql = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID where b.CATEGORY_ID=$id ORDER BY CREATED_DATE DESC LIMIT $premier, $parPage;";
@@ -30,15 +29,6 @@ $premier = ($currentPage * $parPage) - $parPage;
 //     $sql = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID ORDER BY CREATED_DATE DESC LIMIT $premier, $parPage;";
 // }
 $sql = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID ORDER BY CREATED_DATE DESC LIMIT $premier, $parPage;";
-
-// $sql = 'SELECT * FROM `blog` ORDER BY `CREATED_DATE` DESC LIMIT :premier, :parpage;';
-
-// On prépare la requête
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -125,14 +125,14 @@
        $date = date("Y-m-d");
        $time = date("H:i:s");
        
-       echo "ip_address : ".$ip;
+    //    echo "ip_address : ".$ip;
       
-       echo "country : ".$country;
-       echo "region : ".$region;
-       echo "latitude : ".$latitude;
-       echo "longitude : ".$longitude;
-       echo "date : ".$date;
-       echo "time : ".$time;
+    //    echo "country : ".$country;
+    //    echo "region : ".$region;
+    //    echo "latitude : ".$latitude;
+    //    echo "longitude : ".$longitude;
+    //    echo "date : ".$date;
+    //    echo "time : ".$time;
    ?>
         <div class="section-content">
             <div class="row">
