@@ -29,7 +29,7 @@
                         </div>
                         <ul class="footer-list border-deshed color-icon">
                             <li><i class="pe-7s-angle-right"></i><a href="about-us.php">About Us</a></li>
-                            <li><i class="pe-7s-angle-right"></i><a href="product-shop.php">Services</a></li>
+                            <!-- <li><i class="pe-7s-angle-right"></i><a href="product-shop.php">Services</a></li> -->
                             <li><i class="pe-7s-angle-right"></i><a href="blog-grid.php">Blogs</a></li>
                             <li><i class="pe-7s-angle-right"></i><a href="contact-us.php">Contact</a></li>
                             <li><i class="pe-7s-angle-right"></i><a href="PrivacyPolicy.php">Privacy Policy</a></li>

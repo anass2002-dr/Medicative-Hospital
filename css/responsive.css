@@ -12,6 +12,9 @@
 
 
 @media screen and (max-width: 991px) {
+    .carousel-index {
+        margin-top: 80px;
+    }
     .carousel-caption {
         display: none;
     }
@@ -68,7 +71,7 @@
         margin-top: 25px;
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 996px) {
     .blog-comments .comment:before {
         display: none;
     }
@@ -100,12 +103,12 @@
         left: 0;
     }
 }
-@media (min-width: 768px) and (max-width: 990px) {
+@media (min-width: 996px) and (max-width: 990px) {
     .main-navbar.no-bg.position-fixed.header-color .nav.navbar-nav.navbar-right .dropdown-buttons {
         margin-top: 0;
     }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 996px) and (max-width: 991px) {
 
     .timer .days-wrapper, .timer .hours-wrapper, .timer .minutes-wrapper, .timer .seconds-wrapper {
         width: 140px; height: 140px; margin: 0 7px; padding-top: 20px;
@@ -120,7 +123,7 @@
 }
 
 
-@media (min-width: 768px) and (max-width: 1190px) {
+@media (min-width: 996px) and (max-width: 1190px) {
     .header-color .nav>li>a {
         padding: 10px;
     }
@@ -278,7 +281,7 @@
 }
 
 
-@media only screen and (min-width: 768px) and (max-width: 992px) {
+@media only screen and (min-width: 996px) and (max-width: 992px) {
     body {
         overflow-x: hidden;
     }
@@ -385,7 +388,7 @@
 
 
 
-@media only screen and (min-width: 320px) and (max-width:768px) {
+@media only screen and (min-width: 320px) and (max-width:996px) {
     .navbar-brand {
         height: auto;
     }
@@ -395,7 +398,7 @@
     }
 }
 
-@media only screen and (min-width: 768px) and (max-width:991px) {
+@media only screen and (min-width: 996px) and (max-width:991px) {
     .navbar-header {
         float: none;
         width: 170px;
@@ -403,7 +406,7 @@
         margin: 0 auto;
     }
 }
-@media only screen and (min-width: 768px) and (max-width:990px) {
+@media only screen and (min-width: 996px) and (max-width:990px) {
     .shop-icon {
         margin-top: 25px;
     }

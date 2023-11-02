@@ -26,7 +26,7 @@
     <!-- Header navbar end -->
 
     <!-- Start  bootstrap-touch-slider Slider -->
-    <div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000">
+    <div id="bootstrap-touch-slider" class="carousel-index carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000">
 
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -41,14 +41,7 @@
             <div class="item active">
                 <!-- Slide Background -->
                 <img src="./img/slide1.jpg" alt="Slider Images" class="slide-image" />
-                <!-- <div class="bs-slider-overlay"></div> -->
-
-                <!-- <div class="slide-text slide_style_left">
-                    <h1 data-animation="animated fadeInRight">The <span class="color-defult"> Medicative </span>Hospital</h1>
-                    <p data-animation="animated fadeInLeft">Our team of over 7000 doctors join me in giving you the best <br> of modern healthcare to ensure you stay healthy, always.</p>
-                    <a href="#" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">Read more</a>
-                    <a href="#" target="_blank" class="btn btn-primary" data-animation="animated fadeInRight">Book Now</a>
-                </div> -->
+                
             </div>
             <!-- End of Slide -->
 
@@ -56,14 +49,7 @@
             <div class="item">
                 <!-- Slide Background -->
                 <img src="./img/slide2.jpg" alt="Slider Images" class="slide-image" />
-                <!-- <div class="bs-slider-overlay"></div> -->
-                <!-- Slide Text Layer -->
-                <!-- <div class="slide-text slide_style_center">
-                    <h1 data-animation="animated bounceInDown"> Treat<span class="color-defult"> heart</span> disease.</h1>
-                    <p data-animation="animated lightSpeedIn">consectetur adipisicing elit. Eligendi vel ipsam deleniti dignissimos <br> corporis consequatur possimus eaque voluptates.</p>
-                    <a href="#" target="_blank" class="btn btn-default" data-animation="animated fadeInUp">Read More</a>
-                    <a href="#" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">Donate Now</a>
-                </div> -->
+                
             </div>
             <!-- End of Slide -->
 
@@ -71,14 +57,7 @@
             <div class="item">
                 <!-- Slide Background -->
                 <img src="./img/slide3.jpg" alt="Slider Images" class="slide-image" />
-                <!-- <div class="bs-slider-overlay"></div> -->
-                <!-- Slide Text Layer -->
-                <!-- <div class="slide-text slide_style_right">
-                    <h1 data-animation="animated fadeInLeft">Life Wellness<span class="color-defult"> Programs</span></h1>
-                    <p data-animation="animated fadeInRight">Stay in touch and in shape with periodic tips from our <br>in-house experts on wellness, fitness and nutrition.</p>
-                    <a href="#" target="_blank" class="btn btn-default" data-animation="animated fadeInLeft">Read More</a>
-                    <a href="#" target="_blank" class="btn btn-primary" data-animation="animated fadeInRight">Donate Now</a>
-                </div> -->
+                
             </div>
             <!-- End of Slide -->
         </div><!-- End of Wrapper For Slides -->
@@ -125,15 +104,7 @@
         $date = date("Y-m-d");
         $time = date("H:i:s");
 
-        //    echo "ip_address : ".$ip;
-
-        //    echo "country : ".$country;
-        //    echo "region : ".$region;
-        //    echo "latitude : ".$latitude;
-        //    echo "longitude : ".$longitude;
-        //    echo "date : ".$date;
-        //    echo "time : ".$time;
-        // echo $n_email;
+       
         ?>
         <div class="section-content">
             <div class="row">
