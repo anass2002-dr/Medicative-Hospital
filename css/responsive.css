@@ -19,7 +19,7 @@
         font-size: 12px;
     }
     .carousel .item {
-        min-height: 350px;
+        min-height: inherit;
     }
     .about-wrap {
         padding: 0 10px;

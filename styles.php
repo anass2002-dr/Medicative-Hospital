@@ -1,4 +1,4 @@
-<title>BeautyMedic</title>
+<title>beauty-medicare</title>
 <!-- Bootstrap Core CSS -->
 <link rel="stylesheet" href="./css/bootstrap.min.css">
 

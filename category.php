@@ -100,7 +100,7 @@ if (isset($_GET['id'])) {
                             </div>
                             <div class="content">
                                 <h5><a href="#">Send us a Message</a></h5>
-                                <p>info@beautymedic.com</p>
+                                <p>info@beauty-medicare.com</p>
                             </div>
                         </div>
                     </div>

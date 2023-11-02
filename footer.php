@@ -4,12 +4,12 @@
             <div class="row margin-top-30">
                 <div class="col-md-3">
                     <div class="footer-item footer-widget-one">
-                        <img alt="" src="img/logo-beauty.png" class="footer-logo">
+                        <img alt="" src="img/beautymedic-test.png" class="footer-logo">
                         <p>Your satisfaction is our top priority. We actively listen to your feedback and needs, and we're always ready to make adjustments to ensure your happiness.</p>
 
                         <ul class="address">
                             <!-- <li><i class="pe-7s-call"></i>Phone: 001 (407) 901-6400</li> -->
-                            <li><i class="pe-7s-mail"></i><a href="mailto:">Email: info@beautymedic.com</a></li>
+                            <li><i class="pe-7s-mail"></i><a href="mailto:">Email: info@beauty-medicare.com</a></li>
                         </ul>
 
                         <hr>
@@ -33,6 +33,7 @@
                             <li><i class="pe-7s-angle-right"></i><a href="product-shop.php">Services</a></li>
                             <li><i class="pe-7s-angle-right"></i><a href="blog-grid.php">Blogs</a></li>
                             <li><i class="pe-7s-angle-right"></i><a href="contact-us.php">Contact</a></li>
+                            <li><i class="pe-7s-angle-right"></i><a href="PrivacyPolicy.php">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -70,7 +71,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <p><a target="_blank" href="index.php">BeautyMedic</a></p>
+                <p><a target="_blank" href="index.php">© Copyright 2023 - beauty-medicare</a></p>
                 <div class="container">
                     <!-- <button type="button" class="btn btn-info btn-round" data-toggle="modal" data-target="#loginModal">
                         Login

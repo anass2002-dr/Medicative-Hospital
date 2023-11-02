@@ -6667,3 +6667,25 @@ padding: 0.3rem 0rem;
 #loginModal h6{
     color: rgb(112, 112, 112);
 }
+.PrivacyPolicy h1,h2,h3,h4{
+    font-family: inherit;
+    color: inherit;
+    font-weight: inherit;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-transform: inherit;
+    letter-spacing: inherit;
+}
+.PrivacyPolicy li{
+    list-style: inherit;
+    margin: 5px;
+}
+.PrivacyPolicy ul{
+    
+    margin: 20px;
+}
+.PrivacyPolicy p{
+    
+    margin: 10px;
+}

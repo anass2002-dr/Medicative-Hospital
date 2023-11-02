@@ -58,11 +58,11 @@
                             </a>
 
                             <p>
-                                Welcome to <span style="color:#3da1ff;"><span style="color:#3da1ff;">BeautyMedic </span> </span>, your ultimate destination for all things beauty and wellness. Founded with a passion for helping individuals look and feel their best, we are a team of beauty aficionados, medical experts, and tech enthusiasts dedicated to providing you with a curated selection of the finest beauty and medical products on the market.<br><br>
+                                Welcome to <span style="color:#3da1ff;"><span style="color:#3da1ff;">beauty-medicare </span> </span>, your ultimate destination for all things beauty and wellness. Founded with a passion for helping individuals look and feel their best, we are a team of beauty aficionados, medical experts, and tech enthusiasts dedicated to providing you with a curated selection of the finest beauty and medical products on the market.<br><br>
                                 Our mission is simple: to empower you with the knowledge and access to products that enhance your well-being and confidence. With a keen eye for quality, safety, and innovation, we meticulously handpick each item in our catalog, ensuring that you receive nothing but the best. From skincare essentials to cutting-edge medical aids, our diverse range of products is designed to meet your unique needs and aspirations.<br><br>
                                 We believe in the transformative power of self-care, and we are committed to bringing you the latest trends, expert advice, and in-depth product insights through our blog and educational resources. Your trust is our greatest reward, and we pledge to serve you with honesty, transparency, and exceptional customer care.<br><br>
-                                Thank you for choosing <span style="color:#3da1ff;">BeautyMedic </span> as your partner on the journey to a healthier, more beautiful you. Explore our offerings, discover the latest industry insights, and embark on a path of self-enhancement. Your beauty and well-being matter to us, and we're here to make a positive difference in your life.<br><br>
-                                Discover, experience, and embrace your best self with <a href="index.php" style="color:#3da1ff;">BeautyMedic.beauty</a>.<br><br>
+                                Thank you for choosing <span style="color:#3da1ff;">beauty-medicare </span> as your partner on the journey to a healthier, more beautiful you. Explore our offerings, discover the latest industry insights, and embark on a path of self-enhancement. Your beauty and well-being matter to us, and we're here to make a positive difference in your life.<br><br>
+                                Discover, experience, and embrace your best self with <a href="index.php" style="color:#3da1ff;">beauty-medicare.com</a>.<br><br>
                             </p>
                             
                         </div>
@@ -89,7 +89,7 @@
                             </div>
                             <div class="content">
                                 <h5><a href="#">Send us a Message</a></h5>
-                                <p>Your_malil@gmail.com</p>
+                                <p>infoe@beauty-medicare.com</p>
                             </div>
                         </div>
                     </div>
