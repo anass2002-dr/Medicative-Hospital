@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +40,7 @@
             <!-- Third Slide -->
             <div class="item active">
                 <!-- Slide Background -->
-                <img src="img/slide1.jpg" alt="Slider Images" class="slide-image" />
+                <img src="./img/slide1.jpg" alt="Slider Images" class="slide-image" />
                 <!-- <div class="bs-slider-overlay"></div> -->
 
                 <!-- <div class="slide-text slide_style_left">
@@ -57,7 +55,7 @@
             <!-- Second Slide -->
             <div class="item">
                 <!-- Slide Background -->
-                <img src="img/slide2.jpg" alt="Slider Images" class="slide-image" />
+                <img src="./img/slide2.jpg" alt="Slider Images" class="slide-image" />
                 <!-- <div class="bs-slider-overlay"></div> -->
                 <!-- Slide Text Layer -->
                 <!-- <div class="slide-text slide_style_center">
@@ -72,7 +70,7 @@
             <!-- Third Slide -->
             <div class="item">
                 <!-- Slide Background -->
-                <img src="img/slide3.jpg" alt="Slider Images" class="slide-image" />
+                <img src="./img/slide3.jpg" alt="Slider Images" class="slide-image" />
                 <!-- <div class="bs-slider-overlay"></div> -->
                 <!-- Slide Text Layer -->
                 <!-- <div class="slide-text slide_style_right">
@@ -100,43 +98,43 @@
     </div> <!-- End  bootstrap-touch-slider Slider -->
 
     <!-- divider start -->
-    
+
     <!-- divider end -->
 
     <div class="container">
-    <?php
-       
-       $user_agent = $_SERVER['HTTP_USER_AGENT']; //user browser
-       $ip_address = $_SERVER["REMOTE_ADDR"];     // user ip adderss
-       $page_name = $_SERVER["SCRIPT_NAME"];      // page the user looking
-       $query_string = $_SERVER["QUERY_STRING"];   // what query he used
-       $current_page = $page_name."?".$query_string; 
+        <?php
 
-    //    https://api.ip2location.io/?key=9F79F0BA5873FF33CE513D97CD4FA9FA&ip=102.50.243.101&format=json
-   // get location 
-       $url = json_decode(file_get_contents("https://api.ip2location.io/?key=9F79F0BA5873FF33CE513D97CD4FA9FA&ip=102.50.243.101&format=json"));
-       $ip=$url->ip;
-       $country=$url->country_name;  // user country
-       $city=$url->city_name;       // city
-       $region=$url->region_name;   // regoin
-       $latitude=$url->latitude;    //lat and lon
-       $longitude=$url->longitude;
+        $user_agent = $_SERVER['HTTP_USER_AGENT']; //user browser
+        $ip_address = $_SERVER["REMOTE_ADDR"];     // user ip adderss
+        $page_name = $_SERVER["SCRIPT_NAME"];      // page the user looking
+        $query_string = $_SERVER["QUERY_STRING"];   // what query he used
+        $current_page = $page_name . "?" . $query_string;
 
-   // get time
-       date_default_timezone_set('UTC');
-       $date = date("Y-m-d");
-       $time = date("H:i:s");
-       
-    //    echo "ip_address : ".$ip;
-      
-    //    echo "country : ".$country;
-    //    echo "region : ".$region;
-    //    echo "latitude : ".$latitude;
-    //    echo "longitude : ".$longitude;
-    //    echo "date : ".$date;
-    //    echo "time : ".$time;
-    // echo $n_email;
-   ?>
+        //    https://api.ip2location.io/?key=9F79F0BA5873FF33CE513D97CD4FA9FA&ip=102.50.243.101&format=json
+        // get location 
+        $url = json_decode(file_get_contents("https://api.ip2location.io/?key=9F79F0BA5873FF33CE513D97CD4FA9FA&ip=102.50.243.101&format=json"));
+        $ip = $url->ip;
+        $country = $url->country_name;  // user country
+        $city = $url->city_name;       // city
+        $region = $url->region_name;   // regoin
+        $latitude = $url->latitude;    //lat and lon
+        $longitude = $url->longitude;
+
+        // get time
+        date_default_timezone_set('UTC');
+        $date = date("Y-m-d");
+        $time = date("H:i:s");
+
+        //    echo "ip_address : ".$ip;
+
+        //    echo "country : ".$country;
+        //    echo "region : ".$region;
+        //    echo "latitude : ".$latitude;
+        //    echo "longitude : ".$longitude;
+        //    echo "date : ".$date;
+        //    echo "time : ".$time;
+        // echo $n_email;
+        ?>
         <div class="section-content">
             <div class="row">
                 <div class="col-12">
@@ -221,7 +219,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -245,10 +243,10 @@
             <div class="section-content">
                 <div class="row">
                     <?php
-                    
-                    
+
+
                     $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID limit 6";
-                   
+
                     $result = $conn->query($query);
                     // $row = mysqli_fetch_assoc($result);
 
@@ -269,7 +267,7 @@
                                 <div class='practice-item-1'>
                                     <div class='practice-img'>
                                         <a href='blog-single.php?id=$BLOG_ID' class='blg_img'>
-                                            <img src='img/blog/$PHOTO' alt=''>
+                                            <img src='./img/blog/$PHOTO' alt=''>
                                             <span class='flaticon-heart-1'></span>
                                         </a>
                                     </div>

@@ -8,16 +8,14 @@ include "./Config.php";
             <div class="col-md-8 col-sm-6 welcome-top">
                 <ul class="list-inline top-icon">
                     <li><i class="fa fa-envelope"></i> contact@beauty-medicare.com</li>
-                    <li><i class="fa fa-clock-o"></i> Mon - Sat 8.00 - 18.00</li>
                 </ul>
             </div>
             <div class="col-md-4 col-sm-6">
                 <ul class="list-inline text-right icon-style-1">
-                    <li class=" hvr-rectangle-out"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li class=" hvr-rectangle-out"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                     <li class=" hvr-rectangle-out"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                    <li class=" hvr-rectangle-out"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                    <li class=" hvr-rectangle-out"><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                    <li class=" hvr-rectangle-out"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                    <li class=" hvr-rectangle-out"><a href="#"><i class="bi bi-tiktok" aria-hidden="true"></i></a></li>
+                    <li class=" hvr-rectangle-out"><a href="#"><i class="bi bi-pinterest" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -37,9 +35,9 @@ include "./Config.php";
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand dis-none logoLink" href="index.php"><img src="img/beautymedic-test.png" alt="" style="margin-top: 10px;">
+                        <a class="navbar-brand dis-none logoLink" href="index.php"><img src="./img/beautymedic-test.png" alt="" style="margin-top: 10px;">
                         </a>
-                        <a class="navbar-brand dis-block logoLink" href="index.php"><img src="img/beautymedic-test.png" alt="" style="margin-top: 10px;">
+                        <a class="navbar-brand dis-block logoLink" href="index.php"><img src="./img/beautymedic-test.png" alt="" style="margin-top: 10px;">
                         </a>
                     </div>
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-hover="dropdown" data-animations-delay="1.8s" data-animations="fadeInUp">
