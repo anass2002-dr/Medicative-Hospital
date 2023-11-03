@@ -12,21 +12,7 @@ import os
 path="C:\\Program Files (x86)\\chromedriver.exe"
 cp=0
 links_list=[]
-# for i in range(1,6):
-#     url=f"https://www.aliexpress.com/w/wholesale-skin-care.html?page={i}&g=y&SearchText=skin+care"
-#     print(url)
-#     driver=webdriver.Chrome()
-#     driver.get(str(url))
-#     links=driver.find_elements(By.CLASS_NAME,"multi--container--1UZxxHY")
-#     for x in links:
-#         print(x.get_attribute('href'))
-#         links_list.append(str(x.get_attribute('href')))
-#         cp+=1
-# with open('links_aliexpress.csv',mode='w',newline='',encoding='utf') as filec:
-#     writer=csv.writer(filec)
-#     for x in links_list:
-#         writer.writerow([x])
-# print(cp)
+
 
 
 with open('Docs/links_aliexpress.csv','r',encoding='utf8') as filecsv:
@@ -49,9 +35,16 @@ sp=price.find_elements(By.TAG_NAME,"span")
 price=''
 for i in range(2,len(sp)):
     price+=sp[i].text
-content=driver.find_element(By.ID,'root')
 
 price=float(price)
+
+img_data=''
+img_list=[]
+div_slide=driver.find_elements(By.CLASS_NAME,'slider--img--D7MJNPZ')
+for x in div_slide:
+    img_list.append(str(x.find_element(By.TAG_NAME,'img').get_attribute('src')));
+for y in img_list:
+    print(y)
+
 print(title)
 print(price)
-print(content.get_attribute('innerHTML'))
