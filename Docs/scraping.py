@@ -22,8 +22,8 @@ with open('Docs/links_aliexpress.csv','r',encoding='utf8') as filecsv:
     # for i in range(1,len(links_list)):
     #     print(links_list[i][0])
     
-# url=links_list[0][0]
-url="https://www.aliexpress.com/item/1005005990085273.html"
+url=links_list[0][0]
+# url="https://www.aliexpress.com/item/1005005489390846.html"
 # print(url)
 driver=webdriver.Chrome()
 driver.get(str(url))
@@ -42,9 +42,17 @@ img_data=''
 img_list=[]
 div_slide=driver.find_elements(By.CLASS_NAME,'slider--img--D7MJNPZ')
 for x in div_slide:
-    img_list.append(str(x.find_element(By.TAG_NAME,'img').get_attribute('src')));
+    img_list.append(str(x.find_element(By.TAG_NAME,'img').get_attribute('src')).replace('80x80.jpg_',''))
 for y in img_list:
     print(y)
+video_src=''
+try:
+    video=driver.find_element(By.CLASS_NAME,'video--video--Zj0EIzE')
+    video_src=video.find_element(By.TAG_NAME,'source').get_attribute('src')
+except Exception as e:
+    print()
+print(video_src)
 
 print(title)
+price=float("{:.2f}".format(price/10.31))
 print(price)
