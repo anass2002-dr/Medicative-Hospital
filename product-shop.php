@@ -1,32 +1,29 @@
-
 <?php
 include "Config.php";
 // On détermine sur quelle page on se trouve
 
 
-if(isset($_GET['page']) && !empty($_GET['page'])){
+if (isset($_GET['page']) && !empty($_GET['page'])) {
     $currentPage = (int) strip_tags($_GET['page']);
-}else{
+} else {
     $currentPage = 1;
 }
 // On détermine le nombre total d'blog
-$id='';
-$sp_id='';
-$sql='';
+$id = '';
+$sp_id = '';
+$sql = '';
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "SELECT COUNT(*) AS nb_product FROM product  WHERE CATEGORY_ID=$id";
-}
-else if (isset($_GET['sp_id']) && !empty($_GET['sp_id'])) {
+} else if (isset($_GET['sp_id']) && !empty($_GET['sp_id'])) {
     $sp_id = $_GET['sp_id'];
     $sql = "SELECT COUNT(*) AS nb_product FROM product  WHERE SPONSOR_ID=$sp_id";
-}
-else{
+} else {
     $sql = "SELECT COUNT(*) AS nb_product FROM product";
 }
-$result=$conn->query($sql);
-$row=mysqli_fetch_assoc($result);
+$result = $conn->query($sql);
+$row = mysqli_fetch_assoc($result);
 
 $nbblog = (int) $row['nb_product'];
 
@@ -38,28 +35,24 @@ $pages = ceil($nbblog / $parPage);
 // Calcul du 1er article de la page
 $premier = ($currentPage * $parPage) - $parPage;
 
-$queryP='';
+$queryP = '';
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
-
-}
-else if (isset($_GET['sp_id']) && !empty($_GET['sp_id'])) {
+} else if (isset($_GET['sp_id']) && !empty($_GET['sp_id'])) {
     $sp_id = $_GET['sp_id'];
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.SPONSOR_ID=$sp_id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
-}
- else {
+} else {
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
 }
 // $sql = 'SELECT * FROM `blog` ORDER BY `CREATED_DATE` DESC LIMIT :premier, :parpage;';
 
 // On prépare la requête
-if(!empty($id)){
-    $id='&id='.$id;
-
+if (!empty($id)) {
+    $id = '&id=' . $id;
 }
-if(!empty($sp_id)){
-    $sp_id='&sp_id='.$sp_id;
+if (!empty($sp_id)) {
+    $sp_id = '&sp_id=' . $sp_id;
 }
 
 
@@ -97,7 +90,7 @@ if(!empty($sp_id)){
                 <div class="col-md-4">
                     <div class="mini-title inner-style-2">
                         <h3>Shop </h3>
-                        <p><a href="index-one.html">Home</a> <span class="fa fa-angle-right"></span> <a href="#">Shop </a></p>
+                        <p><a href="product-shop.php">Home</a> <span class="fa fa-angle-right"></span> <a href="#">Shop </a></p>
                     </div>
                 </div>
             </div>
@@ -113,13 +106,22 @@ if(!empty($sp_id)){
                             <div class="blog-search">
                                 <form action="#" class="clearfix">
                                     <input type="search" placeholder="Search Here..">
+
                                     <button type="submit">
                                         <span class="pe-7s-search"></span>
                                     </button>
+
                                 </form>
+                                <ul class="list-group" id="list_search">
+                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">Morbi leo risus</li>
+                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                </ul>
                             </div>
                         </div>
-                        
+
                         <div class="widget clearfix">
                             <div class="sideber-title">
                                 <h4>Categories</h4>
@@ -129,22 +131,22 @@ if(!empty($sp_id)){
                                     <li> <a href='product-shop.php'><i class='fa fa-angle-right'></i> All</a> </li>
 
                                     <?php
-                                        include './Config.php';
-                                        $query = "select * from category limit 6";
-                                        $result = $conn->query($query);
-                                        if ($result->num_rows > 0) {
-                                            while ($row = $result->fetch_assoc()) {
-                                                $category_name = $row['CATEGORY_NAME'];
-                                                $category_id = $row['CATEGORY_ID'];
-                                                echo "<li> <a href='product-shop.php?id=$category_id'><i class='fa fa-angle-right'></i> $category_name</a> </li>";
-                                            }
+                                    include './Config.php';
+                                    $query = "select * from category limit 6";
+                                    $result = $conn->query($query);
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $category_name = $row['CATEGORY_NAME'];
+                                            $category_id = $row['CATEGORY_ID'];
+                                            echo "<li> <a href='product-shop.php?id=$category_id'><i class='fa fa-angle-right'></i> $category_name</a> </li>";
                                         }
-                                        ?>
+                                    }
+                                    ?>
 
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div class="widget clearfix">
                             <div class="sideber-title">
                                 <h4>Vendor</h4>
@@ -154,16 +156,16 @@ if(!empty($sp_id)){
                                     <li> <a href='product-shop.php'><i class='fa fa-angle-right'></i> All</a> </li>
 
                                     <?php
-                                        include './Config.php';
-                                        $query = "select * from sponsor";
-                                        $result = $conn->query($query);
-                                        if ($result->num_rows > 0) {
-                                            while ($row = $result->fetch_assoc()) {
-                                                $sponsor_name = $row['SPONSOR_NAME'];
-                                                $sponsor_id = $row['SPONSOR_ID'];
-                                                echo "<li> <a href='product-shop.php?sp_id=$sponsor_id'><i class='fa fa-angle-right'></i> $sponsor_name</a> </li>";
-                                            }
+                                    include './Config.php';
+                                    $query = "select * from sponsor";
+                                    $result = $conn->query($query);
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $sponsor_name = $row['SPONSOR_NAME'];
+                                            $sponsor_id = $row['SPONSOR_ID'];
+                                            echo "<li> <a href='product-shop.php?sp_id=$sponsor_id'><i class='fa fa-angle-right'></i> $sponsor_name</a> </li>";
                                         }
+                                    }
                                     ?>
                                 </ul>
                             </div>
@@ -174,48 +176,7 @@ if(!empty($sp_id)){
                     <div class="shop-right-area">
 
                         <div class="shop-tab-area">
-                            <!--NAV PILL-->
-                            <!-- <div class="shop-tab-pill">
-                                <ul>
-                                    <li class="active" id="p-mar">
-                                        <a data-toggle="pill" href="#grid">
-                                            <i class="fa fa-th" aria-hidden="true"></i>
-                                            <span>Grid</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a data-toggle="pill" href="#list">
-                                            <i class="fa fa-th-list" aria-hidden="true"></i>
-                                            <span>List</span>
-                                        </a>
-                                    </li>
-                                    <li class="product-size-deatils">
-                                        <div class="show-label">
-                                            <label>Show : </label>
-                                            <select>
-                                                <option value="10" selected="selected">10</option>
-                                                <option value="09">09</option>
-                                                <option value="08">08</option>
-                                                <option value="07">07</option>
-                                                <option value="06">06</option>
 
-                                            </select>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="sort-position">
-                                            <label><i class="fa fa-sort-amount-asc"></i>Sort by : </label>
-                                            <select>
-                                                <option value="position" selected="selected">Position</option>
-                                                <option value="Name">Name</option>
-                                                <option value="Price">Price</option>
-                                            </select>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div> -->
-                            <!--NAV PILL-->
                             <div class="tab-content">
                                 <div class="row tab-pane active" id="grid">
                                     <?php
@@ -230,26 +191,26 @@ if(!empty($sp_id)){
                                             $product_link = $row["PRODUCT_LINK"];
                                             $product_short = $row["PRODUCT_SHORT"];
                                             $product_price = $row["PRODUCT_PRICE"];
-                                            $sponsor=$row["SPONSOR_NAME"];
+                                            $sponsor = $row["SPONSOR_NAME"];
                                             if (strlen($product_short) > 50) {
                                                 $product_short = substr($product_short, 0, 50);
                                             }
                                             if (strlen($title) > 20) {
                                                 $title = substr($title, 0, 20);
-                                            }?>
+                                            } ?>
                                             <div class='col-md-4 col-sm-4'>
                                                 <div class='product-item'>
                                                     <div class='product-image'>
-                                                        <a class='product-img' href='#'>
-                                                            <span><?=$sponsor?></span>
-                                                            <img class='primary-img' src='img/Product/<?=$photo?>' alt='' />
+                                                        <a class='product-img' href='shop-single.php?id=<?= $product_id ?>'>
+                                                            <span><?= $sponsor ?></span>
+                                                            <img class='primary-img' src='img/Product/<?= $photo ?>' alt='' />
                                                         </a>
                                                     </div>
-                                                    
+
                                                     <div class='product-action'>
-                                                        <h4><a href='shop-single.php?id=<?=$product_id?>'><?=$title?> ...</a></h4>
-                                                        <p><?=$product_short?> ...</p>
-                                                        <span class='price'>$ <?=$product_price?></span>
+                                                        <h4><a href='shop-single.php?id=<?= $product_id ?>'><?= $title ?> ...</a></h4>
+                                                        <p><?= $product_short ?> ...</p>
+                                                        <span class='price'>$ <?= $product_price ?></span>
                                                     </div>
                                                     <div class='pro-action'>
                                                         <ul>
@@ -264,7 +225,7 @@ if(!empty($sp_id)){
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a class='' href='<?=$product_link?>'  target='_blank'>
+                                                                <a class='' href='<?= $product_link ?>' target='_blank'>
                                                                     <i class='fa fa-shopping-cart' aria-hidden='true'></i>
                                                                 </a>
                                                             </li>
@@ -272,34 +233,34 @@ if(!empty($sp_id)){
                                                     </div>
                                                 </div>
                                             </div>
-                                        <?php    
+                                    <?php
                                         }
                                     }
                                     ?>
 
                                 </div>
-                                
+
                             </div>
 
                             <nav aria-label="Page navigation example" style="display: flex;justify-content: center;">
-                                    <ul class="pagination">
-                                        <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="product-shop.php?page=<?= $currentPage - 1 .$id.$sp_id?>">Previous</a></li>
-                                        <?php for($page = 1; $page <= $pages; $page++): ?>
+                                <ul class="pagination">
+                                    <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="product-shop.php?page=<?= $currentPage - 1 . $id . $sp_id ?>">Previous</a></li>
+                                    <?php for ($page = 1; $page <= $pages; $page++) : ?>
                                         <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
                                         <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
-                                                <a href="product-shop.php?page=<?= $page .$id.$sp_id?>" class="page-link"><?= $page ?></a>
-                                            </li>
-                                        <?php endfor ?>
-                                        
-                                        <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
-                                        <a class="page-link" href="product-shop.php?page=<?= $currentPage + 1 .$id.$sp_id?>">Next</a>
+                                            <a href="product-shop.php?page=<?= $page . $id . $sp_id ?>" class="page-link"><?= $page ?></a>
+                                        </li>
+                                    <?php endfor ?>
+
+                                    <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
+                                        <a class="page-link" href="product-shop.php?page=<?= $currentPage + 1 . $id . $sp_id ?>">Next</a>
                                     </li>
-                                    </ul>
-                                </nav>   
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- divider start -->
@@ -307,7 +268,7 @@ if(!empty($sp_id)){
         <div class="container padding-bottom-none padding-top-40">
             <div class="section-content">
                 <div class="row">
-                <div class="col-sm-12 col-md-12">
+                    <div class="col-sm-12 col-md-12">
                         <div class="service-item style-1 text-white border-right">
                             <div class="">
                                 <i class="pe-7s-mail-open"></i>
