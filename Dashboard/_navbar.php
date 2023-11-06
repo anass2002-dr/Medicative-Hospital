@@ -1,6 +1,4 @@
-<?php
-include 'Config_dashboard.php';
-?>
+
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
     <a class="navbar-brand brand-logo me-5" href="index.php"><img src="../img/beautymedic.png" class="me-2" alt="logo" /></a>
