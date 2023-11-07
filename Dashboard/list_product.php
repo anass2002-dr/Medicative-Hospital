@@ -143,7 +143,8 @@
                                 </td>
                                 <td><button class='delete btn text-light' style='background-color:red;' id='del_<?= $PRODUCT_ID ?>' data-id='$PRODUCT_ID' >Delete</button>
                                 </td>
-                               
+                                <td><a class='btn ' style='background-color:orange;color:white;' href='../shop-single.php?id=$PRODUCT_ID'>View product</a>
+                                </td>
                               </tr>
                           ";
                         }
