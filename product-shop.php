@@ -39,15 +39,17 @@ $queryP = '';
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
+    if(isset($_GET['sp_id']) && !empty($_GET['id'])){
+        $sp_id=$_GET['sp_id'];
+        $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id and p.SPONSOR_ID=$sp_id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
+    }
 } else if (isset($_GET['sp_id']) && !empty($_GET['sp_id'])) {
     $sp_id = $_GET['sp_id'];
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.SPONSOR_ID=$sp_id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
 } else {
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
 }
-// $sql = 'SELECT * FROM `blog` ORDER BY `CREATED_DATE` DESC LIMIT :premier, :parpage;';
 
-// On prépare la requête
 if (!empty($id)) {
     $id = '&id=' . $id;
 }
@@ -97,6 +99,7 @@ if (!empty($sp_id)) {
         </div>
     </section>
 
+
     <section class="shop-area">
         <div class="container">
             <div class="row">
@@ -104,8 +107,8 @@ if (!empty($sp_id)) {
                     <div class="blog-sideber">
                         <div class="widget clearfix">
                             <div class="blog-search">
-                                <form action="#" class="clearfix">
-                                    <input type="search" placeholder="Search Here..">
+                                <form action="" class="clearfix" method="POST" id="form_search">
+                                    <input type="search" placeholder="Search Here.." name="search" id="search">
 
                                     <button type="submit">
                                         <span class="pe-7s-search"></span>
@@ -113,11 +116,7 @@ if (!empty($sp_id)) {
 
                                 </form>
                                 <ul class="list-group" id="list_search">
-                                    <li class="list-group-item">Cras justo odio</li>
-                                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                                    <li class="list-group-item">Morbi leo risus</li>
-                                    <li class="list-group-item">Porta ac consectetur ac</li>
-                                    <li class="list-group-item">Vestibulum at eros</li>
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -163,7 +162,7 @@ if (!empty($sp_id)) {
                                         while ($row = $result->fetch_assoc()) {
                                             $sponsor_name = $row['SPONSOR_NAME'];
                                             $sponsor_id = $row['SPONSOR_ID'];
-                                            echo "<li> <a href='product-shop.php?sp_id=$sponsor_id'><i class='fa fa-angle-right'></i> $sponsor_name</a> </li>";
+                                            echo "<li> <a href='product-shop.php?sp_id=$sponsor_id.$id'><i class='fa fa-angle-right'></i> $sponsor_name</a> </li>";
                                         }
                                     }
                                     ?>
@@ -246,7 +245,6 @@ if (!empty($sp_id)) {
                                 <ul class="pagination">
                                     <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="product-shop.php?page=<?= $currentPage - 1 . $id . $sp_id ?>">Previous</a></li>
                                     <?php for ($page = 1; $page <= $pages; $page++) : ?>
-                                        <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
                                         <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
                                             <a href="product-shop.php?page=<?= $page . $id . $sp_id ?>" class="page-link"><?= $page ?></a>
                                         </li>
@@ -298,7 +296,49 @@ if (!empty($sp_id)) {
     include 'footer.php'
     ?>
     <!-- Footer Style End -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(
+            function() {
 
+
+
+                $('#form_search').submit(function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: 'search.php',
+                        data: new FormData(this),
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success: function(response) {
+                            $('#list_search').html(response);
+                        }
+                    })
+                })
+                $('#search').keyup(function(){
+                    var text=$(this).val();
+                    
+                    if(text!=''){
+                        // e.preventDefault();
+                        $.ajax({
+                            type: "POST",
+                            url: 'search.php',
+                            data: {search:text},
+                            success: function(response) {
+                                $('#list_search').html(response);
+                            }
+                        })
+                    }
+                    else{
+                        $('#list_search').html('not found');
+                    }
+                    
+                })
+
+            })
+    </script>
 
     <a href="blog-single.php" class="scrollup"><i class="pe-7s-up-arrow" aria-hidden="true"></i></a>
     <!-- jQuery -->
