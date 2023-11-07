@@ -1,5 +1,43 @@
 <?php
     include 'Config_dashboard.php';
+    $query="";
+    $search="";
+    $premier="";
+    $pages="";
+    $sql="";
+    
+
+    if(isset($_POST['search'])){
+      if(isset($_GET['page']) && !empty($_GET['page'])){
+        $currentPage = (int) strip_tags($_GET['page']);
+      }else{
+          $currentPage = 1;
+      }
+      $search = $_POST['search'];
+      
+
+      // On détermine le nombre total d'blog
+      $sql = 'SELECT COUNT(*) AS nb_blog FROM `blog` where TITLE like "%'.$search.'%"';
+      
+      $result=$conn->query($sql);
+      $row=mysqli_fetch_assoc($result);
+      
+      $nbblog = (int) $row['nb_blog'];
+      
+      $parPage = 12;
+      
+      // On calcule le nombre de pages total
+      $pages = ceil($nbblog / $parPage);
+      
+      // Calcul du 1er article de la page
+      $premier = ($currentPage * $parPage) - $parPage;
+
+      
+      $query = 'SELECT b.BLOG_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM blog as b INNER JOIN category as c
+      ON b.CATEGORY_ID = c.CATEGORY_ID  where TITLE like "%'.$search.'%" order by CREATED_DATE DESC LIMIT '.$premier.','. $parPage;
+ 
+    }
+    else{
     if(isset($_GET['page']) && !empty($_GET['page'])){
       $currentPage = (int) strip_tags($_GET['page']);
     }else{
@@ -23,6 +61,8 @@
     
     $query = "SELECT b.BLOG_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM blog as b INNER JOIN category as c
     ON b.CATEGORY_ID = c.CATEGORY_ID order by CREATED_DATE DESC LIMIT $premier, $parPage;";
+
+  }
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,6 +93,16 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
+          <div class="col-6">
+              <form action="list_blog.php" method="post">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" name="search" placeholder="search by title" aria-label="search by title" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="submit">search</button>
+                </div>
+              </div>
+              </form>
+            </div>
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
