@@ -46,7 +46,12 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 } else if (isset($_GET['sp_id']) && !empty($_GET['sp_id'])) {
     $sp_id = $_GET['sp_id'];
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.SPONSOR_ID=$sp_id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
-} else {
+}
+else if(isset($_GET['title']) && !empty($_GET['title'])){
+    $title = $_GET['title'];
+    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.TITLE='$title' ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
+}
+else {
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
 }
 
@@ -62,9 +67,6 @@ if (!empty($sp_id)) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-
-
 <head>
 
     <meta charset="utf-8">
@@ -98,8 +100,10 @@ if (!empty($sp_id)) {
             </div>
         </div>
     </section>
-
-
+    <?php 
+        $txt="../img/blog";
+        echo substr($txt,2,strlen($txt));
+    ?>
     <section class="shop-area">
         <div class="container">
             <div class="row">
@@ -162,7 +166,7 @@ if (!empty($sp_id)) {
                                         while ($row = $result->fetch_assoc()) {
                                             $sponsor_name = $row['SPONSOR_NAME'];
                                             $sponsor_id = $row['SPONSOR_ID'];
-                                            echo "<li> <a href='product-shop.php?sp_id=$sponsor_id.$id'><i class='fa fa-angle-right'></i> $sponsor_name</a> </li>";
+                                            echo "<li> <a href='product-shop.php?sp_id=$sponsor_id$id'><i class='fa fa-angle-right'></i> $sponsor_name</a> </li>";
                                         }
                                     }
                                     ?>
@@ -202,7 +206,7 @@ if (!empty($sp_id)) {
                                                     <div class='product-image'>
                                                         <a class='product-img' href='shop-single.php?id=<?= $product_id ?>'>
                                                             <span><?= $sponsor ?></span>
-                                                            <img class='primary-img' src='img/Product/<?= $photo ?>' alt='' />
+                                                            <img class='primary-img' src='<?= $photo ?>' alt='' />
                                                         </a>
                                                     </div>
 

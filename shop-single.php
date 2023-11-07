@@ -99,21 +99,21 @@ if (isset($_GET['id'])) {
                                     <!-- Third Slide -->
                                     <?php
                                     echo "<div class='item active'>
-                                            <img src='img/Product/$photo' alt='Slider Images' class='slide-image' />
+                                            <img src='$photo' alt='Slider Images' class='slide-image' />
                                             
                                             </div>";
 
                                     while ($row = $result->fetch_assoc()) {
                                         $path = $row["PHOTO_PATH"];
                                         echo "<div class='item'>
-                                                <img src='img/Product/$path' alt='Slider Images' class='slide-image' />
+                                                <img src='$path' alt='Slider Images' class='slide-image' />
                                         </div>";
                                     }
                                         if($video!=''){
                                             echo "
                                             <div class='item vd'>
                                                 <video controls>
-                                                <source src='./videos/Product/$video' type='video/mp4'>
+                                                <source src='$video' type='video/mp4'>
                                                 Your browser does not support the video tag.
                                                 </video>
                                             </div>
@@ -136,7 +136,7 @@ if (isset($_GET['id'])) {
                                     <span class="sr-only">Next</span>
                                 </a>
 
-                            </div> <!-- <div class='blog-img'><a href='#'><img src='img/Product/$photo' alt=''></a></div> -->
+                            </div> <!-- <div class='blog-img'><a href='#'><img src='$photo' alt=''></a></div> -->
                         </div>
                         <?php
 
