@@ -114,7 +114,7 @@
                         <th scope='col'>TITLE</th>
                         <th scope='col'>CATEGORY_NAME</th>
                         <th scope='col'>CREATED_DATE</th>
-                        <th colspan="2"></th>
+                        <th colspan="3"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -134,6 +134,10 @@
                           $CATEGORY_NAME = $row["CATEGORY_NAME"];
                           $PRODUCT_LINK = $row["PRODUCT_LINK"];
                           $CREATED_DATE = $row["CREATED_DATE"];
+                          if (strlen($TITLE) > 20) {
+                            $TITLE = substr($TITLE, 0, 20);
+                            $TITLE=$TITLE.'...';
+                        }
                           echo "<tr>
                                 <th scope='row'>$PRODUCT_ID</th>
                                 <td>$TITLE</td>
