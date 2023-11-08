@@ -39,19 +39,17 @@ $queryP = '';
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
-    if(isset($_GET['sp_id']) && !empty($_GET['id'])){
-        $sp_id=$_GET['sp_id'];
+    if (isset($_GET['sp_id']) && !empty($_GET['id'])) {
+        $sp_id = $_GET['sp_id'];
         $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id and p.SPONSOR_ID=$sp_id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
     }
 } else if (isset($_GET['sp_id']) && !empty($_GET['sp_id'])) {
     $sp_id = $_GET['sp_id'];
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.SPONSOR_ID=$sp_id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
-}
-else if(isset($_GET['title']) && !empty($_GET['title'])){
+} else if (isset($_GET['title']) && !empty($_GET['title'])) {
     $title = $_GET['title'];
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.TITLE='$title' ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
-}
-else {
+} else {
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
 }
 
@@ -67,6 +65,7 @@ if (!empty($sp_id)) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="utf-8">
@@ -100,10 +99,7 @@ if (!empty($sp_id)) {
             </div>
         </div>
     </section>
-    <?php 
-        $txt="../img/blog";
-        echo substr($txt,2,strlen($txt));
-    ?>
+
     <section class="shop-area">
         <div class="container">
             <div class="row">
@@ -120,7 +116,7 @@ if (!empty($sp_id)) {
 
                                 </form>
                                 <ul class="list-group" id="list_search">
-                                    
+
                                 </ul>
                             </div>
                         </div>
@@ -321,24 +317,25 @@ if (!empty($sp_id)) {
                         }
                     })
                 })
-                $('#search').keyup(function(){
-                    var text=$(this).val();
-                    
-                    if(text!=''){
+                $('#search').keyup(function() {
+                    var text = $(this).val();
+
+                    if (text != '') {
                         // e.preventDefault();
                         $.ajax({
                             type: "POST",
                             url: 'search.php',
-                            data: {search:text},
+                            data: {
+                                search: text
+                            },
                             success: function(response) {
                                 $('#list_search').html(response);
                             }
                         })
-                    }
-                    else{
+                    } else {
                         $('#list_search').html('not found');
                     }
-                    
+
                 })
 
             })

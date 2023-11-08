@@ -1,34 +1,35 @@
 <?php
-    // require_once "Mail.php";
-    // $from = "anassdermaj163@gmail.com";
-    // $to = 'anassdermaj164@gmail.com';
-  
-    // $host = "ssl://smtp.gmail.com";
-    // $port = "465";
-    // $username = 'anassdermaj163@gmail.com';
-    // $password = 'De21rM@j';
-  
-    // $subject = "test";
-    // $body = "test";
-  
-    // $headers = array ('From' => $from, 'To' => $to,'Subject' => $subject);
-    // $smtp = Mail::factory('smtp',
-    //   array ('host' => $host,
-    //     'port' => $port,
-    //     'auth' => true,
-    //     'username' => $username,
-    //     'password' => $password));
-  
-    // $mail = $smtp->send($to, $headers, $body);
-  
-    // if (PEAR::isError($mail)) {
-    //   echo($mail->getMessage());
-    // } else {
-    //   echo("Message successfully sent!\n");
-    // }
+// require_once "Mail.php";
+// $from = "anassdermaj163@gmail.com";
+// $to = 'anassdermaj164@gmail.com';
+
+// $host = "ssl://smtp.gmail.com";
+// $port = "465";
+// $username = 'anassdermaj163@gmail.com';
+// $password = '';
+
+// $subject = "test";
+// $body = "test";
+
+// $headers = array ('From' => $from, 'To' => $to,'Subject' => $subject);
+// $smtp = Mail::factory('smtp',
+//   array ('host' => $host,
+//     'port' => $port,
+//     'auth' => true,
+//     'username' => $username,
+//     'password' => $password));
+
+// $mail = $smtp->send($to, $headers, $body);
+
+// if (PEAR::isError($mail)) {
+//   echo($mail->getMessage());
+// } else {
+//   echo("Message successfully sent!\n");
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="utf-8">
@@ -137,7 +138,7 @@
         <div class="container padding-bottom-none padding-top-40">
             <div class="section-content">
                 <div class="row">
-                <div class="col-sm-12 col-md-12">
+                    <div class="col-sm-12 col-md-12">
                         <div class="service-item style-1 text-white border-right">
                             <div class="">
                                 <i class="pe-7s-mail-open"></i>
