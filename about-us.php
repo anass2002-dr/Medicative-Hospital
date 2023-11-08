@@ -46,13 +46,13 @@
     <div class="blog-inner-section bg-f8">
         <div class="container">
             <div class="row">
-            <div class='col-md-10 col-md-offset-1'>
+                <div class='col-md-10 col-md-offset-1'>
                     <div class='blog-item style-1 margin-bottom-30'>
                         <div class='blog-img'><a href='#'><img src='img/beauty-2.jpg' alt=''></a>
-                            
+
                         </div>
                         <div class='blog-content w100'>
-                                                       
+
                             <a href='#'>
                                 <h4 style="color: #3da1ff;">About-us</h4>
                             </a>
@@ -64,40 +64,20 @@
                                 Thank you for choosing <span style="color:#3da1ff;">beauty-medicare </span> as your partner on the journey to a healthier, more beautiful you. Explore our offerings, discover the latest industry insights, and embark on a path of self-enhancement. Your beauty and well-being matter to us, and we're here to make a positive difference in your life.<br><br>
                                 Discover, experience, and embrace your best self with <a href="index.php" style="color:#3da1ff;">beauty-medicare.com</a>.<br><br>
                             </p>
-                            
+
                         </div>
                     </div>
-                    
+
                 </div>
-                
+
 
             </div>
         </div>
     </div>
     <!-- End Blog Posts -->
 
-    <!-- divider start -->
-    <section class="service-area over-layer-default" style="background-image:url(img/bg/5.jpg);">
-        <div class="container padding-bottom-none padding-top-40">
-            <div class="section-content">
-                <div class="row">
-                    
-                    <div class="col-sm-12 col-md-4">
-                        <div class="service-item style-1 text-white border-right">
-                            <div class="">
-                                <i class="pe-7s-mail-open"></i>
-                            </div>
-                            <div class="content">
-                                <h5><a href="#">Send us a Message</a></h5>
-                                <p>infoe@beauty-medicare.com</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </section>
+    <?php include './email-service.php'; ?>
+
     <!-- divider end -->
 
     <!-- Footer Style start -->

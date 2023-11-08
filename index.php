@@ -41,7 +41,7 @@
             <div class="item active">
                 <!-- Slide Background -->
                 <img src="./img/slide1.jpg" alt="Slider Images" class="slide-image" />
-                
+
             </div>
             <!-- End of Slide -->
 
@@ -49,7 +49,7 @@
             <div class="item">
                 <!-- Slide Background -->
                 <img src="./img/slide2.jpg" alt="Slider Images" class="slide-image" />
-                
+
             </div>
             <!-- End of Slide -->
 
@@ -57,7 +57,7 @@
             <div class="item">
                 <!-- Slide Background -->
                 <img src="./img/slide3.jpg" alt="Slider Images" class="slide-image" />
-                
+
             </div>
             <!-- End of Slide -->
         </div><!-- End of Wrapper For Slides -->
@@ -104,7 +104,7 @@
         $date = date("Y-m-d");
         $time = date("H:i:s");
 
-       
+
         ?>
         <div class="section-content">
             <div class="row">
@@ -174,27 +174,8 @@
     <!-- appointment end -->
 
     <!-- divider start -->
-    <section class="service-area over-layer-default" style="background-image:url(img/bg/5.jpg);">
-        <div class="container padding-bottom-none padding-top-40">
-            <div class="section-content">
-                <div class="row">
+    <?php include './email-service.php'; ?>
 
-                    <div class="col-sm-12 col-md-12">
-                        <div class="service-item style-1 text-white border-right">
-                            <div class="">
-                                <i class="pe-7s-mail-open"></i>
-                            </div>
-                            <div class="content">
-                                <h5><a href="#">Send us a Message</a></h5>
-                                <p>info@beauty-medicare.com</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- divider end -->
     <!-- department start -->
     <section class="bg-f8">
@@ -238,7 +219,7 @@
                                 <div class='practice-item-1'>
                                     <div class='practice-img'>
                                         <a href='blog-single.php?id=$BLOG_ID' class='blg_img'>
-                                            <img src='./img/blog/$PHOTO' alt=''>
+                                            <img src='$PHOTO' alt=''>
                                             <span class='flaticon-heart-1'></span>
                                         </a>
                                     </div>

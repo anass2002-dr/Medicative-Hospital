@@ -1,16 +1,16 @@
 <?php
 include "Config.php";
 // On détermine sur quelle page on se trouve
-if(isset($_GET['page']) && !empty($_GET['page'])){
+if (isset($_GET['page']) && !empty($_GET['page'])) {
     $currentPage = (int) strip_tags($_GET['page']);
-}else{
+} else {
     $currentPage = 1;
 }
 // On détermine le nombre total d'blog
 $sql = 'SELECT COUNT(*) AS nb_blog FROM `blog`;';
 
-$result=$conn->query($sql);
-$row=mysqli_fetch_assoc($result);
+$result = $conn->query($sql);
+$row = mysqli_fetch_assoc($result);
 
 $nbblog = (int) $row['nb_blog'];
 
@@ -79,9 +79,9 @@ $sql = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_
                 <div class="row">
                     <div class="blog-feature">
                         <?php
-                        
+
                         $result = $conn->query($sql);
-                        
+
                         // $query = '';
                         // if (isset($_GET['id'])) {
                         //     $id = $_GET['id'];
@@ -107,7 +107,7 @@ $sql = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_
                                 echo "<div class='col-md-4 col-sm-6 col-xs-12'>
                                         <div class='blog-item style-1'>
                                             
-                                            <a href='Blog-single.php?id=$BLOG_ID'><div class='blog-img blg_img'><img src='img/blog/$PHOTO' alt=''>
+                                            <a href='Blog-single.php?id=$BLOG_ID'><div class='blog-img blg_img'><img src='$PHOTO' alt=''>
                                                 
                                             </div>
                                             </a>
@@ -121,77 +121,36 @@ $sql = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_
                                             </div>
                                         </div>
                                     </div>";
-                                
                             }
                         }
                         ?>
 
 
-                        
-                    
-                    </div>      
+
+
+                    </div>
                 </div>
                 <nav aria-label="Page navigation example" style="display: flex;justify-content: center;">
                     <ul class="pagination">
                         <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="blog-grid.php?page=<?= $currentPage - 1 ?>">Previous</a></li>
-                        <?php for($page = 1; $page <= $pages; $page++): ?>
-                          <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
-                          <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
+                        <?php for ($page = 1; $page <= $pages; $page++) : ?>
+                            <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+                            <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
                                 <a href="blog-grid.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
                             </li>
                         <?php endfor ?>
-                        
+
                         <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
-                        <a class="page-link" href="blog-grid.php?page=<?= $currentPage + 1 ?>">Next</a>
-                    </li>
+                            <a class="page-link" href="blog-grid.php?page=<?= $currentPage + 1 ?>">Next</a>
+                        </li>
                     </ul>
                 </nav>
-            </div>      
-        </div>
-    </section>
-                 
-    <!-- divider start -->
-    <section class="service-area over-layer-default" style="background-image:url(img/bg/5.jpg);">
-        <div class="container padding-bottom-none padding-top-40">
-            <div class="section-content">
-                <div class="row">
-                    <div class="col-sm-12 col-md-4">
-                        <div class="service-item style-1 text-white border-right">
-                            <div class="service-icon">
-                                <i class="pe-7s-call"></i>
-                            </div>
-                            <div class="content">
-                                <h5><a href="blog-single.php">Give us a Call</a></h5>
-                                <p>+970-438-3258</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-4">
-                        <div class="service-item style-1 text-white border-right">
-                            <div class="">
-                                <i class="pe-7s-mail-open"></i>
-                            </div>
-                            <div class="content">
-                                <h5><a href="blog-single.php">Send us a Message</a></h5>
-                                <p>Your_malil@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-4">
-                        <div class="service-item style-1 text-white">
-                            <div class="">
-                                <i class="pe-7s-map-marker"></i>
-                            </div>
-                            <div class="content">
-                                <h5><a href="blog-single.php">Visit our Location</a></h5>
-                                <p>12 New york, USA </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
+
+    <!-- divider start -->
+    <?php include './email-service.php'; ?>
     <!-- divider end -->
 
     <!-- Footer Style start -->

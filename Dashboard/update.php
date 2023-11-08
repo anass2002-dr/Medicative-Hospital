@@ -9,7 +9,8 @@ if(isset($_POST['operation'])){
             if ($_FILES[$file]['error'] != 4 || ($_FILES[$file]['size'] != 0 && $_FILES[$file]['error'] != 0)) {
                 $target_dir = $directory;
                 $temp = explode(".", $_FILES[$file]["name"]);
-                $newfilename = round(microtime(true)) . '.' . end($temp);
+                $path_save=substr($directory,2,strlen($directory));
+                $newfilename = $path_save.round(microtime(true)) . '.' . end($temp);
                 move_uploaded_file($_FILES[$file]["tmp_name"], $target_dir . $newfilename);
                 return $newfilename;
                 // cover_image is empty (and not an error), or no file was uploaded
@@ -90,7 +91,7 @@ if(isset($_POST['operation'])){
                     $tmp_nameC = $files["tmp_name"][$i];
                     $target_dirC = "../img/blog/";
                     $tempC = explode(".", $filenameC);
-                    $newfilenameC = rand() . '.' . end($tempC);
+                    $newfilenameC = "img/blog/".rand() . '.' . end($tempC);
                     move_uploaded_file($tmp_nameC, $target_dirC . $newfilenameC);
                     $date = date('Y-m-d-h:i:sa');
                     $query3 = "INSERT INTO collection_photos(BLOG_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id,'$newfilenameC','$date')";
@@ -182,7 +183,7 @@ if(isset($_POST['operation'])){
                     $tmp_nameC = $files["tmp_name"][$i];
                     $target_dirC = "../img/Product/";
                     $tempC = explode(".", $filenameC);
-                    $newfilenameC = rand() . '.' . end($tempC);
+                    $newfilenameC = "img/Product/".rand() . '.' . end($tempC);
                     move_uploaded_file($tmp_nameC, $target_dirC . $newfilenameC);
                     $date = date('Y-m-d-h:i:sa');
                     

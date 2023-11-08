@@ -3,7 +3,7 @@ include 'Config_dashboard.php';
 $target_dir = "../img/sponsor/";
 
 $temp = explode(".", $_FILES["photo"]["name"]);
-$newfilename = round(microtime(true)) . '.' . end($temp);
+$newfilename = "img/sponsor/".round(microtime(true)) . '.' . end($temp);
 move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $newfilename);
 $date = date('Y-m-d-h:i:sa');
 

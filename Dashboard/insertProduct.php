@@ -3,14 +3,14 @@ include 'Config_dashboard.php';
 $target_dir = "../img/Product/";
 
 $temp = explode(".", $_FILES["photo"]["name"]);
-$newfilename = round(microtime(true)) . '.' . end($temp);
+$newfilename = "img/Product/".round(microtime(true)) . '.' . end($temp);
 move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $newfilename);
 
 
 
 $target_dir = "../videos/Product/";
 $tempv = explode(".", $_FILES["video"]["name"]);
-$newfilenamev = round(microtime(true)) . '.' . end($tempv);
+$newfilenamev = "videos/Product/".round(microtime(true)) . '.' . end($tempv);
 move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir . $newfilenamev);
 move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir);
 

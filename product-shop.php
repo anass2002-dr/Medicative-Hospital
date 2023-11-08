@@ -39,13 +39,16 @@ $queryP = '';
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
-    if(isset($_GET['sp_id']) && !empty($_GET['id'])){
-        $sp_id=$_GET['sp_id'];
+    if (isset($_GET['sp_id']) && !empty($_GET['id'])) {
+        $sp_id = $_GET['sp_id'];
         $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id and p.SPONSOR_ID=$sp_id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
     }
 } else if (isset($_GET['sp_id']) && !empty($_GET['sp_id'])) {
     $sp_id = $_GET['sp_id'];
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.SPONSOR_ID=$sp_id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
+} else if (isset($_GET['title']) && !empty($_GET['title'])) {
+    $title = $_GET['title'];
+    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.TITLE='$title' ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
 } else {
     $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
 }
@@ -62,8 +65,6 @@ if (!empty($sp_id)) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-
 
 <head>
 
@@ -99,7 +100,6 @@ if (!empty($sp_id)) {
         </div>
     </section>
 
-
     <section class="shop-area">
         <div class="container">
             <div class="row">
@@ -116,7 +116,7 @@ if (!empty($sp_id)) {
 
                                 </form>
                                 <ul class="list-group" id="list_search">
-                                    
+
                                 </ul>
                             </div>
                         </div>
@@ -162,7 +162,7 @@ if (!empty($sp_id)) {
                                         while ($row = $result->fetch_assoc()) {
                                             $sponsor_name = $row['SPONSOR_NAME'];
                                             $sponsor_id = $row['SPONSOR_ID'];
-                                            echo "<li> <a href='product-shop.php?sp_id=$sponsor_id.$id'><i class='fa fa-angle-right'></i> $sponsor_name</a> </li>";
+                                            echo "<li> <a href='product-shop.php?sp_id=$sponsor_id$id'><i class='fa fa-angle-right'></i> $sponsor_name</a> </li>";
                                         }
                                     }
                                     ?>
@@ -202,7 +202,7 @@ if (!empty($sp_id)) {
                                                     <div class='product-image'>
                                                         <a class='product-img' href='shop-single.php?id=<?= $product_id ?>'>
                                                             <span><?= $sponsor ?></span>
-                                                            <img class='primary-img' src='img/Product/<?= $photo ?>' alt='' />
+                                                            <img class='primary-img' src='<?= $photo ?>' alt='' />
                                                         </a>
                                                     </div>
 
@@ -317,24 +317,25 @@ if (!empty($sp_id)) {
                         }
                     })
                 })
-                $('#search').keyup(function(){
-                    var text=$(this).val();
-                    
-                    if(text!=''){
+                $('#search').keyup(function() {
+                    var text = $(this).val();
+
+                    if (text != '') {
                         // e.preventDefault();
                         $.ajax({
                             type: "POST",
                             url: 'search.php',
-                            data: {search:text},
+                            data: {
+                                search: text
+                            },
                             success: function(response) {
                                 $('#list_search').html(response);
                             }
                         })
-                    }
-                    else{
+                    } else {
                         $('#list_search').html('not found');
                     }
-                    
+
                 })
 
             })
