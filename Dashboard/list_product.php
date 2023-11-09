@@ -28,6 +28,9 @@
       $pages = ceil($nbblog / $parPage);
       
       // Calcul du 1er article de la page
+      if($currentPage>=$pages){
+        $currentPage-=5;
+      }
       $premier = ($currentPage * $parPage) - $parPage;
 
       $query = 'SELECT b.PRODUCT_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM product as b INNER JOIN category as c
@@ -52,7 +55,9 @@
       
       // On calcule le nombre de pages total
       $pages = ceil($nbblog / $parPage);
-      
+      if($currentPage>=$pages){
+        $currentPage-=5;
+      }
       // Calcul du 1er article de la page
       $premier = ($currentPage * $parPage) - $parPage;
       // $query = "SELECT b.PRODUCT_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM product as b INNER JOIN category as c
@@ -103,7 +108,6 @@
               </div>
               </form>
             </div>
-            
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -163,14 +167,26 @@
           </div>
           <nav aria-label="Page navigation example" style="display: flex;justify-content: center;">
                     <ul class="pagination">
+                        
                         <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="list_product.php?page=<?= $currentPage - 1 ?>">Previous</a></li>
-                        <?php for($page = 1; $page <= $pages; $page++): ?>
+                        <?php if($currentPage>=6){?>
+                          <li class="page-item ">
+                          <a class="page-link" href="list_product.php?page=<?= $currentPage - 5 ?>">...</a>
+                        <?php }?> 
+                        <?php
+                          if($currentPage>=$pages){
+                            $currentPage=$pages-5;
+                          }
+                        for($page = $currentPage; $page <= $currentPage+5; $page++): ?>
                           <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
                           <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
                                 <a href="list_product.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
                             </li>
                         <?php endfor ?>
-                        
+                        <?php if(($currentPage+5)!=$pages){?>
+                        <li class="page-item ">
+                        <a class="page-link" href="list_product.php?page=<?= $currentPage + 6 ?>">...</a>
+                        <?php }?>  
                         <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
                         <a class="page-link" href="list_product.php?page=<?= $currentPage + 1 ?>">Next</a>
                     </li>

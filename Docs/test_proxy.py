@@ -1,24 +1,20 @@
-# from selenium import webdriver
-# from selenium.webdriver.chrome.service import Service as ChromeService
-# from webdriver_manager.chrome import ChromeDriverManager
-# from selenium.webdriver.chrome.options import Options
-# from selenium.webdriver.common.keys import Keys
-# from selenium.webdriver.common.by import By
-# from selenium.webdriver.support.wait import WebDriverWait
-# from selenium.webdriver.support import expected_conditions as EC
-# # define custom options for the Selenium driver
-# options = Options()
-# # free proxy server URL
-# proxy_server_url = "141.94.174.6"
-# options.add_argument(f'--proxy-server={proxy_server_url}')
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
-# # create the ChromeDriver instance with custom options
-# driver = webdriver.Chrome(
-#     service=ChromeService(ChromeDriverManager().install()),
-#     options=options
-# )
-# driver.get('http://httpbin.org/ip')
-# print(driver.find_element(By.TAG_NAME, "body").text)
-lis=['121','45','68','54']
-for i in range(0,len(lis)):
-    print(i)
+url="https://www.aliexpress.com/item/1005006132949077.html"
+driver=webdriver.Chrome()
+driver.set_window_position(-10000,0)
+driver.get(str(url))
+
+page_title=driver.title
+if(page_title!='Page Not Found - Aliexpress.com'):
+    
+    choice=driver.find_element(By.CLASS_NAME,'banner-choice--logo--Vq3YIx6')
+    print(choice.get_attribute('src'))
+    

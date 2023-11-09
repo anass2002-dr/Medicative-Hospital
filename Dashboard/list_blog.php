@@ -28,7 +28,9 @@
       
       // On calcule le nombre de pages total
       $pages = ceil($nbblog / $parPage);
-      
+      if($currentPage>=$pages){
+        $currentPage-=5;
+      }
       // Calcul du 1er article de la page
       $premier = ($currentPage * $parPage) - $parPage;
 
@@ -55,7 +57,9 @@
     
     // On calcule le nombre de pages total
     $pages = ceil($nbblog / $parPage);
-    
+    if($currentPage>=$pages){
+      $currentPage-=5;
+    }
     // Calcul du 1er article de la page
     $premier = ($currentPage * $parPage) - $parPage;
     
@@ -161,16 +165,27 @@
           </div>
           <nav aria-label="Page navigation example" style="display: flex;justify-content: center;">
                     <ul class="pagination">
-                        <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="list_blog.php?page=<?= $currentPage - 1 ?>">Previous</a></li>
-                        <?php for($page = 1; $page <= $pages; $page++): ?>
+                    <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="list_product.php?page=<?= $currentPage - 1 ?>">Previous</a></li>
+                        <?php if($currentPage>=6){?>
+                          <li class="page-item ">
+                          <a class="page-link" href="list_product.php?page=<?= $currentPage - 5 ?>">...</a>
+                        <?php }?> 
+                        <?php
+                          if($currentPage>=$pages){
+                            $currentPage=$pages-5;
+                          }
+                        for($page = $currentPage; $page <= $currentPage+5; $page++): ?>
                           <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
                           <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
-                                <a href="list_blog.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+                                <a href="list_product.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
                             </li>
                         <?php endfor ?>
-                        
+                        <?php if(($currentPage+5)!=$pages){?>
+                        <li class="page-item ">
+                        <a class="page-link" href="list_product.php?page=<?= $currentPage + 6 ?>">...</a>
+                        <?php }?>  
                         <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
-                        <a class="page-link" href="list_blog.php?page=<?= $currentPage + 1 ?>">Next</a>
+                        <a class="page-link" href="list_product.php?page=<?= $currentPage + 1 ?>">Next</a>
                     </li>
                     </ul>
                 </nav>
