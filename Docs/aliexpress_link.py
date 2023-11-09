@@ -48,7 +48,7 @@ for i in range(0,len(url_list)):
                 cp+=1
                 driver.close
    
-    with open(f'Docs/aliexpres_link_{category}.csv',mode='w',newline='',encoding='utf') as filec:
+    with open(f'Docs/excel/aliexpres_link_{category}.csv',mode='w',newline='',encoding='utf') as filec:
         writer=csv.writer(filec)
         for x in list_links:
             writer.writerow([x])  

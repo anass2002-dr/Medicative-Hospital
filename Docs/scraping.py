@@ -28,10 +28,10 @@ cats=[
 #  FACE CARE
 #  COSMETICS AND MAKEUP
 #  BEAUTY DEVICES
-for i in range(1,len(cats)+1):
+for i in range(4,len(cats)+1):
     links_list=[]
 
-    with open(f'Docs/aliexpres_link_{cats[i-1]}.csv','r',encoding='utf8') as filecsv:
+    with open(f'Docs/excel/aliexpres_link_{cats[i-1]}.csv','r',encoding='utf8') as filecsv:
         csv_reader = csv.reader(filecsv, delimiter=',')
         for ff in csv_reader:
             links_list.append(ff)
