@@ -86,6 +86,10 @@ include 'Config_dashboard.php';
                       <textarea name='blog_short' id='blog-short' class='form-control' rows='10'></textarea>
                     </div>
                     <div class="form-group">
+                      <label for='blog-Keywords'>Enter Keywords</label>
+                      <textarea name='blog_Keywords' id='blog-Keywords' class='form-control' rows='10'></textarea>
+                    </div>
+                    <div class="form-group">
                       <label for='blog'>Enter your html code</label>
                       <textarea name='blog' id='blog' class='form-control' rows='50'></textarea>
                     </div>

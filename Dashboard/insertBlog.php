@@ -23,16 +23,18 @@ $video = $newfilenamev;
 $product_link = $_POST['product_link'];
 $blog = $_POST['blog'];
 $blog_short = $_POST['blog_short'];
+$blog_keywords = $_POST['blog_keywords'];
 $date = date('Y-m-d-h:i:sa');
 
-if (!empty($title) and !empty($category) and !empty($photo) and !empty($blog) and !empty($blog_short)) {
+if (!empty($title) and !empty($category) and !empty($photo) and !empty($blog) and !empty($blog_short)and !empty($blog_keywords)) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
     $blog = mysqli_real_escape_string($conn, $blog);
     $title = mysqli_real_escape_string($conn, $title);
     $blog_short = mysqli_real_escape_string($conn, $blog_short);
-    $sql = "INSERT INTO blog (TITLE, CATEGORY_ID, PHOTO, VIDEO, PRODUCT_LINK, CONTENT,BLOG_SHORT, CREATED_DATE) VALUES ('$title', $category, '$photo','$video','$product_link','$blog','$blog_short','$date')";
+    $blog_keywords = mysqli_real_escape_string($conn, $blog_keywords);
+    $sql = "INSERT INTO blog (TITLE, CATEGORY_ID, PHOTO, VIDEO, PRODUCT_LINK, CONTENT,BLOG_SHORT,BLOG_KEYWORDS CREATED_DATE) VALUES ('$title', $category, '$photo','$video','$product_link','$blog','$blog_short','$blog_keywords','$date')";
     if ($conn->query($sql) === TRUE) {
         $sql2 = "SELECT BLOG_ID FROM blog ORDER BY BLOG_ID DESC LIMIT 1;";
         $result = $conn->query($sql2);

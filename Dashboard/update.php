@@ -41,6 +41,7 @@ if(isset($_POST['operation'])){
         $product_link = $row['PRODUCT_LINK'];
         $blog = $row['CONTENT'];
         $blog_short = $row['BLOG_SHORT'];
+        $blog_keywords = $row['BLOG_KEYWORDS'];
         $newfilename=insert_media('photo','../img/blog/');
         $newfilenamev=insert_media('video','../videos/blog/');
         if(!empty($newfilename)){
@@ -66,6 +67,9 @@ if(isset($_POST['operation'])){
         if(isset($_POST['blog_short'])){
             $blog_short = $_POST['blog_short'];
         }
+        if(isset($_POST['blog_keywords'])){
+            $blog_keywords = $_POST['blog_keywords'];
+        }
         $date = date('Y-m-d-h:i:sa');
 
         
@@ -75,8 +79,9 @@ if(isset($_POST['operation'])){
     
         $blog = mysqli_real_escape_string($conn, $blog);
         $blog_short = mysqli_real_escape_string($conn, $blog_short);
+        $blog_keywords = mysqli_real_escape_string($conn, $blog_keywords);
         $title = mysqli_real_escape_string($conn, $title);
-        $query = "UPDATE blog SET TITLE='$title',CATEGORY_ID='$category',PHOTO='$photo',VIDEO='$video',PRODUCT_LINK='$product_link',CONTENT='$blog',BLOG_SHORT='$blog_short',UPDATE_DATE='$date' where BLOG_ID=$id";
+        $query = "UPDATE blog SET TITLE='$title',CATEGORY_ID='$category',PHOTO='$photo',VIDEO='$video',PRODUCT_LINK='$product_link',CONTENT='$blog',BLOG_SHORT='$blog_short',BLOG_KEYWORDS='$blog_keywords',UPDATE_DATE='$date' where BLOG_ID=$id";
         
         // $conn->query($query);
         if ($conn->query($query) === TRUE) {
@@ -119,6 +124,7 @@ if(isset($_POST['operation'])){
         $product_price = $row['PRODUCT_PRICE'];
         $Product = $row['CONTENT'];
         $product_short = $row['PRODUCT_SHORT'];
+        $keywords = $row['KEYWORDS'];
         $sponsor = $row['SPONSOR_ID'];
         $newfilename=insert_media('photo','../img/Product/');
         $newfilenamev=insert_media('video','../videos/Product/');
@@ -149,6 +155,9 @@ if(isset($_POST['operation'])){
         if(isset($_POST['product_short'])){
             $product_short = $_POST['product_short'];
         }
+        if(isset($_POST['keywords'])){
+            $keywords = $_POST['keywords'];
+        }
        
 
         if(isset($_POST['sponsor'])){
@@ -166,8 +175,9 @@ if(isset($_POST['operation'])){
     
         $Product = mysqli_real_escape_string($conn, $Product);
         $product_short = mysqli_real_escape_string($conn, $product_short);
+        $keywords = mysqli_real_escape_string($conn, $keywords);
         $title = mysqli_real_escape_string($conn, $title);
-        $query = "UPDATE product SET TITLE='$title',CATEGORY_ID='$category',PHOTO='$photo',VIDEO='$video',PRODUCT_LINK='$product_link',CONTENT='$Product',PRODUCT_SHORT='$product_short',PRODUCT_PRICE=$product_price,SPONSOR_ID=$sponsor,UPDATE_DATE='$date' where PRODUCT_ID=$id";
+        $query = "UPDATE product SET TITLE='$title',CATEGORY_ID='$category',PHOTO='$photo',VIDEO='$video',PRODUCT_LINK='$product_link',CONTENT='$Product',PRODUCT_SHORT='$product_short',KEYWORDS='$keywords',PRODUCT_PRICE=$product_price,SPONSOR_ID=$sponsor,UPDATE_DATE='$date' where PRODUCT_ID=$id";
         
         // $conn->query($query);
         if ($conn->query($query) === TRUE) {

@@ -112,6 +112,10 @@ include 'Config_dashboard.php';
                       <textarea name='product_short' id='product-short' class='form-control' rows='10'></textarea>
                     </div>
                     <div class="form-group">
+                      <label for='keywords'>Enter keywords</label>
+                      <textarea name='keywords' id='keywords' class='form-control' rows='10'></textarea>
+                    </div>
+                    <div class="form-group">
                       <label for='content'>Enter your html code</label>
                       <textarea name='content' id='content' class='form-control' rows='50'></textarea>
                     </div>

@@ -47,6 +47,7 @@ include 'Config_dashboard.php';
                         $title = $row["TITLE"];
                         $product = $row["CONTENT"];
                         $product_short = $row["PRODUCT_SHORT"];
+                        $keywords = $row["KEYWORDS"];
                         $product_link = $row["PRODUCT_LINK"];
                         $category_id = $row["CATEGORY_ID"];
                         $sponsor_id = $row["SPONSOR_ID"];
@@ -134,6 +135,10 @@ include 'Config_dashboard.php';
                                     <div class='form-group'>
                                     <label for='product_short'>Enter your short Description</label>
                                     <textarea name='product_short' id='product_short' class='form-control' rows='10'>$product_short</textarea>
+                                    </div>
+                                    <div class='form-group'>
+                                    <label for='keywords'>Enter Key Words</label>
+                                    <textarea name='keywords' id='keywords' class='form-control' rows='10'>$keywords</textarea>
                                     </div>
                                     <div class='form-group'>
                                     <label for='product'>Enter your html code</label>

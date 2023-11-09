@@ -47,6 +47,7 @@ include 'Config_dashboard.php';
                     $title = "";
                     $blog = "";
                     $blog_short = "";
+                    $blog_keywords= "";
                     $product_link = "";
                     $photo = "";
                     $video = "";
@@ -57,6 +58,7 @@ include 'Config_dashboard.php';
                         $title = $row["TITLE"];
                         $blog = $row["CONTENT"];
                         $blog_short = $row["BLOG_SHORT"];
+                        $blog_keywords = $row["BLOG_KEYWORDS"];
                         $product_link = $row["PRODUCT_LINK"];
                         $category_id = $row["CATEGORY_ID"];
                       }
@@ -111,6 +113,10 @@ include 'Config_dashboard.php';
                                 <div class='form-group'>
                                 <label for='blog-short'>Enter your short Description</label>
                                 <textarea name='blog_short' id='blog-short' class='form-control' rows='10'>$blog_short</textarea>
+                                </div>
+                                <div class='form-group'>
+                                <label for='blog-keywords'>Enter KeyWords</label>
+                                <textarea name='blog_keywords' id='blog-keywords' class='form-control' rows='10'>$blog_keywords</textarea>
                                 </div>
                                 <div class='form-group'>
                                 <label for='blog'>Enter your html code</label>
