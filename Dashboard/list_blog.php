@@ -1,74 +1,89 @@
 <?php
-include 'Config_dashboard.php';
-$query = "";
-$search = "";
-$premier = "";
-$pages = "";
-$sql = "";
+    include 'Config_dashboard.php';
+    $query="";
+    $search="";
+    $premier="";
+    $pages="";
+    $sql="";
+    $last_page="";
+    
+    if(isset($_POST['search'])){
+      if(isset($_GET['page']) && !empty($_GET['page'])){
+        $currentPage = (int) strip_tags($_GET['page']);
+      }else{
+          $currentPage = 1;
+      }
+      $search = $_POST['search'];
+      
 
-$max_pages = "";
-if (isset($_POST['search'])) {
-  if (isset($_GET['page']) && !empty($_GET['page'])) {
-    $currentPage = (int) strip_tags($_GET['page']);
-  } else {
-    $currentPage = 1;
-  }
-  $search = $_POST['search'];
+      // On détermine le nombre total d'blog
+      $sql = 'SELECT COUNT(*) AS nb_blog FROM `blog` where TITLE like "%'.$search.'%"';
+      
+      $result=$conn->query($sql);
+      $row=mysqli_fetch_assoc($result);
+      
+      $nbblog = (int) $row['nb_blog'];
+      
+     
+      // On calcule le nombre de pages total
+      $pages = ceil($nbblog / $parPage);
+      
+      // Calcul du 1er article de la page
+      $premier = ($currentPage * $parPage) - $parPage;
+      $parPage = 12;
+      if($pages>6){
+        $last_page=$currentPage+6;
 
+      }
+      else{
+        $last_page=$pages;
+      }
+      
+      if($last_page>=$pages){
+        $last_page=$pages;
+      }
+      
+      $query = 'SELECT b.BLOG_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM blog as b INNER JOIN category as c
+      ON b.CATEGORY_ID = c.CATEGORY_ID  where TITLE like "%'.$search.'%" order by CREATED_DATE DESC LIMIT '.$premier.','. $parPage;
+ 
+    }
+    else{
+    if(isset($_GET['page']) && !empty($_GET['page'])){
+      $currentPage = (int) strip_tags($_GET['page']);
+    }else{
+        $currentPage = 1;
+    }
+    // On détermine le nombre total d'blog
+    $sql = 'SELECT COUNT(*) AS nb_blog FROM `blog`;';
+    
+    $result=$conn->query($sql);
+    $row=mysqli_fetch_assoc($result);
+    
+    $nbblog = (int) $row['nb_blog'];
+    
+    $parPage = 12;
+    
+    // On calcule le nombre de pages total
+    $pages = ceil($nbblog / $parPage);
+    
+    // Calcul du 1er article de la page
+    $premier = ($currentPage * $parPage) - $parPage;
+    if($pages>6){
+      $last_page=$currentPage+6;
 
-  // On détermine le nombre total d'blog
-  $sql = 'SELECT COUNT(*) AS nb_blog FROM `blog` where TITLE like "%' . $search . '%"';
-
-  $result = $conn->query($sql);
-  $row = mysqli_fetch_assoc($result);
-
-  $nbblog = (int) $row['nb_blog'];
-
-  $parPage = 12;
-
-  // On calcule le nombre de pages total
-  $pages = ceil($nbblog / $parPage);
-  $max_pages = $currentPage + 5;
-  if ($currentPage >= $pages) {
-    $max_pages = $pages;
-    $currentPage -= 5;
-  }
-  // Calcul du 1er article de la page
-  $premier = ($currentPage * $parPage) - $parPage;
-
-
-  $query = 'SELECT b.BLOG_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM blog as b INNER JOIN category as c
-      ON b.CATEGORY_ID = c.CATEGORY_ID  where TITLE like "%' . $search . '%" order by CREATED_DATE DESC LIMIT ' . $premier . ',' . $parPage;
-} else {
-  if (isset($_GET['page']) && !empty($_GET['page'])) {
-    $currentPage = (int) strip_tags($_GET['page']);
-  } else {
-    $currentPage = 1;
-  }
-  // On détermine le nombre total d'blog
-  $sql = 'SELECT COUNT(*) AS nb_blog FROM `blog`;';
-
-  $result = $conn->query($sql);
-  $row = mysqli_fetch_assoc($result);
-
-  $nbblog = (int) $row['nb_blog'];
-
-  $parPage = 12;
-  $max_pages = $currentPage + 5;
-
-  // On calcule le nombre de pages total
-  $pages = ceil($nbblog / $parPage);
-  if ($currentPage >= $pages) {
-    $max_pages = $pages;
-    $currentPage -= 5;
-  }
-  // Calcul du 1er article de la page
-  $premier = ($currentPage * $parPage) - $parPage;
-
-  $query = "SELECT b.BLOG_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM blog as b INNER JOIN category as c
+    }
+    else{
+      $last_page=$pages;
+    }
+    
+    if($last_page>=$pages){
+      $last_page=$pages;
+    }
+    $query = "SELECT b.BLOG_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM blog as b INNER JOIN category as c
     ON b.CATEGORY_ID = c.CATEGORY_ID order by CREATED_DATE DESC LIMIT $premier, $parPage;";
-}
-?>
+
+  }
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,19 +113,17 @@ if (isset($_POST['search'])) {
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            <div class="col-6">
+          <div class="col-6">
               <form action="list_blog.php" method="post">
-                <div class="input-group mb-3">
-                  <input type="text" class="form-control" name="search" placeholder="search by title" aria-label="search by title" aria-describedby="basic-addon2">
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">search</button>
-                  </div>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" name="search" placeholder="search by title" aria-label="search by title" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="submit">search</button>
                 </div>
+              </div>
               </form>
             </div>
-            <?php echo $pages;
-            echo $currentPage;
-            echo $query; ?>
+            
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -143,7 +156,7 @@ if (isset($_POST['search'])) {
                           $CREATED_DATE = $row["CREATED_DATE"];
                           if (strlen($TITLE) > 20) {
                             $TITLE = substr($TITLE, 0, 20);
-                            $TITLE = $TITLE . '...';
+                            $TITLE=$TITLE.'...';
                           }
                           echo "<tr>
                                 <th scope='row'>$BLOG_ID</th>
@@ -168,36 +181,26 @@ if (isset($_POST['search'])) {
             </div>
           </div>
           <nav aria-label="Page navigation example" style="display: flex;justify-content: center;">
-            <ul class="pagination">
-              <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="list_blog.php?page=<?= $currentPage - 1 ?>">Previous</a></li>
-              <?php if ($currentPage >= 6) { ?>
-                <li class="page-item ">
-                  <a class="page-link" href="list_blog.php?page=<?= $currentPage - 5 ?>">...</a>
-                <?php } ?>
-                <?php
-                // if ($currentPage >= $pages) {
-                //   $currentPage = $pages - 5;
-                // }
+                    <ul class="pagination">
+                        <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="list_blog.php?page=<?= $currentPage - 1 ?>">Previous</a></li>
+                        <li class="page-item <?= ($currentPage-5 <= 1) ? "disabled" : "" ?>">
+                          <a class="page-link" href="list_blog.php?page=<?=$currentPage-5 ?>">...</a>
+                        </li>
+                        <?php for($page = $currentPage; $page <= $last_page; $page++): ?>
+                          <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+                          <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
+                                <a href="list_blog.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+                            </li>
+                        <?php endfor ?>
+                        <li class="page-item <?= ($currentPage+5 >= $pages) ? "disabled" : "" ?>">
+                          <a class="page-link" href="list_blog.php?page=<?= $currentPage + 5 ?>">...</a>
+                        </li>
 
-                for ($page = $currentPage; $page <= $max_pages; $page++) : ?>
-                  <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
-                <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
-                  <a href="list_blog.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
-                </li>
-              <?php endfor ?>
-
-
-              <!-- <?php if (($currentPage + 5) != $pages) { ?> -->
-              <li class="page-item ">
-                <a class="page-link" href="list_blog.php?page=<?= $currentPage + 5 ?>">...</a>
-                <!-- <?php } ?> -->
-
-
-              <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
-                <a class="page-link" href="list_blog.php?page=<?= $currentPage + 1 ?>">Next</a>
-              </li>
-            </ul>
-          </nav>
+                        <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
+                          <a class="page-link" href="list_blog.php?page=<?= $currentPage + 1 ?>">Next</a>
+                        </li>
+                    </ul>
+                </nav>
         </div>
 
       </div>
@@ -258,7 +261,7 @@ if (isset($_POST['search'])) {
             type: 'POST',
             data: {
               id: deleteid,
-              type: 'b'
+              type:'b'
             },
             success: function(response) {
               location.reload();
