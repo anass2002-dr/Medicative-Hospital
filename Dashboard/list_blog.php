@@ -8,11 +8,8 @@
     $last_page="";
     
     if(isset($_POST['search'])){
-      if(isset($_GET['page']) && !empty($_GET['page'])){
-        $currentPage = (int) strip_tags($_GET['page']);
-      }else{
-          $currentPage = 1;
-      }
+      $currentPage = 1;
+
       $search = $_POST['search'];
       
 
@@ -44,7 +41,7 @@
       }
       
       $query = 'SELECT b.BLOG_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM blog as b INNER JOIN category as c
-      ON b.CATEGORY_ID = c.CATEGORY_ID  where TITLE like "%'.$search.'%" order by CREATED_DATE DESC LIMIT '.$premier.','. $parPage;
+      ON b.CATEGORY_ID = c.CATEGORY_ID  where TITLE like "%'.$search.'%" order by CREATED_DATE ASC LIMIT '.$premier.','. $parPage;
  
     }
     else{
@@ -80,7 +77,7 @@
       $last_page=$pages;
     }
     $query = "SELECT b.BLOG_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM blog as b INNER JOIN category as c
-    ON b.CATEGORY_ID = c.CATEGORY_ID order by CREATED_DATE DESC LIMIT $premier, $parPage;";
+    ON b.CATEGORY_ID = c.CATEGORY_ID order by CREATED_DATE ASC LIMIT $premier, $parPage;";
 
   }
 ?> 

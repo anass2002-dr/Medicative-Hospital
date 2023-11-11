@@ -48,19 +48,19 @@ if($pages>6){
 $queryP = '';
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
+    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id ORDER BY p.CREATED_DATE ASC LIMIT $premier, $parPage;";
     if (isset($_GET['sp_id']) && !empty($_GET['id'])) {
         $sp_id = $_GET['sp_id'];
-        $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id and p.SPONSOR_ID=$sp_id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
+        $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id and p.SPONSOR_ID=$sp_id ORDER BY p.CREATED_DATE ASC LIMIT $premier, $parPage;";
     }
 } else if (isset($_GET['sp_id']) && !empty($_GET['sp_id'])) {
     $sp_id = $_GET['sp_id'];
-    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.SPONSOR_ID=$sp_id ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
+    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.SPONSOR_ID=$sp_id ORDER BY p.CREATED_DATE ASC LIMIT $premier, $parPage;";
 } else if (isset($_GET['title']) && !empty($_GET['title'])) {
     $title = $_GET['title'];
-    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.TITLE='$title' ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
+    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.TITLE='$title' ORDER BY p.CREATED_DATE ASC LIMIT $premier, $parPage;";
 } else {
-    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID ORDER BY p.CREATED_DATE DESC LIMIT $premier, $parPage;";
+    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID ORDER BY p.CREATED_DATE ASC LIMIT $premier, $parPage;";
 }
 
 if (!empty($id)) {
@@ -81,7 +81,7 @@ if (!empty($sp_id)) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="ASCription" content="">
     <meta name="author" content="">
 
     <?php
@@ -159,6 +159,9 @@ if (!empty($sp_id)) {
                                             echo "<li> <a href='product-shop.php?id=$category_id'><i class='fa fa-angle-right'></i> $category_name</a> </li>";
                                         }
                                     }
+
+
+                                    
                                     ?>
 
                                 </ul>

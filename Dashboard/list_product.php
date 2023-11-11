@@ -8,11 +8,8 @@
     $last_page="";
 
     if(isset($_POST['search'])){
-      if(isset($_GET['page']) && !empty($_GET['page'])){
-        $currentPage = (int) strip_tags($_GET['page']);
-      }else{
-          $currentPage = 1;
-      }
+      $currentPage = 1;
+
       $search = $_POST['search'];
       
 
@@ -30,9 +27,7 @@
       $pages = ceil($nbblog / $parPage);
       
       // Calcul du 1er article de la page
-      if($currentPage>=$pages){
-        $currentPage-=5;
-      }
+      
       $premier = ($currentPage * $parPage) - $parPage;
       if($pages>6){
         $last_page=$currentPage+6;
@@ -46,7 +41,7 @@
         $last_page=$pages;
       }
       $query = 'SELECT b.PRODUCT_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM product as b INNER JOIN category as c
-      ON b.CATEGORY_ID = c.CATEGORY_ID where TITLE like "%'.$search.'%" order by CREATED_DATE DESC LIMIT '.$premier.','. $parPage;
+      ON b.CATEGORY_ID = c.CATEGORY_ID where TITLE like "%'.$search.'%" order by CREATED_DATE ASC LIMIT '.$premier.','. $parPage;
 
     }
     else{
@@ -86,7 +81,7 @@
         $last_page=$pages;
       }
       $query = "SELECT b.PRODUCT_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM product as b INNER JOIN category as c
-      ON b.CATEGORY_ID = c.CATEGORY_ID order by CREATED_DATE DESC LIMIT $premier, $parPage;";
+      ON b.CATEGORY_ID = c.CATEGORY_ID order by CREATED_DATE ASC LIMIT $premier, $parPage;";
     }
     
     
@@ -125,12 +120,12 @@
               <div class="input-group mb-3">
                 <input type="text" class="form-control" name="search" placeholder="search by title" aria-label="search by title" aria-describedby="basic-addon2">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="submit">search</button>
+                  <button class="btn btn-outline-secondary p-3 " type="submit">search</button>
                 </div>
               </div>
               </form>
             </div>
-            
+            <?php echo $query;?>
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
