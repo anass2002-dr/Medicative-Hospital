@@ -45,6 +45,7 @@ include 'Config_dashboard.php';
                         $result=$conn->query($query);
                         $row=mysqli_fetch_assoc($result);
                         $title = $row["TITLE"];
+                        $ddp = $row["DDP"];
                         $product = $row["CONTENT"];
                         $product_short = $row["PRODUCT_SHORT"];
                         $keywords = $row["KEYWORDS"];
@@ -62,6 +63,10 @@ include 'Config_dashboard.php';
                                 <label for='titel'>product Title</label>
                                 <input type='text' class='form-control' id='titel' placeholder='Title' name='title' require value='$title'>
                                 </div>
+                                <div class='form-group'>
+                                <input type='checkbox' id='ddp' name='ddp' >
+                                <label for='ddp'>  Delivered duty paid (DDP)</label>
+                              </div>
                                 <div class='form-group'>
                                 <label for='category'>product category</label>
                                 <select class='form-control form-control-lg' id='category' name='category'>

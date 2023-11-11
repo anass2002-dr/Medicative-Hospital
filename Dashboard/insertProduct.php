@@ -15,6 +15,7 @@ move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir . $newfilenamev);
 move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir);
 
 $title = $_POST['title'];
+$ddp = $_POST['ddp'];
 $category = $_POST['category'];
 $photo = $newfilename;
 $video = $newfilenamev;
@@ -27,16 +28,17 @@ $keywords = $_POST['keywords'];
 $sponsor = $_POST['sponsor'];
 $date = date('Y-m-d-h:i:sa');
 
-if (!empty($title) and !empty($category) and !empty($photo) and !empty($Product) and !empty($product_short)  and !empty($keywords)) {
+if (!empty($title) and !empty($ddp) and !empty($category) and !empty($photo) and !empty($Product) and !empty($product_short)  and !empty($keywords)) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
     $Product = mysqli_real_escape_string($conn, $Product);
     $title = mysqli_real_escape_string($conn, $title);
+    $ddp = mysqli_real_escape_string($conn, $ddp);
     $product_short = mysqli_real_escape_string($conn, $product_short);
     $keywords = mysqli_real_escape_string($conn, $keywords);
 
-    $sql = "INSERT INTO product (TITLE, CATEGORY_ID, PHOTO, VIDEO, PRODUCT_LINK, CONTENT,PRODUCT_SHORT,KEYWORDS,PRODUCT_PRICE,SPONSOR_ID ,CREATED_DATE) VALUES ('$title', $category, '$photo','$video','$product_link','$Product','$product_short','$keywords',$product_price,$sponsor,'$date')";
+    $sql = "INSERT INTO product (TITLE,DDP, CATEGORY_ID, PHOTO, VIDEO, PRODUCT_LINK, CONTENT,PRODUCT_SHORT,KEYWORDS,PRODUCT_PRICE,SPONSOR_ID ,CREATED_DATE) VALUES ('$title','$ddp', $category, '$photo','$video','$product_link','$Product','$product_short','$keywords',$product_price,$sponsor,'$date')";
     if ($conn->query($sql) === TRUE) {
         $sql2 = "SELECT PRODUCT_ID FROM PRODUCT ORDER BY PRODUCT_ID DESC LIMIT 1;";
         $result = $conn->query($sql2);

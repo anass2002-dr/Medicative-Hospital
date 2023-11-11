@@ -45,6 +45,10 @@ include 'Config_dashboard.php';
                       <input type="text" class="form-control" id="titel" placeholder="Title" name="title" require>
                     </div>
                     <div class="form-group">
+                      <input type="checkbox" id="ddp"  name="ddp"  >
+                      <label for="ddp"> Delivered duty paid (DDP)</label>
+                    </div>
+                    <div class="form-group">
                       <label for="category">Product category</label>
                       <select class="form-control form-control-lg" id="category" name="category">
                         <?php

@@ -120,7 +120,16 @@ if (!empty($sp_id)) {
                                 </ul>
                             </div>
                         </div>
-
+                        <div class="widget clearfix">
+                            <div class="sideber-title">
+                                <h4> Delivered duty paid </h4>
+                            </div>
+                            <div class="sideber-content">
+                                <ul>
+                                    <li> <a href='product-shop.php'><i class='fa fa-angle-right'></i> DDP</a> </li>
+                                </ul>
+                            </div>
+                        </div>
                         <div class="widget clearfix">
                             <div class="sideber-title">
                                 <h4>Categories</h4>
