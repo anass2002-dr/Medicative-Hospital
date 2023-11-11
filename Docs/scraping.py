@@ -28,15 +28,15 @@ cats=[
 #  FACE CARE
 #  COSMETICS AND MAKEUP
 #  BEAUTY DEVICES
-for i in range(1,len(cats)+1):
+for i in range(4,len(cats)+1):
     links_list=[]
 
-    with open(f'Docs/aliexpres_link_{cats[i-1]}.csv','r',encoding='utf8') as filecsv:
+    with open(f'Docs/excel/aliexpres_link_{cats[i-1]}.csv','r',encoding='utf8') as filecsv:
         csv_reader = csv.reader(filecsv, delimiter=',')
         for ff in csv_reader:
             links_list.append(ff)
     print(cats[i-1])
-    query="INSERT INTO `product` (`PRODUCT_ID`,`TITLE`, `CATEGORY_ID`, `PHOTO`, `VIDEO`, `PRODUCT_LINK`, `CONTENT`, `PRODUCT_SHORT`, `PRODUCT_PRICE`, `SPONSOR_ID`, `CREATED_DATE`, `UPDATE_DATE`) values"
+    query="INSERT INTO `product` (`PRODUCT_ID`,`TITLE`, `CATEGORY_ID`, `PHOTO`, `VIDEO`, `PRODUCT_LINK`, `CONTENT`, `PRODUCT_SHORT`, `PRODUCT_PRICE`, `SPONSOR_ID`,`DDP`, `CREATED_DATE`, `UPDATE_DATE`) values"
     collection_query="INSERT INTO `product_collection_photos`(`PRODUCT_ID`, `PHOTO_PATH`, `UPDATE_DATE`) VALUES"
     new_link_list=[]
     for link in links_list:
@@ -89,14 +89,20 @@ for i in range(1,len(cats)+1):
                         video_src=video.find_element(By.TAG_NAME,'source').get_attribute('src')
                     except Exception as e:
                         print('video not founded')
+                    DDP=0
+                    try:
+                        choice=driver.find_element(By.CLASS_NAME,'banner-choice--logo--Vq3YIx6')
+                        DDP=1
+                    except Exception as e:
+                        print('product not suport ddp')
                     print(title)
                     price=float("{:.2f}".format(price/10.31))
                     print(price)
                     today = date.today()
                     if(j!=len(new_link_list)-1):
-                        query+=f'({id},"{title}",{i},"{img_list[0]}","{video_src}","{url}","{title}","{title}",{price},2,"{today}","{today}"),'
+                        query+=f'({id},"{title}",{i},"{img_list[0]}","{video_src}","{url}","{title}","{title}",{price},2,{DDP}"{today}","{today}"),'
                     else:
-                        query+=f'({id},"{title}",{i},"{img_list[0]}","{video_src}","{url}","{title}","{title}",{price},2,"{today}","{today}");'
+                        query+=f'({id},"{title}",{i},"{img_list[0]}","{video_src}","{url}","{title}","{title}",{price},2,{DDP}"{today}","{today}");'
                     id+=1
                 err=2
                 reste-=1

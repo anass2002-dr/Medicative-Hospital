@@ -34,7 +34,17 @@ $pages = ceil($nbblog / $parPage);
 
 // Calcul du 1er article de la page
 $premier = ($currentPage * $parPage) - $parPage;
+if($pages>6){
+    $last_page=$currentPage+6;
 
+  }
+  else{
+    $last_page=$pages;
+  }
+  
+  if($last_page>=$pages){
+    $last_page=$pages;
+  }
 $queryP = '';
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
@@ -253,14 +263,21 @@ if (!empty($sp_id)) {
                             <nav aria-label="Page navigation example" style="display: flex;justify-content: center;">
                                 <ul class="pagination">
                                     <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="product-shop.php?page=<?= $currentPage - 1 . $id . $sp_id ?>">Previous</a></li>
-                                    <?php for ($page = 1; $page <= $pages; $page++) : ?>
-                                        <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
+                                    <li class="page-item <?= ($currentPage-5 <= 1) ? "disabled" : "" ?>">
+                                    <a class="page-link" href="product-shop.php?page=<?=$currentPage-5 . $id . $sp_id  ?>">...</a>
+                                    </li>
+                                    <?php for($page = $currentPage; $page <= $last_page; $page++): ?>
+                                    <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+                                    <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
                                             <a href="product-shop.php?page=<?= $page . $id . $sp_id ?>" class="page-link"><?= $page ?></a>
                                         </li>
                                     <?php endfor ?>
+                                    <li class="page-item <?= ($currentPage+5 >= $pages) ? "disabled" : "" ?>">
+                                    <a class="page-link" href="product-shop.php?page=<?= $currentPage + 5 ?>">...</a>
+                                    </li>
 
                                     <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
-                                        <a class="page-link" href="product-shop.php?page=<?= $currentPage + 1 . $id . $sp_id ?>">Next</a>
+                                    <a class="page-link" href="product-shop.php?page=<?= $currentPage + 1 . $id . $sp_id?>">Next</a>
                                     </li>
                                 </ul>
                             </nav>
