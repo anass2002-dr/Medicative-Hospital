@@ -1,90 +1,84 @@
 <?php
-    include 'Config_dashboard.php';
-    $query="";
-    $search="";
-    $premier="";
-    $pages="";
-    $sql="";
-    $last_page="";
+include 'Config_dashboard.php';
+$query = "";
+$search = "";
+$premier = "";
+$pages = "";
+$sql = "";
+$last_page = "";
 
-    if(isset($_POST['search'])){
-      $currentPage = 1;
+if (isset($_POST['search'])) {
+  $currentPage = 1;
 
-      $search = $_POST['search'];
-      
+  $search = $_POST['search'];
 
-      // On détermine le nombre total d'blog
-      $sql = 'SELECT COUNT(*) AS nb_blog FROM `product` where TITLE like "%'.$search.'%"';
-      
-      $result=$conn->query($sql);
-      $row=mysqli_fetch_assoc($result);
-      
-      $nbblog = (int) $row['nb_blog'];
-      
-      $parPage = 12;
-      
-      // On calcule le nombre de pages total
-      $pages = ceil($nbblog / $parPage);
-      
-      // Calcul du 1er article de la page
-      
-      $premier = ($currentPage * $parPage) - $parPage;
-      if($pages>6){
-        $last_page=$currentPage+6;
-  
-      }
-      else{
-        $last_page=$pages;
-      }
-      
-      if($last_page>=$pages){
-        $last_page=$pages;
-      }
-      $query = 'SELECT b.PRODUCT_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM product as b INNER JOIN category as c
-      ON b.CATEGORY_ID = c.CATEGORY_ID where TITLE like "%'.$search.'%" order by CREATED_DATE ASC LIMIT '.$premier.','. $parPage;
 
-    }
-    else{
-      if(isset($_GET['page']) && !empty($_GET['page'])){
-        $currentPage = (int) strip_tags($_GET['page']);
-      }else{
-          $currentPage = 1;
-      }
-      // On détermine le nombre total d'blog
-      $sql = 'SELECT COUNT(*) AS nb_blog FROM `product`;';
-      
-      $result=$conn->query($sql);
-      $row=mysqli_fetch_assoc($result);
-      
-      $nbblog = (int) $row['nb_blog'];
-      
-      $parPage = 12;
-      
-      // On calcule le nombre de pages total
-      $pages = ceil($nbblog / $parPage);
-      if($currentPage>=$pages){
-        $currentPage-=5;
-      }
-      // Calcul du 1er article de la page
-      $premier = ($currentPage * $parPage) - $parPage;
-      // $query = "SELECT b.PRODUCT_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM product as b INNER JOIN category as c
-      // ON b.CATEGORY_ID = c.CATEGORY_ID";
-      if($pages>6){
-        $last_page=$currentPage+6;
-  
-      }
-      else{
-        $last_page=$pages;
-      }
-      
-      if($last_page>=$pages){
-        $last_page=$pages;
-      }
-      $query = "SELECT b.PRODUCT_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM product as b INNER JOIN category as c
+  // On détermine le nombre total d'blog
+  $sql = 'SELECT COUNT(*) AS nb_blog FROM `product` where TITLE like "%' . $search . '%"';
+
+  $result = $conn->query($sql);
+  $row = mysqli_fetch_assoc($result);
+
+  $nbblog = (int) $row['nb_blog'];
+
+  $parPage = 12;
+
+  // On calcule le nombre de pages total
+  $pages = ceil($nbblog / $parPage);
+
+  // Calcul du 1er article de la page
+
+  $premier = ($currentPage * $parPage) - $parPage;
+  if ($pages > 6) {
+    $last_page = $currentPage + 6;
+  } else {
+    $last_page = $pages;
+  }
+
+  if ($last_page >= $pages) {
+    $last_page = $pages;
+  }
+  $query = 'SELECT b.PRODUCT_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM product as b INNER JOIN category as c
+      ON b.CATEGORY_ID = c.CATEGORY_ID where TITLE like "%' . $search . '%" order by CREATED_DATE ASC LIMIT ' . $premier . ',' . $parPage;
+} else {
+  if (isset($_GET['page']) && !empty($_GET['page'])) {
+    $currentPage = (int) strip_tags($_GET['page']);
+  } else {
+    $currentPage = 1;
+  }
+  // On détermine le nombre total d'blog
+  $sql = 'SELECT COUNT(*) AS nb_blog FROM `product`;';
+
+  $result = $conn->query($sql);
+  $row = mysqli_fetch_assoc($result);
+
+  $nbblog = (int) $row['nb_blog'];
+
+  $parPage = 12;
+
+  // On calcule le nombre de pages total
+  $pages = ceil($nbblog / $parPage);
+  if ($currentPage >= $pages) {
+    $currentPage -= 5;
+  }
+  // Calcul du 1er article de la page
+  $premier = ($currentPage * $parPage) - $parPage;
+  // $query = "SELECT b.PRODUCT_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM product as b INNER JOIN category as c
+  // ON b.CATEGORY_ID = c.CATEGORY_ID";
+  if ($pages > 6) {
+    $last_page = $currentPage + 6;
+  } else {
+    $last_page = $pages;
+  }
+
+  if ($last_page >= $pages) {
+    $last_page = $pages;
+  }
+  $query = "SELECT b.PRODUCT_ID,b.TITLE,c.CATEGORY_NAME,b.PRODUCT_LINK,b.CREATED_DATE FROM product as b INNER JOIN category as c
       ON b.CATEGORY_ID = c.CATEGORY_ID order by CREATED_DATE ASC LIMIT $premier, $parPage;";
-    }
-    
-    
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -117,15 +111,14 @@
           <div class="row">
             <div class="col-6">
               <form action="list_product.php" method="post">
-              <div class="input-group mb-3">
-                <input type="text" class="form-control" name="search" placeholder="search by title" aria-label="search by title" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary p-3 " type="submit">search</button>
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" name="search" placeholder="search by title" aria-label="search by title" aria-describedby="basic-addon2">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary p-3 " type="submit">search</button>
+                  </div>
                 </div>
-              </div>
               </form>
             </div>
-            <?php echo $query;?>
             <div class="col-md-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -141,7 +134,7 @@
                     </thead>
                     <tbody>
                       <?php
-                      
+
                       $result = $conn->query($query);
                       $PRODUCT_ID = "";
                       $TITLE = "";
@@ -158,8 +151,8 @@
                           $CREATED_DATE = $row["CREATED_DATE"];
                           if (strlen($TITLE) > 20) {
                             $TITLE = substr($TITLE, 0, 20);
-                            $TITLE=$TITLE.'...';
-                        }
+                            $TITLE = $TITLE . '...';
+                          }
                           echo "<tr>
                                 <th scope='row'>$PRODUCT_ID</th>
                                 <td>$TITLE</td>
@@ -184,25 +177,25 @@
             </div>
           </div>
           <nav aria-label="Page navigation example" style="display: flex;justify-content: center;">
-              <ul class="pagination">
-                  <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="list_product.php?page=<?= $currentPage - 1 ?>">Previous</a></li>
-                  <li class="page-item <?= ($currentPage-5 <= 1) ? "disabled" : "" ?>">
-                    <a class="page-link" href="list_product.php?page=<?=$currentPage-5 ?>">...</a>
-                  </li>
-                  <?php for($page = $currentPage; $page <= $last_page; $page++): ?>
-                    <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
-                    <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
-                          <a href="list_product.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
-                      </li>
-                  <?php endfor ?>
-                  <li class="page-item <?= ($currentPage+5 >= $pages) ? "disabled" : "" ?>">
-                    <a class="page-link" href="list_product.php?page=<?= $currentPage + 5 ?>">...</a>
-                  </li>
+            <ul class="pagination">
+              <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="list_product.php?page=<?= $currentPage - 1 ?>">Previous</a></li>
+              <li class="page-item <?= ($currentPage - 5 <= 1) ? "disabled" : "" ?>">
+                <a class="page-link" href="list_product.php?page=<?= $currentPage - 5 ?>">...</a>
+              </li>
+              <?php for ($page = $currentPage; $page <= $last_page; $page++) : ?>
+                <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+                <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
+                  <a href="list_product.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
+                </li>
+              <?php endfor ?>
+              <li class="page-item <?= ($currentPage + 5 >= $pages) ? "disabled" : "" ?>">
+                <a class="page-link" href="list_product.php?page=<?= $currentPage + 5 ?>">...</a>
+              </li>
 
-                  <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
-                    <a class="page-link" href="list_product.php?page=<?= $currentPage + 1 ?>">Next</a>
-                  </li>
-              </ul>
+              <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
+                <a class="page-link" href="list_product.php?page=<?= $currentPage + 1 ?>">Next</a>
+              </li>
+            </ul>
           </nav>
         </div>
 
@@ -264,7 +257,7 @@
             type: 'POST',
             data: {
               id: deleteid,
-              type:'p'
+              type: 'p'
             },
             success: function(response) {
               location.reload();

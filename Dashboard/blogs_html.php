@@ -87,7 +87,7 @@ include 'Config_dashboard.php';
                     </div>
                     <div class="form-group">
                       <label for='blog-Keywords'>Enter Keywords</label>
-                      <textarea name='blog_Keywords' id='blog-Keywords' class='form-control' rows='10'></textarea>
+                      <textarea name='blog_keywords' id='blog_keywords' class='form-control' rows='10'></textarea>
                     </div>
                     <div class="form-group">
                       <label for='blog'>Enter your html code</label>
@@ -157,6 +157,7 @@ include 'Config_dashboard.php';
               $('#modal_body').text(response);
 
               $('#mymodal').modal('show');
+              // console.log(response);
             }
           })
           $('#mymodal').on('hidden.bs.modal', function() {

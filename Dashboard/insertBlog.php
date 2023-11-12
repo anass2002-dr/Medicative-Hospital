@@ -3,14 +3,14 @@ include 'Config_dashboard.php';
 $target_dir = "../img/blog/";
 
 $temp = explode(".", $_FILES["photo"]["name"]);
-$newfilename = "/img/blog/".round(microtime(true)) . '.' . end($temp);
+$newfilename = round(microtime(true)) . '.' . end($temp);
 move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $newfilename);
 
 
 
 $target_dir = "../videos/blog/";
 $tempv = explode(".", $_FILES["video"]["name"]);
-$newfilenamev = "videos/blog/".round(microtime(true)) . '.' . end($tempv);
+$newfilenamev = round(microtime(true)) . '.' . end($tempv);
 move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir . $newfilenamev);
 move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir);
 
@@ -18,15 +18,15 @@ move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir);
 
 $title = $_POST['title'];
 $category = $_POST['category'];
-$photo = $newfilename;
-$video = $newfilenamev;
+$photo = "img/blog/" . $newfilename;
+$video = "video/blog/" . $newfilenamev;
 $product_link = $_POST['product_link'];
 $blog = $_POST['blog'];
 $blog_short = $_POST['blog_short'];
 $blog_keywords = $_POST['blog_keywords'];
 $date = date('Y-m-d-h:i:sa');
 
-if (!empty($title) and !empty($category) and !empty($photo) and !empty($blog) and !empty($blog_short)and !empty($blog_keywords)) {
+if (!empty($title) and !empty($category) and !empty($photo) and !empty($blog) and !empty($blog_short)) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -34,7 +34,7 @@ if (!empty($title) and !empty($category) and !empty($photo) and !empty($blog) an
     $title = mysqli_real_escape_string($conn, $title);
     $blog_short = mysqli_real_escape_string($conn, $blog_short);
     $blog_keywords = mysqli_real_escape_string($conn, $blog_keywords);
-    $sql = "INSERT INTO blog (TITLE, CATEGORY_ID, PHOTO, VIDEO, PRODUCT_LINK, CONTENT,BLOG_SHORT,BLOG_KEYWORDS CREATED_DATE) VALUES ('$title', $category, '$photo','$video','$product_link','$blog','$blog_short','$blog_keywords','$date')";
+    $sql = "INSERT INTO blog (TITLE, CATEGORY_ID, PHOTO, VIDEO, PRODUCT_LINK, CONTENT,BLOG_SHORT,BLOG_KEYWORDS, CREATED_DATE) VALUES ('$title', $category, '$photo','$video','$product_link','$blog','$blog_short','$blog_keywords','$date')";
     if ($conn->query($sql) === TRUE) {
         $sql2 = "SELECT BLOG_ID FROM blog ORDER BY BLOG_ID DESC LIMIT 1;";
         $result = $conn->query($sql2);
@@ -50,7 +50,7 @@ if (!empty($title) and !empty($category) and !empty($photo) and !empty($blog) an
                 $tempC = explode(".", $filenameC);
                 $newfilenameC = rand() . '.' . end($tempC);
                 move_uploaded_file($tmp_nameC, $target_dirC . $newfilenameC);
-                
+                $newfilenameC = "img/blog/" . $newfilenameC;
                 $query3 = "INSERT INTO collection_photos(BLOG_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id_blog,'$newfilenameC','$date')";
                 $conn->query($query3);
             }
