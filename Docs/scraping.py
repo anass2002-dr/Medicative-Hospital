@@ -28,7 +28,8 @@ cats=[
 #  FACE CARE
 #  COSMETICS AND MAKEUP
 #  BEAUTY DEVICES
-for i in range(4,len(cats)+1):
+last_id=0
+for i in range(0,len(cats)+1):
     links_list=[]
 
     with open(f'Docs/excel/aliexpres_link_{cats[i-1]}.csv','r',encoding='utf8') as filecsv:
@@ -43,8 +44,11 @@ for i in range(4,len(cats)+1):
         for x in link:
             y=x.split('?')
             new_link_list.append(y[0])
-    id=input('type start id product : ')
-    id=int(id)
+    id=0
+    if last_id==0:
+        id=1
+    else:
+        id=last_id
     reste=len(new_link_list)
     for j in range(0,len(new_link_list)):
         print(f'the rest is of link is : {reste}')
@@ -103,6 +107,7 @@ for i in range(4,len(cats)+1):
                         query+=f'({id},"{title}",{i},"{img_list[0]}","{video_src}","{url}","{title}","{title}",{price},2,{DDP}"{today}","{today}"),'
                     else:
                         query+=f'({id},"{title}",{i},"{img_list[0]}","{video_src}","{url}","{title}","{title}",{price},2,{DDP}"{today}","{today}");'
+                    
                     id+=1
                 err=2
                 reste-=1
@@ -111,7 +116,7 @@ for i in range(4,len(cats)+1):
                 err+=1
                 print("some tag not found")
                 driver.close()
-            
+    last_id=id+1        
     with open(f'Docs/product_data_ali/product_ali_{cats[i-1]}.txt', 'w') as f:
         f.write(query)
         f.write(collection_query)
