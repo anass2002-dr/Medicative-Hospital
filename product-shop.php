@@ -136,7 +136,10 @@ if (!empty($sp_id)) {
                             </div>
                             <div class="sideber-content">
                                 <ul>
-                                    <li> <a href='product-shop.php'><i class='fa fa-angle-right'></i> DDP</a> </li>
+                                    <li >
+                                        <input type='checkbox'  id='ddp' name='ddp' >
+                                        <label for='ddp'>  Delivered duty paid (DDP)</label> 
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -265,8 +268,8 @@ if (!empty($sp_id)) {
 
                             <nav aria-label="Page navigation example" style="display: flex;justify-content: center;">
                                 <ul class="pagination">
-                                    <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="product-shop.php?page=<?= $currentPage - 1 . $id . $sp_id ?>">Previous</a></li>
-                                    <li class="page-item <?= ($currentPage-5 <= 1) ? "disabled" : "" ?>">
+                                    <li class="page-item <?= ($currentPage == 1) ? "hidden" : "" ?>"><a class="page-link" href="product-shop.php?page=<?= $currentPage - 1 . $id . $sp_id ?>">Previous</a></li>
+                                    <li class="page-item <?= ($currentPage-5 <= 1) ? "hidden" : "" ?>">
                                     <a class="page-link" href="product-shop.php?page=<?=$currentPage-5 . $id . $sp_id  ?>">...</a>
                                     </li>
                                     <?php for($page = $currentPage; $page <= $last_page; $page++): ?>
@@ -275,11 +278,11 @@ if (!empty($sp_id)) {
                                             <a href="product-shop.php?page=<?= $page . $id . $sp_id ?>" class="page-link"><?= $page ?></a>
                                         </li>
                                     <?php endfor ?>
-                                    <li class="page-item <?= ($currentPage+5 >= $pages) ? "disabled" : "" ?>">
+                                    <li class="page-item <?= ($currentPage+5 >= $pages) ? "hidden" : "" ?>">
                                     <a class="page-link" href="product-shop.php?page=<?= $currentPage + 5 ?>">...</a>
                                     </li>
 
-                                    <li class="page-item <?= ($currentPage == $pages) ? "disabled" : "" ?>">
+                                    <li class="page-item <?= ($currentPage == $pages) ? "hidden" : "" ?>">
                                     <a class="page-link" href="product-shop.php?page=<?= $currentPage + 1 . $id . $sp_id?>">Next</a>
                                     </li>
                                 </ul>
