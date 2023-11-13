@@ -3,32 +3,36 @@ include 'Config_dashboard.php';
 $target_dir = "../img/Product/";
 
 $temp = explode(".", $_FILES["photo"]["name"]);
-$newfilename = "img/Product/".round(microtime(true)) . '.' . end($temp);
+$newfilename = round(microtime(true)) . '.' . end($temp);
+// $newfilename = 'img/product/' . $newfilename;
 move_uploaded_file($_FILES["photo"]["tmp_name"], $target_dir . $newfilename);
 
 
 
 $target_dir = "../videos/Product/";
 $tempv = explode(".", $_FILES["video"]["name"]);
-$newfilenamev = "videos/Product/".round(microtime(true)) . '.' . end($tempv);
+$newfilenamev = round(microtime(true)) . '.' . end($tempv);
 move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir . $newfilenamev);
 move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir);
 
 $title = $_POST['title'];
-$ddp = $_POST['ddp'];
 $category = $_POST['category'];
-$photo = $newfilename;
-$video = $newfilenamev;
+$photo = 'img/Product/' . $newfilename;
+$video = '/videos/Product/' . $newfilenamev;
 $product_link = $_POST['product_link'];
 $product_price = $_POST['price'];
 $product_price = floatval($product_price);
 $Product = $_POST['content'];
 $product_short = $_POST['product_short'];
 $keywords = $_POST['keywords'];
+$ddp = 0;
+if (isset($_POST['ddp'])) {
+    $ddp = $_POST['ddp'];
+}
 $sponsor = $_POST['sponsor'];
 $date = date('Y-m-d-h:i:sa');
 
-if (!empty($title) and !empty($ddp) and !empty($category) and !empty($photo) and !empty($Product) and !empty($product_short)  and !empty($keywords)) {
+if (!empty($title) and !empty($category) and !empty($photo) and !empty($Product) and !empty($product_short)) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -38,7 +42,7 @@ if (!empty($title) and !empty($ddp) and !empty($category) and !empty($photo) and
     $product_short = mysqli_real_escape_string($conn, $product_short);
     $keywords = mysqli_real_escape_string($conn, $keywords);
 
-    $sql = "INSERT INTO product (TITLE,DDP, CATEGORY_ID, PHOTO, VIDEO, PRODUCT_LINK, CONTENT,PRODUCT_SHORT,KEYWORDS,PRODUCT_PRICE,SPONSOR_ID ,CREATED_DATE) VALUES ('$title','$ddp', $category, '$photo','$video','$product_link','$Product','$product_short','$keywords',$product_price,$sponsor,'$date')";
+    $sql = "INSERT INTO product (TITLE, CATEGORY_ID, PHOTO, VIDEO, PRODUCT_LINK, CONTENT,PRODUCT_SHORT,KEYWORDS,PRODUCT_PRICE,SPONSOR_ID,DDP ,CREATED_DATE) VALUES ('$title', $category, '$photo','$video','$product_link','$Product','$product_short','$keywords',$product_price,$sponsor,$ddp,'$date')";
     if ($conn->query($sql) === TRUE) {
         $sql2 = "SELECT PRODUCT_ID FROM PRODUCT ORDER BY PRODUCT_ID DESC LIMIT 1;";
         $result = $conn->query($sql2);
@@ -54,6 +58,7 @@ if (!empty($title) and !empty($ddp) and !empty($category) and !empty($photo) and
                 $tempC = explode(".", $filenameC);
                 $newfilenameC = rand() . '.' . end($tempC);
                 move_uploaded_file($tmp_nameC, $target_dirC . $newfilenameC);
+                $newfilenameC = 'img/Product' . $newfilenameC;
                 $query3 = "INSERT INTO product_collection_photos(PRODUCT_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id_Product,'$newfilenameC','$date')";
                 $conn->query($query3);
             }

@@ -155,7 +155,7 @@ if (isset($_GET['id'])) {
                                 </div>
                             </div>
                             </div>
-                            <div class='col-12'>
+                            <div class='col-12' style='background-color: #fff;padding: 30px; '>
                             <p style='bacground-color:#fff;'>$content
                         </p> 
                 </div>";

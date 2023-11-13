@@ -45,7 +45,7 @@ include 'Config_dashboard.php';
                       <input type="text" class="form-control" id="titel" placeholder="Title" name="title" require>
                     </div>
                     <div class="form-group">
-                      <input type="checkbox" id="ddp"  name="ddp"  >
+                      <input type="checkbox" id="ddp" name="ddp" value="1">
                       <label for="ddp"> Delivered duty paid (DDP)</label>
                     </div>
                     <div class="form-group">
@@ -187,7 +187,7 @@ include 'Config_dashboard.php';
               $('#modal_body').text(response);
 
               $('#mymodal').modal('show');
-              console.log(response)
+              // console.log(response)
             }
           })
           $('#mymodal').on('hidden.bs.modal', function() {
