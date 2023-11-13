@@ -20,6 +20,10 @@ if (isset($_POST['id']) and isset($_POST['type'])) {
         $query = "delete from sponsor where SPONSOR_ID=$id";
         $conn->query($query);
     }
+    if($type=='u'){
+        $query = "delete from user where USER_ID=$id";
+        $conn->query($query);
+    }
     exit;
 }
 

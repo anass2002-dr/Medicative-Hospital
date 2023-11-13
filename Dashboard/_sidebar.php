@@ -62,8 +62,8 @@
       </a>
       <div class="collapse" id="auth">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="login.php"> Add User </a></li>
-          <li class="nav-item"> <a class="nav-link" href="login.php"> List users </a></li>
+          <li class="nav-item"> <a class="nav-link" href="user.php"> Add User </a></li>
+          <li class="nav-item"> <a class="nav-link" href="list_user.php"> List users </a></li>
         </ul>
       </div>
     </li>
