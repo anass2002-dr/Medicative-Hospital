@@ -109,7 +109,7 @@ if (!empty($sp_id)) {
             </div>
         </div>
     </section>
-
+    <?php echo $queryP;?>
     <section class="shop-area">
         <div class="container">
             <div class="row">

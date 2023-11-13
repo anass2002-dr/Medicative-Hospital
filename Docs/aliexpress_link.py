@@ -22,10 +22,10 @@ url_list=[
 ]
 
 
-list_links=[]
 for i in range(0,len(url_list)):
     category=url_list[i][1]
     url=url_list[i][0].split('page=')
+    list_links=[]
     for i in range(1,6):
         newurl=f'{url[0]}page={i}{url[1]}'
         cp=0

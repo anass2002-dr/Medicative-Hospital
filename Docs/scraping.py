@@ -29,7 +29,7 @@ cats=[
 #  COSMETICS AND MAKEUP
 #  BEAUTY DEVICES
 last_id=0
-for i in range(0,len(cats)+1):
+for i in range(1,len(cats)+1):
     links_list=[]
 
     with open(f'Docs/excel/aliexpres_link_{cats[i-1]}.csv','r',encoding='utf8') as filecsv:
@@ -82,11 +82,11 @@ for i in range(0,len(cats)+1):
         
                     today = date.today()
 
-                    for y in img_list:
-                        if(j!=len(new_link_list)-1):
-                            collection_query+=f'({id},"{y}","{today}"),'
-                        else:
+                    for y in range(0,len(img_list)):
+                        if(j==len(new_link_list)-1 and y==len(new_link_list)-1):
                             collection_query+=f'({id},"{y}","{today}");'
+                        else:
+                            collection_query+=f'({id},"{y}","{today}"),'
                     video_src=''
                     try:
                         video=driver.find_element(By.CLASS_NAME,'video--video--Zj0EIzE')
@@ -104,9 +104,9 @@ for i in range(0,len(cats)+1):
                     print(price)
                     today = date.today()
                     if(j!=len(new_link_list)-1):
-                        query+=f'({id},"{title}",{i},"{img_list[0]}","{video_src}","{url}","{title}","{title}",{price},2,{DDP}"{today}","{today}"),'
+                        query+=f'({id},"{title}",{i},"{img_list[0]}","{video_src}","{url}","{title}","{title}",{price},2,{DDP},"{today}","{today}"),'
                     else:
-                        query+=f'({id},"{title}",{i},"{img_list[0]}","{video_src}","{url}","{title}","{title}",{price},2,{DDP}"{today}","{today}");'
+                        query+=f'({id},"{title}",{i},"{img_list[0]}","{video_src}","{url}","{title}","{title}",{price},2,{DDP},"{today}","{today}");'
                     
                     id+=1
                 err=2
