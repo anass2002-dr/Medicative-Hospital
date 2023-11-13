@@ -172,8 +172,8 @@ if (isset($_POST['search'])) {
           </div>
           <nav aria-label="Page navigation example" style="display: flex;justify-content: center;">
             <ul class="pagination">
-              <li class="page-item <?= ($currentPage == 1) ? "hidden" : "" ?>"><a class="page-link" href="list_blog.php?page=<?= $currentPage - 1 ?>">Previous</a></li>
-              <li class="page-item <?= ($currentPage - 5 <= 1) ? "hidden" : "" ?>">
+              <li class="page-item "<?= ($currentPage == 1) ? "hidden" : "" ?>><a class="page-link" href="list_blog.php?page=<?= $currentPage - 1 ?>">Previous</a></li>
+              <li class="page-item "<?= ($currentPage - 5 <= 1) ? "hidden" : "" ?>>
                 <a class="page-link" href="list_blog.php?page=<?= $currentPage - 5 ?>">...</a>
               </li>
               <?php for ($page = $currentPage; $page <= $last_page; $page++) : ?>
@@ -182,11 +182,11 @@ if (isset($_POST['search'])) {
                   <a href="list_blog.php?page=<?= $page ?>" class="page-link"><?= $page ?></a>
                 </li>
               <?php endfor ?>
-              <li class="page-item <?= ($currentPage + 5 >= $pages) ? "hidden" : "" ?>">
+              <li class="page-item "<?= ($currentPage + 5 >= $pages) ? "hidden" : "" ?>>
                 <a class="page-link" href="list_blog.php?page=<?= $currentPage + 5 ?>">...</a>
               </li>
 
-              <li class="page-item <?= ($currentPage == $pages) ? "hidden" : "" ?>">
+              <li class="page-item "<?= ($currentPage == $pages) ? "hidden" : "" ?>>
                 <a class="page-link" href="list_blog.php?page=<?= $currentPage + 1 ?>">Next</a>
               </li>
             </ul>
