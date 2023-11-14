@@ -6,7 +6,7 @@
 // => https://www.orthofeet.com/pages/affiliate
 // => https://www.myfootshop.com/myfootshop-affiliate-program
 
-$str = "test.dcom";
-$newstr = explode('.', $str);
+$str = "t";
+$newstr = ($str=='r')?'yes':'noo';
 echo $newstr;
 ?>

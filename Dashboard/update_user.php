@@ -1,5 +1,10 @@
 <?php
 include 'Config_dashboard.php';
+$query='';
+if (isset($_GET["id"])) {
+    $id = $_GET["id"];
+    $query="select * from user where USER_ID=$id";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,12 +41,10 @@ include 'Config_dashboard.php';
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title"> Update User</h4>
-                                    <form class='forms-sample' method='post' action='update.php' enctype='multipart/form-data'>
+                                    <form class='forms-sample' enctype='multipart/form-data'>
                                     <?php
 
-                                    if (isset($_GET["id"])) {
-                                        $id = $_GET["id"];
-                                        $query="select * from user where USER_ID=$id";
+                                    
                                         $result=$conn->query($query);
                                         $row=mysqli_fetch_assoc($result);
                                         $first_name = $row["FIRST_NAME"];
@@ -49,39 +52,36 @@ include 'Config_dashboard.php';
                                         $email = $row["EMAIL"];
                                         $password = $row["PASSWORD"];
                                         $phone_number = $row["PHONE_NUMBER"];
+                                        echo $last_name;
                                         
-                                        echo $query;
-                                       
-                                      }
+                                    ?>  
                                       
-                                    echo "  
                                         <div class='form-group'>
                                             <label for='first_name'>First name</label>
                                             <input hidden name='operation' value='user'>
-                                            <input hidden name='id' value='$id'>
-                                            <input type='text' class='form-control' id='first_name' placeholder='First name' name='first_name' require >
+                                            <input hidden name='id' value='<?=$id?>'>
+                                            <input type='text' class='form-control' id='first_name' placeholder='First name' name='first_name' value="<?=$first_name?>" >
                                         </div>
                                         <div class='form-group'>
                                             <label for='last_name'>Last name</label>
-                                            <input type='text' class='form-control' id='last_name' placeholder='Last name' name='last_name' require>
+                                            <input type='text' class='form-control' id='last_name' placeholder='Last name' name='last_name' value="<?=$last_name?>" >
                                         </div>
                                         <div class='form-group'>
                                             <label for='email'>Email</label>
-                                            <input type='email' class='form-control'id='email' placeholder='Email' name='email' >
+                                            <input type='email' class='form-control'id='email' placeholder='Email' name='email' value="<?=$email?>" require>
                                         </div>
                                         <div class='form-group'>
                                             <label for='password'>Password</label>
-                                            <input type='password' class='form-control' id='password' placeholder='Password' name='password' require>
+                                            <input type='password' class='form-control' id='password' placeholder='Password' name='password' value="<?=$password?>">
                                         </div>
                                         <div class='form-group'>
                                             <label for='phone_number'>Phone Number</label>
-                                            <input type='text' class='form-control' id='phone_number' placeholder='Phone Number' name='phone_number' require>
+                                            <input type='text' class='form-control' id='phone_number' placeholder='Phone Number' name='phone_number' value="<?=$phone_number?>">
                                         </div>
                                             <div class='form-group'>
                                                 <button type='submit' class='btn btn-primary me-2 text-light' id='submit'>Update</button>
                                         </div>
-                                        ";
-                                ?>
+                                        
                                 </form>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@ include 'Config_dashboard.php';
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-body" id="modal_body">
-                                       <p>update</p>
+                                       
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
@@ -137,9 +137,9 @@ include 'Config_dashboard.php';
                         cache: false,
                         processData: false,
                         success: function(response) {
-                            $('#modal_body').text(response);
+                            // $('#modal_body').text(response);
 
-                            $('#mymodal').modal('show');
+                            // $('#mymodal').modal('show');
                             console.log(response)
                         }
                     })
