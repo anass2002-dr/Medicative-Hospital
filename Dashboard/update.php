@@ -105,11 +105,13 @@ if (isset($_POST['operation'])) {
                 }
             }
             echo "blog is updated successfully";
-        } else {
+        } 
+        else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
         $conn->close();
-    } else if ($operation == 'product') {
+    }
+    else if ($operation == 'product') {
         $id = $_POST["id"];
         $query = "select * from product where PRODUCT_ID=$id";
         $result = $conn->query($query);
@@ -203,11 +205,13 @@ if (isset($_POST['operation'])) {
             // }
 
             echo "Product is updated successfully";
-        } else {
+        }
+        else {
             echo "Error: " . $query . "<br>" . $conn->error;
         }
         $conn->close();
-    } else if ($operation == 'sponsor') {
+    } 
+    else if ($operation == 'sponsor') {
         $id = $_POST["id"];
         $query = "select * from sponsor where SPONSOR_ID=$id";
         $result = $conn->query($query);
@@ -240,67 +244,69 @@ if (isset($_POST['operation'])) {
         if ($conn->query($query) === TRUE) {
 
             echo "Sponsor is updated successfully";
-        } else {
+        }
+        else {
             echo "Error: " . $query . "<br>" . $conn->error;
         }
         $conn->close();
     }
-    
-  }
-  else if ($operation == 'user') {
-    $id = $_POST["id"];
-    $query = "select * from user where USER_ID=$id";
-    $result = $conn->query($query);
-    $row = mysqli_fetch_assoc($result);
-    // $first_name = $row["FIRST_NAME"];
-    // $last_name = $row["LAST_NAME"];
-    // $email = $row["EMAIL"];
-    // $password = $row["PASSWORD"];
-    // $phone_number = $row["PHONE_NUMBER"];
-    $first_name =!empty($_POST['first_name']) ? $_POST['first_name'] :$row["FIRST_NAME"];
-    $last_name = !empty($_POST['last_name']) ? $_POST['last_name'] :$row["LAST_NAME"];
-    $email = !empty($_POST['email']) ? $_POST['email'] :$row["EMAIL"];
-    $password = !empty($_POST['password']) ? $_POST['password'] :$row["PASSWORD"];
-    $phone_number = !empty($_POST['phone_number']) ? $_POST['phone_number'] :$row["PHONE_NUMBER"];
-     
-    // if (isset($_POST['first_name'])) {
-    //     $first_name = $_POST['first_name'];
-    // }
-    // if (isset($_POST['last_name'])) {
-    //     $last_name = $_POST['last_name'];
-    // }
-    // if (isset($_POST['email'])) {
-    //     $email = $_POST['email'];
-    // }
-    // if (isset($_POST['password'])) {
-    //     $password = $_POST['password'];
-    // }
-    // if (isset($_POST['phone_number'])) {
-    //     $phone_number = $_POST['phone_number'];
-    // }
-    
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+    else if ($operation == 'user') {
+        $id = $_POST["id"];
+        $query = "select * from user where USER_ID=$id";
+        $result = $conn->query($query);
+        $row = mysqli_fetch_assoc($result);
+        // $first_name = $row["FIRST_NAME"];
+        // $last_name = $row["LAST_NAME"];
+        // $email = $row["EMAIL"];
+        // $password = $row["PASSWORD"];
+        // $phone_number = $row["PHONE_NUMBER"];
+        $first_name =!empty($_POST['first_name']) ? $_POST['first_name'] :$row["FIRST_NAME"];
+        $last_name = !empty($_POST['last_name']) ? $_POST['last_name'] :$row["LAST_NAME"];
+        $email = !empty($_POST['email']) ? $_POST['email'] :$row["EMAIL"];
+        $password = !empty($_POST['password']) ? $_POST['password'] :$row["PASSWORD"];
+        $phone_number = !empty($_POST['phone_number']) ? $_POST['phone_number'] :$row["PHONE_NUMBER"];
+        
+        // if (isset($_POST['first_name'])) {
+        //     $first_name = $_POST['first_name'];
+        // }
+        // if (isset($_POST['last_name'])) {
+        //     $last_name = $_POST['last_name'];
+        // }
+        // if (isset($_POST['email'])) {
+        //     $email = $_POST['email'];
+        // }
+        // if (isset($_POST['password'])) {
+        //     $password = $_POST['password'];
+        // }
+        // if (isset($_POST['phone_number'])) {
+        //     $phone_number = $_POST['phone_number'];
+        // }
+        
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $first_name = mysqli_real_escape_string($conn, $first_name);
+        $last_name = mysqli_real_escape_string($conn, $first_name);
+        $email = mysqli_real_escape_string($conn, $first_name);
+        $password = mysqli_real_escape_string($conn, $first_name);
+        $phone_number = mysqli_real_escape_string($conn, $first_name);
+        $date = date('Y-m-d-h:i:sa');
+        
+        $query = "UPDATE user SET FIRST_NAME='$first_name',LAST_NAME='$last_name',EMAIL='$email',PASSWORD='$password',PHONE_NUMBER='$phone_number',UPDATE_DATE='$date'   where USER_ID=$id";
+
+        // $conn->query($query);
+        if ($conn->query($query) === TRUE) {
+
+            echo "User is updated successfully";
+        }
+        else {
+            echo "Error: " . $query . "<br>" . $conn->error;
+        }
+        $conn->close();
     }
-
-    $first_name = mysqli_real_escape_string($conn, $first_name);
-    $last_name = mysqli_real_escape_string($conn, $first_name);
-    $email = mysqli_real_escape_string($conn, $first_name);
-    $password = mysqli_real_escape_string($conn, $first_name);
-    $phone_number = mysqli_real_escape_string($conn, $first_name);
-    $date = date('Y-m-d-h:i:sa');
-    
-    $query = "UPDATE user SET FIRST_NAME='$first_name',LAST_NAME='$last_name',EMAIL='$email',PASSWORD='$password',PHONE_NUMBER='$phone_number',UPDATE_DATE='$date'   where USER_ID=$id";
-
-    // $conn->query($query);
-    if ($conn->query($query) === TRUE) {
-
-        echo "User is updated successfully";
-    } else {
-        echo "Error: " . $query . "<br>" . $conn->error;
-    }
-    $conn->close();
 }
+  
 
 
  else {
