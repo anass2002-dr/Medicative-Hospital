@@ -54,7 +54,13 @@ if (isset($_GET["id"])) {
                                         $phone_number = $row["PHONE_NUMBER"];
                                         echo $last_name;
                                         
+<<<<<<< HEAD
+                                        
+                                       
+                                      }
+=======
                                     ?>  
+>>>>>>> 64e6becc083bf5ba6766a9afb60486353f89b17b
                                       
                                         <div class='form-group'>
                                             <label for='first_name'>First name</label>
