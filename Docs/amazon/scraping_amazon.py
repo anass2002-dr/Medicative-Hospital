@@ -34,78 +34,134 @@ for i in range(0,len(cats)):
     collection_query="INSERT INTO `product_collection_photos`(`PRODUCT_ID`, `PHOTO_PATH`, `UPDATE_DATE`) VALUES"
     new_link_list=[]
     for link in links_list:
-        print(link[0])
-        new_link_list.append(link[0])
+        for x in link:
+            y=x.split('?')
+            new_link_list.append(y[0])
+        # new_link_list.append(link[0])
     id=0
     if last_id==0:
-        id=1
+        id=2000
     else:
         id=last_id
     reste=len(new_link_list)
-    for j in range(0,len(new_link_list)):
+    for j in range(0,5):
         print(f'the rest is of link is : {reste}')
         err=0
         url=str(new_link_list[j])
         
         print(url)
-        while(err!=2):
-            try:
+
+
+
+
+        driver=webdriver.Chrome()
+        # driver.set_window_position(-10000,0)
+        driver.get(url.strip())
+        time.sleep(2000)
+        title=driver.find_element(By.ID,'productTitle').text
+        price_section=driver.find_element(By.CLASS_NAME,'reinventPricePriceToPayMargin')
+        price=price_section.find_element(By.CLASS_NAME,'a-price-whole').text
+        price_dot=price_section.find_element(By.CLASS_NAME,'a-price-fraction').text
+        # price=price.replace('$','')
+        price=str(price)+'.'+str(price_dot)
+        price=float(price)
+        desc1=driver.find_element(By.ID,'productOverview_feature_div')
+        desc1=desc1.find_element(By.CLASS_NAME,'a-section')
+        desc2=driver.find_element(By.ID,'featurebullets_feature_div')
+        description=str(desc2)+str(desc1)
+        print(title)
+        print(price)
+        img_grid=driver.find_element(By.CLASS_NAME,'regularAltImageViewLayout')
+        imgs=img_grid.find_elements(By.TAG_NAME,'img')
+        list_img=[]
+        for img in imgs:
+            new_img=img.get_attribute('src')
+            if 'play-icon-overlay' not in new_img and 'icon' not in new_img:
+                new_img=new_img.split('._')
+                new_img[1]=new_img[1].split('.')
+                img_result=new_img[0]+'.'+new_img[1][1]
+                list_img.append(img_result) 
+        today = date.today()
+
+        for y in list_img:
+            if(j==len(new_link_list)-1 and y==len(new_link_list)-1):
+                collection_query+=f'({id},"{y}","{today}");'
+            else:
+                collection_query+=f'({id},"{y}","{today}"),'
+        video_src=''
+        
+        DDP=0
+        
+        
+        today = date.today()
+        if(j!=len(new_link_list)-1):
+            query+=f'({id},"{title}",{i},"{list_img[0]}","{video_src}","{url}","{description}","{title}",{price},3,{DDP}"{today}","{today}"),'
+        else:
+            query+=f'({id},"{title}",{i},"{list_img[0]}","{video_src}","{url}","{description}","{title}",{price},3,{DDP}"{today}","{today}");'
+        
+        id+=1
+
+
+
+
+        # while(err!=2):
+        #     try:
                                 
-                driver=webdriver.Chrome()
-                driver.set_window_position(-10000,0)
-                driver.get(str(url))
+        #         driver=webdriver.Chrome()
+        #         driver.set_window_position(-10000,0)
+        #         driver.get(str(url))
 
-                title=driver.find_element(By.ID,'productTitle').text
-                price_section=driver.find_element(By.CLASS_NAME,'reinventPricePriceToPayMargin')
-                price=price_section.find_element(By.CLASS_NAME,'a-price-whole').text
-                price_dot=price_section.find_element(By.CLASS_NAME,'a-price-fraction').text
-                # price=price.replace('$','')
-                price=str(price)+'.'+str(price_dot)
-                price=float(price)
-                desc1=driver.find_element(By.ID,'productOverview_feature_div')
-                desc1=desc1.find_element(By.CLASS_NAME,'a-section')
-                desc2=driver.find_element(By.ID,'featurebullets_feature_div')
-                description=str(desc2)+str(desc1)
-                print(title)
-                print(price)
-                img_grid=driver.find_element(By.CLASS_NAME,'regularAltImageViewLayout')
-                imgs=img_grid.find_elements(By.TAG_NAME,'img')
-                list_img=[]
-                for img in imgs:
-                    new_img=img.get_attribute('src')
-                    if 'play-icon-overlay' not in new_img and 'icon' not in new_img:
-                        new_img=new_img.split('._')
-                        new_img[1]=new_img[1].split('.')
-                        img_result=new_img[0]+'.'+new_img[1][1]
-                        list_img.append(img_result) 
-                today = date.today()
+        #         title=driver.find_element(By.ID,'productTitle').text
+        #         price_section=driver.find_element(By.CLASS_NAME,'reinventPricePriceToPayMargin')
+        #         price=price_section.find_element(By.CLASS_NAME,'a-price-whole').text
+        #         price_dot=price_section.find_element(By.CLASS_NAME,'a-price-fraction').text
+        #         # price=price.replace('$','')
+        #         price=str(price)+'.'+str(price_dot)
+        #         price=float(price)
+        #         desc1=driver.find_element(By.ID,'productOverview_feature_div')
+        #         desc1=desc1.find_element(By.CLASS_NAME,'a-section')
+        #         desc2=driver.find_element(By.ID,'featurebullets_feature_div')
+        #         description=str(desc2)+str(desc1)
+        #         print(title)
+        #         print(price)
+        #         img_grid=driver.find_element(By.CLASS_NAME,'regularAltImageViewLayout')
+        #         imgs=img_grid.find_elements(By.TAG_NAME,'img')
+        #         list_img=[]
+        #         for img in imgs:
+        #             new_img=img.get_attribute('src')
+        #             if 'play-icon-overlay' not in new_img and 'icon' not in new_img:
+        #                 new_img=new_img.split('._')
+        #                 new_img[1]=new_img[1].split('.')
+        #                 img_result=new_img[0]+'.'+new_img[1][1]
+        #                 list_img.append(img_result) 
+        #         today = date.today()
 
-                for y in list_img:
-                    if(j!=len(new_link_list)-1):
-                        collection_query+=f'({id},"{y}","{today}"),'
-                    else:
-                        collection_query+=f'({id},"{y}","{today}");'
-                video_src=''
+        #         for y in list_img:
+        #             if(j==len(new_link_list)-1 and y==len(new_link_list)-1):
+        #                 collection_query+=f'({id},"{y}","{today}");'
+        #             else:
+        #                 collection_query+=f'({id},"{y}","{today}"),'
+        #         video_src=''
                 
-                DDP=0
+        #         DDP=0
                
                
-                today = date.today()
-                if(j!=len(new_link_list)-1):
-                    query+=f'({id},"{title}",{i},"{list_img[0]}","{video_src}","{url}","{description}","{title}",{price},3,{DDP}"{today}","{today}"),'
-                else:
-                    query+=f'({id},"{title}",{i},"{list_img[0]}","{video_src}","{url}","{description}","{title}",{price},3,{DDP}"{today}","{today}");'
+        #         today = date.today()
+        #         if(j!=len(new_link_list)-1):
+        #             query+=f'({id},"{title}",{i},"{list_img[0]}","{video_src}","{url}","{description}","{title}",{price},3,{DDP}"{today}","{today}"),'
+        #         else:
+        #             query+=f'({id},"{title}",{i},"{list_img[0]}","{video_src}","{url}","{description}","{title}",{price},3,{DDP}"{today}","{today}");'
                 
-                id+=1
-                err=2
-                reste-=1
+        #         id+=1
+        #         err=2
+        #         reste-=1
 
-            except Exception as e:
-                err+=1
-                print("some tag not found")
-                driver.close()
+            # except Exception as e:
+            #     err+=1
+            #     print("some tag not found")
+            #     driver.close()
     last_id=id+1        
-    with open(f'Docs/product_data_ali/product_ali_{cats[i-1]}.txt', 'w') as f:
+    with open(f'Docs/amazon/product_data_amazon/product_amazon_{cats[i-1]}.txt', 'w',encoding='utf8') as f:
         f.write(query)
         f.write(collection_query)
     print(query)
