@@ -52,11 +52,14 @@ input_txt.send_keys(url2)
 btn=driver.find_element(By.ID,'formButton').click()
 time.sleep(200)
 result=driver.find_element(By.ID,'results')
-rows=driver.find_elements(By.CLASS_NAME,'res-keyword')
+rows=driver.find_elements(By.CLASS_NAME,'default-row')
 keywords=''
 for x in rows:
-    keywords+=x.text+','
+    td=x.find_elements(By.TAG_NAME,'td')
+    for y in td:
+        print(y.get_attribute("innerHTML"))
+    # keywords+=x.text+','
     
 
-with open('Docs/amazon/keywords.txt','w',encoding='utf8') as file_key:
-    file_key.write(keywords)
+# with open('Docs/amazon/keywords.txt','w',encoding='utf8') as file_key:
+#     file_key.write(keywords)
