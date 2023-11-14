@@ -283,7 +283,8 @@ if (isset($_POST['operation'])) {
     $email = mysqli_real_escape_string($conn, $first_name);
     $password = mysqli_real_escape_string($conn, $first_name);
     $phone_number = mysqli_real_escape_string($conn, $first_name);
-    $query = "UPDATE user SET FIRST_NAME='$first_name',LAST_NAME='$last_name',EMAIL='$email',PASSWORD='$password',PHONE_NUMBER='$phone_number'   where USER_ID=$id";
+    $query = "UPDATE user SET FIRST_NAME='$first_name',LAST_NAME='$last_name',EMAIL='$email',
+    PASSWORD='$password',PHONE_NUMBER='$phone_number'   where USER_ID=$id";
 
     // $conn->query($query);
     if ($conn->query($query) === TRUE) {

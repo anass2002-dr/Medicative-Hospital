@@ -50,7 +50,7 @@ include 'Config_dashboard.php';
                                         $password = $row["PASSWORD"];
                                         $phone_number = $row["PHONE_NUMBER"];
                                         
-                                        echo $query;
+                                        
                                        
                                       }
                                       
