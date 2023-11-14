@@ -144,7 +144,7 @@ include 'Config_dashboard.php';
                         type: 'POST',
                         data: {
                             id: deleteid,
-                            type:'s'
+                            type:'u'
                         },
                         success: function(response) {
                             location.reload();

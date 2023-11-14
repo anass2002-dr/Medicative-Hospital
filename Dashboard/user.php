@@ -40,11 +40,11 @@ include 'Config_dashboard.php';
                                     <form class="forms-sample" method="post" action="insertUser.php" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="fisrt_name">First name</label>
-                                            <input type="text" class="form-control" id="first_name" placeholder="First name" name="first_name" require>
+                                            <input type="text" class="form-control" id="first_name" placeholder="First name" name="first_name" >
                                         </div>
                                         <div class="form-group">
                                             <label for="last_name">Last name</label>
-                                            <input type="text" class="form-control" id="last_name" placeholder="Last name" name="last_name" require>
+                                            <input type="text" class="form-control" id="last_name" placeholder="Last name" name="last_name" >
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email</label>
@@ -52,7 +52,7 @@ include 'Config_dashboard.php';
                                         </div>
                                         <div class="form-group">
                                             <label for="password">Password</label>
-                                            <input type="password" class="form-control" id="password" placeholder="Password" name="password" require>
+                                            <input type="password" class="form-control" id="password" placeholder="Password" name="password" >
                                         </div>
                                         <div class="form-group">
                                             <label for="phone_number">Phone Number</label>
