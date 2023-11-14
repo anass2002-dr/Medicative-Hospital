@@ -58,5 +58,5 @@ for x in rows:
     keywords+=x.text+','
     
 
-with open('Docs/amazon/keywords.txt','w') as file_key:
+with open('Docs/amazon/keywords.txt','w',encoding='utf8') as file_key:
     file_key.write(keywords)

@@ -117,7 +117,7 @@ for i in range(1,len(cats)+1):
                 print("some tag not found")
                 driver.close()
     last_id=id+1        
-    with open(f'Docs/product_data_ali/product_ali_{cats[i-1]}.txt', 'w') as f:
+    with open(f'Docs/product_data_ali/product_ali_{cats[i-1]}.txt', 'w',encoding='utf8') as f:
         f.write(query)
         f.write(collection_query)
     print(query)
