@@ -84,9 +84,9 @@ for i in range(1,len(cats)+1):
 
                     for y in range(0,len(img_list)):
                         if(j==len(new_link_list)-1 and y==len(new_link_list)-1):
-                            collection_query+=f'({id},"{y}","{today}");'
+                            collection_query+=f'({id},"{img_list[y]}","{today}");'
                         else:
-                            collection_query+=f'({id},"{y}","{today}"),'
+                            collection_query+=f'({id},"{img_list[y]}","{today}"),'
                     video_src=''
                     try:
                         video=driver.find_element(By.CLASS_NAME,'video--video--Zj0EIzE')
