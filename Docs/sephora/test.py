@@ -11,12 +11,12 @@ import requests
 import os
 
 
-url='https://www.amazon.com/Hempz-Body-Lotion-Moisturizing-Moisturizer/dp/B0BNP8TWQ9/ref=sr_1_139?keywords=Body+Skin+Care+Products&qid=1699869068&s=beauty&sr=1-139'
+url='https://www.sephora.com/shop/skincare?currentPage=3'
 driver=webdriver.Chrome()
 driver.set_window_position(-10000,0)
 driver.get(str(url))
 # time.sleep(2000)
-title=driver.find_element(By.ID,'productTitle').text
+link=driver.find_element(By.ID,'css-klx76').text
 price_section=driver.find_element(By.CLASS_NAME,'reinventPricePriceToPayMargin')
 price=price_section.find_element(By.CLASS_NAME,'a-price-whole').text
 price_dot=price_section.find_element(By.CLASS_NAME,'a-price-fraction').text

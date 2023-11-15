@@ -23,7 +23,7 @@ cats=[
 ]
 
 last_id=0
-for i in range(1,len(cats)):
+for i in range(0,len(cats)):
     links_list=[]
     with open(f'Docs/amazon/excel/amazon_link_{cats[i]}.csv','r',encoding='utf8') as filecsv:
         csv_reader = csv.reader(filecsv, delimiter=',')
@@ -45,6 +45,7 @@ for i in range(1,len(cats)):
         id=last_id
     reste=len(new_link_list)
     for j in range(0,5):
+        print(cats[i])
         print(f'the rest is of link is : {reste}')
         err=0
         url=str(new_link_list[j])
@@ -56,9 +57,9 @@ for i in range(1,len(cats)):
                 try:
                                     
                     driver=webdriver.Chrome()
-                    driver.set_window_position(-10000,0)
+                    # driver.set_window_position(-10000,0)
                     driver.get(str(url))
-
+                    time.sleep(2000)
                     title=driver.find_element(By.ID,'productTitle').text
                     price_section=driver.find_element(By.CLASS_NAME,'reinventPricePriceToPayMargin')
                     price=price_section.find_element(By.CLASS_NAME,'a-price-whole').text
@@ -70,6 +71,7 @@ for i in range(1,len(cats)):
                     desc1=desc1.find_element(By.CLASS_NAME,'a-section')
                     desc2=driver.find_element(By.ID,'featurebullets_feature_div')
                     description=str(desc2.get_attribute('innerHTML'))+str(desc1.get_attribute('innerHTML'))
+                    description=description.replace("\"""","\'")
                     print(title)
                     print(price)
                     img_grid=driver.find_element(By.CLASS_NAME,'regularAltImageViewLayout')
@@ -96,9 +98,9 @@ for i in range(1,len(cats)):
                 
                     today = date.today()
                     if(j!=len(new_link_list)-1):
-                        query+=f'({id},"{title}",{i},"{list_img[0]}","{video_src}","{url}","{description}","{title}",{price},3,{DDP}"{today}","{today}"),'
+                        query+=f'({id},"{title}",{i},"{list_img[0]}","{video_src}","{url}","{description}","{title}",{price},3,{DDP},"{today}","{today}"),'
                     else:
-                        query+=f'({id},"{title}",{i},"{list_img[0]}","{video_src}","{url}","{description}","{title}",{price},3,{DDP}"{today}","{today}");'
+                        query+=f'({id},"{title}",{i},"{list_img[0]}","{video_src}","{url}","{description}","{title}",{price},3,{DDP},"{today}","{today}");'
                     
                     id+=1
                     err=2

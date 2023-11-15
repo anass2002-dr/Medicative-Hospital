@@ -11,7 +11,10 @@ import requests
 import os
 
 
-url2='https://www.amazon.com/Hempz-Body-Lotion-Moisturizing-Moisturizer/dp/B0BNP8TWQ9/ref=sr_1_139?keywords=Body+Skin+Care+Products&qid=1699869068&s=beauty&sr=1-139'
+# url2='https://www.amazon.com/Hempz-Body-Lotion-Moisturizing-Moisturizer/dp/B0BNP8TWQ9/ref=sr_1_139?keywords=Body+Skin+Care+Products&qid=1699869068&s=beauty&sr=1-139'
+t="hello \"mean"
+t=t.replace("\"","'")
+print(t)
 # driver=webdriver.Chrome()
 # driver.set_window_position(-10000,0)
 # driver.get(str(url))
@@ -42,22 +45,22 @@ url2='https://www.amazon.com/Hempz-Body-Lotion-Moisturizing-Moisturizer/dp/B0BNP
 
 
 
-url='https://rankactive.com/resources/generate-keywords'
-driver=webdriver.Chrome()
-driver.set_window_position(-10000,0)
-driver.get(str(url))
+# url='https://rankactive.com/resources/generate-keywords'
+# driver=webdriver.Chrome()
+# driver.set_window_position(-10000,0)
+# driver.get(str(url))
 
-input_txt=driver.find_element(By.ID,'searchQuery')
-input_txt.send_keys(url2)
-btn=driver.find_element(By.ID,'formButton').click()
-time.sleep(200)
-result=driver.find_element(By.ID,'results')
-rows=driver.find_elements(By.CLASS_NAME,'default-row')
-keywords=''
-for x in rows:
-    td=x.find_elements(By.TAG_NAME,'td')
-    for y in td:
-        print(y.get_attribute("innerHTML"))
+# input_txt=driver.find_element(By.ID,'searchQuery')
+# input_txt.send_keys(url2)
+# btn=driver.find_element(By.ID,'formButton').click()
+# time.sleep(200)
+# result=driver.find_element(By.ID,'results')
+# rows=driver.find_elements(By.CLASS_NAME,'default-row')
+# keywords=''
+# for x in rows:
+#     td=x.find_elements(By.TAG_NAME,'td')
+#     for y in td:
+#         print(y.get_attribute("innerHTML"))
     # keywords+=x.text+','
     
 
