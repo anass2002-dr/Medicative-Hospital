@@ -27,7 +27,7 @@ desc1=driver.find_element(By.ID,'productOverview_feature_div')
 desc1=desc1.find_element(By.CLASS_NAME,'a-section')
 desc2=driver.find_element(By.ID,'featurebullets_feature_div')
 
-print(title)
+print(link)
 print(price)
 img_grid=driver.find_element(By.CLASS_NAME,'regularAltImageViewLayout')
 imgs=img_grid.find_elements(By.TAG_NAME,'img')
