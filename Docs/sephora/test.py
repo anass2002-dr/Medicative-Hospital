@@ -11,56 +11,20 @@ import requests
 import os
 
 
-url='https://www.sephora.com/shop/skincare?currentPage=3'
+url='https://www.sephora.com/shop/hair-products'
 driver=webdriver.Chrome()
-driver.set_window_position(-10000,0)
-driver.get(str(url))
-# time.sleep(2000)
-link=driver.find_element(By.ID,'css-klx76').text
-price_section=driver.find_element(By.CLASS_NAME,'reinventPricePriceToPayMargin')
-price=price_section.find_element(By.CLASS_NAME,'a-price-whole').text
-price_dot=price_section.find_element(By.CLASS_NAME,'a-price-fraction').text
-# price=price.replace('$','')
-price=str(price)+'.'+str(price_dot)
-price=float(price)
-desc1=driver.find_element(By.ID,'productOverview_feature_div')
-desc1=desc1.find_element(By.CLASS_NAME,'a-section')
-desc2=driver.find_element(By.ID,'featurebullets_feature_div')
-
-print(link)
-print(price)
-img_grid=driver.find_element(By.CLASS_NAME,'regularAltImageViewLayout')
-imgs=img_grid.find_elements(By.TAG_NAME,'img')
-list_img=[]
-for img in imgs:
-    new_img=img.get_attribute('src')
-    if 'play-icon-overlay' not in new_img and 'icon' not in new_img:
-        new_img=new_img.split('._')
-        new_img[1]=new_img[1].split('.')
-        img_result=new_img[0]+'.'+new_img[1][1]
-        list_img.append(img_result) 
-for x in list_img:
-    print(x)
-
-
-# url='https://rankactive.com/resources/generate-keywords'
-# driver=webdriver.Chrome()
 # driver.set_window_position(-10000,0)
-# driver.get(str(url))
+driver.get(str(url))
+content=driver.find_element(By.TAG_NAME,'body')
+with open(f'Docs/sephora/test.txt', 'w',encoding='utf8') as f:
+    f.write(content.get_attribute('innerHTML'))
+# print(content)
+# time.sleep(2000)
+# btn_model=driver.find_element(By.CLASS_NAME,'css-1kna575')
+# btn_model.click()
+# time.sleep(10)
+# link=content.find_elements(By.ID,'css-klx76')
+# print(link)
+# for x in link:
+#     print(x.get_attribute('href'))
 
-# input_txt=driver.find_element(By.ID,'searchQuery')
-# input_txt.send_keys(url2)
-# btn=driver.find_element(By.ID,'formButton').click()
-# time.sleep(200)
-# result=driver.find_element(By.ID,'results')
-# rows=driver.find_elements(By.CLASS_NAME,'default-row')
-# keywords=''
-# for x in rows:
-#     td=x.find_elements(By.TAG_NAME,'td')
-#     for y in td:
-#         print(y.get_attribute("innerHTML"))
-#     # keywords+=x.text+','
-    
-
-# with open('Docs/amazon/keywords.txt','w',encoding='utf8') as file_key:
-#     file_key.write(keywords)

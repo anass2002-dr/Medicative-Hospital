@@ -44,7 +44,7 @@ for i in range(0,len(cats)):
     else:
         id=last_id
     reste=len(new_link_list)
-    for j in range(0,5):
+    for j in range(0,len(new_link_list)):
         print(cats[i])
         print(f'the rest is of link is : {reste}')
         err=0
@@ -57,9 +57,9 @@ for i in range(0,len(cats)):
                 try:
                                     
                     driver=webdriver.Chrome()
-                    # driver.set_window_position(-10000,0)
+                    driver.set_window_position(-10000,0)
                     driver.get(str(url))
-                    time.sleep(2000)
+                    # time.sleep(2000)
                     title=driver.find_element(By.ID,'productTitle').text
                     price_section=driver.find_element(By.CLASS_NAME,'reinventPricePriceToPayMargin')
                     price=price_section.find_element(By.CLASS_NAME,'a-price-whole').text
@@ -98,9 +98,9 @@ for i in range(0,len(cats)):
                 
                     today = date.today()
                     if(j!=len(new_link_list)-1):
-                        query+=f'({id},"{title}",{i},"{list_img[0]}","{video_src}","{url}","{description}","{title}",{price},3,{DDP},"{today}","{today}"),'
+                        query+=f'({id},"{title}",{i+1},"{list_img[0]}","{video_src}","{url}","{description}","{title}",{price},3,{DDP},"{today}","{today}"),'
                     else:
-                        query+=f'({id},"{title}",{i},"{list_img[0]}","{video_src}","{url}","{description}","{title}",{price},3,{DDP},"{today}","{today}");'
+                        query+=f'({id},"{title}",{i+1},"{list_img[0]}","{video_src}","{url}","{description}","{title}",{price},3,{DDP},"{today}","{today}");'
                     
                     id+=1
                     err=2
