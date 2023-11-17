@@ -1,57 +1,67 @@
-import schedule
-import time
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import csv
-import json
 import requests
-import os
-
-# links_list=[]
-
-url_list=[
-    ['https://www.amazon.com/s?k=Body+Skin+Care+Products&i=beauty&rh=n%3A11060521&page=','body_care_products'],
-    ['https://www.amazon.com/Beauty-Devices/s?k=Beauty+Devices&page=','beauty_devices'],
-    ['https://www.amazon.com/hair-products/s?k=hair+products&page=','hair_care_products'],
-    ['https://www.amazon.com/skin-care-products/s?k=skin+care+products&page=','face_care'],
-    ['https://www.amazon.com/makeup-products/s?k=makeup+products&page=','cosmetics_products'],
-    ['https://www.amazon.com/s?k=sports+clothes+for+girls&page=','beauty_sports']
-]
+from bs4 import BeautifulSoup
+import pandas as pd
 
 
-list_links=[]
-for i in range(0,len(url_list)):
-    category=url_list[i][1]
+def scape_product(link, proxy=None):
+    """
+    A function to scape all the product links from a given brand link.
+    """
+    try:
+        response = requests.get(link, proxies={
+                                "http": proxy, "https": proxy}, timeout=15)
+    except:
+        print(f'\r Unsuccessfully get data for {link.split("/")[4]}', end="")
+        return None
+    html = response.text
+    soup = BeautifulSoup(html, 'html.parser')
+    product_link_lst = []
+    try:
+        product_box = soup.find_all(attrs={"data-comp": "ProductGrid "})[0]
+    # There might be no products for that brand
+    except IndexError:
+        return []
+    for product in product_box.find_all('a',
+                                        attrs={"data-comp": "ProductItem "}):
+        # use function split to remove text like "grid p12345"
+        product_link_lst.append(
+            "https://www.sephora.com" + product.attrs['href'].split()[0])
+    return product_link_lst
 
-    for j in range(1,6):
-        cp=0
-        url=str(url_list[i][0])+str(j)
-        print(url)
 
-        while(cp!=2):
-            try:
+# Read brand links file
+product_link_dic = {'brand': [], 'product_links': []}
+num_lines = sum(1 for line in open("data/brand_link.txt", "r"))
 
-                driver=webdriver.Chrome()
-                driver.set_window_position(-10000,0)
-                driver.get(str(url))
+# Scape all the product links from all the brands links.
+# This will take some time!
+ct = 1
 
-                links_sections=driver.find_elements(By.CLASS_NAME,'s-title-instructions-style')
-                for x in links_sections:
-                    link=x.find_element(By.TAG_NAME,'a').get_attribute('href')
-                    if(link.strip()!='javascript:void(0)'):
-                        list_links.append(str(link))
-                for l in list_links:
-                    print(l)
-                cp=2
-            except Exception as e:
-                cp+=1
-                driver.close
-   
-    with open(f'Docs/amazon/excel/amazon_link_{category}.csv',mode='w',newline='',encoding='utf') as filec:
-        writer=csv.writer(filec)
-        for x in list_links:
-            writer.writerow([x])  
-      
+# Get proxies from http://www.freeproxylists.net/zh/?c=US&pr=HTTPS&u=80&s=ts
+px = ['165.22.211.212:3128', '140.227.237.154:1000', '140.227.238.18:1000']
+px_idx = 0
+
+for brand_link in open("data/brand_link.txt", "r"):
+    brand_name = brand_link.split('/')[4]
+    product_link_list = scape_product(brand_link[:-1], proxy=px[px_idx])
+
+    # If one proxy does not work, use another
+    while product_link_list is None:
+        px_idx += 1
+        if px_idx == 3:
+            px_idx = 0
+        product_link_list = scape_product(brand_link[:-1], proxy=px[px_idx])
+
+    print(f'\r === {ct} / {num_lines} ===  {brand_name} === {px[px_idx]}',
+          end="")
+    product_link_dic['brand'] += [brand_name] * len(product_link_list)
+    product_link_dic['product_links'] += product_link_list
+    ct += 1
+
+# Write the result into csv file
+product_link_df = pd.DataFrame(product_link_dic)
+product_link_df.to_csv('data/product_links.csv', index=False)
+
+# Indicate scraping completion
+print(f'Got All product Links! There are {len(product_link_df)} products in '
+      f'total.')
