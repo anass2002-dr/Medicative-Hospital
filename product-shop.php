@@ -1,7 +1,7 @@
 <?php
 include "Config.php";
 // On détermine sur quelle page on se trouve
-
+// session_start();
 
 if (isset($_GET['page']) && !empty($_GET['page'])) {
     $currentPage = (int) strip_tags($_GET['page']);
@@ -12,15 +12,17 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 $id = '';
 $sp_id = '';
 $sql = '';
+$ddp = isset($_GET['ddp']) ? $_GET['ddp'] : 0;
 
+$query_check = "DDP=" . $ddp;
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "SELECT COUNT(*) AS nb_product FROM product  WHERE CATEGORY_ID=$id";
+    $sql = "SELECT COUNT(*) AS nb_product FROM product  WHERE CATEGORY_ID=$id and $query_check";
 } else if (isset($_GET['sp_id']) && !empty($_GET['sp_id'])) {
     $sp_id = $_GET['sp_id'];
-    $sql = "SELECT COUNT(*) AS nb_product FROM product  WHERE SPONSOR_ID=$sp_id";
+    $sql = "SELECT COUNT(*) AS nb_product FROM product  WHERE SPONSOR_ID=$sp_id and $query_check";
 } else {
-    $sql = "SELECT COUNT(*) AS nb_product FROM product";
+    $sql = "SELECT COUNT(*) AS nb_product FROM product where $query_check";
 }
 $result = $conn->query($sql);
 $row = mysqli_fetch_assoc($result);
@@ -34,33 +36,31 @@ $pages = ceil($nbblog / $parPage);
 
 // Calcul du 1er article de la page
 $premier = ($currentPage * $parPage) - $parPage;
-if($pages>6){
-    $last_page=$currentPage+6;
+if ($pages > 6) {
+    $last_page = $currentPage + 6;
+} else {
+    $last_page = $pages;
+}
 
-  }
-  else{
-    $last_page=$pages;
-  }
-  
-  if($last_page>=$pages){
-    $last_page=$pages;
-  }
+if ($last_page >= $pages) {
+    $last_page = $pages;
+}
 $queryP = '';
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id ORDER BY p.CREATED_DATE ASC LIMIT $premier, $parPage;";
+    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id and $query_check ORDER BY p.CREATED_DATE ASC LIMIT $premier, $parPage;";
     if (isset($_GET['sp_id']) && !empty($_GET['id'])) {
         $sp_id = $_GET['sp_id'];
-        $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id and p.SPONSOR_ID=$sp_id ORDER BY p.CREATED_DATE ASC LIMIT $premier, $parPage;";
+        $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.CATEGORY_ID=$id and p.SPONSOR_ID=$sp_id  and $query_check  ORDER BY p.CREATED_DATE ASC LIMIT $premier, $parPage;";
     }
 } else if (isset($_GET['sp_id']) && !empty($_GET['sp_id'])) {
     $sp_id = $_GET['sp_id'];
-    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.SPONSOR_ID=$sp_id ORDER BY p.CREATED_DATE ASC LIMIT $premier, $parPage;";
+    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.SPONSOR_ID=$sp_id and $query_check  ORDER BY p.CREATED_DATE ASC LIMIT $premier, $parPage;";
 } else if (isset($_GET['title']) && !empty($_GET['title'])) {
     $title = $_GET['title'];
-    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.TITLE='$title' ORDER BY p.CREATED_DATE ASC LIMIT $premier, $parPage;";
+    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID WHERE p.TITLE='$title' and $query_check  ORDER BY p.CREATED_DATE ASC LIMIT $premier, $parPage;";
 } else {
-    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID ORDER BY p.CREATED_DATE ASC LIMIT $premier, $parPage;";
+    $queryP = "SELECT * FROM product as p INNER JOIN sponsor as s on p.SPONSOR_ID=s.SPONSOR_ID where $query_check  ORDER BY p.CREATED_DATE ASC LIMIT $premier, $parPage;";
 }
 
 if (!empty($id)) {
@@ -68,6 +68,10 @@ if (!empty($id)) {
 }
 if (!empty($sp_id)) {
     $sp_id = '&sp_id=' . $sp_id;
+}
+$id_ddp = '';
+if ($ddp == 1) {
+    $id_ddp = '&' . strtolower($query_check);
 }
 
 
@@ -109,7 +113,7 @@ if (!empty($sp_id)) {
             </div>
         </div>
     </section>
-    <?php echo $queryP;?>
+
     <section class="shop-area">
         <div class="container">
             <div class="row">
@@ -136,10 +140,12 @@ if (!empty($sp_id)) {
                             </div>
                             <div class="sideber-content">
                                 <ul>
-                                    <li >
-                                        <input type='checkbox'  id='ddp' name='ddp' >
-                                        <label for='ddp'>  Delivered duty paid (DDP)</label> 
+
+                                    <li>
+                                        <input type='checkbox' id='ddp' name='ddp' <?= ($ddp == 1) ? "checked" : "" ?>>
+                                        <label for='ddp'> Delivered duty paid (DDP)</label>
                                     </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -159,12 +165,10 @@ if (!empty($sp_id)) {
                                         while ($row = $result->fetch_assoc()) {
                                             $category_name = $row['CATEGORY_NAME'];
                                             $category_id = $row['CATEGORY_ID'];
-                                            echo "<li> <a href='product-shop.php?id=$category_id'><i class='fa fa-angle-right'></i> $category_name</a> </li>";
+                                            echo "<li> <a href='product-shop.php?id=$category_id$id_ddp$sp_id'><i class='fa fa-angle-right'></i> $category_name</a> </li>";
                                         }
                                     }
 
-
-                                    
                                     ?>
 
                                 </ul>
@@ -187,7 +191,7 @@ if (!empty($sp_id)) {
                                         while ($row = $result->fetch_assoc()) {
                                             $sponsor_name = $row['SPONSOR_NAME'];
                                             $sponsor_id = $row['SPONSOR_ID'];
-                                            echo "<li> <a href='product-shop.php?sp_id=$sponsor_id$id'><i class='fa fa-angle-right'></i> $sponsor_name</a> </li>";
+                                            echo "<li> <a href='product-shop.php?sp_id=$sponsor_id$id$id_ddp'><i class='fa fa-angle-right'></i> $sponsor_name</a> </li>";
                                         }
                                     }
                                     ?>
@@ -222,7 +226,7 @@ if (!empty($sp_id)) {
                                             if (strlen($title) > 20) {
                                                 $title = substr($title, 0, 20);
                                             } ?>
-                                            <div class='col-md-4 col-sm-4'>
+                                            <div class='col-6 col-md-4 col-sm-6'>
                                                 <div class='product-item'>
                                                     <div class='product-image'>
                                                         <a class='product-img' href='shop-single.php?id=<?= $product_id ?>'>
@@ -269,21 +273,21 @@ if (!empty($sp_id)) {
                             <nav aria-label="Page navigation example" style="display: flex;justify-content: center;">
                                 <ul class="pagination">
                                     <li class="page-item <?= ($currentPage == 1) ? "hidden" : "" ?>"><a class="page-link" href="product-shop.php?page=<?= $currentPage - 1 . $id . $sp_id ?>">Previous</a></li>
-                                    <li class="page-item <?= ($currentPage-5 <= 1) ? "hidden" : "" ?>">
-                                    <a class="page-link" href="product-shop.php?page=<?=$currentPage-5 . $id . $sp_id  ?>">...</a>
+                                    <li class="page-item <?= ($currentPage - 5 <= 1) ? "hidden" : "" ?>">
+                                        <a class="page-link" href="product-shop.php?page=<?= $currentPage - 5 . $id . $sp_id  ?>">...</a>
                                     </li>
-                                    <?php for($page = $currentPage; $page <= $last_page; $page++): ?>
-                                    <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
-                                    <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
+                                    <?php for ($page = $currentPage; $page <= $last_page; $page++) : ?>
+                                        <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
+                                        <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
                                             <a href="product-shop.php?page=<?= $page . $id . $sp_id ?>" class="page-link"><?= $page ?></a>
                                         </li>
                                     <?php endfor ?>
-                                    <li class="page-item <?= ($currentPage+5 >= $pages) ? "hidden" : "" ?>">
-                                    <a class="page-link" href="product-shop.php?page=<?= $currentPage + 5 ?>">...</a>
+                                    <li class="page-item <?= ($currentPage + 5 >= $pages) ? "hidden" : "" ?>">
+                                        <a class="page-link" href="product-shop.php?page=<?= $currentPage + 5 ?>">...</a>
                                     </li>
 
                                     <li class="page-item <?= ($currentPage == $pages) ? "hidden" : "" ?>">
-                                    <a class="page-link" href="product-shop.php?page=<?= $currentPage + 1 . $id . $sp_id?>">Next</a>
+                                        <a class="page-link" href="product-shop.php?page=<?= $currentPage + 1 . $id . $sp_id ?>">Next</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -368,6 +372,13 @@ if (!empty($sp_id)) {
                         $('#list_search').html('not found');
                     }
 
+                })
+                $('#ddp').change(function() {
+                    if (this.checked) {
+                        window.location.replace('product-shop.php?ddp=1')
+                    } else {
+                        window.location.replace('product-shop.php')
+                    }
                 })
 
             })
