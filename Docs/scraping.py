@@ -28,8 +28,8 @@ cats=[
 #  FACE CARE
 #  COSMETICS AND MAKEUP
 #  BEAUTY DEVICES
-last_id=0
-for i in range(1,len(cats)+1):
+last_id=295
+for i in range(3,4):
     links_list=[]
 
     with open(f'Docs/excel/aliexpres_link_{cats[i-1]}.csv','r',encoding='utf8') as filecsv:

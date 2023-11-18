@@ -76,7 +76,7 @@ if (isset($_GET['id'])) {
     <!-- Blog Posts -->
     <div class="bg-f8">
         <div class="container">
-            
+
             <div class="row">
                 <div class="col-md-9">
                     <div class="margin-bottom-30">
@@ -102,7 +102,7 @@ if (isset($_GET['id'])) {
                                 <?php
                                 echo "<div class='item active'>
                                     <!-- Slide Background -->
-                                    <img src='img/blog/$photo' alt='Slider Images' class='slide-image' />
+                                    <img src='$photo' alt='Slider Images' class='slide-image' />
                                     
                                     </div>";
 
@@ -110,7 +110,7 @@ if (isset($_GET['id'])) {
                                     $path = $row["PHOTO_PATH"];
                                     echo "<div class='item'>
                                     <!-- Slide Background -->
-                                    <img src='img/blog/$path' alt='Slider Images' class='slide-image' />
+                                    <img src='$path' alt='Slider Images' class='slide-image' />
                                     
                                 </div>";
                                 }
@@ -132,8 +132,10 @@ if (isset($_GET['id'])) {
                             </a>
 
                         </div>
-                        <?php
-                        echo "
+                        <div class="blog_style">
+
+                            <?php
+                            echo "
                             <ul class='list-inline blog-info'>
                                 
                                 <li><a href='$product_link' target='_blank' style='color:#3da1ff;'>Product link</a></li>
@@ -147,8 +149,9 @@ if (isset($_GET['id'])) {
                             </p>
 
                             </div>";
-                        ?>
+                            ?>
 
+                        </div>
                     </div>
                     <div class="col-md-3">
                         <div class="blog-sideber">
@@ -199,7 +202,7 @@ if (isset($_GET['id'])) {
                                         echo "<div class='news-area clearfix'>
                                                     <div class='news-img' style='width: 20%;'>
                                                         <a href='blog-single.php?id=$id_blog'>
-                                                            <img src='img/blog/$PHOTO' alt=''>
+                                                            <img src='$PHOTO' alt=''>
                                                             <span class='fa fa-link'></span>
                                                         </a>
                                                     </div>
@@ -238,8 +241,8 @@ if (isset($_GET['id'])) {
                                     </ul>
                                 </div>
                             </div>
-                            
-                            
+
+
                         </div>
                     </div>
                 </div>
@@ -247,7 +250,7 @@ if (isset($_GET['id'])) {
         </div>
         <!-- End Blog Posts -->
 
-        
+
         <!-- divider end -->
 
         <!-- Footer Style start -->

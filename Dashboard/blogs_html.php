@@ -64,7 +64,7 @@ include 'Config_dashboard.php';
                       </select>
                     </div>
                     <div class="mb-3">
-                      <label for="photo" class="form-label">Add your collection Photos</label>
+                      <label for="photo" class="form-label">Add your Cover</label>
                       <input class="form-control" type="file" id="photo" accept="image/png, image/jpeg, image/jpg" name="photo" require>
                     </div>
                     <div class="mb-3">
