@@ -286,7 +286,7 @@ if (isset($_POST['operation'])) {
             die("Connection failed: " . $conn->connect_error);
         }
 
-<<<<<<< HEAD
+
     $first_name = mysqli_real_escape_string($conn, $first_name);
     $last_name = mysqli_real_escape_string($conn, $first_name);
     $email = mysqli_real_escape_string($conn, $first_name);
@@ -294,7 +294,7 @@ if (isset($_POST['operation'])) {
     $phone_number = mysqli_real_escape_string($conn, $first_name);
     $query = "UPDATE user SET FIRST_NAME='$first_name',LAST_NAME='$last_name',EMAIL='$email',
     PASSWORD='$password',PHONE_NUMBER='$phone_number'   where USER_ID=$id";
-=======
+
         $first_name = mysqli_real_escape_string($conn, $first_name);
         $last_name = mysqli_real_escape_string($conn, $first_name);
         $email = mysqli_real_escape_string($conn, $first_name);
@@ -303,7 +303,6 @@ if (isset($_POST['operation'])) {
         $date = date('Y-m-d-h:i:sa');
         
         $query = "UPDATE user SET FIRST_NAME='$first_name',LAST_NAME='$last_name',EMAIL='$email',PASSWORD='$password',PHONE_NUMBER='$phone_number',UPDATE_DATE='$date'   where USER_ID=$id";
->>>>>>> 64e6becc083bf5ba6766a9afb60486353f89b17b
 
         // $conn->query($query);
         if ($conn->query($query) === TRUE) {

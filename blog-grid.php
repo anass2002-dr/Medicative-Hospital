@@ -72,6 +72,7 @@ $sql = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_
             </div>
         </div>
     </section>
+    <section> 
 
     <section class="blog-area bg-f8 animatedParent animateOnce">
         <div class="container">
@@ -103,6 +104,10 @@ $sql = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_
                                 if (strlen($BLOG_SHORT) > 160) {
                                     $BLOG_SHORT = substr($BLOG_SHORT, 0, 160);
                                 }
+                                if (strlen($TITLE) > 30) {
+                                    $TITLE = substr($TITLE, 0, 30);
+                                }
+
 
                                 echo "<div class='col-md-4 col-sm-6 col-xs-12'>
                                         <div class='blog-item style-1'>

@@ -46,7 +46,7 @@ if (isset($_GET['id'])) {
                         <p><a href="index-one.html">Home</a>
 
                             <!-- title dynamique -->
-                            <span class="fa fa-angle-right"></span>
+                            <span class="fa fa-angle-right"> </span>
 
                             <a href="#">Blog</a>
                         </p>
@@ -102,7 +102,7 @@ if (isset($_GET['id'])) {
                                 <?php
                                 echo "<div class='item active'>
                                     <!-- Slide Background -->
-                                    <img src='img/blog/$photo' alt='Slider Images' class='slide-image' />
+                                    <img src='$photo' alt='Slider Images' class='slide-image' />
                                     
                                     </div>";
 
@@ -110,7 +110,7 @@ if (isset($_GET['id'])) {
                                     $path = $row["PHOTO_PATH"];
                                     echo "<div class='item'>
                                     <!-- Slide Background -->
-                                    <img src='img/blog/$path' alt='Slider Images' class='slide-image' />
+                                    <img src='$path' alt='Slider Images' class='slide-image' />
                                     
                                 </div>";
                                 }
@@ -141,7 +141,8 @@ if (isset($_GET['id'])) {
                                 
                             </ul>
                             <br>
-                            <h3><a href='#'> $title</a></h3>
+                             
+                            <h2><a href='#'><span style='color: rgb(30, 171, 227);'>$title</span>  </a></h2>
                             <p>
                                 $blog
                             </p>
@@ -150,6 +151,8 @@ if (isset($_GET['id'])) {
                         ?>
 
                     </div>
+
+
                     <div class="col-md-3">
                         <div class="blog-sideber">
                             <div class="widget">
@@ -162,24 +165,7 @@ if (isset($_GET['id'])) {
                                     </form>
                                 </div>
                             </div>
-                            <div class="widget clearfix">
-                                <div class="sideber-title">
-                                    <h4>About Us</h4>
-                                </div>
-                                <div class="sideber-content about">
-                                    <div class="testimonial-carousel-one">
-                                        <div class="item">
-                                            <p><i class="fa fa-quote-left"></i> We carefully curate a selection of beauty care products, including skincare, makeup, haircare, and more, from well-established and trusted brands... <i class="fa fa-quote-right"></i></p>
-                                        </div>
-                                        <div class="item">
-                                            <p><i class="fa fa-quote-left"></i> We understand that everyone's beauty needs are unique. BeautyMedic offers personalized recommendations based on your individual skin type, hair ... <i class="fa fa-quote-right"></i></p>
-                                        </div>
-                                        <div class="item">
-                                            <p><i class="fa fa-quote-left"></i> Explore our informative blog, which offers tips, tutorials, and expert advice on various beauty care topics, ensuring you're well-informed and empowered to make the right choices.. <i class="fa fa-quote-right"></i></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           
                             <div class="widget">
                                 <div class="sideber-title">
                                     <h4>Recent Posts</h4>
@@ -203,8 +189,8 @@ if (isset($_GET['id'])) {
                                                             <span class='fa fa-link'></span>
                                                         </a>
                                                     </div>
-                                                    <div class='news-content'>
-                                                        <a href='blog-single.php?id=$id_blog'>$titre..</a><br>
+                                                    <div class='news-content '>
+                                                         <a  href='blog-single.php?id=$id_blog'>$titre..</a><br>
                                                         <span>$date</span>
                                                     </div>
                                                 </div>";
@@ -214,6 +200,7 @@ if (isset($_GET['id'])) {
 
                                 </div>
                             </div>
+
 
                             <div class="widget clearfix">
                                 <div class="sideber-title">
@@ -236,6 +223,24 @@ if (isset($_GET['id'])) {
 
 
                                     </ul>
+                                </div>
+                            </div>
+                            <div class="widget clearfix">
+                                <div class="sideber-title">
+                                    <h4>About Us</h4>
+                                </div>
+                                <div class="sideber-content about">
+                                    <div class="testimonial-carousel-one">
+                                        <div class="item">
+                                            <p><i class="fa fa-quote-left"></i> We carefully curate a selection of beauty care products, including skincare, makeup, haircare, and more, from well-established and trusted brands... <i class="fa fa-quote-right"></i></p>
+                                        </div>
+                                        <div class="item">
+                                            <p><i class="fa fa-quote-left"></i> We understand that everyone's beauty needs are unique. BeautyMedic offers personalized recommendations based on your individual skin type, hair ... <i class="fa fa-quote-right"></i></p>
+                                        </div>
+                                        <div class="item">
+                                            <p><i class="fa fa-quote-left"></i> Explore our informative blog, which offers tips, tutorials, and expert advice on various beauty care topics, ensuring you're well-informed and empowered to make the right choices.. <i class="fa fa-quote-right"></i></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             

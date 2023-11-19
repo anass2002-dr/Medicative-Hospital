@@ -93,7 +93,7 @@ if (isset($_GET['id'])) {
         <div class="container padding-bottom-none padding-top-40">
             <div class="section-content">
                 <div class="row">
-                <div class="col-sm-12 col-md-12">
+                   <div class="col-sm-12 col-md-12">
                         <div class="service-item style-1 text-white border-right">
                             <div class="">
                                 <i class="pe-7s-mail-open"></i>
