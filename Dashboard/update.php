@@ -19,24 +19,16 @@ if (isset($_POST['operation'])) {
         }
     }
 
-    // if(isset($_FILES['video'])){
-    //     if ($_FILES['video']['error'] != 4 || ($_FILES['video']['size'] != 0 && $_FILES['video']['error'] != 0)) {
-    //         $target_dir = "../videos/blog/";
-    //         $tempv = explode(".", $_FILES["video"]["name"]);
-    //         $newfilenamev = round(microtime(true)) . '.' . end($tempv);
-    //         move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir . $newfilenamev);
-
-    //     }
-    // }
 
 
+    // (isset($_POST['photo_link']) and !empty($_POST['photo_link'])) ? $_POST['photo_link'] : 'img/blog/' . $newfilename;
     if ($operation == 'blog') {
         $id = $_POST["id"];
         $query = "select * from blog where BLOG_ID=$id";
         $result = $conn->query($query);
         $row = mysqli_fetch_assoc($result);
-        $photo = $row['PHOTO'];
-        $video = $row['VIDEO'];
+        $photo = (isset($_POST['photo_link']) and !empty($_POST['photo_link'])) ?  $_POST['photo_link'] : $row['PHOTO'];
+        $video = (isset($_POST['video_link']) and !empty($_POST['video_link'])) ?  $_POST['video_link'] : $row['VIDEO'];
         $title = $row['TITLE'];
         $category = $row['CATEGORY_ID'];
         $product_link = $row['PRODUCT_LINK'];
@@ -85,7 +77,6 @@ if (isset($_POST['operation'])) {
 
         // $conn->query($query);
         if ($conn->query($query) === TRUE) {
-
             if (!empty($_FILES['photo_collection']['name'][0])) {
                 $query4 = "delete from collection_photos where BLOG_ID=$id";
                 $conn->query($query4);
@@ -103,6 +94,16 @@ if (isset($_POST['operation'])) {
                     $query3 = "INSERT INTO collection_photos(BLOG_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id,'$newfilenameC','$date')";
                     $conn->query($query3);
                 }
+            } else if (isset($_POST['collection_link']) and !empty($_POST['collection_link'])) {
+                $query4 = "delete from collection_photos where BLOG_ID=$id";
+                $conn->query($query4);
+                foreach ($_POST['collection_link'] as $links) {
+                    $query3 = "INSERT INTO collection_photos(BLOG_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id,'$links','$date')";
+                    $conn->query($query3);
+                }
+                echo " update blog with collection photos links";
+            } else {
+                echo " update blog without collection photo";
             }
             echo "blog is updated successfully";
         } else {
@@ -114,8 +115,8 @@ if (isset($_POST['operation'])) {
         $query = "select * from product where PRODUCT_ID=$id";
         $result = $conn->query($query);
         $row = mysqli_fetch_assoc($result);
-        $photo = $row['PHOTO'];
-        $video = $row['VIDEO'];
+        $photo = (isset($_POST['photo_link']) and !empty($_POST['photo_link'])) ?  $_POST['photo_link'] : $row['PHOTO'];
+        $video = (isset($_POST['video_link']) and !empty($_POST['video_link'])) ?  $_POST['video_link'] : $row['VIDEO'];
         $title = $row['TITLE'];
         $category = $row['CATEGORY_ID'];
         $product_link = $row['PRODUCT_LINK'];
@@ -163,8 +164,6 @@ if (isset($_POST['operation'])) {
 
 
 
-
-
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -197,11 +196,17 @@ if (isset($_POST['operation'])) {
                     $query3 = "INSERT INTO product_collection_photos(PRODUCT_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id,'$newfilenameC','$date')";
                     $conn->query($query3);
                 }
+            } else if (isset($_POST['collection_link']) and !empty($_POST['collection_link'])) {
+                $query4 = "delete from collection_photos where BLOG_ID=$id";
+                $conn->query($query4);
+                foreach ($_POST['collection_link'] as $links) {
+                    $query3 = "INSERT INTO product_collection_photos(PRODUCT_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id,'$links','$date')";
+                    $conn->query($query3);
+                }
+                echo " update blog with collection photos links";
+            } else {
+                echo " update blog without collection photo";
             }
-            // else{
-            //     echo 'the collection photo have an error';
-            // }
-
             echo "Product is updated successfully";
         } else {
             echo "Error: " . $query . "<br>" . $conn->error;

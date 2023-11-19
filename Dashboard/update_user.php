@@ -1,9 +1,9 @@
 <?php
 include 'Config_dashboard.php';
-$query='';
+$query = '';
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
-    $query="select * from user where USER_ID=$id";
+    $query = "select * from user where USER_ID=$id";
 }
 ?>
 <!DOCTYPE html>
@@ -42,53 +42,51 @@ if (isset($_GET["id"])) {
                                 <div class="card-body">
                                     <h4 class="card-title"> Update User</h4>
                                     <form class='forms-sample' enctype='multipart/form-data'>
-                                    <?php
+                                        <?php
 
-                                    
-                                        $result=$conn->query($query);
-                                        $row=mysqli_fetch_assoc($result);
+
+                                        $result = $conn->query($query);
+                                        $row = mysqli_fetch_assoc($result);
                                         $first_name = $row["FIRST_NAME"];
                                         $last_name = $row["LAST_NAME"];
                                         $email = $row["EMAIL"];
                                         $password = $row["PASSWORD"];
                                         $phone_number = $row["PHONE_NUMBER"];
                                         echo $last_name;
-                                        
-<<<<<<< HEAD
-                                        
-                                       
-                                      }
-=======
-                                    ?>  
->>>>>>> 64e6becc083bf5ba6766a9afb60486353f89b17b
-                                      
+
+
+
+
+
+                                        ?>
+
                                         <div class='form-group'>
                                             <label for='first_name'>First name</label>
                                             <input hidden name='operation' value='user'>
-                                            <input hidden name='id' value='<?=$id?>'>
-                                            <input type='text' class='form-control' id='first_name' placeholder='First name' name='first_name' value="<?=$first_name?>" >
+                                            <input hidden name='id' value='<?= $id ?>'>
+                                            <input type='text' class='form-control' id='first_name' placeholder='First name' name='first_name' value="<?= $first_name ?>">
                                         </div>
                                         <div class='form-group'>
                                             <label for='last_name'>Last name</label>
-                                            <input type='text' class='form-control' id='last_name' placeholder='Last name' name='last_name' value="<?=$last_name?>" >
+                                            <input type='text' class='form-control' id='last_name' placeholder='Last name' name='last_name' value="<?= $last_name ?>">
                                         </div>
                                         <div class='form-group'>
                                             <label for='email'>Email</label>
-                                            <input type='email' class='form-control'id='email' placeholder='Email' name='email' value="<?=$email?>" require>
+                                            <input type='email' class='form-control' id='email' placeholder='Email' name='email' value="<?= $email ?>" require>
                                         </div>
                                         <div class='form-group'>
                                             <label for='password'>Password</label>
-                                            <input type='password' class='form-control' id='password' placeholder='Password' name='password' value="<?=$password?>">
+                                            <input type='password' class='form-control' id='password' placeholder='Password' name='password' value="<?= $password ?>">
                                         </div>
                                         <div class='form-group'>
                                             <label for='phone_number'>Phone Number</label>
-                                            <input type='text' class='form-control' id='phone_number' placeholder='Phone Number' name='phone_number' value="<?=$phone_number?>">
+                                            <input type='text' class='form-control' id='phone_number' placeholder='Phone Number' name='phone_number' value="<?= $phone_number ?>">
                                         </div>
-                                            <div class='form-group'>
-                                                <button type='submit' class='btn btn-primary me-2 text-light' id='submit'>Update</button>
+                                        <div class='form-group'>
+                                            <button type='submit' class='btn btn-primary me-2 text-light' id='submit'>Update</button>
                                         </div>
-                                        
-                                </form>
+
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +100,7 @@ if (isset($_GET["id"])) {
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-body" id="modal_body">
-                                       
+
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Ok</button>

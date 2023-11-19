@@ -18,8 +18,8 @@ move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir);
 
 $title = $_POST['title'];
 $category = $_POST['category'];
-$photo = "img/blog/" . $newfilename;
-$video = "video/blog/" . $newfilenamev;
+$photo = (isset($_POST['photo_link']) and !empty($_POST['photo_link'])) ? $_POST['photo_link'] : 'img/blog/' . $newfilename;
+$video = (isset($_POST['video_link']) and !empty($_POST['video_link'])) ? $_POST['video_link'] : 'video/blog/' . $newfilenamev;
 $product_link = $_POST['product_link'];
 $blog = $_POST['blog'];
 $blog_short = $_POST['blog_short'];
@@ -40,7 +40,7 @@ if (!empty($title) and !empty($category) and !empty($photo) and !empty($blog) an
         $result = $conn->query($sql2);
         $row = mysqli_fetch_assoc($result);
         $id_blog = $row['BLOG_ID'];
-        if (isset($_FILES['photo_collection'])) {
+        if (!empty($_FILES['photo_collection']['name'][0])) {
             $files = $_FILES['photo_collection'];
             $file_count = count($files['name']);
             for ($i = 0; $i < $file_count; $i++) {
@@ -54,6 +54,15 @@ if (!empty($title) and !empty($category) and !empty($photo) and !empty($blog) an
                 $query3 = "INSERT INTO collection_photos(BLOG_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id_blog,'$newfilenameC','$date')";
                 $conn->query($query3);
             }
+            echo " adding blog with local collections photos ";
+        } else if (isset($_POST['collection_link']) and !empty($_POST['collection_link'])) {
+            foreach ($_POST['collection_link'] as $links) {
+                $query3 = "INSERT INTO collection_photos(BLOG_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id_blog,'$links','$date')";
+                $conn->query($query3);
+            }
+            echo " adding blog with collection photos links";
+        } else {
+            echo " adding blog without collection photo";
         }
         echo "New Blog created successfully";
     } else {

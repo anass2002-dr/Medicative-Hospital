@@ -65,15 +65,32 @@ include 'Config_dashboard.php';
                     </div>
                     <div class="mb-3">
                       <label for="photo" class="form-label">Add your Cover</label>
-                      <input class="form-control" type="file" id="photo" accept="image/png, image/jpeg, image/jpg" name="photo" require>
+                      <input class="form-control" type="file" id="photo" accept="image/png, image/jpeg, image/jpg" name="photo">
+
+                    </div>
+                    <div class="mb-3">
+                      <label for="photo_link" class="form-label text-danger">Or By Link</label>
+                      <input class="form-control" type="text" id="photo_link" name="photo_link" placeholder="Add cover Link">
                     </div>
                     <div class="mb-3">
                       <label for="photo_collection" class="form-label">Add collecttion Photos</label>
                       <input class="form-control" type="file" id="photo_collection" accept="image/png, image/jpeg, image/jpg" name="photo_collection[]" multiple>
                     </div>
+                    <div class="mb-3 d-flex">
+                      <input type="text" class="form-control m-2 w-25" name="nb_links" id="nb_links" placeholder="type Numbre of links">
+                      <input type="button" class="btn btn-primary m-2 text-light" name="btn_links" id="btn_links" value="create">
+                      <!-- <textarea class="form-control" id="collection_links" name="collection_links" placeholder="https:\\www.google.com/photo2.jpg,https:\\www.google.com/photo2.jpg,https:\\www.google.com/photo3.jpg" rows="10"></textarea> -->
+                    </div>
+                    <div class="mb-3" id="div_links">
+
+                    </div>
                     <div class="mb-3">
                       <label for="video" class="form-label">Add Video</label>
                       <input class="form-control" type="file" id="video" name="video" accept="video/mp4,video/x-m4v,video/*">
+                    </div>
+                    <div class="mb-3">
+                      <label for="video_link" class="form-label text-danger">Or Add Video By link</label>
+                      <input class="form-control m-2" type="text" id="video_link" name="video_link" placeholder="Add video link">
                     </div>
                     <div class="mb-3">
                       <label for="product_link" class="form-label">product link</label>
@@ -141,7 +158,15 @@ include 'Config_dashboard.php';
     $(document).ready(
       function() {
 
-
+        $('#btn_links').click(function() {
+          nb_links = $('#nb_links').val()
+          nb_links = parseInt(nb_links)
+          div_links = ''
+          for (i = 1; i < nb_links + 1; i++) {
+            div_links += '<input type="text" class="form-control m-2" name="collection_link[]" placeholder="add link ' + i + '">'
+          }
+          $('#div_links').append(div_links)
+        })
 
         $('form').submit(function(e) {
           e.preventDefault();

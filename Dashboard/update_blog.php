@@ -44,94 +44,110 @@ include 'Config_dashboard.php';
                     $query = "select * from blog where BLOG_ID=$id";
                     //    echo $query;
                     $result = $conn->query($query);
-                    $title = "";
-                    $blog = "";
-                    $blog_short = "";
-                    $blog_keywords= "";
-                    $product_link = "";
-                    $photo = "";
-                    $video = "";
-                    $category_id = "";
-                    $created_date = "";
-                    if ($result->num_rows > 0) {
-                      while ($row = $result->fetch_assoc()) {
-                        $title = $row["TITLE"];
-                        $blog = $row["CONTENT"];
-                        $blog_short = $row["BLOG_SHORT"];
-                        $blog_keywords = $row["BLOG_KEYWORDS"];
-                        $product_link = $row["PRODUCT_LINK"];
-                        $category_id = $row["CATEGORY_ID"];
-                      }
-                    }
+                    $row = mysqli_fetch_assoc($result);
+                    $title = $row["TITLE"];
+                    $blog = $row["CONTENT"];
+                    $blog_short = $row["BLOG_SHORT"];
+                    $blog_keywords = $row["BLOG_KEYWORDS"];
+                    $product_link = $row["PRODUCT_LINK"];
+                    $category_id = $row["CATEGORY_ID"];
+                    $photo = $row["PHOTO"];
+                    $video = $row["VIDEO"];
                   }
-                  echo   "<form class='forms-sample' method='post' action='insertBlog.php' enctype='multipart/form-data'>
-                            <div class='form-group'>
-                            <input hidden name='operation' value='blog'>
-                            <input hidden name='id' value='$id'>
-                            <label for='titel'>Blog Title</label>
-                            <input type='text' class='form-control' id='titel' placeholder='Title' name='title' require value='$title'>
-                            </div>
-                            <div class='form-group'>
-                            <label for='category'>blog category</label>
-                            <select class='form-control form-control-lg' id='category' name='category'>
-                            ";
-
-                  $query = "select * from category";
-                  $result = $conn->query($query);
-                  if ($result->num_rows > 0) {
-                    // OUTPUT DATA OF EACH ROW 
-                    while ($row = $result->fetch_assoc()) {
-                      if ($row["CATEGORY_ID"] == $category_id) {
-                        echo "<option value=" . $row["CATEGORY_ID"] . " selected >" . $row["CATEGORY_NAME"] . "</option>";
-                      } else {
-                        echo "<option value=" . $row["CATEGORY_ID"] . ">" . $row["CATEGORY_NAME"] . "</option>";
-                      }
-                    }
-                  } else {
-                    echo "0 results";
-                  }
-
-                  echo "
-                                </select>
-                                </div>
-                                <div class='mb-3'>
-                                <label for='photo' class='form-label'>Add Cover Photo</label>
-                                <input class='form-control' type='file' id='photo' accept='image/png, image/jpeg, image/jpg' name='photo' require value='$'>
-                                </div>
-                                <div class='mb-3'>
-                                <label for='video' class='form-label'>Add Video</label>
-                                <input class='form-control' type='file' id='video' name='video' accept='video/mp4,video/x-m4v,video/*'>
-                                </div>
-                                <div class='mb-3'>
-                                  <label for='photo_collection' class='form-label'>Add collecttion Photos</label>
-                                  <input class='form-control' type='file' id='photo_collection' accept='image/png, image/jpeg, image/jpg' name='photo_collection[]' multiple>
-                                </div>
-                                <div class='mb-3'>
-                                <label for='product_link' class='form-label'>product link</label>
-                                <input class='form-control' type='text' id='product_link' name='product_link' placeholder='add product link'value='$product_link' require>
-                                </div>
-                                <div class='form-group'>
-                                <label for='blog-short'>Enter your short Description</label>
-                                <textarea name='blog_short' id='blog-short' class='form-control' rows='10'>$blog_short</textarea>
-                                </div>
-                                <div class='form-group'>
-                                <label for='blog-keywords'>Enter KeyWords</label>
-                                <textarea name='blog_keywords' id='blog-keywords' class='form-control' rows='10'>$blog_keywords</textarea>
-                                </div>
-                                <div class='form-group'>
-                                <label for='blog'>Enter your html code</label>
-                                <textarea name='blog' id='blog' class='form-control'rows='50'>$blog</textarea>                   
-                                </div>
-
-                                <div class='form-group'>
-                                  <button type='submit' class='btn btn-primary me-2 text-light' id='submit'>Submit</button>
-                                  <a href='./preveiw_blog.php' target='_blank' class='btn btn-success text-light' >Preview</a>
-
-                                </div>
-
-                            </form>
-                        ";
                   ?>
+                  <form class='forms-sample' method='post' action='insertBlog.php' enctype='multipart/form-data'>
+                    <div class='form-group'>
+                      <input hidden name='operation' value='blog'>
+                      <input hidden name='id' value='<?= $id ?>'>
+                      <label for='titel'>Blog Title</label>
+                      <input type='text' class='form-control' id='titel' placeholder='Title' name='title' require value='<?= $title ?>'>
+                    </div>
+                    <div class='form-group'>
+                      <label for='category'>blog category</label>
+                      <select class='form-control form-control-lg' id='category' name='category'>
+                        <?php
+                        $query = "select * from category";
+                        $result = $conn->query($query);
+                        if ($result->num_rows > 0) {
+                          // OUTPUT DATA OF EACH ROW 
+                          while ($row = $result->fetch_assoc()) {
+                            if ($row["CATEGORY_ID"] == $category_id) {
+                              echo "<option value=" . $row["CATEGORY_ID"] . " selected >" . $row["CATEGORY_NAME"] . "</option>";
+                            } else {
+                              echo "<option value=" . $row["CATEGORY_ID"] . ">" . $row["CATEGORY_NAME"] . "</option>";
+                            }
+                          }
+                        } else {
+                          echo "0 results";
+                        }
+                        ?>
+                      </select>
+                    </div>
+                    <div class='mb-3'>
+                      <label for='photo' class='form-label'>Add Cover Photo</label>
+                      <input class='form-control' type='file' id='photo' accept='image/png, image/jpeg, image/jpg' name='photo' require>
+                    </div>
+                    <div class="mb-3">
+                      <label for="photo_link" class="form-label text-danger">Or By Link</label>
+                      <input class="form-control" type="text" id="photo_link" name="photo_link" placeholder="Add cover Link" value="<?= $photo ?>">
+                    </div>
+                    <div class='mb-3'>
+                      <label for='video' class='form-label'>Add Video</label>
+                      <input class='form-control' type='file' id='video' name='video' accept='video/mp4,video/x-m4v,video/*'>
+                    </div>
+                    <div class="mb-3">
+                      <label for="video_link" class="form-label text-danger">Or Add Video By link</label>
+                      <input class="form-control m-2" type="text" id="video_link" name="video_link" placeholder="Add video link" value="<?= $video ?>">
+                    </div>
+                    <div class='mb-3'>
+                      <label for='photo_collection' class='form-label'>Add collecttion Photos</label>
+                      <input class='form-control' type='file' id='photo_collection' accept='image/png, image/jpeg, image/jpg' name='photo_collection[]' multiple>
+                    </div>
+                    <div class="mb-3 " id="div_links">
+                      <?php
+                      $query_collection = "select * from collection_photos where BLOG_ID=$id";
+                      $result = $conn->query($query_collection);
+                      if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                      ?>
+                          <input type="text" class="form-control m-2" name="collection_link[]" value="<?= $row['PHOTO_PATH'] ?>">
+
+                          <!-- <textarea class="form-control" id="collection_links" name="collection_links" placeholder="https:\\www.google.com/photo2.jpg,https:\\www.google.com/photo2.jpg,https:\\www.google.com/photo3.jpg" rows="10"></textarea> -->
+                      <?php
+                        }
+                      }
+
+                      ?>
+                      <div class="d-flex">
+                        <input type="text" class="form-control m-2 w-25" name="nb_links" id="nb_links" placeholder="type Numbre of links">
+                        <input type="button" class="btn btn-primary m-2 text-light" name="btn_links" id="btn_links" value="add new links">
+
+                      </div>
+                    </div>
+                    <div class='mb-3'>
+                      <label for='product_link' class='form-label'>product link</label>
+                      <input class='form-control' type='text' id='product_link' name='product_link' placeholder='add product link' value='<?= $product_link ?>' require>
+                    </div>
+                    <div class='form-group'>
+                      <label for='blog-short'>Enter your short Description</label>
+                      <textarea name='blog_short' id='blog-short' class='form-control' rows='10'><?= $blog_short ?></textarea>
+                    </div>
+                    <div class='form-group'>
+                      <label for='blog-keywords'>Enter KeyWords</label>
+                      <textarea name='blog_keywords' id='blog-keywords' class='form-control' rows='10'><?= $blog_keywords ?></textarea>
+                    </div>
+                    <div class='form-group'>
+                      <label for='blog'>Enter your html code</label>
+                      <textarea name='blog' id='blog' class='form-control' rows='50'><?= $blog ?></textarea>
+                    </div>
+
+                    <div class='form-group'>
+                      <button type='submit' class='btn btn-primary me-2 text-light' id='submit'>Submit</button>
+                      <a href='./preveiw_blog.php' target='_blank' class='btn btn-success text-light'>Preview</a>
+
+                    </div>
+
+                  </form>
 
                 </div>
               </div>
@@ -172,6 +188,15 @@ include 'Config_dashboard.php';
   <script>
     $(document).ready(
       function() {
+        $('#btn_links').click(function() {
+          nb_links = $('#nb_links').val()
+          nb_links = parseInt(nb_links)
+          div_links = ''
+          for (i = 1; i < nb_links + 1; i++) {
+            div_links += '<input type="text" class="form-control m-2" name="collection_link[]" placeholder="add link ' + i + '">'
+          }
+          $('#div_links').append(div_links)
+        })
         $('form').submit(function(e) {
           //   $("#paragraph_hiden").val($("#paragrah").text())
           e.preventDefault();
