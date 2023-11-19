@@ -19,24 +19,16 @@ if (isset($_POST['operation'])) {
         }
     }
 
-    // if(isset($_FILES['video'])){
-    //     if ($_FILES['video']['error'] != 4 || ($_FILES['video']['size'] != 0 && $_FILES['video']['error'] != 0)) {
-    //         $target_dir = "../videos/blog/";
-    //         $tempv = explode(".", $_FILES["video"]["name"]);
-    //         $newfilenamev = round(microtime(true)) . '.' . end($tempv);
-    //         move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir . $newfilenamev);
-
-    //     }
-    // }
 
 
+    // (isset($_POST['photo_link']) and !empty($_POST['photo_link'])) ? $_POST['photo_link'] : 'img/blog/' . $newfilename;
     if ($operation == 'blog') {
         $id = $_POST["id"];
         $query = "select * from blog where BLOG_ID=$id";
         $result = $conn->query($query);
         $row = mysqli_fetch_assoc($result);
-        $photo = $row['PHOTO'];
-        $video = $row['VIDEO'];
+        $photo = (isset($_POST['photo_link']) and !empty($_POST['photo_link'])) ?  $_POST['photo_link'] : $row['PHOTO'];
+        $video = (isset($_POST['video_link']) and !empty($_POST['video_link'])) ?  $_POST['video_link'] : $row['VIDEO'];
         $title = $row['TITLE'];
         $category = $row['CATEGORY_ID'];
         $product_link = $row['PRODUCT_LINK'];
@@ -85,7 +77,6 @@ if (isset($_POST['operation'])) {
 
         // $conn->query($query);
         if ($conn->query($query) === TRUE) {
-
             if (!empty($_FILES['photo_collection']['name'][0])) {
                 $query4 = "delete from collection_photos where BLOG_ID=$id";
                 $conn->query($query4);
@@ -103,21 +94,29 @@ if (isset($_POST['operation'])) {
                     $query3 = "INSERT INTO collection_photos(BLOG_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id,'$newfilenameC','$date')";
                     $conn->query($query3);
                 }
+            } else if (isset($_POST['collection_link']) and !empty($_POST['collection_link'])) {
+                $query4 = "delete from collection_photos where BLOG_ID=$id";
+                $conn->query($query4);
+                foreach ($_POST['collection_link'] as $links) {
+                    $query3 = "INSERT INTO collection_photos(BLOG_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id,'$links','$date')";
+                    $conn->query($query3);
+                }
+                echo " update blog with collection photos links";
+            } else {
+                echo " update blog without collection photo";
             }
             echo "blog is updated successfully";
-        } 
-        else {
+        } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
         $conn->close();
-    }
-    else if ($operation == 'product') {
+    } else if ($operation == 'product') {
         $id = $_POST["id"];
         $query = "select * from product where PRODUCT_ID=$id";
         $result = $conn->query($query);
         $row = mysqli_fetch_assoc($result);
-        $photo = $row['PHOTO'];
-        $video = $row['VIDEO'];
+        $photo = (isset($_POST['photo_link']) and !empty($_POST['photo_link'])) ?  $_POST['photo_link'] : $row['PHOTO'];
+        $video = (isset($_POST['video_link']) and !empty($_POST['video_link'])) ?  $_POST['video_link'] : $row['VIDEO'];
         $title = $row['TITLE'];
         $category = $row['CATEGORY_ID'];
         $product_link = $row['PRODUCT_LINK'];
@@ -165,8 +164,6 @@ if (isset($_POST['operation'])) {
 
 
 
-
-
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
@@ -199,19 +196,23 @@ if (isset($_POST['operation'])) {
                     $query3 = "INSERT INTO product_collection_photos(PRODUCT_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id,'$newfilenameC','$date')";
                     $conn->query($query3);
                 }
+            } else if (isset($_POST['collection_link']) and !empty($_POST['collection_link'])) {
+                $query4 = "delete from collection_photos where BLOG_ID=$id";
+                $conn->query($query4);
+                foreach ($_POST['collection_link'] as $links) {
+                    $query3 = "INSERT INTO product_collection_photos(PRODUCT_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id,'$links','$date')";
+                    $conn->query($query3);
+                }
+                echo " update blog with collection photos links";
+            } else {
+                echo " update blog without collection photo";
             }
-            // else{
-            //     echo 'the collection photo have an error';
-            // }
-
             echo "Product is updated successfully";
-        }
-        else {
+        } else {
             echo "Error: " . $query . "<br>" . $conn->error;
         }
         $conn->close();
-    } 
-    else if ($operation == 'sponsor') {
+    } else if ($operation == 'sponsor') {
         $id = $_POST["id"];
         $query = "select * from sponsor where SPONSOR_ID=$id";
         $result = $conn->query($query);
@@ -244,13 +245,11 @@ if (isset($_POST['operation'])) {
         if ($conn->query($query) === TRUE) {
 
             echo "Sponsor is updated successfully";
-        }
-        else {
+        } else {
             echo "Error: " . $query . "<br>" . $conn->error;
         }
         $conn->close();
-    }
-    else if ($operation == 'user') {
+    } else if ($operation == 'user') {
         $id = $_POST["id"];
         $query = "select * from user where USER_ID=$id";
         $result = $conn->query($query);
@@ -260,12 +259,12 @@ if (isset($_POST['operation'])) {
         // $email = $row["EMAIL"];
         // $password = $row["PASSWORD"];
         // $phone_number = $row["PHONE_NUMBER"];
-        $first_name =!empty($_POST['first_name']) ? $_POST['first_name'] :$row["FIRST_NAME"];
-        $last_name = !empty($_POST['last_name']) ? $_POST['last_name'] :$row["LAST_NAME"];
-        $email = !empty($_POST['email']) ? $_POST['email'] :$row["EMAIL"];
-        $password = !empty($_POST['password']) ? $_POST['password'] :$row["PASSWORD"];
-        $phone_number = !empty($_POST['phone_number']) ? $_POST['phone_number'] :$row["PHONE_NUMBER"];
-        
+        $first_name = !empty($_POST['first_name']) ? $_POST['first_name'] : $row["FIRST_NAME"];
+        $last_name = !empty($_POST['last_name']) ? $_POST['last_name'] : $row["LAST_NAME"];
+        $email = !empty($_POST['email']) ? $_POST['email'] : $row["EMAIL"];
+        $password = !empty($_POST['password']) ? $_POST['password'] : $row["PASSWORD"];
+        $phone_number = !empty($_POST['phone_number']) ? $_POST['phone_number'] : $row["PHONE_NUMBER"];
+
         // if (isset($_POST['first_name'])) {
         //     $first_name = $_POST['first_name'];
         // }
@@ -281,10 +280,11 @@ if (isset($_POST['operation'])) {
         // if (isset($_POST['phone_number'])) {
         //     $phone_number = $_POST['phone_number'];
         // }
-        
+
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
+
 
 
     $first_name = mysqli_real_escape_string($conn, $first_name);
@@ -295,29 +295,33 @@ if (isset($_POST['operation'])) {
     $query = "UPDATE user SET FIRST_NAME='$first_name',LAST_NAME='$last_name',EMAIL='$email',
     PASSWORD='$password',PHONE_NUMBER='$phone_number'   where USER_ID=$id";
 
+
+        $first_name = mysqli_real_escape_string($conn, $first_name);
+        $last_name = mysqli_real_escape_string($conn, $first_name);
+        $email = mysqli_real_escape_string($conn, $first_name);
+        $password = mysqli_real_escape_string($conn, $first_name);
+        $phone_number = mysqli_real_escape_string($conn, $first_name);
+        $query = "UPDATE user SET FIRST_NAME='$first_name',LAST_NAME='$last_name',EMAIL='$email',
+        PASSWORD='$password',PHONE_NUMBER='$phone_number'   where USER_ID=$id";
+
         $first_name = mysqli_real_escape_string($conn, $first_name);
         $last_name = mysqli_real_escape_string($conn, $first_name);
         $email = mysqli_real_escape_string($conn, $first_name);
         $password = mysqli_real_escape_string($conn, $first_name);
         $phone_number = mysqli_real_escape_string($conn, $first_name);
         $date = date('Y-m-d-h:i:sa');
-        
+
         $query = "UPDATE user SET FIRST_NAME='$first_name',LAST_NAME='$last_name',EMAIL='$email',PASSWORD='$password',PHONE_NUMBER='$phone_number',UPDATE_DATE='$date'   where USER_ID=$id";
 
         // $conn->query($query);
         if ($conn->query($query) === TRUE) {
 
             echo "User is updated successfully";
-        }
-        else {
+        } else {
             echo "Error: " . $query . "<br>" . $conn->error;
         }
         $conn->close();
     }
-}
-  
-
-
- else {
+} else {
     header('Location:index.php');
 }

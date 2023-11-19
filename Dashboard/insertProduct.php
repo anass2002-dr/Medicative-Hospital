@@ -17,8 +17,8 @@ move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir);
 
 $title = $_POST['title'];
 $category = $_POST['category'];
-$photo = 'img/Product/' . $newfilename;
-$video = '/videos/Product/' . $newfilenamev;
+$photo = (isset($_POST['photo_link']) and !empty($_POST['photo_link'])) ? $_POST['photo_link'] : 'img/Product/' . $newfilename;
+$video = (isset($_POST['video_link']) and !empty($_POST['video_link'])) ? $_POST['video_link'] : 'video/Product/' . $newfilenamev;
 $product_link = $_POST['product_link'];
 $product_price = $_POST['price'];
 $product_price = floatval($product_price);
@@ -48,7 +48,7 @@ if (!empty($title) and !empty($category) and !empty($photo) and !empty($Product)
         $result = $conn->query($sql2);
         $row = mysqli_fetch_assoc($result);
         $id_Product = $row['PRODUCT_ID'];
-        if (isset($_FILES['photo_collection'])) {
+        if (!empty($_FILES['photo_collection']['name'][0])) {
             $files = $_FILES['photo_collection'];
             $file_count = count($files['name']);
             for ($i = 0; $i < $file_count; $i++) {
@@ -61,7 +61,14 @@ if (!empty($title) and !empty($category) and !empty($photo) and !empty($Product)
                 $newfilenameC = 'img/Product' . $newfilenameC;
                 $query3 = "INSERT INTO product_collection_photos(PRODUCT_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id_Product,'$newfilenameC','$date')";
                 $conn->query($query3);
+                echo " adding Product with local collection photos links";
             }
+        } else if (isset($_POST['collection_link']) and !empty($_POST['collection_link'])) {
+            foreach ($_POST['collection_link'] as $links) {
+                $query3 = "INSERT INTO product_collection_photos(PRODUCT_ID, PHOTO_PATH,UPDATE_DATE) VALUES ($id_Product,'$links','$date')";
+                $conn->query($query3);
+            }
+            echo " adding Product with collection photos links";
         }
         echo "New Product created successfully";
     } else {

@@ -76,7 +76,7 @@ if (isset($_GET['id'])) {
     <!-- Blog Posts -->
     <div class="bg-f8">
         <div class="container">
-            
+
             <div class="row">
                 <div class="col-md-9">
                     <div class="margin-bottom-30">
@@ -132,8 +132,10 @@ if (isset($_GET['id'])) {
                             </a>
 
                         </div>
-                        <?php
-                        echo "
+                        <div class="blog_style">
+
+                            <?php
+                            echo "
                             <ul class='list-inline blog-info'>
                                 
                                 <li><a href='$product_link' target='_blank' style='color:#3da1ff;'>Product link</a></li>
@@ -148,8 +150,9 @@ if (isset($_GET['id'])) {
                             </p>
 
                             </div>";
-                        ?>
+                            ?>
 
+                        </div>
                     </div>
 
 
@@ -185,7 +188,7 @@ if (isset($_GET['id'])) {
                                         echo "<div class='news-area clearfix'>
                                                     <div class='news-img' style='width: 20%;'>
                                                         <a href='blog-single.php?id=$id_blog'>
-                                                            <img src='img/blog/$PHOTO' alt=''>
+                                                            <img src='$PHOTO' alt=''>
                                                             <span class='fa fa-link'></span>
                                                         </a>
                                                     </div>
@@ -225,24 +228,6 @@ if (isset($_GET['id'])) {
                                     </ul>
                                 </div>
                             </div>
-                            <div class="widget clearfix">
-                                <div class="sideber-title">
-                                    <h4>About Us</h4>
-                                </div>
-                                <div class="sideber-content about">
-                                    <div class="testimonial-carousel-one">
-                                        <div class="item">
-                                            <p><i class="fa fa-quote-left"></i> We carefully curate a selection of beauty care products, including skincare, makeup, haircare, and more, from well-established and trusted brands... <i class="fa fa-quote-right"></i></p>
-                                        </div>
-                                        <div class="item">
-                                            <p><i class="fa fa-quote-left"></i> We understand that everyone's beauty needs are unique. BeautyMedic offers personalized recommendations based on your individual skin type, hair ... <i class="fa fa-quote-right"></i></p>
-                                        </div>
-                                        <div class="item">
-                                            <p><i class="fa fa-quote-left"></i> Explore our informative blog, which offers tips, tutorials, and expert advice on various beauty care topics, ensuring you're well-informed and empowered to make the right choices.. <i class="fa fa-quote-right"></i></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             
                             
                         </div>
@@ -252,7 +237,7 @@ if (isset($_GET['id'])) {
         </div>
         <!-- End Blog Posts -->
 
-        
+
         <!-- divider end -->
 
         <!-- Footer Style start -->

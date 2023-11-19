@@ -109,7 +109,7 @@ $sql = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_
                                 }
 
 
-                                echo "<div class='col-md-4 col-sm-6 col-xs-12'>
+                                echo "<div class='col-md-4 col-sm-Q col-xs-12'>
                                         <div class='blog-item style-1'>
                                             
                                             <a href='Blog-single.php?id=$BLOG_ID'><div class='blog-img blg_img'><img src='$PHOTO' alt=''>
