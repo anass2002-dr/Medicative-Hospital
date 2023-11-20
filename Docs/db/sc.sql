@@ -161,8 +161,7 @@ INSERT INTO `category` ( `CATEGORY_NAME`, `DESCRIPTION`, `PHOTO_PATH`, `CREATED_
 INSERT INTO `sponsor` (`SPONSOR_NAME`, `SPONSOR_URL`, `SPONSOR_LOGO`, `CREATED_DATE`, `UPDATE_DATE`) VALUES
 ('Sephora', 'https://www.sephora.com/', 'img/sponsor/1697793357.png', NULL, '2023-10-20 11:16:19'),
 ('Aliexpress', 'http://www.aliexpress.com', 'img/sponsor/1697396153.png', NULL, NULL),
-('Amazon', 'https://www.amazone.com', 'img/sponsor/1697396191.png', NULL, NULL),
-('beurer', 'http://www.beurer.com', 'img/sponsor/1697396210.png', NULL, NULL);
+('Amazon', 'https://www.amazone.com', 'img/sponsor/1697396191.png', NULL, NULL);
 
 
 INSERT INTO `blog` ( `TITLE`, `CATEGORY_ID`, `PHOTO`, `VIDEO`, `PRODUCT_LINK`, `CONTENT`, `BLOG_SHORT`, `CREATED_DATE`, `UPDATE_DATE`) VALUES

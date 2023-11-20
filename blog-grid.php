@@ -83,16 +83,6 @@ $sql = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_
 
                         $result = $conn->query($sql);
 
-                        // $query = '';
-                        // if (isset($_GET['id'])) {
-                        //     $id = $_GET['id'];
-                        //     $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID where b.CATEGORY_ID=$id ORDER BY `b.CREATED_DATE` DESC LIMIT :premier, :parpage;";
-                        // } else {
-                        //     $query = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_DATE from blog as b INNER JOIN category as c on b.CATEGORY_ID=c.CATEGORY_ID ORDER BY `b.CREATED_DATE` DESC LIMIT :premier, :parpage;";
-                        // }
-                        // $result = $conn->query($query);
-                        // $row = mysqli_fetch_assoc($result);
-
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 $BLOG_ID = $row["BLOG_ID"];
@@ -107,8 +97,6 @@ $sql = "select b.BLOG_ID,b.TITLE,b.PHOTO,b.BLOG_SHORT,c.CATEGORY_NAME,b.CREATED_
                                 if (strlen($TITLE) > 30) {
                                     $TITLE = substr($TITLE, 0, 30);
                                 }
-
-
                                 echo "<div class='col-md-4 col-sm-6 col-xs-12'>
                                         <div class='blog-item style-1'>
                                             

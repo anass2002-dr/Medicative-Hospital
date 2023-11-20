@@ -13,7 +13,7 @@
 <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.3.0/css/flat-ui.min.css" rel="stylesheet"/> -->
 
 <!-- Favicon -->
-<link href="Docs/beautymedic-small.png" rel="shortcut icon" type="image/png">
+<link href="img/beautymedic-small-2.png" rel="shortcut icon" type="image/png">
 <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

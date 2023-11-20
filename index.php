@@ -96,7 +96,7 @@
         $country = $url->country_name;  // user country
         $city = $url->city_name;       // city
         $region = $url->region_name;   // regoin
-        $latitude = $url->latitude;    //lat and lon
+        $latitude = $url->latitude;    //lat and lon 
         $longitude = $url->longitude;
 
         // get time

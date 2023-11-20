@@ -80,77 +80,25 @@ if (isset($_GET['id'])) {
             <div class="row">
                 <div class="col-md-9">
                     <div class="margin-bottom-30">
-                        <div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000">
-
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
-                                <?php
-                                for ($i = 1; $i < $cp; $i++) {
-                                    echo "<li data-target='#bootstrap-touch-slider' data-slide-to='$i'></li>";
-                                }
-
-
-                                ?>
-
-
-                            </ol>
-
-                            <!-- Wrapper For Slides -->
-                            <div class="carousel-inner" role="listbox">
-                                <!-- Third Slide -->
-                                <?php
-                                echo "<div class='item active'>
-                                    <!-- Slide Background -->
-                                    <img src='$photo' alt='Slider Images' class='slide-image' />
-                                    
-                                    </div>";
-
-                                while ($row = $result->fetch_assoc()) {
-                                    $path = $row["PHOTO_PATH"];
-                                    echo "<div class='item'>
-                                    <!-- Slide Background -->
-                                    <img src='$path' alt='Slider Images' class='slide-image' />
-                                    
-                                </div>";
-                                }
-
-                                ?>
-
-                            </div><!-- End of Wrapper For Slides -->
-
-                            <!-- Left Control -->
-                            <a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
-                                <span class="fa fa-angle-left" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-
-                            <!-- Right Control -->
-                            <a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
-                                <span class="fa fa-angle-right" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-
-                        </div>
+                        
                         <div class="blog_style">
+                            <h2><?=$title?></h2>
 
-                            <?php
-                            echo "
+                            <img src="<?=$photo?>" alt="" srcset="">
                             <ul class='list-inline blog-info'>
                                 
-                                <li><a href='$product_link' target='_blank' style='color:#3da1ff;'>Product link</a></li>
-                                <li>Category name : $category_name</li>
+                                <li><a href='<?=$product_link?>' target='_blank' style='color:#3da1ff;'>Product link</a></li>
+                                <li>Category name : <?=$category_name?></li>
                                 
                             </ul>
                             <br>
                              
-                            <h2><a href='#'><span style='color: rgb(30, 171, 227);'>$title</span>  </a></h2>
                             <p>
-                                $blog
+                                <?=$blog?>
                             </p>
 
                             </div>";
-                            ?>
+                            
 
                         </div>
                     </div>

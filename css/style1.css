@@ -66,7 +66,7 @@ Creation Date: 24 May 2018
     --pk-color-bold:#1289f8;
     --pk-color-avg:#50a6f6;
     --pk-color-light:#85c4ff;
-    
+    --pk-rose:#e31d86;
 }
 body {
     background: #ffffff;
@@ -6702,4 +6702,7 @@ padding: 0.3rem 0rem;
 }
 .blog_style img{
     width: inherit;
+}
+.blog_style h2{
+    color: black;
 }

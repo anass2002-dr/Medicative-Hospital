@@ -117,7 +117,7 @@ if ($ddp == 1) {
     <section class="shop-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-12  col-lg-3">147
+                <div class="col-md-12  col-lg-3">
                     <div class="blog-sideber">
                         <div class="widget clearfix">
                             <div class="blog-search">

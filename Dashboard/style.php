@@ -7,4 +7,4 @@
 <!-- inject:css -->
 <link rel="stylesheet" href="css/style1.css">
 <!-- endinject -->
-<link rel="shortcut icon" href="../Docs/beautymedic-small.png" />
+<link rel="shortcut icon" href="../img/beautymedic-small-2.png" />
