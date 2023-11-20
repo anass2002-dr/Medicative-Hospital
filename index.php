@@ -213,6 +213,9 @@
                             if (strlen($BLOG_SHORT) > 160) {
                                 $BLOG_SHORT = substr($BLOG_SHORT, 0, 160);
                             }
+                            if (strlen($TITLE) > 30) {
+                                $TITLE = substr($TITLE, 0, 30);
+                            }
 
 
                             echo "<div class='col-md-4 col-sm-6'>
@@ -220,8 +223,7 @@
                                     <div class='practice-img'>
                                         <a href='blog-single.php?id=$BLOG_ID' class='blg_img'>
                                             <img src='$PHOTO' alt=''>
-                                            <span class='flaticon-heart-1'></span>
-                                        </a>
+                                         </a>
                                     </div>
                                     <div class='practice-content'>
                                         <h4><a href='blog-single.php?id=$BLOG_ID'>$TITLE</a></h4>
