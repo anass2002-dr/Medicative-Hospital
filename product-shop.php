@@ -117,7 +117,7 @@ if ($ddp == 1) {
     <section class="shop-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-12  col-lg-3">147
                     <div class="blog-sideber">
                         <div class="widget clearfix">
                             <div class="blog-search">
@@ -200,7 +200,7 @@ if ($ddp == 1) {
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-12 col-lg-9">
                     <div class="shop-right-area">
 
                         <div class="shop-tab-area">
@@ -226,7 +226,7 @@ if ($ddp == 1) {
                                             if (strlen($title) > 20) {
                                                 $title = substr($title, 0, 20);
                                             } ?>
-                                            <div class='col-md-6 col-lg-4'>
+                                            <div class='col-md-4 col-sm-6 col-xs-12'>
                                                 <div class='product-item'>
                                                     <div class='product-image'>
                                                         <a class='product-img' href='shop-single.php?id=<?= $product_id ?>'>
