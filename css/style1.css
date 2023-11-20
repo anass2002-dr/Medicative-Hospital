@@ -5751,6 +5751,7 @@ ul.rating-text li, .pro-review ul li, .social-icon ul li {
   display: inline-block;
 }
 .product-action {
+    height: 180px;
     padding: 20px 10px;
     background: #f3f3f3;
 }
@@ -5831,6 +5832,13 @@ ul.rating-text li, .pro-review ul li, .social-icon ul li {
 .product-image {
   position: relative;
   height: 300px;
+}
+.product-image a{
+    height: 100%;
+    width: 100%;
+}
+.product-image img{
+    height: 100%;
 }
 .product-image::before {
   background: #111 none repeat scroll 0 0;
