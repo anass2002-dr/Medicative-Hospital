@@ -226,7 +226,7 @@ if ($ddp == 1) {
                                             if (strlen($title) > 20) {
                                                 $title = substr($title, 0, 20);
                                             } ?>
-                                            <div class='col-md-6 col-lg-4'>
+                                            <div class='col-6 col-sm-6 col-md-6 col-lg-4'>
                                                 <div class='product-item'>
                                                     <div class='product-image'>
                                                         <a class='product-img' href='shop-single.php?id=<?= $product_id ?>'>
