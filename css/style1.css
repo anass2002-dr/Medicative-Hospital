@@ -66,7 +66,7 @@ Creation Date: 24 May 2018
     --pk-color-bold:#1289f8;
     --pk-color-avg:#50a6f6;
     --pk-color-light:#85c4ff;
-    --pk-rose:#e31d86;
+    
 }
 body {
     background: #ffffff;
@@ -443,7 +443,7 @@ button {
     width: 100%;
     height: 100%;
     z-index: 0;
-    background-color: rgb(255 90 178 / 43%);
+    background-color: rgba(56, 129, 197, 0.58);
 }
 .over-layer-default-light:before {
     background-color: rgba(55, 153, 218, 0.433);
@@ -5443,7 +5443,6 @@ footer {
   overflow: hidden;
   position: relative;
   border: 1px solid #eee;
-  
 
 }
 .product-item .product-img span{
