@@ -1,4 +1,4 @@
-<section class="service-area over-layer-default" style="background-image:url(img/bg/5.jpg);">
+<section class="service-area over-layer-default" style="background-image:url(img/beauty-3.jpg);">
     <div class="container padding-bottom-none padding-top-40">
         <div class="section-content">
             <div class="row">
@@ -9,8 +9,8 @@
                             <i class="pe-7s-mail-open"></i>
                         </div>
                         <div class="content">
-                            <h5><a href="#">Send us a Message</a></h5>
-                            <p>info@beauty-medicare.com</p>
+                            <h5><a href="contact-us.php">Send us a Message</a></h5>
+                            <p>info@beautymedicare.com</p>
                         </div>
                     </div>
                 </div>

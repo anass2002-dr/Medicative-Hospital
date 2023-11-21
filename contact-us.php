@@ -1,31 +1,35 @@
 <?php
-// require_once "Mail.php";
-// $from = "anassdermaj163@gmail.com";
-// $to = 'anassdermaj164@gmail.com';
-
-// $host = "ssl://smtp.gmail.com";
-// $port = "465";
-// $username = 'anassdermaj163@gmail.com';
-// $password = '';
-
-// $subject = "test";
-// $body = "test";
-
-// $headers = array ('From' => $from, 'To' => $to,'Subject' => $subject);
-// $smtp = Mail::factory('smtp',
-//   array ('host' => $host,
-//     'port' => $port,
-//     'auth' => true,
-//     'username' => $username,
-//     'password' => $password));
-
-// $mail = $smtp->send($to, $headers, $body);
-
-// if (PEAR::isError($mail)) {
-//   echo($mail->getMessage());
-// } else {
-//   echo("Message successfully sent!\n");
-// }
+use PHPMailer\PHPMailer\PHPMailer;
+$msg = '';
+if (array_key_exists('email', $_POST)) {
+    require 'vendor/autoload.php';
+    $mail = new PHPMailer;
+    $mail->isSMTP();
+    $mail->Host = 'smtp.hostinger.com';
+    $mail->Port = 465;
+    $mail->SMTPDebug = 0;
+    $mail->SMTPAuth = false;
+    $mail->Username = 'contact@beautymedicare.com';
+    $mail->Password = 'Ana@21s$';
+    $mail->setFrom($_POST['email'], $_POST['name']);
+    $mail->addAddress('contact@beautymedicare.com', 'anass dermaj');
+    if ($mail->addReplyTo($_POST['email'], $_POST['name'])) {
+        $mail->Subject = 'PHPMailer contact form';
+        $mail->isHTML(false);
+        $mail->Body = <<<EOT
+            Email: {$_POST['email']}
+            Name: {$_POST['name']}
+            Message: {$_POST['message']}
+EOT;
+        if (!$mail->send()) {
+            $msg = 'Sorry, something went wrong. Please try again later.';
+        } else {
+            $msg = 'Message sent! Thanks for contacting us.';
+        }
+    } else {
+        $msg = 'Share it with us!';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,7 +84,7 @@
                             <h2>Get in Touch</h2>
                             <div class="small-line-border-2"></div>
                         </div>
-                        <form id="ajax-contact" method="post" action="https://heatmaponline.com/html/medcative/php/contact.php">
+                        <form id="" method="post" action="">
                             <div class="col-md-6">
                                 <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required>
                             </div>
@@ -134,25 +138,7 @@
     </section>
 
     <!-- divider start -->
-    <section class="service-area over-layer-default" style="background-image:url(img/bg/5.jpg);">
-        <div class="container padding-bottom-none padding-top-40">
-            <div class="section-content">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12">
-                        <div class="service-item style-1 text-white border-right">
-                            <div class="">
-                                <i class="pe-7s-mail-open"></i>
-                            </div>
-                            <div class="content">
-                                <h5><a href="#">Send us a Message</a></h5>
-                                <p>info@beauty-medicare.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <?php include 'email-service.php'?>
     <!-- divider end -->
 
     <!-- Footer Style start -->

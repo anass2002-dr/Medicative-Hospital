@@ -7,7 +7,7 @@ include "./Config.php";
         <div class="row">
             <div class="col-md-8 col-sm-6 welcome-top">
                 <ul class="list-inline top-icon">
-                    <li><i class="fa fa-envelope"></i> contact@beauty-medicare.com</li>
+                    <li><i class="fa fa-envelope"></i> contact@beautymedicare.com</li>
                 </ul>
             </div>
             <div class="col-md-4 col-sm-6">

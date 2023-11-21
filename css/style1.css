@@ -443,7 +443,7 @@ button {
     width: 100%;
     height: 100%;
     z-index: 0;
-    background-color: rgba(56, 129, 197, 0.58);
+    background-color: rgb(255 90 178 / 43%);
 }
 .over-layer-default-light:before {
     background-color: rgba(55, 153, 218, 0.433);
