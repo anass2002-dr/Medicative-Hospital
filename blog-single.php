@@ -97,7 +97,7 @@ if (isset($_GET['id'])) {
                                 <?=$blog?>
                             </p>
 
-                            </div>";
+                            </div>
                             
 
                         </div>

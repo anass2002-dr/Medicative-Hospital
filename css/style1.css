@@ -1064,7 +1064,7 @@ a.flip-animate:hover span:before, a.flip-animate:focus span:before {
 .logoLink{
     width: 20%;
 }
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 990px) {
   
     .conner-style .navbar-brand:before {
         display: none;
@@ -1072,6 +1072,7 @@ a.flip-animate:hover span:before, a.flip-animate:focus span:before {
     .logoLink{
         width: 50%;
     }
+    
 }
 
 
@@ -3736,12 +3737,7 @@ to {
     transition-duration: 0.3s;
 }
 
-.blog-item .blog-images,
-.blog-item .blog-content {
-    width: 50%;
-    float: left;
 
-}
 .blog-item .blog-content {
     background: transparent;
 }
@@ -3765,6 +3761,7 @@ to {
     transition-timing-function: ease-out;
 
 }
+
 .hvr-bounce-to-top:before {
     background: #111;
 }

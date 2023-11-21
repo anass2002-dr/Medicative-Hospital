@@ -81,19 +81,11 @@ if (isset($_GET['id'])) {
         <div class="container">
             <div class="row">
 
-                <div class='4col-md-10 col-md-offset-14'>
-
+                <div class='col-12'>
                     <div class='blog-item'>
-                        <div class='blog-images'>
+                        <div class='blog-images col-12 col-md-6'>
                             <div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
-                                    <?php
-                                    for ($i = 1; $i < $cp+1; $i++) {
-                                        echo "<li data-target='#bootstrap-touch-slider' data-slide-to='$i'></li>";
-                                    }
-                                    ?>
-                                </ol>
+                                
                                 <!-- Wrapper For Slides -->
                                 <div class="carousel-inner" role="listbox">
                                     <!-- Third Slide -->
@@ -107,7 +99,7 @@ if (isset($_GET['id'])) {
                                         $path = $row["PHOTO_PATH"];
                                         echo "<div class='item'>
                                                 <img src='$path' alt='Slider Images' class='slide-image' />
-                                        </div>";
+                                              </div>";
                                     }
                                         if($video!=''){
                                             echo "
@@ -138,32 +130,29 @@ if (isset($_GET['id'])) {
 
                             </div> <!-- <div class='blog-img'><a href='#'><img src='$photo' alt=''></a></div> -->
                         </div>
-                        <?php
+                        
 
-                        echo "<div class='blog-content'>
-                                    <a href='#'>
-                                        <h4>$title</h4>
-                                    </a>
-                                    <a href='$sponsor_url' target='blank'>
-                                        <h6 class='color-defult text-lowercase'>$sponsor_name</h6>
-                                    </a>
-                                    <div class='blog-date margin-bottom-20 margin-top-30'>
-                                        <h3>$ $product_price<sub>/Only</sub></h3>
-                                    </div>
-                                    <p>$product_short</p>
-                                    <a href='$product_link'target='_blank' class='btn btn-simple'>View product</a>
-                                </div>
+                        <div class='blog-content col-12 col-md-6'>
+                            <h4><?=$title?></h4>
+                            <a href='<?=$sponsor_urlµ?>' target='blank'>
+                                <h6 class='color-defult text-lowercase'><?=$sponsor_name?></h6>
+                            </a>
+                            <div class='blog-date margin-bottom-20 margin-top-30'>
+                                <h3>$ <?=$product_price?><sub>/Only</sub></h3>
                             </div>
-                            </div>
-                            <div class='col-12' style='background-color: #fff;padding: 30px; '>
-                            <p style='bacground-color:#fff;'>$content
-                        </p> 
-                </div>";
-                
-                
-                        ?>
+                            <p><?=$product_short?></p>
+                            <a href='<?=$product_link?>'target='_blank' class='btn btn-simple'>View product</a>
+                        </div>
                     </div>
                 </div>
+                <div class='col-12' style='background-color: #fff;padding: 30px; '>
+                    <p style='bacground-color:#fff;'><?=$content?>
+                    </p> 
+                </div>
+                
+                        
+            </div>
+        </div>
     </section>
     <!-- SHOPING CART AREA END -->
 

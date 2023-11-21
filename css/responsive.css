@@ -372,6 +372,9 @@
     .nav.navbar-nav.navbar-right {
         float: none !important;
     }
+    .blog-content{
+        width: 100%;
+    }
 }
 @media screen and (max-width: 767px) {
 
