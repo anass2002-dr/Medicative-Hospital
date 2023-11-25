@@ -252,6 +252,7 @@
 
     <a href="#" class="scrollup"><i class="pe-7s-up-arrow" aria-hidden="true"></i></a>
     <!-- jQuery -->
+
     <script type="text/javascript" src="js/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
@@ -264,7 +265,9 @@
     <script type="text/javascript" src="js/owl.carousel.min.js"></script>
     <script type="text/javascript" src="js/gallery.js"></script>
     <script type="text/javascript" src="js/player.min.js"></script>
-    <script type="text/javascript" src="js/retina.js"></script>
+    <!-- <script type="text/javascript" src="js/retina.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/retina.js/2.1.3/retina.js" integrity="sha512-vlmLRr9IiWvaRokOePKmzn3gsYfzR8PQEkAn3s05C6MP0EVA4h2EUKUv80/w20g2Izx9cr9kxBAU92irZjeAQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script type="text/javascript" src="js/comming-soon.js"></script>
 
     <!-- Main Custom JS -->

@@ -82,34 +82,35 @@
         </div>
     </div>
 </section>
-
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-
-                <div class="d-flex flex-column text-center">
-                    <form action="./index.php" method="POST">
-                        <div class="form-group">
-                            <p class="text-secondary">Add your email to receive the latest news about beauty products</p>
-
-                            <input type="email" class="form-control rounded-4" id="email" placeholder="Your email address..." name="">
-                        </div>
-
-                        <button type="submit" class="btn btn-info btn-block btn-round">Validate</button>
-                    </form>
-
-
+<?php if(isset($_SESSION['user_mail']) and !empty($_SESSION['user_mail'])){?>
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
-            </div>
+                <div class="modal-body">
 
+                    <div class="d-flex flex-column text-center">
+                        <form action="./index.php" method="POST">
+                            <div class="form-group">
+                                <p class="text-secondary">Add your email to receive the latest news about beauty products</p>
+
+                                <input type="email" class="form-control rounded-4" id="user_mail" placeholder="Your email address..." name="user_mail">
+                            </div>
+
+                            <button type="submit" class="btn btn-info btn-block btn-round">Validate</button>
+                        </form>
+
+
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
+    <?php }?>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
@@ -121,9 +122,28 @@
         // });
         $(document).ready(
             function() {
-
+                $('#validate').click
                 $('#loginModal').on('hidden.bs.modal', function() {
-                    location.reload();
+                    var mail=$('#user_mail').val();
+                    e.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: 'add_mail.php',
+                        data: {user_mail:mail},
+                        contentType: false,
+
+                        cache: false,
+                        processData: false,
+                        success: function(response) {
+                            // $('#modal_body').text(response);
+
+                            // $('#mymodal').modal('show');
+                            console.log(response)
+                        }
+                    })
+                    $('#loginModal').on('hidden.bs.modal', function() {
+                        window.location.href = 'list_user.php';
+                    })
                 })
 
 
