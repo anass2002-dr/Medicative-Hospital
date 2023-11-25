@@ -82,7 +82,7 @@
         </div>
     </div>
 </section>
-<?php if(isset($_SESSION['user_mail']) and !empty($_SESSION['user_mail'])){?>
+<?php if (isset($_SESSION['user_mail']) and !empty($_SESSION['user_mail'])) { ?>
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -110,26 +110,28 @@
 
             </div>
         </div>
-    <?php }?>
+    <?php } ?>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-        // $(window).on('load', function() {
-        //     setTimeout(function() {
-        //         $('#loginModal').modal();
-        //     }, 2000);
+        $(window).on('load', function() {
+            setTimeout(function() {
+                $('#loginModal').modal();
+            }, 2000);
 
-        // });
+        });
         $(document).ready(
             function() {
                 $('#validate').click
-                $('#loginModal').on('hidden.bs.modal', function() {
-                    var mail=$('#user_mail').val();
+                $('#loginModal').click(function(e) {
+                    var mail = $('#user_mail').val();
                     e.preventDefault();
                     $.ajax({
                         type: "POST",
                         url: 'add_mail.php',
-                        data: {user_mail:mail},
+                        data: {
+                            user_mail: mail
+                        },
                         contentType: false,
 
                         cache: false,
